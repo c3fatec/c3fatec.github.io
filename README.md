@@ -1,12 +1,21 @@
 # c3fatec.github.io
-API da turma de DSM da equipe C3
+# API da turma de DSM da equipe C3
 
-Na máquina local, rode o projeto com um ambiente virtual - 
-pip3 install virtualenv
-python3 -m virtualenv env
-source env/bin/activate
+### Como rodar o projeto
+Na máquina local, crie um ambiente virtual
 
-Para instalar as dependências do projeto, rodar -
-"pip install -r requirements.txt"
+- pip3 install virtualenv
+- python3 -m virtualenv env
+- source env/bin/activate
 
-Para criar variáveis de ambiente, criar arquivo .env
+
+Instalar as dependências do projeto
+
+- "pip install -r requirements.txt"
+
+
+Para rodar o app na máquina local 
+
+- flask run
+
+##### Para criar variáveis de ambiente, criar arquivo .env
