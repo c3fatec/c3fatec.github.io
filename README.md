@@ -5,9 +5,8 @@
 Crie um ambiente virtual:
 ```
 pip install virtualenv
-python3 -m virtualenv env
-source env/bin/activate
-venv\Scripts\Activate.bat (windows - usar cmd)
+python -m virtualenv env
+env/Scripts/activate
 ```
 
 Instale as dependências do projeto:
