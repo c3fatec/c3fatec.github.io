@@ -1,3 +1,86 @@
-{%extends 'index.html'%} {%block head%}
+{%extends 'index.html'%}
+
+{%block head%}
+
 <title>Cadastro</title>
-{%endblock%} {%block body%} Tela de cadastro {%endblock%}
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+{%endblock%}
+{%block body%} 
+
+<div class="container">
+
+  <form action="#">
+
+    <!-- Dados pessoais -->
+          
+    <h3>Profile</h3><hr>
+    <div>
+      <label>Nome:</label><br>
+      <input type="text">
+    </div>
+    
+    <div>
+      <label>CPF:</label><br>
+      <input type="text">
+    </div>
+
+    <div>
+      <label>Data de Nasc.:</label><br>
+      <input type="date">
+    </div>
+    
+    <div>
+      <label>E-mail:</label><br>
+      <input type="email">
+    </div>
+
+    <!-- Dados de moradia -->
+
+    <h3>Endereço</h3><hr>
+    <div>
+      <label>Cep:</label><br>
+      <input type="text" style="width: 125px;"> - <input type="text" style="width: 35px;">
+    </div>
+
+    <div>
+      <label>Rua:</label><br>
+      <input type="text">
+    </div>
+
+    <div>
+      <label>Bairro:</label><br>
+      <input type="text">
+    </div>
+
+    <div>
+      <label>Cidade:</label><br>
+      <input type="text">
+      <label>UF:</label>
+      <input type="text" style="width: 25px;">
+    </div>
+
+    <div>
+      <label>País:</label><br>
+      <input type="text">
+    </div>
+    
+    <!-- Dados da Conta-->
+    
+    <h3>Dados da Conta</h3><hr>
+    <div>
+      <label>Senha:</label><br>
+      <input type="Senha"><br>
+      <label>Repita sua senha:</label><br>
+      <input type="Senha">
+    </div>
+
+    <div>
+      <button>Cadastro</button>
+    </div>
+
+  </form>
+    
+  </div>
+
+{%endblock%}
