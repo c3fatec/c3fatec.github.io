@@ -1,5 +1,4 @@
 import functools
-
 from flask import (
     Blueprint,
     flash,
@@ -10,9 +9,7 @@ from flask import (
     session,
     url_for,
 )
-
 from werkzeug.security import check_password_hash, generate_password_hash
-
 from .db import get_db
 
 bp = Blueprint("auth", __name__, url_prefix="/")
@@ -83,8 +80,16 @@ def login():
     return render_template("auth/login.html")
 
 
+@bp.route("/logout")
+def logout():
+    session.clear()
+    return redirect(url_for("index"))
+
+
 @bp.before_app_request
 def carregar_usuario_logado():
+    """Função que é executada antes de requisições
+    para determinar o usuário da sessão."""
     id_usuario = session.get("id_usuario")
 
     if id_usuario is None:
@@ -97,13 +102,11 @@ def carregar_usuario_logado():
         )
 
 
-@bp.route("/logout")
-def logout():
-    session.clear()
-    return redirect(url_for("index"))
-
-
 def requer_login(view):
+    """Função que verifica se o usuário está logado.
+    Deve ser importada e usada como decorator em rotas que exigem autenticação.
+    Caso o usuário não esteja na sessão, retorna para a tela de login.
+    """
     @functools.wraps(view)
     def wrapped_view(**kwargs):
         if g.usuario is None:

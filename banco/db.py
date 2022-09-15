@@ -4,6 +4,8 @@ import pymysql
 
 
 def get_db():
+    """Função para estabelecer conexão com o banco de dados."""
+    
     if "db" not in g:
         g.db = pymysql.connect(
             host="localhost",
@@ -23,6 +25,8 @@ def close_db(e=None):
 
 
 def init_db():
+    """Função que cria o banco de dados."""
+    
     db = pymysql.connect(
         host="localhost",
         user="root",
@@ -47,6 +51,8 @@ def init_db_command():
 
 @click.command("drop-db")
 def drop_db_command():
+    """Função que apaga o banco de dados."""
+    
     db = pymysql.connect(
         host="localhost",
         user="root",
