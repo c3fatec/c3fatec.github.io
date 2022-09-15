@@ -26,4 +26,4 @@ Para criar a base de dados na máquina local, rodar o comando:
 `flask init-db`
 Para deleter a base de dados:
 
-`flask drop-dp`
+`flask drop-db`
