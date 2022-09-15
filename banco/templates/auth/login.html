@@ -1,0 +1,13 @@
+{%extends 'index.html'%} {%block head%}
+<title>Login</title>
+{%endblock%} {%block body%}
+<form method="post">
+	<label for="cpf">CPF: </label>
+	<input type="text" id="cpf" name="cpf" />
+	<label for="senha">Senha: </label>
+	<input type="password" id="senha" name="senha" />
+	<input type="submit" />
+</form>
+{%for message in get_flashed_messages()%}
+<div>{{message}}</div>
+{%endfor%} {%endblock%}
