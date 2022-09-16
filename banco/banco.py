@@ -11,22 +11,19 @@ bp = Blueprint("conta", __name__, url_prefix="/conta")
 @bp.route("/")
 @requer_login
 def index():
-    return render_template("principal.html")  
+    return render_template("principal.html")
 
-@bp.route("Saque")
+
+@bp.route("/sacar", methods=("GET", "POST"))
 def saque():
-    return render_template('saque.html')
+    if request.method == "POST":
+        saldo_usuario = 1000
+        v = request.form["V"]
 
-
-@bp.route('/sacar', methods=['GET'])
-def sacar(): 
-    saldo_usuario = 1000
-    v = request.args.get('V')
-    
-    db = get_db()
-    cursor = db.cursor()
-    error = None
-    if error is None:
+        db = get_db()
+        cursor = db.cursor()
+        error = None
+        if error is None:
             try:
                 cursor.execute(
                     "UPDATE conta (conta_saldo) VALUES ({{saldo_usuario}})",
@@ -36,15 +33,15 @@ def sacar():
             except:
                 error = "Erro ao efetuar o cadastro."
             else:
-                return f'Seu saldo é de {saldo_usuario}'
-    saldo_usuario = 1000
-    v = request.args.get('V')
-    if v < saldo_usuario:
-        resp = saldo_usuario - v
-    db = get_db()
-    cursor = db.cursor()
-    error = None
-    if error is None:
+                return f"Seu saldo é de {saldo_usuario}"
+        saldo_usuario = 1000
+        v = request.args.get("V")
+        if v < saldo_usuario:
+            resp = saldo_usuario - v
+        db = get_db()
+        cursor = db.cursor()
+        error = None
+        if error is None:
             try:
                 cursor.execute(
                     "UPDATE conta (conta_saldo) VALUES ({{resp}})",
@@ -54,10 +51,11 @@ def sacar():
             except:
                 error = "Erro ao efetuar o saque."
             else:
-                return 'Seu novo saldo é de {}'.format(resp)
-            
+                return "Seu novo saldo é de {}".format(resp)
+
+    return render_template("saque.html")
 
 
-@bp.route('/deposito')
+@bp.route("/deposito")
 def deposito():
-    return''
+    return ""

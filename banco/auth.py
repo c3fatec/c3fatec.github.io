@@ -1,4 +1,3 @@
-import email
 import functools
 from flask import (
     Blueprint,
@@ -23,7 +22,7 @@ def cadastro():
         senha = request.form["senha"]
         cpf = request.form["cpf"]
         data_nasc = request.form["data_nasc"]
-        email = request.form['email']
+        email = request.form["email"]
         db = get_db()
         cursor = db.cursor()
         error = None
@@ -63,8 +62,9 @@ def login():
         db = get_db()
         cursor = db.cursor()
         error = None
-        cursor.execute("SELECT * FROM usuario WHERE cpf = %s", (cpf))
+        cursor.execute("SELECT * FROM usuario WHERE CPF = %s", (cpf))
         usuario = cursor.fetchone()
+        cursor.close()
 
         if usuario is None:
             error = "CPF incorreto"
@@ -85,7 +85,7 @@ def login():
 @bp.route("/logout")
 def logout():
     session.clear()
-    return redirect(url_for("index"))
+    return redirect(url_for("auth.login"))
 
 
 @bp.before_app_request
@@ -97,11 +97,10 @@ def carregar_usuario_logado():
     if id_usuario is None:
         g.usuario = None
     else:
-        g.usuario = (
-            get_db()
-            .execute("SELECT * FROM  usuario WHERE id = ?", (id_usuario,))
-            .fetchone()
-        )
+        db = get_db()
+        cursor = db.cursor()
+        cursor.execute("SELECT * FROM  usuario WHERE id_usuario = ?", (id_usuario,))
+        g.usuario = cursor.fetchone()
 
 
 def requer_login(view):
@@ -109,6 +108,7 @@ def requer_login(view):
     Deve ser importada e usada como decorator em rotas que exigem autenticação.
     Caso o usuário não esteja na sessão, retorna para a tela de login.
     """
+
     @functools.wraps(view)
     def wrapped_view(**kwargs):
         if g.usuario is None:
