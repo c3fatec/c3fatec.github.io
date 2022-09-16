@@ -1,3 +1,4 @@
+from urllib import response
 from flask import Blueprint, flash, g, redirect, render_template, request, url_for
 from werkzeug.exceptions import abort
 
@@ -20,25 +21,28 @@ def saque():
 
 @bp.route('/sacar', methods=['GET'])
 def sacar(): 
-    saldo_usuario = 1000
     v = request.args.get('V')
     
     db = get_db()
     cursor = db.cursor()
     error = None
+ 
     if error is None:
-            try:
-                cursor.execute(
-                    "UPDATE conta (conta_saldo) VALUES ({{saldo_usuario}})",
+   
+        try: 
+            saldo_usuario = 1000
+            cursor.execute(
+            "UPDATE conta (conta_saldo) VALUES ({{saldo_usuario}})",
                 )
-                cursor.commit()
-                cursor.close()
-            except:
-                error = "Erro ao efetuar o cadastro."
-            else:
-                return f'Seu saldo é de {saldo_usuario}'
+            cursor.commit()
+            cursor.close()
+        except:
+            error = "Erro ao efetuar o cadastro."
+        else:
+            return f'Seu saldo é de {saldo_usuario}'
+
+    v = request.args.get('V') 
     saldo_usuario = 1000
-    v = request.args.get('V')
     if v < saldo_usuario:
         resp = saldo_usuario - v
     db = get_db()
@@ -56,9 +60,51 @@ def sacar():
             else:
                 return 'Seu novo saldo é de {}'.format(resp)
             
-
-
 @bp.route('/deposito')
 def deposito():
+    return render_template ('deposito.html')
+
+@bp.route('/depositar')
+def deposito():
+    db = get_db()
+    cursor = db.cursor()
+    error = None
     saldo_usuario = 1000
-    return''
+    if error is None:
+            try:
+                cursor.execute(
+                    "UPDATE conta (conta_saldo) VALUES ({{saldo_usuario}})",
+                )
+                cursor.commit()
+                cursor.close()
+            except:
+                error = "Erro ao efetuar o cadastro."
+            else:
+                return f'Seu saldo é de {saldo_usuario}'
+    saldo_usuario = 1000
+    
+
+    valordeposito = request.args.get('valordeposito')## valor pode ser até centavos 
+
+    if valordeposito == 0:
+        return 'Não é possivel depositar o valor informado.'
+    else: 
+        saldo = saldo_usuario + valordeposito
+        
+
+    db = get_db()
+    cursor = db.cursor()
+    error = None
+    if error is None:
+        try:
+            cursor.execute(
+            "UPDATE conta (conta_saldo) VALUES ({{saldo}})",
+            )
+            cursor.commit()
+            cursor.close()
+        except:
+            error = "Erro ao efetuar o deposito."
+        else:
+            return 'Seu novo saldo é de {}'.format(saldo)
+
+
