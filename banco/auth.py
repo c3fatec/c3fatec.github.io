@@ -1,3 +1,4 @@
+import email
 import functools
 
 from flask import (
@@ -25,6 +26,7 @@ def cadastro():
         senha = request.form["senha"]
         cpf = request.form["cpf"]
         data_nasc = request.form["data_nasc"]
+        email = request.form['email']
         db = get_db()
         cursor = db.cursor()
         error = None
@@ -41,8 +43,8 @@ def cadastro():
         if error is None:
             try:
                 cursor.execute(
-                    "INSERT INTO usuario (nome, senha, cpf, data_nasc) VALUES (?, ?)",
-                    (nome, generate_password_hash(senha), cpf, data_nasc),
+                    "INSERT INTO usuario (CPF, nome_usuario, data_nasc, senha, email) VALUES (?, ?)",
+                    (cpf, nome, data_nasc, generate_password_hash(senha), email),
                 )
                 cursor.commit()
                 cursor.close()

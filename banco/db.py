@@ -9,7 +9,7 @@ def get_db():
             host="localhost",
             user="root",
             database="banco",
-            password="",
+            password="adm123",
             cursorclass=pymysql.cursors.DictCursor,
         )
     return g.db
@@ -27,7 +27,7 @@ def init_db():
         host="localhost",
         user="root",
         database="",
-        password="",
+        password="adm123",
         cursorclass=pymysql.cursors.DictCursor,
     )
     cursor = db.cursor()
@@ -51,7 +51,7 @@ def drop_db_command():
         host="localhost",
         user="root",
         database="",
-        password="",
+        password="adm123",
         cursorclass=pymysql.cursors.DictCursor,
     )
     cursor = db.cursor()
