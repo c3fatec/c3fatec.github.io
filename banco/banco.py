@@ -13,9 +13,9 @@ bp = Blueprint("conta", __name__, url_prefix="/conta")
 def index():
     return render_template("principal.html")  
 
-@bp.route("Saque")
+@bp.route("/saque")
 def saque():
-    return render_template('saque.html')
+    return render_template("saque.html")
 
 
 @bp.route('/sacar', methods=['GET'])
@@ -60,4 +60,5 @@ def sacar():
 
 @bp.route('/deposito')
 def deposito():
+    saldo_usuario = 1000
     return''
