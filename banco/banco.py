@@ -12,7 +12,16 @@ bp = Blueprint("conta", __name__, url_prefix="/conta")
 @bp.route("/")
 @requer_login
 def index():
-    return render_template("principal.html")
+    db = get_db()
+    cursor = db.cursor()
+    cpf = g.usuario["CPF"]
+    cursor.execute(
+        "SELECT conta_saldo FROM banco_api.conta WHERE CPF = %s",
+        (cpf),
+    )
+    saldo = cursor.fetchone()
+
+    return render_template("principal.html", data=saldo)
 
 
 @requer_login
@@ -40,12 +49,7 @@ def saque():
                     (novo_saldo, id_conta),
                 )
             finally:
-                cursor.execute(
-                    "SELECT conta_saldo FROM banco_api.conta WHERE id_numero_conta = %s",
-                    id_conta,
-                )
-                saldo = cursor.fetchone()
-                return f"Saque efetuado, seu saldo agora é de {saldo['conta_saldo']}"
+                return redirect(url_for("conta.index"))
 
     return render_template("saque.html")
 
@@ -67,7 +71,7 @@ def deposito():
                 valordeposito = request.form["valordeposito"]
                 novo_saldo = float(saldo_atual["conta_saldo"]) + float(valordeposito)
             except:
-                error = "Erro ao efetuar o deposito."
+                error = "Erro ao efetuar o depósito."
                 return error
             else:
                 if float(valordeposito) <= 0:
@@ -78,14 +82,9 @@ def deposito():
                             "UPDATE banco_api.conta SET conta_saldo = %s WHERE CPF = %s",
                             (novo_saldo, cpf),
                         )
-                        cursor.execute(
-                            "SELECT conta_saldo FROM banco_api.conta WHERE CPF = %s",
-                            (cpf),
-                        )
-                        saldo_final = cursor.fetchone()
                     except:
-                        error = "Erro ao efetuar o deposito."
+                        error = "Erro ao efetuar o depósito."
                     else:
-                        return f"Seu novo saldo é de {saldo_final['conta_saldo']}"
+                        return redirect(url_for("conta.index"))
 
     return render_template("deposito.html")
