@@ -77,7 +77,7 @@ def login():
         if error is None:
             session.clear()
             session["id_usuario"] = usuario["id_usuario"]
-            return redirect(url_for("conta.saque"))
+            return redirect(url_for("conta.deposito"))
 
         flash(error)
 

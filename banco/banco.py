@@ -56,43 +56,36 @@ def deposito():
         db = get_db()
         cursor = db.cursor()
         error = None
-        saldo_usuario = 1000
+        cpf = g.usuario["CPF"]
 
         if error is None:
             try:
                 cursor.execute(
-                    "UPDATE conta (conta_saldo) VALUES ({{saldo_usuario}})",
+                    "SELECT conta_saldo FROM banco_api.conta WHERE CPF = %s", (cpf)
                 )
-                cursor.commit()
-                cursor.close()
-            except:
-                error = "Erro ao efetuar o cadastro."
-            else:
-                return f"Seu saldo é de {saldo_usuario}"
-        saldo_usuario = 1000
-
-        valordeposito = request.args.get(
-            "valordeposito"
-        )  ## valor pode ser até centavos
-
-        if valordeposito == 0:
-            return "Não é possivel depositar o valor informado."
-        else:
-            saldo = saldo_usuario + valordeposito
-
-        db = get_db()
-        cursor = db.cursor()
-        error = None
-        if error is None:
-            try:
-                cursor.execute(
-                    "UPDATE conta (conta_saldo) VALUES ({{saldo}})",
-                )
-                cursor.commit()
-                cursor.close()
+                saldo_atual = cursor.fetchone()
+                valordeposito = request.form["valordeposito"]
+                novo_saldo = float(saldo_atual["conta_saldo"]) + float(valordeposito)
             except:
                 error = "Erro ao efetuar o deposito."
+                return error
             else:
-                return "Seu novo saldo é de {}".format(saldo)
+                if float(valordeposito) <= 0:
+                    return "Não é possivel depositar o valor informado."
+                else:
+                    try:
+                        cursor.execute(
+                            "UPDATE banco_api.conta SET conta_saldo = %s WHERE CPF = %s",
+                            (novo_saldo, cpf),
+                        )
+                        cursor.execute(
+                            "SELECT conta_saldo FROM banco_api.conta WHERE CPF = %s",
+                            (cpf),
+                        )
+                        saldo_final = cursor.fetchone()
+                    except:
+                        error = "Erro ao efetuar o deposito."
+                    else:
+                        return f"Seu novo saldo é de {saldo_final['conta_saldo']}"
 
     return render_template("deposito.html")
