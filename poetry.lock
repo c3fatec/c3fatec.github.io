@@ -720,7 +720,7 @@ cffi = ">=1.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "ab7854b6d4a44a23763512f6a7ad19cf1fe22109b68158ddc5d6146d9d5b711b"
+content-hash = "5b555a4f51b9e4a01196fcf4ebc50acf2868cd03c026e3aee54346c69e571cec"
 
 [metadata.files]
 attrs = [

@@ -1,5 +1,6 @@
 attrs==22.1.0
 black==22.8.0
+-e git+ssh://git@github.com/c3fatec/c3fatec.github.io.git@1079e770b066067d982e52164eb5567107503089#egg=c3fatec_github_io
 CacheControl==0.12.11
 cachy==0.3.0
 certifi==2022.6.15.1
@@ -8,9 +9,9 @@ charset-normalizer==2.1.1
 cleo==1.0.0a5
 click==8.1.3
 crashtest==0.3.1
-cryptography==38.0.1
 distlib==0.3.6
 dulwich==0.20.46
+enum34==1.1.10
 filelock==3.8.0
 Flask==2.2.2
 html5lib==1.1
@@ -27,6 +28,7 @@ msgpack==1.0.4
 mypy-extensions==0.4.3
 mysqlclient==2.1.1
 packaging==21.3
+pathlib2==2.3.7.post1
 pathspec==0.10.1
 pexpect==4.8.0
 pkginfo==1.8.3
