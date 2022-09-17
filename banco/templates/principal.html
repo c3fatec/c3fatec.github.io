@@ -1,3 +1,15 @@
 {% extends "index.html" %} {%block head%}
 <title>Página Principal</title>
-{%endblock%} {%block body%} Bom dia amigos {%endblock%}
+{%endblock%} {%block body%}
+<div>
+	<h1>Olá</h1>
+
+	<button onclick="document.location='/conta/saque'">Saque</button>
+
+	<button onclick="document.location='/conta/deposito'">Deposito</button>
+</div>
+<div>Seu saldo é de {{data.conta_saldo}} reais.</div>
+<div>
+	<button onclick="document.location='/logout'">Fazer logout</button>
+</div>
+{%endblock%}

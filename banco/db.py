@@ -5,14 +5,15 @@ import pymysql
 
 def get_db():
     """Função para estabelecer conexão com o banco de dados."""
-    
+
     if "db" not in g:
         g.db = pymysql.connect(
             host="localhost",
-            user="root",
-            database="banco",
-            password="",
+            user=current_app.config["DB_USUARIO"],
+            database="banco_api",
+            password=current_app.config["DB_SENHA"],
             cursorclass=pymysql.cursors.DictCursor,
+            autocommit=True
         )
     return g.db
 
@@ -26,12 +27,12 @@ def close_db(e=None):
 
 def init_db():
     """Função que cria o banco de dados."""
-    
+
     db = pymysql.connect(
         host="localhost",
-        user="root",
+        user=current_app.config["DB_USUARIO"],
         database="",
-        password="",
+        password=current_app.config["DB_SENHA"],
         cursorclass=pymysql.cursors.DictCursor,
     )
     cursor = db.cursor()
@@ -41,6 +42,7 @@ def init_db():
             if len(comando):
                 cursor.execute(comando + ";")
         db.commit()
+    db.close()
 
 
 @click.command("init-db")
@@ -52,17 +54,18 @@ def init_db_command():
 @click.command("drop-db")
 def drop_db_command():
     """Função que apaga o banco de dados."""
-    
+
     db = pymysql.connect(
         host="localhost",
-        user="root",
+        user=current_app.config["DB_USUARIO"],
         database="",
-        password="",
+        password=current_app.config["DB_SENHA"],
         cursorclass=pymysql.cursors.DictCursor,
     )
     cursor = db.cursor()
 
-    cursor.execute("DROP DATABASE IF EXISTS banco")
+    cursor.execute("DROP DATABASE IF EXISTS banco_api")
+    db.close()
     click.echo("Base de dados apagada.")
 
 

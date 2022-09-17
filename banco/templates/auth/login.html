@@ -1,10 +1,9 @@
 {%extends 'index.html'%} {%block head%}
 <title>Login</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 {%endblock%} {%block body%}
 <div class="container">
 	<div class="caixa">
-		
 		<div class="headerCaixa">
 			<h3>LOGIN</h3>
 		</div>
@@ -12,22 +11,19 @@
 		<div class="login">
 			<form method="post">
 				<div>
-					<label for="cpf">Conta: </label>
-					<input type="text" name="conta" />
+					<label for="numero_conta">Conta: </label>
+					<input type="text" name="numero_conta" id="numero_conta" />
 				</div>
 				<div>
-					<label for="senha">Senha: </label>
-					<input type="password" id="senha" name="senha" />
+					<label for="senha_usuario">Senha: </label>
+					<input type="password" id="senha_usuario" name="senha_usuario" />
+				</div>
+				<div class="botaoLogin">
+					<button type="submit">Entrar</button>
 				</div>
 			</form>
+			<button onclick="document.location='/cadastro'">cadastrar</button>
 		</div>
-		
-		<div class="botaoLogin">
-			<button>Entrar</button>
-			<a href="http://localhost:5000/cadastro"><button>cadastrar</button></a>
-			
-		</div>
-
 	</div>
 </div>
 
