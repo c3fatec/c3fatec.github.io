@@ -30,19 +30,7 @@ Para criar configurações pessoais, crie uma pasta chamada "instance", e dentro
 
 
 ----------
-## Rodando o projeto
-Após instalar as dependências, o projeto está pronto pra ser rodado na sua máquina. Basta executar o comando:
-```
-flask --app banco run
-```
-
-O app oferece como suporte a criação de um banco de dados exemplo e também sua deleção. O banco de dados está configurado para se conectar ao usuário *root*, sem senha em seu servidor MySQL.<br><br>
-Para criar e deletar a base de dados na máquina local, execute os comandos:<br>
-`flask --app banco init-db`<br>
-`flask --app banco drop-db`
-
-<small>*Para evitar especificar "--app banco" ao executar os comandos, determine a variável **FLASK_APP="banco"** no seu arquivo .env*</small><br><br>
-
+## Rodando o projeto <br>
 **Configurando seu usuário da base de dados**<br>
 A base de dados está configurada para se conectar ao usuário "root", sem senha em seu MySQL.
 Para alterar essa configuração, no arquivo de configurações locais "instance/config.py" determine as variáveis:
@@ -50,3 +38,14 @@ Para alterar essa configuração, no arquivo de configurações locais "instance
 DB_USUARIO = "seu_usuario"
 DB_SENHA = "sua_senha"
 ```
+O app oferece como suporte a criação de um banco de dados exemplo e também sua deleção. O banco de dados está configurado para se conectar ao usuário *root*, sem senha em seu servidor MySQL.<br><br>
+Para criar e deletar a base de dados na máquina local, execute os comandos:<br>
+`flask --app banco init-db`<br>
+`flask --app banco drop-db`
+<br>
+Após instalar as dependências, o projeto está pronto pra ser rodado na sua máquina. Basta executar o comando:
+```
+flask --app banco run
+```
+
+<small>*Para evitar especificar "--app banco" ao executar os comandos, determine a variável **FLASK_APP="banco"** no seu arquivo .env*</small><br><br>
