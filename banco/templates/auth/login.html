@@ -1,13 +1,30 @@
 {%extends 'index.html'%} {%block head%}
 <title>Login</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 {%endblock%} {%block body%}
-<form method="post">
-	<label for="numero_conta">Número da conta: </label>
-	<input type="text" id="numero_conta" name="numero_conta" />
-	<label for="senha_usuario">Senha: </label>
-	<input type="password" id="senha_usuario" name="senha_usuario" />
-	<input type="submit" />
-</form>
-{%for message in get_flashed_messages()%}
-<div>{{message}}</div>
-{%endfor%} {%endblock%}
+<div class="container">
+	<div class="caixa">
+		<div class="headerCaixa">
+			<h3>LOGIN</h3>
+		</div>
+
+		<div class="login">
+			<form method="post">
+				<div>
+					<label for="numero_conta">Conta: </label>
+					<input type="text" name="numero_conta" id="numero_conta" />
+				</div>
+				<div>
+					<label for="senha_usuario">Senha: </label>
+					<input type="password" id="senha_usuario" name="senha_usuario" />
+				</div>
+				<div class="botaoLogin">
+					<button type="submit">Entrar</button>
+				</div>
+			</form>
+			<button onclick="document.location='/cadastro'">cadastrar</button>
+		</div>
+	</div>
+</div>
+
+{%endblock%}

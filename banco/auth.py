@@ -46,8 +46,7 @@ def cadastro():
                     "INSERT INTO banco_api.conta (conta_saldo, CPF) values (%s, %s)",
                     (2000, cpf),
                 )
-            finally:
-                return "Cadastro efetuado"
+                return redirect(url_for("auth.login"))
 
         print(error)
 
