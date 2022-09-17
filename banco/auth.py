@@ -18,11 +18,10 @@ bp = Blueprint("auth", __name__, url_prefix="/")
 @bp.route("/cadastro", methods=("GET", "POST"))
 def cadastro():
     if request.method == "POST":
+        # return request.form
         nome = request.form["nome"]
         senha = request.form["senha"]
         cpf = request.form["cpf"]
-        data_nasc = request.form["data_nasc"]
-        email = request.form["email"]
         db = get_db()
         cursor = db.cursor()
         error = None
@@ -33,23 +32,24 @@ def cadastro():
             error = "Informe sua senha"
         elif not cpf:
             error = "Informe seu cpf"
-        elif not data_nasc:
-            error = "Informe sua data de nascimento"
 
         if error is None:
             try:
                 cursor.execute(
-                    "INSERT INTO usuario (CPF, nome_usuario, data_nasc, senha, email) VALUES (?, ?)",
-                    (cpf, nome, data_nasc, generate_password_hash(senha), email),
+                    "INSERT INTO banco_api.usuario (CPF, nome_usuario, senha_usuario) VALUES (%s, %s, %s)",
+                    (cpf, nome, generate_password_hash(senha)),
                 )
-                cursor.commit()
-                cursor.close()
             except:
                 error = "Erro ao efetuar o cadastro."
             else:
-                return redirect(url_for("auth.login"))
+                cursor.execute(
+                    "INSERT INTO banco_api.conta (conta_saldo, CPF) values (%s, %s)",
+                    (2000, cpf),
+                )
+            finally:
+                return "Cadastro efetuado"
 
-        flash(error)
+        print(error)
 
     return render_template("auth/cadastro.html")
 
@@ -57,25 +57,27 @@ def cadastro():
 @bp.route("/", methods=("GET", "POST"))
 def login():
     if request.method == "POST":
-        cpf = request.form["cpf"]
-        senha = request.form["senha"]
+        numero_conta = str(request.form["numero_conta"])
+        senha = request.form["senha_usuario"]
         db = get_db()
         cursor = db.cursor()
         error = None
-        cursor.execute("SELECT * FROM usuario WHERE CPF = %s", (cpf))
+        cursor.execute(
+            "SELECT CPF FROM conta WHERE id_numero_conta = %s", (numero_conta)
+        )
+        cpf = cursor.fetchone()
+        cursor.execute("SELECT * FROM usuario WHERE CPF = %s", (cpf["CPF"]))
         usuario = cursor.fetchone()
-        cursor.close()
-
         if usuario is None:
-            error = "CPF incorreto"
+            error = "Esta conta não existe"
 
-        elif not check_password_hash(usuario["senha"], senha):
+        elif not check_password_hash(usuario["senha_usuario"], senha):
             error = "Senha incorreta"
 
         if error is None:
             session.clear()
-            session["id_usuario"] = usuario["id"]
-            return redirect(url_for("index"))
+            session["id_usuario"] = usuario["id_usuario"]
+            return redirect(url_for("conta.saque"))
 
         flash(error)
 
@@ -99,7 +101,7 @@ def carregar_usuario_logado():
     else:
         db = get_db()
         cursor = db.cursor()
-        cursor.execute("SELECT * FROM  usuario WHERE id_usuario = ?", (id_usuario,))
+        cursor.execute("SELECT * FROM  usuario WHERE id_usuario = %s", (id_usuario,))
         g.usuario = cursor.fetchone()
 
 

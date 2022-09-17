@@ -2,10 +2,10 @@
 <title>Login</title>
 {%endblock%} {%block body%}
 <form method="post">
-	<label for="cpf">CPF: </label>
-	<input type="text" id="cpf" name="cpf" />
-	<label for="senha">Senha: </label>
-	<input type="password" id="senha" name="senha" />
+	<label for="numero_conta">Número da conta: </label>
+	<input type="text" id="numero_conta" name="numero_conta" />
+	<label for="senha_usuario">Senha: </label>
+	<input type="password" id="senha_usuario" name="senha_usuario" />
 	<input type="submit" />
 </form>
 {%for message in get_flashed_messages()%}

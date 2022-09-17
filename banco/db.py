@@ -13,6 +13,7 @@ def get_db():
             database="banco_api",
             password=current_app.config["DB_SENHA"],
             cursorclass=pymysql.cursors.DictCursor,
+            autocommit=True
         )
     return g.db
 
@@ -41,6 +42,7 @@ def init_db():
             if len(comando):
                 cursor.execute(comando + ";")
         db.commit()
+    db.close()
 
 
 @click.command("init-db")
@@ -62,7 +64,8 @@ def drop_db_command():
     )
     cursor = db.cursor()
 
-    cursor.execute("DROP DATABASE IF EXISTS banco")
+    cursor.execute("DROP DATABASE IF EXISTS banco_api")
+    db.close()
     click.echo("Base de dados apagada.")
 
 
