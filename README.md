@@ -25,6 +25,9 @@ poetry install
 **Variáveis de ambiente** <br>
 Para aplicar variáveis para sua máquina, crie um arquivo chamando ".env" e defina as configurações locais. <br>
 
+**Configurações pessoais** <br>
+Para criar configurações pessoais, crie uma pasta chamada "instance", e dentro um arquivo "config.py" para armazenar configurações pessoais. As configurações especificadas nesses arquivos não serão compartilhadas.
+
 
 ----------
 ## Rodando o projeto
@@ -38,4 +41,12 @@ Para criar e deletar a base de dados na máquina local, execute os comandos:<br>
 `flask --app banco init-db`<br>
 `flask --app banco drop-db`
 
-<small>*Para evitar especificar "--app banco" ao executar os comandos, determine a variável **FLASK_APP="banco"** no seu arquivo .env*</small>
+<small>*Para evitar especificar "--app banco" ao executar os comandos, determine a variável **FLASK_APP="banco"** no seu arquivo .env*</small><br><br>
+
+**Configurando seu usuário da base de dados**<br>
+A base de dados está configurada para se conectar ao usuário "root", sem senha em seu MySQL.
+Para alterar essa configuração, no arquivo de configurações locais "instance/config.py" determine as variáveis:
+```
+DB_USUARIO = "seu_usuario"
+DB_SENHA = "sua_senha"
+```
