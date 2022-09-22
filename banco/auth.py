@@ -50,7 +50,7 @@ def cadastro():
 
         print(error)
 
-    return render_template("auth/cadastro.html")
+    return render_template("auth/cadastro2.html")
 
 
 @bp.route("/", methods=("GET", "POST"))

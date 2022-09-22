@@ -1,60 +1,9 @@
-.caixa {
-    margin: 10% auto 0;
-    width: 350px;
-    height: 250px;
-    background-color: #d9d9d9;
-    border-radius: 20px;
-}
 
-.headerCaixa {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    height: 17%;
-    background-color: #0d5d7d;
-    border-radius: 20px 20Px 0 0;
-}
 
-.headerCaixa>h3 {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    color: #ffffff;
-    font-weight: bold;
-}
-
-.login {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 60%;
-}
-
-.login form {
-    text-align: center;
-    width: 100%;
-}
-
-.login div {
-    margin: 5% 0;
-}
-
-.login input {
-    width: 70%;
-    border: none;
-    border-radius: 5px;
-}
-
-.botaoLogin {
-    text-align: center;
-}
-
-.botaoLogin button {
-    width: 30%;
-    margin: 0 3%;
-    border: 1px solid black;
-    border-radius: 5px;
+/* Estilização do input number */
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
