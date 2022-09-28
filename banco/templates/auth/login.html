@@ -1,29 +1,35 @@
-{%extends 'index.html'%} {%block head%}
-<title>Login</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
-{%endblock%} {%block body%}
-<div class="container">
-	<div class="caixa">
-		<div class="headerCaixa">
-			<h3>LOGIN</h3>
-		</div>
+{%extends 'index.html'%}
+{%block head%}
 
+<title>Login</title>
+
+{%endblock%}
+{%block body%}
+<div class="pg-login container-fluid d-flex align-items-center">
+
+	<div class=" caixa mx-auto col-3">		
+		<div class="header-caixa">
+			<h3 class="fw-bold my-auto">LOGIN</h3>
+		</div>
 		<div class="login">
-			<form method="post">
-				<div>
-					<label for="numero_conta">Conta: </label>
-					<input type="text" name="numero_conta" id="numero_conta" />
+			<form method="post" class="d-grid gap-2 mt-4">
+				<div class="d-flex justify-content-center">
+					<label for="numero_conta" class="fw-bold col-2 pe-2">Conta: </label>
+					<input type="text" name="numero_conta" id="numero_conta" class="border rounded-2 col-8"/>
 				</div>
-				<div>
-					<label for="senha_usuario">Senha: </label>
-					<input type="password" id="senha_usuario" name="senha_usuario" />
+				<div class="d-flex justify-content-center">
+					<label for="senha_usuario" class="fw-bold col-2 pe-2">Senha: </label>
+					<input type="password" id="senha_usuario" name="senha_usuario" class="border rounded-2 col-8"/>
 				</div>
-				<div class="botaoLogin">
-					<button type="submit">Entrar</button>
+				<div class="btn btn-secondary btn-sm mt-3 mb-3 col-4 mx-auto">
+					<button type="submit" class="b1 border-1 w-100">Entrar</button>
 				</div>
 			</form>
-			<button onclick="document.location='/cadastro'">cadastrar</button>
 		</div>
+	</div>
+
+	<div class="cadastre">
+		<a onclick="document.location='/cadastro'" class="link h5">Cadastre-se Aqui!</a>
 	</div>
 </div>
 
