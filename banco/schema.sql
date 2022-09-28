@@ -8,17 +8,17 @@ CREATE SCHEMA IF NOT EXISTS `banco_api` DEFAULT CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS `banco_api`.`usuario` (
   `id_usuario` INT NOT NULL AUTO_INCREMENT,
   `CPF` CHAR(11) NOT NULL,
-  `nome_usuario` VARCHAR(250) NOT NULL,
-  `senha_usuario` CHAR(245) NOT NULL,
+  `nome` VARCHAR(250) NOT NULL,
+  `senha` CHAR(245) NOT NULL,
   PRIMARY KEY (`id_usuario`),
   UNIQUE INDEX `CPF_UNIQUE` (`CPF` ASC)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `banco_api`.`conta` (
   `id_conta` INT(5) NOT NULL AUTO_INCREMENT,
-  `conta_saldo` DECIMAL(9, 2) NOT NULL,
+  `saldo` DECIMAL(9, 2) NOT NULL,
   `CPF` CHAR(11) NOT NULL,
   PRIMARY KEY (`id_conta`),
-  UNIQUE INDEX `id_numero_conta_UNIQUE` (`id_conta` ASC),
+  UNIQUE INDEX `id_conta_UNIQUE` (`id_conta` ASC),
   INDEX `fk_conta_usuario1_idx` (`CPF` ASC),
   CONSTRAINT `fk_conta_usuario1` FOREIGN KEY (`CPF`) REFERENCES `banco_api`.`usuario` (`CPF`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
