@@ -7,20 +7,20 @@ SET @OLD_SQL_MODE = @@SQL_MODE,
 CREATE SCHEMA IF NOT EXISTS `banco_api` DEFAULT CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS `banco_api`.`usuario` (
   `id_usuario` INT NOT NULL AUTO_INCREMENT,
-  `CPF` CHAR(11) NOT NULL,
+  `cpf` CHAR(11) NOT NULL,
   `nome` VARCHAR(250) NOT NULL,
   `senha` CHAR(245) NOT NULL,
   PRIMARY KEY (`id_usuario`),
-  UNIQUE INDEX `CPF_UNIQUE` (`CPF` ASC)
+  UNIQUE INDEX `cpf_UNIQUE` (`cpf` ASC)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `banco_api`.`conta` (
   `id_conta` INT(5) NOT NULL AUTO_INCREMENT,
   `saldo` DECIMAL(9, 2) NOT NULL,
-  `CPF` CHAR(11) NOT NULL,
+  `cpf` CHAR(11) NOT NULL,
   PRIMARY KEY (`id_conta`),
   UNIQUE INDEX `id_conta_UNIQUE` (`id_conta` ASC),
-  INDEX `fk_conta_usuario1_idx` (`CPF` ASC),
-  CONSTRAINT `fk_conta_usuario1` FOREIGN KEY (`CPF`) REFERENCES `banco_api`.`usuario` (`CPF`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  INDEX `fk_conta_usuario1_idx` (`cpf` ASC),
+  CONSTRAINT `fk_conta_usuario1` FOREIGN KEY (`cpf`) REFERENCES `banco_api`.`usuario` (`cpf`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
 ALTER TABLE `banco_api`.`conta` AUTO_INCREMENT = 10000;
 CREATE TABLE IF NOT EXISTS `banco_api`.`transacoes`(
