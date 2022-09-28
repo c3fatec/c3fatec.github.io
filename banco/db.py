@@ -54,8 +54,6 @@ def db_get(many=True, **params):
         if many is True:
             response = cursor.fetchall()
         response = cursor.fetchone()
-    finally:
-        db.close()
 
     return response
 
@@ -80,8 +78,6 @@ def db_update(table: str, setter: dict, value: dict):
     except Exception as e:
         print("Erro ao atualizar tabela")
         print(e.args[1])
-    finally:
-        db.close()
 
 
 def close_db(e=None):
