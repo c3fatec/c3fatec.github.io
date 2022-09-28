@@ -4,11 +4,11 @@
 
 {%endblock%} {%block body%}
 
-<div class="container-fluid mt-5 cadastro">
+<div class="pg-cadastro container-fluid">
 
-    <form method="post">   
+    <form method="post" class="form"> 
         <!--Dados Pessoais-->
-        <div class="d-flex justify-content-between titulo">
+        <div class="titulo d-flex justify-content-between">
             <p class="h3">Dados Pessoais</p>
             <div class="btn-sair text-center my-auto">
                 <button type="button" class="btn-close btn-sm" aria-label="Close" onclick="document.location='/'"></button>
@@ -41,7 +41,7 @@
         </div>
         
         <!--Endereço-->
-        <div>
+        <div class="titulo">
             <p class="h3 mt-4">Endereço</p>
         </div>
         <hr>
@@ -79,7 +79,7 @@
         </div>
 
         <!--Dados da Conta-->
-        <div>
+        <div class="titulo">
             <p class="h3 mt-4">Dados da Conta</p>
         </div>
         <hr>
@@ -99,10 +99,8 @@
         </div>
 
         <!--Botão de salvar-->
-        <div class="d-flex justify-content-between col-3 mx-auto mt-4">
-            <div class="col-8 mx-auto">
-                <button type="submit" class="btn btn-secondary btn-sm w-100">Cadastrar</button>
-            </div>
+        <div class="mt-4 col-2 mx-auto">
+            <button type="submit" class="btn btn-secondary btn-sm w-100">Cadastrar</button>
         </div>
     </form>
 </div>

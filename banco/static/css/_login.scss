@@ -2,7 +2,7 @@
 // CSS para pagina de login
 
 .pg-login {
-    min-height: 100vh;
+    min-height: 92vh;
 
     .caixa {
         background-color: rgb(209, 209, 209);
@@ -21,17 +21,14 @@
         }
 
         .login {
-            .btn {
-                background-color: rgb(209, 209, 209);
-                border: none;
 
-                .b1 {
-                    font-weight: 400;
-                    &:hover {
-                        background-color: grey;
-                        color: white;
-                    }
-                }
+            label {
+                font-weight: bold;
+            }
+
+            input {
+                border: 1px solid #dee2e6;
+                border-radius: 5px !important;
             }
         }
     }
