@@ -18,7 +18,6 @@ bp = Blueprint("auth", __name__, url_prefix="/")
 @bp.route("/cadastro", methods=("GET", "POST"))
 def cadastro():
     if request.method == "POST":
-        # return request.form
         nome = request.form["nome"]
         senha = request.form["senha"]
         cpf = request.form["cpf"]
