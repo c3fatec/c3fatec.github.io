@@ -32,7 +32,7 @@ def cadastro():
         finally:
             return redirect(url_for("auth.login"))
 
-    return render_template("auth/cadastro2.html")
+    return render_template("auth/cadastro.html")
 
 
 @bp.route("/", methods=("GET", "POST"))
