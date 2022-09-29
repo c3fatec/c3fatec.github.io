@@ -3,11 +3,24 @@
 
 <title>Login</title>
 
+<style>
+	.pg-login {
+		background-image: url("../../static/img/quadrados.png");
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: cover;
+	}
+
+	.header {
+		display: none !important;
+	}
+</style>
+
 {%endblock%}
 {%block body%}
 <div class="pg-login container-fluid d-flex align-items-center">
 
-	<div class=" caixa mx-auto col-3">		
+	<div class=" caixa mx-auto">		
 		<div class="header-caixa">
 			<h3 class="fw-bold my-auto">LOGIN</h3>
 		</div>
@@ -23,16 +36,16 @@
 
 
 				</div>
-				<div class="mt-3 mb-3 col-4 mx-auto">
+				<div class="col-4 mt-3 mb-1 mx-auto">
 					<button type="submit" class="btn btn-secondary btn-sm w-100">Entrar</button>
 				</div>
 			</form>
+			<div class="cadastre col-4 mb-2 mx-auto">
+				<a onclick="document.location='/cadastro'" class="link">Abra sua conta!</a>
+			</div>
 		</div>
 	</div>
 
-	<div class="cadastre">
-		<a onclick="document.location='/cadastro'" class="link h5">Cadastre-se Aqui!</a>
-	</div>
 </div>
 
 {%endblock%}

@@ -2,12 +2,13 @@
 // CSS para pagina de login
 
 .pg-login {
-    min-height: 92vh;
+    min-height: 100vh;
 
     .caixa {
         background-color: rgb(209, 209, 209);
         text-align: center;
         border-radius: 15px;
+        width: 350px;
         box-shadow: 0px 7px 20px rgba(black, .450);
         
 
@@ -34,11 +35,8 @@
     }
 
     .cadastre {
-        position: fixed;
-        bottom: 5%;
-        right: 3%;
-
         a {
+            text-decoration: none;
             cursor: pointer;
         }
     }

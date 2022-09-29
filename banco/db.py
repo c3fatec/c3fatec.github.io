@@ -43,6 +43,7 @@ def db_get(many=True, **params):
     value = ",".join(str(v) for v in params.values())
     db = get_db()
     cursor = db.cursor()
+    response = None
 
     try:
         command = f"SELECT * FROM {table} WHERE {key} = '{value}';"
