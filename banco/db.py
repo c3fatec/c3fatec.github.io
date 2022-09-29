@@ -40,7 +40,7 @@ def db_create(**params):
 def db_get(many=True, **params):
     table = params.pop("table")
     key = "".join(params.keys())
-    value = "".join(params.values())
+    value = ",".join(str(v) for v in params.values())
     db = get_db()
     cursor = db.cursor()
 
@@ -54,9 +54,9 @@ def db_get(many=True, **params):
         if many is True:
             response = cursor.fetchall()
         response = cursor.fetchone()
-    finally:
-        db.close()
-
+    if response is None:
+        print(command)
+        print("Erro ao recuperar os dados")
     return response
 
 
@@ -80,8 +80,6 @@ def db_update(table: str, setter: dict, value: dict):
     except Exception as e:
         print("Erro ao atualizar tabela")
         print(e.args[1])
-    finally:
-        db.close()
 
 
 def close_db(e=None):
