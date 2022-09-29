@@ -1,0 +1,70 @@
+.header {
+  background-color: grey;
+  height: 8vh;
+}
+.header a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+.header a:hover {
+  color: rgb(65, 65, 65);
+}
+
+.pg-login {
+  min-height: 92vh;
+}
+.pg-login .caixa {
+  background-color: rgb(209, 209, 209);
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.45);
+}
+.pg-login .caixa .header-caixa {
+  background-color: rgb(43, 43, 43);
+  border-radius: 15px 15px 0 0;
+}
+.pg-login .caixa .header-caixa h3 {
+  color: white;
+}
+.pg-login .caixa .login label {
+  font-weight: bold;
+}
+.pg-login .caixa .login input {
+  border: 1px solid #dee2e6;
+  border-radius: 5px !important;
+}
+.pg-login .cadastre {
+  position: fixed;
+  bottom: 5%;
+  right: 3%;
+}
+.pg-login .cadastre a {
+  cursor: pointer;
+}
+
+.pg-cadastro {
+  background-color: rgb(209, 209, 209);
+  min-height: 92vh;
+}
+.pg-cadastro .form {
+  padding-top: 3vh;
+}
+.pg-cadastro .titulo {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+.pg-cadastro .titulo p {
+  margin-bottom: 0 !important;
+}
+.pg-cadastro hr {
+  margin-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.pg-cadastro label {
+  font-weight: bold;
+}
+.pg-cadastro input {
+  border: 1px solid #dee2e6;
+  border-radius: 5px !important;
+}/*# sourceMappingURL=style.css.map */

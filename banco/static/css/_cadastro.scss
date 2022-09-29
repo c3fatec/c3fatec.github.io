@@ -1,0 +1,34 @@
+
+.pg-cadastro {
+    background-color: rgb(209, 209, 209);
+    min-height: 92vh;
+
+    .form {
+        padding-top: 3vh;
+    }
+
+    // Juntando o titulo com a linha (hr)
+    .titulo {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+
+        p {
+            margin-bottom: 0 !important;
+        }
+    }
+
+    hr {
+        margin-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input {
+        border: 1px solid #dee2e6;
+        border-radius: 5px !important;
+    }
+
+}

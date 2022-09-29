@@ -1,0 +1,19 @@
+
+.header {
+    background-color: grey;
+    height: 8vh;
+
+    a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+
+        &:hover {
+            color: rgb(65, 65, 65);
+        }
+    }
+}
+
+
+@import 'login';
+@import 'cadastro';
