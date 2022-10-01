@@ -1,14 +1,34 @@
-.header {
-  background-color: grey;
-  height: 8vh;
+header {
+  background-color: rgba(114, 114, 114, 0.65);
+  height: 7vh;
+  color: white;
 }
-.header a {
+header div > a {
   color: white;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: bold !important;
+  letter-spacing: 2px;
 }
-.header a:hover {
-  color: rgb(65, 65, 65);
+header div > a:hover {
+  color: rgb(38, 0, 255);
+}
+header ul li {
+  font-weight: 500;
+}
+header ul li a {
+  color: white;
+  text-decoration: none;
+}
+header ul li a:hover {
+  color: rgb(38, 0, 255);
+  border-bottom: 1px solid rgb(38, 0, 255);
+}
+header div p {
+  text-transform: capitalize;
+}
+header div img {
+  width: 18px;
+  cursor: pointer;
 }
 
 .pg-login {
@@ -64,4 +84,19 @@
 .pg-cadastro input {
   border: 1px solid #dee2e6;
   border-radius: 5px !important;
+}
+
+.pg-principal {
+  min-height: 92vh;
+}
+.pg-principal .menu-suspenso {
+  text-align: center;
+  position: fixed;
+  top: 12%;
+  left: 2%;
+  width: 80px;
+}
+.pg-principal .menu-suspenso img {
+  width: 80%;
+  margin: 15% 0;
 }/*# sourceMappingURL=style.css.map */

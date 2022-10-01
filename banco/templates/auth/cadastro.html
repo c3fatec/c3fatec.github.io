@@ -1,8 +1,22 @@
-{%extends 'index.html'%} {%block head%}
+{%extends 'index.html'%} 
+{%block head%}
 
+<style>
+    .header {
+        display: none !important;;
+    }
+</style>
 <title>Cadastro</title>
 
-{%endblock%} {%block body%}
+{%endblock%}
+{%block body%}
+
+<!-- header alternativo -->
+<header class="d-flex justify-content-center align-items-center"> 
+    <div class="w-25 h-75 ps-3 text-center">
+      <a href="#" class="h2">X-bank</a>
+    </div>
+</header>
 
 <div class="pg-cadastro container-fluid">
 

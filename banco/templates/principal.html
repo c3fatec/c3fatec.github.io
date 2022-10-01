@@ -1,15 +1,33 @@
-{% extends "index.html" %} {%block head%}
+{% extends "index.html" %}
+{%block head%}
+
 <title>Página Principal</title>
-{%endblock%} {%block body%}
-<div>
-	<h1>Olá</h1>
 
-	<button onclick="document.location='/conta/saque'">Saque</button>
+<style>
+	.pg-principal {
+		background-image: url("../../static/img/quadrados.png");
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: cover;
+	}
+</style>
 
-	<button onclick="document.location='/conta/deposito'">Deposito</button>
-</div>
-<div>Seu saldo é de {{data.saldo}} reais.</div>
-<div>
-	<button onclick="document.location='/logout'">Fazer logout</button>
+{%endblock%}
+{%block body%}
+
+<div class="pg-principal container-fluid">
+
+	<!-- <div>
+		<h1>Olá {{g.usuario.nome}}!!!</h1>
+
+		<button onclick="document.location='/conta/saque'">Saque</button>
+
+		<button onclick="document.location='/conta/deposito'">Deposito</button>
+	</div>
+	<div>Seu saldo é de {{data.saldo}} reais.</div>
+	<div>
+		<button onclick="document.location='/logout'">Fazer logout</button>
+	</div> -->
+
 </div>
 {%endblock%}

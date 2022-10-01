@@ -1,19 +1,52 @@
 
-.header {
-    background-color: grey;
-    height: 8vh;
-
-    a {
+header {
+    background-color: rgb(114, 114, 114, 0.650);
+    height: 7vh;
+    color: white;
+    
+    div>a {
         color: white;
         text-decoration: none;
-        font-weight: bold;
+        font-weight: bold !important;
+        letter-spacing: 2px;
 
         &:hover {
-            color: rgb(65, 65, 65);
+            color: rgb(38, 0, 255);
+        }
+    }    
+
+    ul {
+        li {
+            font-weight: 500;
+            
+            a {
+                color: white;
+                text-decoration: none;
+
+                &:hover {
+                    color: rgb(38, 0, 255);
+                    border-bottom: 1px solid rgb(38,0,255);
+                }
+            }
         }
     }
+
+    div {
+        
+        p {
+            text-transform: capitalize;
+        }
+
+        img {
+            width: 18px;
+            cursor: pointer;
+        }
+    }
+    
+
 }
 
 
 @import 'login';
 @import 'cadastro';
+@import 'principal';
