@@ -23,27 +23,7 @@
 		{% block head %} {% endblock %}
 	</head>
 	<body>
-
-		<header class="header d-flex justify-content-between"> 
-			
-			<div class="w-25 h-100 ps-3 d-flex align-items-center">
-			  <a href="#" class="h2 m-0 p-0">X-bank</a>
-			</div>
-
-			<nav class="w-50 h-100 d-flex align-items-center">
-				<ul class="m-0 p-0 w-100 d-flex text-center list-unstyled">
-					<li class="col-3"><a href="#">HOME</a></li>
-					<li class="col-3"><a href="/conta/saque">SAQUE</a></li>
-					<li class="col-3"><a href="/conta/deposito">DEPÓSITO</a></li>
-					<li class="col-3"><a href="">TRANSAÇÕES</a></li>
-				</ul>
-			</nav>
-			
-			<div class="w-25 h-100 pe-1 d-flex justify-content-end align-items-center">
-				<p class="h6 m-0 p-0 pe-3 w-50 text-end">Olá <b>{{g.usuario.nome}}</b>,</p><img src="../static/img/closed preto.png" alt="sair" class="me-3" onclick="document.location='/logout'">
-			</div>
-		</header>
-
-		{% block body %} {% endblock %}
+		{% block body %} 
+		{% endblock %}
 	</body>
 </html>

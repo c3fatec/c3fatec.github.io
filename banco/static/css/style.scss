@@ -4,7 +4,7 @@ header {
     height: 7vh;
     color: white;
     
-    div>a {
+    .logo>a {
         color: white;
         text-decoration: none;
         font-weight: bold !important;
@@ -13,9 +13,9 @@ header {
         &:hover {
             color: rgb(38, 0, 255);
         }
-    }    
+    }
 
-    ul {
+    nav>ul {
         li {
             font-weight: 500;
             
@@ -31,15 +31,20 @@ header {
         }
     }
 
-    div {
+    .funcao-direita {       
         
-        p {
-            text-transform: capitalize;
+        .ola {
+            p {
+                text-transform: capitalize;
+            }
+
         }
 
-        img {
-            width: 18px;
-            cursor: pointer;
+        .sair {
+            img {
+                width: 18px;
+                cursor: pointer;
+            }
         }
     }
     

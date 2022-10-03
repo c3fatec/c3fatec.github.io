@@ -15,19 +15,97 @@
 {%endblock%}
 {%block body%}
 
-<div class="pg-principal container-fluid">
+<header class="header d-flex justify-content-between"> 
+			
+	<div class="w-25 h-100 ps-3"></div>
 
-	<!-- <div>
-		<h1>Olá {{g.usuario.nome}}!!!</h1>
-
-		<button onclick="document.location='/conta/saque'">Saque</button>
-
-		<button onclick="document.location='/conta/deposito'">Deposito</button>
+	<div class="logo w-50 h-100 d-flex justify-content-center text-center">
+	  <a href="#" class="h1 m-0 p-0">X-bank</a>
 	</div>
-	<div>Seu saldo é de {{data.saldo}} reais.</div>
-	<div>
-		<button onclick="document.location='/logout'">Fazer logout</button>
-	</div> -->
+
+
+	<!-- <nav class="w-50 h-100 d-flex align-items-center">
+		<ul class="m-0 p-0 w-100 d-flex text-center list-unstyled">
+			<li class="col-3"><a href="#">HOME</a></li>
+			<li class="col-3"><a href="/conta/saque">SAQUE</a></li>
+			<li class="col-3"><a href="/conta/deposito">DEPÓSITO</a></li>
+			<li class="col-3"><a href="">TRANSAÇÕES</a></li>
+		</ul>
+	</nav> -->
+	
+	<div class="funcao-direita w-25 h-100 pe- d-flex justify-content-end align-items-center">
+
+		<div class="ola m-0 p-0 d-flex justify-content-center flex-column h-100 pe-2">
+			<p class="h5 m-0 p-0">
+				Olá <b>{{g.usuario.nome}}</b>,<br>
+			</p>
+			<span class="m-0 p-0">
+				Saldo: R$ {{data.saldo}}
+			</span>
+		</div>
+
+		<div class="sair col-2 d-flex justify-content-center align-items-center h-100">
+			<img src="../static/img/closed preto.png" alt="sair" onclick="document.location='/logout'">
+		</div>
+
+	</div>
+</header>
+
+
+<div class="pg-principal container-fluid d-flex align-items-center">
+
+	<div class="funcao d-flex justify-content-center text-center">
+		
+		<div class="funcao-b"  onclick="document.location='/conta/saque'">
+			<div class="head w-100">
+				<p class="h3">Saque</p>
+			</div>
+			<div class="w-100 my-auto">
+				<img src="../static/icons/sacar.png" alt="sacar">
+			</div>
+		</div>
+		<div class="funcao-b" onclick="document.location='/conta/deposito'">
+			<div class="head w-100">
+				<p class="h3">Depósito</p>
+			</div>
+			<div class="w-100 my-auto">
+				<img src="../static/icons/depositar.png" alt="sacar">
+			</div>
+		</div>
+		<div class="funcao-b" onclick="#">
+			<div class="head w-100">
+				<p class="h3">Transações</p>
+			</div>
+			<div class="w-100 my-auto">
+				<img src="../static/icons/extrato.png" alt="sacar">
+			</div>
+		</div>
+		<div class="funcao-b" onclick="#">
+			<div class="head w-100">
+				<p class="h3">alguma coisa</p>
+			</div>
+			<div class="w-100 my-auto">
+				<img src="../static/icons/pilhadedinheiro3.png" alt="sacar">
+			</div>
+		</div>
+		<div class="funcao-b" onclick="#">
+			<div class="head w-100">
+				<p class="h3">alguma coisa</p>
+			</div>
+			<div class="w-100 my-auto">
+				<img src="../static/icons/pilhadedinheiro3.png" alt="sacar">
+			</div>
+		</div>
+		<div class="funcao-b" onclick="#">
+			<div class="head w-100">
+				<p class="h3">alguma coisa</p>
+			</div>
+			<div class="w-100 my-auto">
+				<img src="../static/icons/pilhadedinheiro3.png" alt="sacar">
+			</div>
+		</div>
+
+	</div>
 
 </div>
 {%endblock%}

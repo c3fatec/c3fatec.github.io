@@ -1,18 +1,39 @@
 
 .pg-principal {
     min-height: 92vh;
-       
-    .menu-suspenso {
-        text-align: center;
-        position: fixed;
-        top: 12%;
-        left: 2%;
-        width: 80px;
+
+    .funcao {
+        flex-wrap: wrap;
+        width: 70%;
+        margin: 0 auto;
         
-        img {
-            width: 80%;
-            margin: 15% 0;
+        .funcao-b {
+            background-color: rgb(209, 209, 209, .700);
+            display: flex;
+            // justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+            width: 220px;
+            height: 220px;
+            margin: 10px;
+            border: 2px solid black;
+            border-radius: 15px;
+            box-shadow: 0px 7px 20px rgba(black, .450);
+            cursor: pointer;
+
+            .head {
+                border-radius: 15px 15px 0 0;
+                
+                p {
+                    margin: 0;
+                    padding-top: 4px;
+                }
+            }
+
+            &:hover {
+                background-color: rgba(115, 115, 128, 0.6);
+                color: white;
+            }
         }
-        
     }
 }
