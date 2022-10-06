@@ -1,18 +1,14 @@
-{% extends "baseinterna.html" %}
-{%block head%}
+{% extends "baseinterna.html" %} {%block head%}
 
 <title>Home</title>
 
-{%endblock%}
-{%block body%}
+{%endblock%} {%block body%}
 
 <div class="transacao">
 	<p class="h3 pt-3">Últimas transações</p>
-	
+
 	<ul class="list-group list-group-flush mt-3">
-		<li class="list-group-item">one</li>
-		<li class="list-group-item">two</li>
-		<li class="list-group-item">tree</li>
+		<li class="list-group-item">{{comprovantes}}</li>
 	</ul>
 </div>
 

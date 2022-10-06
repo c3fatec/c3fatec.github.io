@@ -3,7 +3,7 @@ from flask import Blueprint, g, redirect, render_template, request, url_for, fla
 
 from banco.auth import requer_login
 
-from .db import db_create, get_db
+from .db import db_create, get_db, db_get
 
 from datetime import datetime
 
@@ -15,12 +15,14 @@ bp = Blueprint("conta", __name__, url_prefix="/conta")
 def index():
 
     conta = g.conta
+    id_conta = conta["id_conta"]
+    comprovantes = db_get(many=True, limit=3, table="transacoes", id_conta=id_conta)
 
-    return render_template("principal.html", data=conta)
+    return render_template("principal.html", data=conta, comprovantes=comprovantes)
 
 
-@requer_login
 @bp.route("/saque", methods=("GET", "POST"))
+@requer_login
 def saque():
     if request.method == "POST":
         v = request.form["valor"]
@@ -53,8 +55,9 @@ def saque():
     conta = g.conta
     return render_template("saque.html", data=conta)
 
-@requer_login
+
 @bp.route("/deposito", methods=("GET", "POST"))
+@requer_login
 def deposito():
     if request.method == "POST":
         v = request.form["valor"]
@@ -72,9 +75,19 @@ def deposito():
         except:
             print("Erro ao efetuar o depósito.")
         finally:
-            flash('Depósito realizado com sucesso, aguarde a aprovação!', "text-success")
+            flash(
+                "Depósito realizado com sucesso, aguarde a aprovação!", "text-success"
+            )
             return redirect(url_for("conta.deposito"))
-            
 
     conta = g.conta
     return render_template("deposito.html", data=conta)
+
+
+@bp.route("/comprovantes")
+@requer_login
+def comprovantes():
+    conta = g.conta
+    id_conta = conta["id_conta"]
+    comprovantes = db_get(many=True, table="transacoes", id_conta=id_conta)
+    return render_template("comprovantes.html", data=conta, comprovantes=comprovantes)

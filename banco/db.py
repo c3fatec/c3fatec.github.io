@@ -37,7 +37,7 @@ def db_create(**params):
         print(e.args[1])
 
 
-def db_get(many=True, **params):
+def db_get(many=True, limit=None, **params):
     table = params.pop("table")
     key = "".join(params.keys())
     value = ",".join(str(v) for v in params.values())
@@ -46,7 +46,9 @@ def db_get(many=True, **params):
     response = None
 
     try:
-        command = f"SELECT * FROM {table} WHERE {key} = '{value}';"
+        command = f"SELECT * FROM {table} WHERE {key} = '{value}'"
+        if limit:
+            command += f" LIMIT {limit}"
         cursor.execute(command)
     except Exception as e:
         print("Erro ao recuperar os dados")
