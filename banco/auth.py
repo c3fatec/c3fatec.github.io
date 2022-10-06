@@ -56,6 +56,7 @@ def login():
 
         if error is None:
             session.clear()
+            session["id_usuario"] = usuario["id_usuario"]
             session["id_conta"] = conta["id_conta"]
             return redirect(url_for("conta.index"))
 
@@ -74,11 +75,14 @@ def logout():
 def carregar_usuario_logado():
     """Função que é executada antes de requisições
     para determinar o usuário da sessão."""
+    id_usuario = session.get("id_usuario")
     id_conta = session.get("id_conta")
 
-    if id_conta is None:
+    if id_conta is None or id_usuario is None:
+        g.usuario = None
         g.conta = None
     else:
+        g.usuario = db_get(many=False, table="usuario", id_usuario=id_usuario)
         g.conta = db_get(many=False, table="conta", id_conta=id_conta)
 
 
@@ -90,7 +94,8 @@ def requer_login(view):
 
     @functools.wraps(view)
     def wrapped_view(**kwargs):
-        if g.conta is None:
+        if g.conta is None or g.usuario is None:
+            session.clear()
             return redirect(url_for("auth.login"))
 
         return view(**kwargs)

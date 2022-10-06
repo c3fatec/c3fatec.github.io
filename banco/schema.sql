@@ -24,15 +24,17 @@ CREATE TABLE IF NOT EXISTS `banco_api`.`conta` (
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
 ALTER TABLE `banco_api`.`conta` AUTO_INCREMENT = 10000;
 CREATE TABLE IF NOT EXISTS `banco_api`.`transacoes`(
-`id_transacao`INT(5) NOT NULL AUTO_INCREMENT,
-`id_conta` INT(5) NOT NULL,
-`valor` DECIMAL(9, 2) NOT NULL,
-`data` DATETIME NOT NULL,
-`tipo` VARCHAR(145),
-PRIMARY KEY (`id_transacao`),
-INDEX `fk_transacoes_conta1_idx` (`id_conta`),
-CONSTRAINT `fk_transacoes_conta1_idx` FOREIGN KEY (`id_conta`) REFERENCES `banco_api`.`conta` (`id_conta`)
-)ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
+  `id_transacao` INT(5) NOT NULL AUTO_INCREMENT,
+  `status` VARCHAR(145) NOT NULL,
+  `id_conta` INT(5) NOT NULL,
+  `valor` DECIMAL(9, 2) NOT NULL,
+  `data_inicio` DATETIME NOT NULL,
+  `data_fim` DATETIME,
+  `tipo` VARCHAR(145),
+  PRIMARY KEY (`id_transacao`),
+  INDEX `fk_transacoes_conta1_idx` (`id_conta`),
+  CONSTRAINT `fk_transacoes_conta1_idx` FOREIGN KEY (`id_conta`) REFERENCES `banco_api`.`conta` (`id_conta`)
+) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
 SET SQL_MODE = @OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS = @OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS = @OLD_UNIQUE_CHECKS;

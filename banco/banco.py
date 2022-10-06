@@ -2,7 +2,7 @@ from flask import Blueprint, g, redirect, render_template, request, url_for
 
 from banco.auth import requer_login
 
-from .db import db_create, get_db, db_get
+from .db import db_create, get_db
 
 from datetime import datetime
 
@@ -40,8 +40,10 @@ def saque():
             db_create(
                 table="transacoes",
                 id_conta=id_conta,
+                status="completa",
                 valor=float(v),
-                data=datetime.now(),
+                data_inicio=datetime.now(),
+                data_fim=datetime.now(),
                 tipo="saque",
             )
         finally:
@@ -54,27 +56,19 @@ def saque():
 def deposito():
     if request.method == "POST":
         v = request.form["valor"]
-        db = get_db()
-        cursor = db.cursor()
 
         try:
             id_conta = g.conta["id_conta"]
-            saldo = g.conta["saldo"]
-            novo_saldo = float(saldo) + float(v)
-            cursor.execute(
-                "UPDATE banco_api.conta SET saldo = %s WHERE id_conta = %s",
-                (novo_saldo, id_conta),
-            )
-        except:
-            print("Erro ao efetuar o depósito.")
-        else:
             db_create(
                 table="transacoes",
                 id_conta=id_conta,
                 valor=float(v),
-                data=datetime.now(),
+                status="aguardando",
+                data_inicio=datetime.now(),
                 tipo="deposito",
             )
+        except:
+            print("Erro ao efetuar o depósito.")
         finally:
             return redirect(url_for("conta.index"))
 

@@ -53,7 +53,8 @@ def db_get(many=True, **params):
     else:
         if many is True:
             response = cursor.fetchall()
-        response = cursor.fetchone()
+        else:
+            response = cursor.fetchone()
     if response is None:
         print(command)
         print("Erro ao recuperar os dados")
