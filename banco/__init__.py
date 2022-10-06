@@ -29,6 +29,11 @@ def create_app():
     # importando rotas de transação
     app.register_blueprint(banco.bp)
 
+    from . import admin
+
+    # importando rotas de administrador
+    app.register_blueprint(admin.bp)
+
     from . import db
 
     # registrando comandos de banco de dados
