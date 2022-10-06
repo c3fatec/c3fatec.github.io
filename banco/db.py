@@ -2,6 +2,8 @@ import click
 from flask import current_app, g
 import pymysql
 
+from werkzeug.security import generate_password_hash
+
 
 def get_db():
     """Função para estabelecer conexão com o banco de dados."""
@@ -110,6 +112,16 @@ def init_db():
             if len(comando):
                 cursor.execute(comando + ";")
         db.commit()
+
+    db_create(
+        table="usuario",
+        nome="gerente",
+        senha=generate_password_hash("gerente"),
+        cpf="99988877766",
+        tipo="gerente",
+        status="aprovado",
+    )
+    db_create(table="conta", saldo=0, cpf="99988877766", id_conta=1)
     db.close()
 
 

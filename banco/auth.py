@@ -55,11 +55,11 @@ def login():
             usuario = db_get(many=False, table="usuario", cpf=cpf)
 
         if usuario is None:
-            error = "Esta conta não existe"
+            error = "Essa conta não existe"
         elif not check_password_hash(usuario["senha"], senha):
             error = "Senha incorreta"
         elif usuario["status"] != "aprovado":
-            error = "Esta conta não foi aprovada"
+            error = "Essa conta não foi aprovada"
 
         if error is None:
             session.clear()
