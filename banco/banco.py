@@ -49,7 +49,9 @@ def saque():
         finally:
             return redirect(url_for("conta.index"))
 
-    return render_template("saque.html")
+
+    conta = g.conta
+    return render_template("saque.html", data=conta)
 
 
 @bp.route("/deposito", methods=("GET", "POST"))
@@ -72,4 +74,5 @@ def deposito():
         finally:
             return redirect(url_for("conta.index"))
 
-    return render_template("deposito.html")
+    conta = g.conta
+    return render_template("deposito.html", data=conta)

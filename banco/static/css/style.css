@@ -134,12 +134,19 @@ header .funcao-direita .sair img {
   margin: 0 auto;
   color: rgba(128, 128, 128, 0.7);
 }
-.base-interna .caixa-principal .caixa-sistema .transacao p {
+
+.transacao p {
   margin-bottom: 0 !important;
   text-indent: 5px;
   border-bottom: 1px solid black;
 }
-.base-interna .caixa-principal .caixa-sistema .transacao ul li {
+.transacao ul li {
   background-color: rgba(255, 255, 255, 0);
   color: rgba(128, 128, 128, 0.7);
+}
+
+.saque-deposito .titulo p {
+  margin-bottom: 0 !important;
+  text-indent: 5px;
+  border-bottom: 1px solid black;
 }/*# sourceMappingURL=style.css.map */

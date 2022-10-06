@@ -16,3 +16,41 @@
 		</form>
 	</body>
 </html>
+
+{% extends "baseinterna.html" %}
+
+{%block head%}
+
+
+<title>Xbank - Saque</title>
+
+<style>
+	.ola>span {
+		display: none;
+	}
+</style>
+{%endblock%}
+{%block body%}
+
+<div class="saque-deposito h-100">
+	<div class="titulo">
+		<p class="h3 pt-3">Saque</p>
+	</div>
+	<div class="conteudo d-flex flex-column m-3 mt-5 h-50">
+
+		<div class="mx-auto text-center w-75">
+			<p class="h2">Saldo: R$ {{data.saldo}}</p>
+		</div>
+
+		<div class="mt-2 h-75">
+			<form method="POST"class="d-flex justify-content-around align-items-center flex-column text-center h-100">
+				<label>Digite o valor:</label>
+				<input type="number" step="0.01" name="valor" id="valor" />
+				<button type="submit" class="btn btn-secondary btn-sm w-50">Confirma</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+{%endblock%}
+
