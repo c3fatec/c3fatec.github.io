@@ -23,7 +23,11 @@ def cadastro():
 
         try:
             db_create(
-                table="usuario", nome=nome, senha=generate_password_hash(senha), cpf=cpf
+                table="usuario",
+                nome=nome,
+                senha=generate_password_hash(senha),
+                cpf=cpf,
+                tipo="cliente",
             )
         except:
             pass

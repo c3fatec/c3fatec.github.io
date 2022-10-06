@@ -9,7 +9,8 @@ CREATE TABLE IF NOT EXISTS `banco_api`.`usuario` (
   `id_usuario` INT NOT NULL AUTO_INCREMENT,
   `cpf` CHAR(11) NOT NULL,
   `nome` VARCHAR(250) NOT NULL,
-  `senha` CHAR(245) NOT NULL,
+  `senha` VARCHAR(245) NOT NULL,
+  `tipo` VARCHAR(30) NOT NULL,
   PRIMARY KEY (`id_usuario`),
   UNIQUE INDEX `cpf_UNIQUE` (`cpf` ASC)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;

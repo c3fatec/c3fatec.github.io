@@ -49,11 +49,11 @@ def saque():
         finally:
             return redirect(url_for("conta.index"))
 
-
     conta = g.conta
     return render_template("saque.html", data=conta)
 
 
+@requer_login
 @bp.route("/deposito", methods=("GET", "POST"))
 def deposito():
     if request.method == "POST":
