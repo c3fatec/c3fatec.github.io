@@ -86,35 +86,60 @@ header .funcao-direita .sair img {
   border-radius: 5px !important;
 }
 
-.pg-principal {
+.base-interna {
+  background-image: url("../../static/img/quadrados.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
   min-height: 92vh;
 }
-.pg-principal .funcao {
+.base-interna .caixa-principal {
+  width: 70%;
+  min-height: 80vh;
+}
+.base-interna .caixa-principal .botoes {
   flex-wrap: wrap;
   width: 70%;
   margin: 0 auto;
 }
-.pg-principal .funcao .funcao-b {
+.base-interna .caixa-principal .botoes .funcao {
   background-color: rgba(209, 209, 209, 0.7);
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 220px;
-  height: 220px;
+  width: 160px;
+  height: 160px;
   margin: 10px;
   border: 2px solid black;
   border-radius: 15px;
   box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.45);
   cursor: pointer;
 }
-.pg-principal .funcao .funcao-b .head {
+.base-interna .caixa-principal .botoes .funcao .head {
   border-radius: 15px 15px 0 0;
 }
-.pg-principal .funcao .funcao-b .head p {
+.base-interna .caixa-principal .botoes .funcao .head p {
   margin: 0;
   padding-top: 4px;
 }
-.pg-principal .funcao .funcao-b:hover {
+.base-interna .caixa-principal .botoes .funcao:hover {
   background-color: rgba(115, 115, 128, 0.6);
-  color: white;
+}
+.base-interna .caixa-principal .caixa-sistema {
+  background-color: rgba(209, 209, 209, 0.7);
+  border: 2px solid black;
+  border-radius: 15px;
+  box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.45);
+  width: 90%;
+  margin: 0 auto;
+  color: rgba(128, 128, 128, 0.7);
+}
+.base-interna .caixa-principal .caixa-sistema .transacao p {
+  margin-bottom: 0 !important;
+  text-indent: 5px;
+  border-bottom: 1px solid black;
+}
+.base-interna .caixa-principal .caixa-sistema .transacao ul li {
+  background-color: rgba(255, 255, 255, 0);
+  color: rgba(128, 128, 128, 0.7);
 }/*# sourceMappingURL=style.css.map */

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
@@ -13,4 +13,39 @@
 			<button type="submit">Confirma</button>
 		</form>
 	</body>
-</html>
+</html> -->
+
+{% extends "baseinterna.html" %}
+
+{%block head%}
+
+
+<title>Xbank - Saque</title>
+
+<style>
+	.ola>span {
+		display: none;
+	}
+</style>
+{%endblock%}
+{%block body%}
+
+<div class="saque  h-75">
+	<div class="titulo">
+		<p class="h3 pt-3">Saque</p>
+	</div>
+	<div class="conteudo-saque">
+		<div>
+			<p class="h1">Saldo: R$ {{data.saldo}}</p>
+		</div>
+		<div>
+			<form method="POST">
+				<label>Digite o valor:</label><br>
+				<input type="number" step="0.01" name="valor" id="valor" />
+				<button type="submit" class="btn btn-secondary btn-sm w-100">Confirma</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+{%endblock%}
