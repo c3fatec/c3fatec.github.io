@@ -1,4 +1,5 @@
-from flask import Blueprint, g, redirect, render_template, request, url_for
+from logging import warning
+from flask import Blueprint, g, redirect, render_template, request, url_for, flash
 
 from banco.auth import requer_login
 
@@ -47,13 +48,13 @@ def saque():
                 tipo="saque",
             )
         finally:
-            return redirect(url_for("conta.index"))
+            return redirect(url_for("conta.saque"))
 
 
     conta = g.conta
     return render_template("saque.html", data=conta)
 
-
+@requer_login
 @bp.route("/deposito", methods=("GET", "POST"))
 def deposito():
     if request.method == "POST":
@@ -72,7 +73,9 @@ def deposito():
         except:
             print("Erro ao efetuar o depósito.")
         finally:
-            return redirect(url_for("conta.index"))
+            flash('Depósito realizado com sucesso, aguarde a aprovação!', "text-success")
+            return redirect(url_for("conta.deposito"))
+            
 
     conta = g.conta
     return render_template("deposito.html", data=conta)
