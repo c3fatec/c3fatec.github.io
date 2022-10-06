@@ -1,45 +1,40 @@
-{% extends "baseinterna.html" %}
-
-{%block head%}
-
+{% extends "baseinterna.html" %} {%block head%}
 
 <title>Xbank - Saque</title>
 
 <style>
-	.ola>span {
+	.ola > span {
 		display: none;
 	}
 </style>
-{%endblock%}
-{%block body%}
+{%endblock%} {%block body%}
 
 <div class="saque-deposito h-100">
 	<div class="titulo">
 		<p class="h3 pt-3 text-center">Depósito</p>
 	</div>
 	<div class="conteudo d-flex flex-column m-3 mt-5 h-50">
-
 		<div class="mx-auto text-center w-100">
-			<p class="h2">Saldo: R$ {{data.saldo}}</p>
+			<p class="h2">Saldo: R$ {{g.conta.saldo}}</p>
 		</div>
 
 		<div class="mt-2 h-75">
-			<form method="POST"class="d-flex justify-content-around align-items-center flex-column text-center h-100">
+			<form
+				method="POST"
+				class="d-flex justify-content-around align-items-center flex-column text-center h-100"
+			>
 				<label>Digite o valor:</label>
-				<input type="number" step="0.01" name="valor" id="valor" min="0.01"/>
-				<button type="submit" class="btn btn-secondary btn-sm w-50">Confirma</button>
+				<input type="number" step="0.01" name="valor" id="valor" min="0.01" />
+				<button type="submit" class="btn btn-secondary btn-sm w-50">
+					Confirma
+				</button>
 			</form>
-			{% with messages = get_flashed_messages(with_categories=true) %}
-			{%if messages%}
-			{%for category, message in messages%}
+			{% with messages = get_flashed_messages(with_categories=true) %} {%if
+			messages%} {%for category, message in messages%}
 			<div class="{{category}}">{{message}}</div>
-			{%endfor%}
-			{%endif%}
-			{%endwith%}
-
+			{%endfor%} {%endif%} {%endwith%}
 		</div>
 	</div>
 </div>
 
 {%endblock%}
-

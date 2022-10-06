@@ -28,9 +28,26 @@
 	</head>
 	<body>
 		<header class="header d-flex justify-content-between">
-			<div class="w-25 h-100 ps-3"></div>
+			<div class="w-25 h-100 ps-3 d-flex align-items-center">
+				{%if g.usuario['tipo'] == 'gerente'%}
+				<button
+					class="btn btn-outline-secondary"
+					onclick="document.location='/admin/pendencias'"
+				>
+					Transações
+				</button>
+				<button
+					class="btn btn-outline-secondary"
+					onclick="document.location='/admin/cadastros'"
+				>
+					Cadastros
+				</button>
+				{%endif%}
+			</div>
 
-			<div class="logo w-50 h-100 d-flex justify-content-center text-center">
+			<div
+				class="logo w-50 h-100 d-flex justify-content-center text-center align-items-center"
+			>
 				<a href="#" class="h2 m-0 p-0">X-bank</a>
 			</div>
 
@@ -40,18 +57,15 @@
 				<div
 					class="ola m-0 p-0 d-flex justify-content-center flex-column h-100 pe-2"
 				>
-					<p class="h5 m-0 p-0">Olá <b>{{g.usuario.nome}}</b>,<br /></p>
-					<span class="m-0 p-0"> Saldo: R$ {{data.saldo}} </span>
+					<p class="h5 m-0 p-0">Olá <b>{{g.usuario.nome}}</b><br /></p>
+					<span class="m-0 p-0"> Saldo: R$ {{g.conta.saldo}} </span>
 				</div>
 
 				<div
-					class="sair col-2 d-flex justify-content-center align-items-center h-100"
+					class="sair col-2 d-flex justify-content-center align-items-center h-100 btn btn-outline-secondary p-0"
+					onclick="document.location='/logout'"
 				>
-					<img
-						src="../static/img/closed preto.png"
-						alt="sair"
-						onclick="document.location='/logout'"
-					/>
+					<img src="../static/img/closed preto.png" alt="sair" />
 				</div>
 			</div>
 		</header>

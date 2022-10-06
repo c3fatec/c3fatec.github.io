@@ -1,9 +1,13 @@
-{%extends 'baseinterna.html'%} {%block body%} {%for comprovante in
-comprovantes%}
+{%extends 'baseinterna.html'%} {%block body%} {%if comprovantes%}{%for
+comprovante in comprovantes%}
 <div class="px-2" style="border-bottom: 1px solid black">
 	<div>Status: {{comprovante.status}}</div>
 	<div>Valor: {{comprovante.valor}}</div>
 	<div>Criado em: {{comprovante.data_inicio}}</div>
 	<div>Tipo: {{comprovante.tipo}}</div>
 </div>
-{%endfor%} {%endblock%}
+{%endfor%}{%else%}
+<div class="h-100 d-flex align-items-center text-center">
+	<h2>Não foram feitas transações nessa conta</h2>
+</div>
+{%endif%} {%endblock%}

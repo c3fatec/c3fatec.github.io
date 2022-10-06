@@ -9,7 +9,8 @@ from .db import db_create, get_db, db_get
 bp = Blueprint("admin", __name__, url_prefix="/admin")
 
 
-@bp.route("/", methods=["POST", "GET"])
+@bp.route("/pendencias", methods=["POST", "GET"])
+@requer_login
 def pendencias():
     if request.method == "POST":
         status = request.form["status"]
@@ -35,4 +36,23 @@ def pendencias():
                 cursor.execute(command)
 
     pendencias = db_get(many=True, table="transacoes", status="aguardando")
-    return render_template("pendencias.html", data=pendencias)
+    return render_template("pendencias.html", pendencias=pendencias)
+
+
+@bp.route("/cadastros", methods=["POST", "GET"])
+@requer_login
+def cadastros():
+    if request.method == "POST":
+        status = request.form["status"]
+        id_usuario = request.form["id_usuario"]
+        db = get_db()
+        cursor = db.cursor()
+
+        try:
+            command = f"""UPDATE usuario SET status = '{status}' WHERE id_usuario = {id_usuario}"""
+            cursor.execute(command)
+        except:
+            print("Erro ao atualizar status do usuário")
+
+    cadastros = db_get(table="usuario", status="aguardando")
+    return render_template("cadastros.html", cadastros=cadastros)

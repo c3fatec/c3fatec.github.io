@@ -28,6 +28,7 @@ def cadastro():
                 senha=generate_password_hash(senha),
                 cpf=cpf,
                 tipo="cliente",
+                status="aguardando",
             )
         except:
             pass
@@ -57,6 +58,8 @@ def login():
             error = "Esta conta não existe"
         elif not check_password_hash(usuario["senha"], senha):
             error = "Senha incorreta"
+        elif usuario["status"] != "aprovado":
+            error = "Esta conta não foi aprovada"
 
         if error is None:
             session.clear()

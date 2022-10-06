@@ -1,0 +1,29 @@
+{%extends 'baseinterna.html'%} {%block head%}
+<title>X-bank - Cadastros</title>
+<style>
+	.ola > span {
+		display: none;
+	}
+</style>
+
+{%endblock%} {%block body%} {%for cadastro in cadastros%}
+<div style="border: 1px solid black" class="d-flex align-items-center p-3">
+	<div class="col-11">
+		<div>{{cadastro.nome}}</div>
+		<div>{{cadastro.cpf}}</div>
+		<div>{{cadastro.tipo}}</div>
+	</div>
+	<div class="col-1">
+		<form action="" method="POST">
+			<input type="hidden" name="id_usuario" value="{{cadastro.id_usuario}}" />
+			<input type="hidden" name="status" value="aprovado" />
+			<button class="btn btn-success mb-2" type="submit">Aprovar</button>
+		</form>
+		<form action="" method="POST">
+			<input type="hidden" name="id_usuario" value="{{cadastro.id_usuario}}" />
+			<input type="hidden" name="status" value="rejeitado" />
+			<button class="btn btn-danger" type="submit">Rejeitar</button>
+		</form>
+	</div>
+</div>
+{%endfor%} {%endblock%}
