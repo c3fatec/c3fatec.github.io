@@ -6,24 +6,41 @@
 	}
 </style>
 
-{%endblock%} {%block body%} {%for cadastro in cadastros%}
-<div style="border: 1px solid black" class="d-flex align-items-center p-3">
-	<div class="col-11">
-		<div>{{cadastro.nome}}</div>
-		<div>{{cadastro.cpf}}</div>
-		<div>{{cadastro.tipo}}</div>
-	</div>
-	<div class="col-1">
-		<form action="" method="POST">
-			<input type="hidden" name="id_usuario" value="{{cadastro.id_usuario}}" />
-			<input type="hidden" name="status" value="aprovado" />
-			<button class="btn btn-success mb-2" type="submit">Aprovar</button>
-		</form>
-		<form action="" method="POST">
-			<input type="hidden" name="id_usuario" value="{{cadastro.id_usuario}}" />
-			<input type="hidden" name="status" value="rejeitado" />
-			<button class="btn btn-danger" type="submit">Rejeitar</button>
-		</form>
-	</div>
+{%endblock%}
+{%block body%}
+<div class="tt">
+	<p class="h3 pt-3 text-center">Aprovação de Cadastro</p>
 </div>
-{%endfor%} {%endblock%}
+
+<div>
+  {%if cadastros%}
+  {%for cadastro in cadastros%}
+  <div class="pnd d-flex w-100 p-2">
+    <div  class="col-9">
+      <div>{{cadastro.nome}}</div>
+      <div>{{cadastro.cpf}}</div>
+      <div>{{cadastro.tipo}}</div>
+    </div>
+    
+    <div class="col-3 text-center">
+      <form action="" method="POST">
+        <input type="hidden" name="id_usuario" value="{{cadastro.id_usuario}}" />
+        <input type="hidden" name="status" value="aprovado" />
+        <button class="btn btn-success mb-1 w-100" type="submit">Aprovar</button>
+      </form>
+      <form action="" method="POST">
+        <input type="hidden" name="id_usuario" value="{{cadastro.id_usuario}}" />
+        <input type="hidden" name="status" value="rejeitado" />
+        <button class="btn btn-danger w-100" type="submit">Rejeitar</button>
+      </form>
+    </div>
+  </div>
+  {%endfor%}
+	{%else%}
+</div>
+<div class="h-75 d-flex align-items-center justify-content-center">
+	<h2>Não há pendências!</h2>
+</div>
+{%endif%}
+
+{%endblock%}
