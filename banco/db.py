@@ -39,7 +39,7 @@ def db_create(**params):
         print(e.args[1])
 
 
-def db_get(many=True, limit=None, **params):
+def db_get(many=True, limit=None, order_by=None, order=None, **params):
     table = params.pop("table")
     key = "".join(params.keys())
     value = ",".join(str(v) for v in params.values())
@@ -49,6 +49,10 @@ def db_get(many=True, limit=None, **params):
 
     try:
         command = f"SELECT * FROM {table} WHERE {key} = '{value}'"
+        if order_by:
+            command += f" ORDER BY {order_by}"
+            if order:
+                command += f" {order}"
         if limit:
             command += f" LIMIT {limit}"
         cursor.execute(command)

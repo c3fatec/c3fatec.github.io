@@ -16,7 +16,14 @@ def index():
 
     conta = g.conta
     id_conta = conta["id_conta"]
-    comprovantes = db_get(many=True, limit=3, table="transacoes", id_conta=id_conta)
+    comprovantes = db_get(
+        many=True,
+        order_by="id_transacao",
+        order="DESC",
+        limit=5,
+        table="transacoes",
+        id_conta=id_conta,
+    )
 
     return render_template("principal.html", data=conta, comprovantes=comprovantes)
 
@@ -89,5 +96,11 @@ def deposito():
 def comprovantes():
     conta = g.conta
     id_conta = conta["id_conta"]
-    comprovantes = db_get(many=True, table="transacoes", id_conta=id_conta)
+    comprovantes = db_get(
+        many=True,
+        order_by="id_transacao",
+        order="DESC",
+        table="transacoes",
+        id_conta=id_conta,
+    )
     return render_template("comprovantes.html", data=conta, comprovantes=comprovantes)
