@@ -7,23 +7,13 @@
 	<p class="h3 pt-3 text-center">Extrato</p>
 
 	<div class="d-flex flex-column">
-		<form action="" method="POST">
-			<input
-				type="datetime-local"
-				name="data_inicio"
-				id="data_inicio"
-				step="1"
-				required
-			/>
-			<input
-				type="datetime-local"
-				name="data_fim"
-				id="data_fim"
-				step="1"
-				required
-			/>
-			<input type="submit" value="Filtrar" class="btn btn-primary" />
-		</form>
+		<div class="d-flex justify-content-center mt-2">
+			<form action="" method="POST">
+				<input type="datetime-local" name="data_inicio" id="data_inicio" step="1" required />
+				<input type="datetime-local" name="data_fim" id="data_fim" step="1" required />
+				<input type="submit" value="Filtrar" class="btn btn-secondary btn-sm" />
+			</form>
+		</div>
 		{%if comprovantes%} {%for comprovante in comprovantes%}
 		<div class="d-flex pt-2 ps-2">
 			<div class="col-4">Status: {{comprovante.status}}</div>
