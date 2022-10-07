@@ -29,11 +29,12 @@ def pendencias():
             print(command)
             print("Erro ao atualizar transação")
         else:
-            if status == "completa":
+            if status == "Efetivado":
                 conta = db_get(many=False, table="conta", id_conta=id_conta)
                 valor_atual = float(conta["saldo"])
                 novo_saldo = valor_atual + float(valor)
-                command = f"""UPDATE conta SET saldo = {novo_saldo} WHERE id_conta = {id_conta};"""
+                command = f"""UPDATE conta SET saldo = {novo_saldo} WHERE id_conta = {id_conta}"""
+                print(command)
                 cursor.execute(command)
 
     pendencias = db_get(many=True, table="transacoes", status="aguardando")
@@ -62,7 +63,7 @@ def cadastros():
             if status == "aprovado":
                 print(f"A conta foi registrada com número de acesso {id_conta}")
 
-    cadastros = db_get(table="conta", status="aguardando")
+    cadastros = db_get(table="conta", status="Aguardando")
     for conta in cadastros:
         cpf = conta["cpf"]
         usuario = db_get(table="usuario", many=False, cpf=cpf)

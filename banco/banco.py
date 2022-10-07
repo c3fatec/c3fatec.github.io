@@ -52,7 +52,7 @@ def saque():
             db_create(
                 table="transacoes",
                 id_conta=id_conta,
-                status="completa",
+                status="Efetivado",
                 valor=float(v),
                 data_inicio=datetime.now(),
                 data_fim=datetime.now(),
@@ -78,7 +78,7 @@ def deposito():
                 table="transacoes",
                 id_conta=id_conta,
                 valor=float(v),
-                status="aguardando",
+                status="Aguardando",
                 data_inicio=datetime.now(),
                 tipo="deposito",
             )
