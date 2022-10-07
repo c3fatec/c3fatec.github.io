@@ -26,9 +26,8 @@ header nav > ul li a:hover {
 header .funcao-direita .ola p {
   text-transform: capitalize;
 }
-header .funcao-direita .sair img {
-  width: 18px;
-  cursor: pointer;
+header .funcao-direita .sair {
+  border: none;
 }
 
 .pg-login {
@@ -94,7 +93,7 @@ header .funcao-direita .sair img {
   min-height: 92vh;
 }
 .base-interna .caixa-principal {
-  width: 70%;
+  width: 80%;
   min-height: 80vh;
 }
 .base-interna .caixa-principal .botoes {
@@ -123,7 +122,13 @@ header .funcao-direita .sair img {
   padding-top: 4px;
 }
 .base-interna .caixa-principal .botoes .funcao:hover {
-  background-color: rgba(115, 115, 128, 0.6);
+  background-color: rgb(209, 209, 209);
+}
+.base-interna .caixa-principal .botoes .ger {
+  background-color: rgba(247, 211, 217, 0.6);
+}
+.base-interna .caixa-principal .botoes .ger:hover {
+  background-color: rgb(247, 211, 217);
 }
 .base-interna .caixa-principal .caixa-sistema {
   background-color: rgba(209, 209, 209, 0.7);
@@ -135,18 +140,20 @@ header .funcao-direita .sair img {
   color: rgba(128, 128, 128, 0.7);
 }
 
-.transacao p {
+.tt p {
   margin-bottom: 0 !important;
   text-indent: 5px;
   border-bottom: 1px solid black;
 }
-.transacao ul li {
-  background-color: rgba(255, 255, 255, 0);
-  color: rgba(128, 128, 128, 0.7);
+.tt .ts {
+  border-bottom: 1px solid rgb(129, 129, 129);
 }
 
 .saque-deposito .titulo p {
   margin-bottom: 0 !important;
   text-indent: 5px;
+  border-bottom: 1px solid black;
+}
+.pnd {
   border-bottom: 1px solid black;
 }/*# sourceMappingURL=style.css.map */

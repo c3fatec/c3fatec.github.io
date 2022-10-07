@@ -1,15 +1,30 @@
-{% extends "baseinterna.html" %} {%block head%}
+{% extends "baseinterna.html" %}
+{%block head%}
 
 <title>Home</title>
 
-{%endblock%} {%block body%}
-
-<div class="transacao">
-	<p class="h3 pt-3">Últimas transações</p>
-
-	<ul class="list-group list-group-flush mt-3">
-		<li class="list-group-item">{{comprovantes}}</li>
-	</ul>
+{%endblock%}
+{%block body%}
+<div class="tt">
+	<p class="h3 pt-3 text-center">Últimas transações</p>
+	
+	<div class="d-flex flex-column">
+{%if comprovantes%}
+{%for comprovante in comprovantes%}
+		<div class="d-flex pt-1">
+			<div class="col-4">Tipo: {{comprovante.tipo}}</div>
+			<div class="col-8">Status: {{comprovante.status}}</div>
+		</div>
+		<div class="ts d-flex">
+			<div class="col-4">Valor: {{comprovante.valor}}</div>
+			<div class="col-8">Criado em: {{comprovante.data_inicio}}</div>
+		</div>
+{%endfor%}
+{%else%}
+	</div>
 </div>
-
+<div class="h-75 d-flex align-items-center justify-content-center">
+	<h2>Não foram feitas transações nessa conta</h2>
+</div>
+{%endif%}
 {%endblock%}
