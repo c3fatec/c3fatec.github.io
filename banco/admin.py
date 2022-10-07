@@ -1,4 +1,4 @@
-from flask import Blueprint, g, redirect, render_template, request, url_for
+from flask import Blueprint, g, redirect, render_template, request, url_for, flash
 
 from banco.auth import requer_login, rota_gerente
 
@@ -58,10 +58,11 @@ def cadastros():
             print(command)
             print("Erro ao atualizar status da conta")
         else:
-            conta = db_get(table="conta", many=False, cpf=cpf)
+            conta = db_get(
+                table="conta", many=False, cpf=cpf, order_by="id_conta", order="DESC"
+            )
             id_conta = conta["id_conta"]
-            if status == "aprovado":
-                print(f"A conta foi registrada com número de acesso {id_conta}")
+            flash(f"A conta foi registrada com número de acesso {id_conta}")
 
     cadastros = db_get(table="conta", status="Aguardando")
     for conta in cadastros:

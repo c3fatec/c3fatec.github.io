@@ -10,6 +10,10 @@
 </header>
 
 <div class="pg-cadastro container-fluid">
+	{%for message in get_flashed_messages()%} {%if message%}
+	<div class="d-flex justify-content-center">{{message}}</div>
+	{%endif%}{%endfor%}
+
 	<form method="post" class="form">
 		<!--Dados Pessoais-->
 		<div class="titulo d-flex justify-content-between">

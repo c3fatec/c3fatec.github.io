@@ -4,6 +4,7 @@ from flask import (
     g,
     redirect,
     render_template,
+    flash,
     request,
     session,
     url_for,
@@ -38,7 +39,7 @@ def cadastro():
             finally:
                 return redirect(url_for("auth.login"))
         else:
-            print("As senhas não são compatíveis.")
+            flash("As senhas não são compatíveis.")
 
     return render_template("auth/cadastro.html")
 
@@ -59,10 +60,10 @@ def login():
 
         if usuario is None:
             error = "Essa conta não existe"
-        elif not check_password_hash(usuario["senha"], senha):
-            error = "Senha incorreta"
         elif conta["status"] != "aprovado":
             error = "Essa conta não foi aprovada"
+        elif not check_password_hash(usuario["senha"], senha):
+            error = "Senha incorreta"
 
         if error is None:
             session.clear()
@@ -73,7 +74,7 @@ def login():
             else:
                 return redirect(url_for("admin.pendencias"))
 
-        print(error)
+        flash(error)
 
     return render_template("auth/login.html")
 
