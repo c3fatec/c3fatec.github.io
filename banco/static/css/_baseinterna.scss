@@ -4,11 +4,11 @@
   background-position: center center;
   background-size: cover;
   min-height: 92vh;
-
+  
   .caixa-principal {
     width: 80%;
-    min-height: 80vh;
-
+    height: 80vh;
+    
     .botoes {
       flex-wrap: wrap;
       width: 70%;
@@ -58,9 +58,24 @@
       box-shadow: 0px 7px 20px rgba(black, .450);
       width: 90%;
       margin: 0 auto;
-      color: rgba(128, 128, 128, 0.7);
+      color: rgb(58, 58, 58);
+      overflow: auto;
 
+      
     }
   }
+}
+  
+*::-webkit-scrollbar {
+  width: 8px;
+  border-radius: 10px;
+}
 
+*::-webkit-scrollbar-track {
+  background: rgba(196, 196, 196, 0.699);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: grey;
+  border-radius: 10px;
 }

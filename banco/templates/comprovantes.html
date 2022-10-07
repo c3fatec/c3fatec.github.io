@@ -1,21 +1,30 @@
 {%extends 'baseinterna.html'%}
 {%block head%}
 
-<title>Xbank - Comprovantes</title>
+<title>Xbank - Extrato</title>
 
 {%endblock%}
 {%block body%}
+<div class="tt">
+	<p class="h3 pt-3 text-center">Extratos</p>
+	
+	<div class="d-flex flex-column">
 {%if comprovantes%}
 {%for comprovante in comprovantes%}
-<div class="px-2" style="border-bottom: 1px solid black">
-	<div>Status: {{comprovante.status}}</div>
-	<div>Valor: {{comprovante.valor}}</div>
-	<div>Criado em: {{comprovante.data_inicio}}</div>
-	<div>Tipo: {{comprovante.tipo}}</div>
-</div>
+		<div class="d-flex pt-2 ps-2">
+			<div class="col-4">Status: {{comprovante.status}}</div>
+			<div class="col-8">Criado em: {{comprovante.data_inicio}}</div>
+		</div>
+		<div class="ts d-flex ps-2 pb-2">
+			<div class="col-4">Valor: {{comprovante.valor}}</div>
+		</div>
 {%endfor%}
 {%else%}
+	</div>
+</div>
 <div class="h-75 d-flex align-items-center justify-content-center">
 	<h2>Não foram feitas transações nessa conta</h2>
 </div>
-{%endif%} {%endblock%}
+{%endif%}
+{%endblock%}
+

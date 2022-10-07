@@ -94,7 +94,7 @@ header .funcao-direita .sair {
 }
 .base-interna .caixa-principal {
   width: 80%;
-  min-height: 80vh;
+  height: 80vh;
 }
 .base-interna .caixa-principal .botoes {
   flex-wrap: wrap;
@@ -137,7 +137,22 @@ header .funcao-direita .sair {
   box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.45);
   width: 90%;
   margin: 0 auto;
-  color: rgba(128, 128, 128, 0.7);
+  color: rgb(58, 58, 58);
+  overflow: auto;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(196, 196, 196, 0.699);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: grey;
+  border-radius: 10px;
 }
 
 .tt p {
