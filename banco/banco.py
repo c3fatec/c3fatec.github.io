@@ -28,7 +28,7 @@ def index():
 
     return render_template("principal.html", data=conta, comprovantes=comprovantes)
 
-
+import webbrowser
 @bp.route("/saque", methods=("GET", "POST"))
 @requer_login
 @rota_cliente
@@ -46,6 +46,7 @@ def saque():
                 "UPDATE banco_api.conta SET saldo = %s WHERE id_conta = %s",
                 (novo_saldo, id_conta),
             )
+            # webbrowser.open_new_tab("https://google.com/")
         except:
             print("Erro ao efetuar o saque.")
         else:
@@ -116,3 +117,9 @@ def comprovantes():
         date_filter=date_filter,
     )
     return render_template("comprovantes.html", data=conta, comprovantes=comprovantes)
+
+@bp.route("/impressao")
+@requer_login
+@rota_cliente
+def impressao():
+    return render_template("impressao.html")

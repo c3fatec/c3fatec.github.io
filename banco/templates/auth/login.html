@@ -3,21 +3,12 @@
 
 <title>Xbank - Login</title>
 
-<style>
-	.pg-login {
-		background-image: url("../../static/img/quadrados.png");
-		background-repeat: no-repeat;
-		background-position: center center;
-		background-size: cover;
-	}
-
-</style>
-
 {%endblock%}
 {%block body%}
+
 <div class="pg-login container-fluid d-flex align-items-center">
 
-	<div class=" caixa mx-auto">		
+	<div class="caixa mx-auto">		
 		<div class="header-caixa">
 			<h3 class="fw-bold my-auto">LOGIN</h3>
 		</div>
@@ -30,16 +21,21 @@
 				<div class="d-flex justify-content-center">
 					<label for="senha" class="col-2 pe-2">Senha: </label>
 					<input type="password" id="senha" name="senha" class="col-8"/>
-
-
 				</div>
-				<div class="col-4 mt-3 mb-1 mx-auto">
-					<button type="submit" class="btn btn-secondary btn-sm w-100">Entrar</button>
+			
+				<div class="d-flex justify-content-center gap-3 mt-3 mb-3">
+					<div class="col-3">
+						<button type="submit" class="btn btn-secondary btn-sm w-100">Entrar</button>
+					</div>
+					<div class="col-3">
+						<button type="button" class="btn btn-secondary btn-sm w-100" onclick="document.location='/cadastro'">Cadastrar</button>
+					</div>
 				</div>
 			</form>
-			<div class="cadastre col-4 mb-2 mx-auto">
+			<!-- <div class="" cadastre col-4 mb-2 mx-auto">
+			<button></button>
 				<a onclick="document.location='/cadastro'" class="link">Abra sua conta!</a>
-			</div>
+			</div> -->
 		</div>
 	</div>
 

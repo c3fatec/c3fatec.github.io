@@ -1,0 +1,48 @@
+{%extends 'index.html'%}
+{%block head%}
+
+<title>X-bank - Impressão</title>
+
+{%endblock%}
+{%block body%}
+
+<div class="pg-impressao container-fluid d-flex align-items-center">
+
+    <div class="caixa-impressao mx-auto">
+
+        <div class="w-100 mt-3 mb-3">
+            <p class="h3 text-center mb-0 pb-0">X BANK</p>
+            <p class="h5 text-center mt-0 pt-0">comprovante de </p> <!--colocar o tipo aqui-->
+        </div>
+
+        <hr>
+
+        <div class="d-flex flex-column">
+            <div class="d-flex pt-1 ps-1 mb-2">
+                <div class="col-6"><p class="my-auto">Agência: </p></div>
+                <div class="col-6"><p class="my-auto">Conta: </p></div>
+            </div>
+            <div class="ps-1 pb-1">
+                <p class="my-auto">Hora da Transação: </p>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="ps-1">
+            <p>Nome: </p>
+            <p>CPF: </p>
+            <p>Favorecido: </p>
+        </div>
+
+        <hr>
+
+        <div class="ps-1">
+            <p>Valor: </p>
+        </div>
+
+    </div>
+
+</div>
+{%endblock%}
+
