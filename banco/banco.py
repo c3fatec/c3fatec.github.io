@@ -94,17 +94,26 @@ def deposito():
     return render_template("deposito.html", data=conta)
 
 
-@bp.route("/comprovantes")
+@bp.route("/comprovantes", methods=["GET", "POST"])
 @requer_login
 @rota_cliente
 def comprovantes():
     conta = g.conta
     id_conta = conta["id_conta"]
+    date_filter = None
+
+    if request.method == "POST":
+        data_inicio = " ".join(request.form["data_inicio"].split("T")) + ":00"
+        data_fim = " ".join(request.form["data_fim"].split("T")) + ":00"
+        date_filter = [data_inicio, data_fim]
+
     comprovantes = db_get(
         many=True,
         order_by="id_transacao",
         order="DESC",
         table="transacoes",
         id_conta=id_conta,
+        date_filter=date_filter,
     )
+    print(date_filter)
     return render_template("comprovantes.html", data=conta, comprovantes=comprovantes)

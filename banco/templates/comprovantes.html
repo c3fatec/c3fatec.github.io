@@ -1,16 +1,18 @@
-{%extends 'baseinterna.html'%}
-{%block head%}
+{%extends 'baseinterna.html'%} {%block head%}
 
 <title>Xbank - Extrato</title>
 
-{%endblock%}
-{%block body%}
+{%endblock%} {%block body%}
 <div class="tt">
-	<p class="h3 pt-3 text-center">Extratos</p>
-	
+	<p class="h3 pt-3 text-center">Extrato</p>
+
 	<div class="d-flex flex-column">
-{%if comprovantes%}
-{%for comprovante in comprovantes%}
+		<form action="" method="POST">
+			<input type="datetime-local" name="data_inicio" id="data_inicio" required/>
+			<input type="datetime-local" name="data_fim" id="data_fim" required/>
+			<input type="submit" value="Filtrar" class="btn btn-primary" />
+		</form>
+		{%if comprovantes%} {%for comprovante in comprovantes%}
 		<div class="d-flex pt-2 ps-2">
 			<div class="col-4">Status: {{comprovante.status}}</div>
 			<div class="col-8">Criado em: {{comprovante.data_inicio}}</div>
@@ -18,13 +20,10 @@
 		<div class="ts d-flex ps-2 pb-2">
 			<div class="col-4">Valor: {{comprovante.valor}}</div>
 		</div>
-{%endfor%}
-{%else%}
+		{%endfor%} {%else%}
 	</div>
 </div>
 <div class="h-75 d-flex align-items-center justify-content-center">
 	<h2>Não foram feitas transações nessa conta</h2>
 </div>
-{%endif%}
-{%endblock%}
-
+{%endif%} {%endblock%}
