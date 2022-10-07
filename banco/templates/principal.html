@@ -11,13 +11,13 @@
 	<div class="d-flex flex-column">
 {%if comprovantes%}
 {%for comprovante in comprovantes%}
-		<div class="d-flex pt-1">
-			<div class="col-4">Tipo: {{comprovante.tipo}}</div>
-			<div class="col-8">Status: {{comprovante.status}}</div>
+		<div class="d-flex pt-2 ps-2">
+			<div class="col-4 h5">Tipo: {{comprovante.tipo}}</div>
+			<div class="col-8 h5">Status: {{comprovante.status}}</div>
 		</div>
-		<div class="ts d-flex">
-			<div class="col-4">Valor: {{comprovante.valor}}</div>
-			<div class="col-8">Criado em: {{comprovante.data_inicio}}</div>
+		<div class="ts d-flex ps-2 pb-2">
+			<div class="col-4 h5">Valor: {{comprovante.valor}}</div>
+			<div class="col-8 h5">Criado em: {{comprovante.data_inicio}}</div>
 		</div>
 {%endfor%}
 {%else%}
