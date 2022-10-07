@@ -8,8 +8,20 @@
 
 	<div class="d-flex flex-column">
 		<form action="" method="POST">
-			<input type="datetime-local" name="data_inicio" id="data_inicio" required/>
-			<input type="datetime-local" name="data_fim" id="data_fim" required/>
+			<input
+				type="datetime-local"
+				name="data_inicio"
+				id="data_inicio"
+				step="1"
+				required
+			/>
+			<input
+				type="datetime-local"
+				name="data_fim"
+				id="data_fim"
+				step="1"
+				required
+			/>
 			<input type="submit" value="Filtrar" class="btn btn-primary" />
 		</form>
 		{%if comprovantes%} {%for comprovante in comprovantes%}

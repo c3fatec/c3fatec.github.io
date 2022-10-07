@@ -115,5 +115,4 @@ def comprovantes():
         id_conta=id_conta,
         date_filter=date_filter,
     )
-    print(date_filter)
     return render_template("comprovantes.html", data=conta, comprovantes=comprovantes)
