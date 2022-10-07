@@ -19,23 +19,27 @@ def cadastro():
     if request.method == "POST":
         nome = request.form["nome"]
         senha = request.form["senha"]
+        senha_repetida = request.form["senha-repetida"]
         cpf = request.form["cpf"]
 
-        try:
-            db_create(
-                table="usuario",
-                nome=nome,
-                senha=generate_password_hash(senha),
-                cpf=cpf,
-                tipo="cliente",
-                status="aguardando",
-            )
-        except:
-            pass
+        if senha == senha_repetida:
+            try:
+                db_create(
+                    table="usuario",
+                    nome=nome,
+                    senha=generate_password_hash(senha),
+                    cpf=cpf,
+                    tipo="cliente",
+                    status="aguardando",
+                )
+            except:
+                pass
+            else:
+                db_create(table="conta", saldo=0, cpf=cpf)
+            finally:
+                return redirect(url_for("auth.login"))
         else:
-            db_create(table="conta", saldo=0, cpf=cpf)
-        finally:
-            return redirect(url_for("auth.login"))
+            print("As senhas não são compatíveis.")
 
     return render_template("auth/cadastro.html")
 
