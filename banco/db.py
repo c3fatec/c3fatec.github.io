@@ -123,9 +123,17 @@ def init_db():
         senha=generate_password_hash("gerente"),
         cpf="99988877766",
         tipo="gerente",
-        status="aprovado",
     )
-    db_create(table="conta", saldo=0, cpf="99988877766", id_conta=1)
+    db_create(table="conta", saldo=0, cpf="99988877766", id_conta=1, status="aprovado")
+    db_create(
+        table="usuario",
+        nome="gerente-cliente",
+        senha=generate_password_hash("gerente"),
+        cpf="99988877765",
+        tipo="gerente-cliente",
+    )
+    db_create(table="conta", saldo=0, cpf="99988877765", id_conta=2, status="aprovado")
+
     db.close()
 
 

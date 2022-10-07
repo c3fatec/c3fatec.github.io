@@ -30,12 +30,11 @@ def cadastro():
                     senha=generate_password_hash(senha),
                     cpf=cpf,
                     tipo="cliente",
-                    status="aguardando",
                 )
             except:
                 pass
             else:
-                db_create(table="conta", saldo=0, cpf=cpf)
+                db_create(table="conta", saldo=0, cpf=cpf, status="aguardando")
             finally:
                 return redirect(url_for("auth.login"))
         else:
@@ -62,14 +61,17 @@ def login():
             error = "Essa conta não existe"
         elif not check_password_hash(usuario["senha"], senha):
             error = "Senha incorreta"
-        elif usuario["status"] != "aprovado":
+        elif conta["status"] != "aprovado":
             error = "Essa conta não foi aprovada"
 
         if error is None:
             session.clear()
             session["id_usuario"] = usuario["id_usuario"]
             session["id_conta"] = conta["id_conta"]
-            return redirect(url_for("conta.index"))
+            if "cliente" in usuario["tipo"]:
+                return redirect(url_for("conta.index"))
+            else:
+                return redirect(url_for("admin.pendencias"))
 
         print(error)
 
@@ -108,6 +110,28 @@ def requer_login(view):
         if g.conta is None or g.usuario is None:
             session.clear()
             return redirect(url_for("auth.login"))
+
+        return view(**kwargs)
+
+    return wrapped_view
+
+
+def rota_cliente(view):
+    @functools.wraps(view)
+    def wrapped_view(**kwargs):
+        if "cliente" not in g.usuario["tipo"]:
+            return redirect(url_for("admin.pendencias"))
+
+        return view(**kwargs)
+
+    return wrapped_view
+
+
+def rota_gerente(view):
+    @functools.wraps(view)
+    def wrapped_view(**kwargs):
+        if "gerente" not in g.usuario["tipo"]:
+            return redirect(url_for("conta.index"))
 
         return view(**kwargs)
 

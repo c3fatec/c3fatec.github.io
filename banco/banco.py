@@ -1,7 +1,7 @@
 from logging import warning
 from flask import Blueprint, g, redirect, render_template, request, url_for, flash
 
-from banco.auth import requer_login
+from banco.auth import requer_login, rota_cliente
 
 from .db import db_create, get_db, db_get
 
@@ -12,6 +12,7 @@ bp = Blueprint("conta", __name__, url_prefix="/conta")
 
 @bp.route("/")
 @requer_login
+@rota_cliente
 def index():
 
     conta = g.conta
@@ -30,6 +31,7 @@ def index():
 
 @bp.route("/saque", methods=("GET", "POST"))
 @requer_login
+@rota_cliente
 def saque():
     if request.method == "POST":
         v = request.form["valor"]
@@ -65,6 +67,7 @@ def saque():
 
 @bp.route("/deposito", methods=("GET", "POST"))
 @requer_login
+@rota_cliente
 def deposito():
     if request.method == "POST":
         v = request.form["valor"]
@@ -93,6 +96,7 @@ def deposito():
 
 @bp.route("/comprovantes")
 @requer_login
+@rota_cliente
 def comprovantes():
     conta = g.conta
     id_conta = conta["id_conta"]
