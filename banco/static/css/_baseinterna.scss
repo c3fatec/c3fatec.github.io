@@ -1,59 +1,66 @@
-
 .base-interna {
-    background-image: url("../../static/img/quadrados.png");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    min-height: 92vh;
+  background-image: url("../../static/img/quadrados.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  min-height: 92vh;
 
-    .caixa-principal {
-        width: 70%;
-        min-height: 80vh;
+  .caixa-principal {
+    width: 80%;
+    min-height: 80vh;
 
-        .botoes {
-            flex-wrap: wrap;
-            width: 70%;
-            margin: 0 auto;
-            
-            .funcao {
-                background-color: rgb(209, 209, 209, .700);
-                display: flex;
-                // justify-content: space-between;
-                flex-direction: column;
-                align-items: center;
-                width: 160px;
-                height: 160px;
-                margin: 10px;
-                border: 2px solid black;
-                border-radius: 15px;
-                box-shadow: 0px 7px 20px rgba(black, .450);
-                cursor: pointer;
-    
-                .head {
-                    border-radius: 15px 15px 0 0;
-                    
-                    p {
-                        margin: 0;
-                        padding-top: 4px;
-                    }
-                }
-    
-                &:hover {
-                    background-color: rgba(115, 115, 128, 0.6)
-                }
-            }
+    .botoes {
+      flex-wrap: wrap;
+      width: 70%;
+      margin: 0 auto;
+
+      .funcao {
+        background-color: rgb(209, 209, 209, .700);
+        display: flex;
+        // justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+        width: 160px;
+        height: 160px;
+        margin: 10px;
+        border: 2px solid black;
+        border-radius: 15px;
+        box-shadow: 0px 7px 20px rgba(black, .450);
+        cursor: pointer;
+
+        .head {
+          border-radius: 15px 15px 0 0;
+
+          p {
+            margin: 0;
+            padding-top: 4px;
+          }
         }
 
-        .caixa-sistema {
-            background-color: rgb(209, 209, 209, .700);
-            border: 2px solid black;
-            border-radius: 15px;
-            box-shadow: 0px 7px 20px rgba(black, .450);
-            width: 90%;
-            margin: 0 auto;
-            color: rgba(128, 128, 128, 0.7);
-      
+        &:hover {
+          background-color: rgb(209, 209, 209);
         }
+      }
+
+      .ger {
+        background-color: rgb(247, 211, 217, 0.6);
+
+        &:hover {
+          background-color: rgb(247, 211, 217);;
+        }
+      }
     }
+
+    .caixa-sistema {
+      background-color: rgb(209, 209, 209, .700);
+      border: 2px solid black;
+      border-radius: 15px;
+      box-shadow: 0px 7px 20px rgba(black, .450);
+      width: 90%;
+      margin: 0 auto;
+      color: rgba(128, 128, 128, 0.7);
+
+    }
+  }
 
 }

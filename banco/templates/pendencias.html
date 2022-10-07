@@ -1,42 +1,51 @@
 {%extends 'baseinterna.html'%} {%block head%}
 
-<title>X-Bank - Administração</title>
+<title>X-Bank - Pendências</title>
 <style>
 	.ola > span {
 		display: none;
 	}
 </style>
 
-{%endblock%}{%block body%} {%for pendencia in pendencias%}
-<div style="border: 1px solid black" class="d-flex align-items-center p-3">
-	<div class="col-11">
-		<div>{{pendencia.id_conta}}</div>
-		<div>{{pendencia.valor}}</div>
-		<div>{{pendencia.data_inicio}}</div>
-	</div>
-	<div class="col-1">
-		<form action="" method="POST">
-			<input type="hidden" name="valor" value="{{pendencia.valor}}" />
-			<input type="hidden" name="id_conta" value="{{pendencia.id_conta}}" />
-			<input type="hidden" name="status" value="completa" />
-			<input
-				type="hidden"
-				name="id_transacao"
-				value="{{pendencia.id_transacao}}"
-			/>
-			<button class="btn btn-success mb-2" type="submit">Aprovar</button>
-		</form>
-		<form action="" method="POST">
-			<input type="hidden" name="valor" value="{{pendencia.valor}}" />
-			<input type="hidden" name="id_conta" value="{{pendencia.id_conta}}" />
-			<input type="hidden" name="status" value="rejeitada" />
-			<input
-				type="hidden"
-				name="id_transacao"
-				value="{{pendencia.id_transacao}}"
-			/>
-			<button class="btn btn-danger" type="submit">Rejeitar</button>
-		</form>
-	</div>
+{%endblock%}
+{%block body%}
+<div class="tt">
+	<p class="h3 pt-3 text-center">Pendências</p>
 </div>
-{%endfor%} {%endblock%}
+
+<div class="d-flex flex-column">
+	{%if pendencias%}
+	{%for pendencia in pendencias%}
+	<div class="pnd d-flex w-100 p-2">
+		<div class="col-9">
+			<div>{{pendencia.id_conta}}</div>
+			<div>{{pendencia.valor}}</div>
+			<div>{{pendencia.data_inicio}}</div>
+		</div>
+
+		<div class="col-3 text-center">
+			<form action="" method="POST">
+				<input type="hidden" name="valor" value="{{pendencia.valor}}" />
+				<input type="hidden" name="id_conta" value="{{pendencia.id_conta}}" />
+				<input type="hidden" name="status" value="completa" />
+				<input type="hidden" name="id_transacao" value="{{pendencia.id_transacao}}" />
+				<button class="btn btn-success mb-1 w-100" type="submit">Aprovar</button>
+			</form>
+			<form action="" method="POST">
+				<input type="hidden" name="valor" value="{{pendencia.valor}}" />
+				<input type="hidden" name="id_conta" value="{{pendencia.id_conta}}" />
+				<input type="hidden" name="status" value="rejeitada" />
+				<input type="hidden" name="id_transacao" value="{{pendencia.id_transacao}}" />
+				<button class="btn btn-danger w-100" type="submit">Rejeitar</button>
+			</form>
+		</div>
+	</div>
+	{%endfor%}
+	{%else%}
+</div>
+<div class="h-75 d-flex align-items-center justify-content-center">
+	<h2>Não há pendências!</h2>
+</div>
+{%endif%}
+
+{%endblock%}
