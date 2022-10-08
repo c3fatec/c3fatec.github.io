@@ -14,7 +14,9 @@
 		</div>
 		<div class="ts d-flex ps-2 pb-2">
 			<div class="col-4 h5">Valor: {{comprovante.valor | dinheiro }}</div>
-			<div class="col-8 h5">Criado em: {{comprovante.data_inicio}}</div>
+			<div class="col-8 h5">
+				Criado em: {{comprovante.data_inicio | datetime}}
+			</div>
 		</div>
 		{%endfor%} {%else%}
 	</div>

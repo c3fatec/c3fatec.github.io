@@ -18,7 +18,7 @@
 		<div class="col-9">
 			<div>Conta: {{pendencia.id_conta}}</div>
 			<div>Valor: {{pendencia.valor | dinheiro}}</div>
-			<div>Data da Transação: {{pendencia.data_inicio}}</div>
+			<div>Data da Transação: {{pendencia.data_inicio | datetime}}</div>
 		</div>
 
 		<div class="col-3 text-center">
@@ -31,7 +31,7 @@
 					name="id_transacao"
 					value="{{pendencia.id_transacao}}"
 				/>
-				<button class="btn btn-success mb-1 w-100" type="submit">
+				<button class="btn btn-secondary mb-1 w-100" type="submit">
 					Aprovar
 				</button>
 			</form>
@@ -44,7 +44,9 @@
 					name="id_transacao"
 					value="{{pendencia.id_transacao}}"
 				/>
-				<button class="btn btn-danger w-100" type="submit">Rejeitar</button>
+				<button class="btn btn-outline-dark w-100" type="submit">
+					Rejeitar
+				</button>
 			</form>
 		</div>
 	</div>

@@ -36,12 +36,16 @@ def cadastro():
                 pass
             else:
                 db_create(table="conta", saldo=0, cpf=cpf, status="aguardando")
-            finally:
-                return redirect(url_for("auth.login"))
+                return redirect(url_for("auth.aguarde"))
         else:
             flash("As senhas não são compatíveis.")
 
     return render_template("auth/cadastro.html")
+
+
+@bp.route("/aguarde")
+def aguarde():
+    return render_template("auth/aguarde.html")
 
 
 @bp.route("/", methods=("GET", "POST"))
@@ -59,11 +63,11 @@ def login():
             usuario = db_get(many=False, table="usuario", cpf=cpf)
 
         if usuario is None:
-            error = "Essa conta não existe"
+            error = "Conta inexistente"
         elif conta["status"] != "aprovado":
-            error = "Essa conta não foi aprovada"
+            error = "Conta inexistente"
         elif not check_password_hash(usuario["senha"], senha):
-            error = "Senha incorreta"
+            error = "Conta inexistente"
 
         if error is None:
             session.clear()

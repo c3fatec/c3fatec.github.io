@@ -67,7 +67,7 @@ def saque():
                 order_by="id_transacao",
                 order="DESC",
             )
-            flash("Saque realizado com sucesso!", "text-success")
+            flash("Saque realizado com sucesso!")
             id = saque["id_transacao"]
             return redirect(url_for("conta.saque", id=id))
 

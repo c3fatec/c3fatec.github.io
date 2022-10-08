@@ -45,6 +45,10 @@ def create_app():
         txt = str(txt)
         return txt.replace(".", ",")
 
+    def datetime(data, format="%d/%m/%Y %H:%M:%S"):
+        return data.strftime(format)
+
     app.add_template_filter(dinheiro)
+    app.add_template_filter(datetime)
 
     return app

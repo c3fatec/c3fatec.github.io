@@ -34,9 +34,9 @@
 				<div>Tipo: {{comprovante.tipo}}</div>
 			</div>
 			<div class="col-5">
-				<div>Criado em: {{comprovante.data_inicio}}</div>
+				<div>Criado em: {{comprovante.data_inicio | datetime}}</div>
 				{%if comprovante.tipo=='depósito' and comprovante.data_fim%}
-				<div>Aprovado em: {{comprovante.data_fim}}</div>
+				<div>Aprovado em: {{comprovante.data_fim | datetime}}</div>
 				{%endif%}
 			</div>
 			<div class="col-3">

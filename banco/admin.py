@@ -62,7 +62,8 @@ def cadastros():
                 table="conta", many=False, cpf=cpf, order_by="id_conta", order="DESC"
             )
             id_conta = conta["id_conta"]
-            flash(f"A conta foi registrada com número de acesso {id_conta}")
+            msg = f"A conta foi registrada com número {id_conta}"
+            flash(msg)
 
     cadastros = db_get(table="conta", status="Aguardando")
     for conta in cadastros:

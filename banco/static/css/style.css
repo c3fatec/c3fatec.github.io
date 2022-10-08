@@ -1,5 +1,5 @@
 .header-b {
-  background-color: rgba(114, 114, 114, 0.65);
+  background-color: rgb(43, 43, 43);
   height: 7vh;
   color: white;
 }
@@ -185,6 +185,12 @@
 
 .pnd {
   border-bottom: 1px solid black;
+}
+
+.msg {
+  background-color: whitesmoke;
+  border-radius: 8px;
+  padding: 8px;
 }
 
 .pg-impressao {

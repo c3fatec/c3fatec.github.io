@@ -29,8 +29,8 @@
 					Sacar
 				</button>
 			</form>
-			{% with messages = get_flashed_messages(with_categories=true) %} {%if
-			messages and id%} {%for category, message in messages%}
+			{% with messages = get_flashed_messages() %} {%if messages and id%} {%for
+			message in messages%}
 			<div class="msg d-flex align-items-center justify-content-center">
 				<div class="col-9">{{message}}</div>
 				<div class="col-3">
