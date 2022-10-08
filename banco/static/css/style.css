@@ -70,7 +70,7 @@
 }
 
 .header {
-  background-color: rgba(114, 114, 114, 0.65);
+  background-color: rgb(43, 43, 43);
   height: 7vh;
   color: white;
 }
@@ -86,7 +86,6 @@
 }
 .funcao-direita .sair {
   border: none;
-  background-color: grey;
 }
 .funcao-direita .sair i {
   color: white;
