@@ -87,7 +87,7 @@ def deposito():
             print("Erro ao efetuar o depósito.")
         finally:
             flash(
-                "Depósito realizado com sucesso, aguarde a aprovação!", "text-success"
+                "Depósito realizado com sucesso, aguarde a confirmação!", "text-success"
             )
             return redirect(url_for("conta.deposito"))
 
