@@ -17,7 +17,7 @@
 	<div class="pnd d-flex w-100 p-2">
 		<div class="col-9">
 			<div>Conta: {{pendencia.id_conta}}</div>
-			<div>Valor: {{pendencia.valor}}</div>
+			<div>Valor: {{pendencia.valor | dinheiro}}</div>
 			<div>Data da Transação: {{pendencia.data_inicio}}</div>
 		</div>
 
@@ -36,7 +36,7 @@
 				</button>
 			</form>
 			<form action="" method="POST">
-				<input type="hidden" name="valor" value="{{pendencia.valor}}" />
+				<input type="hidden" name="valor" value="{{pendencia.valor }}" />
 				<input type="hidden" name="id_conta" value="{{pendencia.id_conta}}" />
 				<input type="hidden" name="status" value="Rejeitado" />
 				<input

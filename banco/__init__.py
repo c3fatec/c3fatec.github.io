@@ -39,4 +39,12 @@ def create_app():
     # registrando comandos de banco de dados
     db.init_app(app)
 
+    # criar filtros
+
+    def dinheiro(txt):
+        txt = str(txt)
+        return txt.replace(".", ",")
+
+    app.add_template_filter(dinheiro)
+
     return app

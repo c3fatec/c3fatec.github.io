@@ -37,7 +37,7 @@
 		<hr />
 
 		<div class="ps-1">
-			<p>Nome: {{comprovante.nome.capitalize()}}</p>
+			<p>Nome: {{comprovante.nome | capitalize}}</p>
 			<p>CPF: {{comprovante.cpf}}</p>
 			<!-- <p>Favorecido:</p> -->
 		</div>
@@ -45,7 +45,7 @@
 		<hr />
 
 		<div class="ps-1">
-			<p>Valor: R${{comprovante.valor}}</p>
+			<p>Valor: R${{comprovante.valor | dinheiro}}</p>
 		</div>
 	</div>
 </div>
