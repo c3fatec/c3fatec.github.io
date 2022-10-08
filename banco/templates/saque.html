@@ -29,6 +29,20 @@
 					Sacar
 				</button>
 			</form>
+			{% with messages = get_flashed_messages(with_categories=true) %} {%if
+			messages and id%} {%for category, message in messages%}
+			<div class="msg d-flex align-items-center justify-content-center">
+				<div class="col-9">{{message}}</div>
+				<div class="col-3">
+					<a
+						href="{{url_for('conta.impressao', id_transacao=id)}}"
+						target="_blank"
+					>
+						<div class="btn btn-secondary">Gerar comprovante</div>
+					</a>
+				</div>
+			</div>
+			{%endfor%} {%endif%} {%endwith%}
 		</div>
 	</div>
 </div>

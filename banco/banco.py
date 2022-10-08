@@ -1,4 +1,5 @@
-from logging import warning
+import json
+import re
 from flask import Blueprint, g, redirect, render_template, request, url_for, flash
 
 from banco.auth import requer_login, rota_cliente
@@ -26,13 +27,14 @@ def index():
         id_conta=id_conta,
     )
 
-    return render_template("principal.html", data=conta, comprovantes=comprovantes)
+    return render_template("principal.html", comprovantes=comprovantes)
 
-import webbrowser
+
 @bp.route("/saque", methods=("GET", "POST"))
 @requer_login
 @rota_cliente
 def saque():
+    id = request.args.get("id") or None
     if request.method == "POST":
         v = request.form["valor"]
         db = get_db()
@@ -46,7 +48,6 @@ def saque():
                 "UPDATE banco_api.conta SET saldo = %s WHERE id_conta = %s",
                 (novo_saldo, id_conta),
             )
-            # webbrowser.open_new_tab("https://google.com/")
         except:
             print("Erro ao efetuar o saque.")
         else:
@@ -59,17 +60,25 @@ def saque():
                 data_fim=datetime.now(),
                 tipo="saque",
             )
-        finally:
-            return redirect(url_for("conta.saque"))
+            saque = db_get(
+                table="transacoes",
+                many=False,
+                id_conta=id_conta,
+                order_by="id_transacao",
+                order="DESC",
+            )
+            flash("Saque realizado com sucesso!", "text-success")
+            id = saque["id_transacao"]
+            return redirect(url_for("conta.saque", id=id))
 
-    conta = g.conta
-    return render_template("saque.html", data=conta)
+    return render_template("saque.html", id=id)
 
 
 @bp.route("/deposito", methods=("GET", "POST"))
 @requer_login
 @rota_cliente
 def deposito():
+    id = request.args.get("id") or None
     if request.method == "POST":
         v = request.form["valor"]
 
@@ -81,18 +90,25 @@ def deposito():
                 valor=float(v),
                 status="Aguardando",
                 data_inicio=datetime.now(),
-                tipo="deposito",
+                tipo="depósito",
             )
         except:
             print("Erro ao efetuar o depósito.")
-        finally:
+        else:
+            deposito = db_get(
+                table="transacoes",
+                many=False,
+                id_conta=id_conta,
+                order_by="id_transacao",
+                order="DESC",
+            )
             flash(
                 "Depósito realizado com sucesso, aguarde a confirmação!", "text-success"
             )
-            return redirect(url_for("conta.deposito"))
+            id = deposito["id_transacao"]
+            return redirect(url_for("conta.deposito", id=id))
 
-    conta = g.conta
-    return render_template("deposito.html", data=conta)
+    return render_template("deposito.html", id=id)
 
 
 @bp.route("/comprovantes", methods=["GET", "POST"])
@@ -116,10 +132,18 @@ def comprovantes():
         id_conta=id_conta,
         date_filter=date_filter,
     )
-    return render_template("comprovantes.html", data=conta, comprovantes=comprovantes)
+
+    return render_template("comprovantes.html", comprovantes=comprovantes)
+
 
 @bp.route("/impressao")
 @requer_login
 @rota_cliente
 def impressao():
-    return render_template("impressao.html")
+    id_transacao = request.args.get("id_transacao")
+    comprovante = db_get(table="transacoes", many=False, id_transacao=id_transacao)
+    conta = db_get(table="conta", many=False, id_conta=comprovante["id_conta"])
+    usuario = db_get(table="usuario", many=False, cpf=conta["cpf"])
+    data = {"nome": usuario["nome"], "cpf": usuario["cpf"]}
+    comprovante.update(data)
+    return render_template("impressao.html", comprovante=comprovante)

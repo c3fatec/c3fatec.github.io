@@ -176,6 +176,13 @@
   text-indent: 5px;
   border-bottom: 1px solid black;
 }
+.saque-deposito .conteudo .msg {
+  background-color: whitesmoke;
+  border-radius: 8px;
+  margin-top: 20px;
+  padding: 8px;
+}
+
 .pnd {
   border-bottom: 1px solid black;
 }
