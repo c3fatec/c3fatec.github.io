@@ -16,9 +16,9 @@
 	{%if pendencias%} {%for pendencia in pendencias%}
 	<div class="pnd d-flex w-100 p-2">
 		<div class="col-9">
-			<div>{{pendencia.id_conta}}</div>
-			<div>{{pendencia.valor}}</div>
-			<div>{{pendencia.data_inicio}}</div>
+			<div>Conta: {{pendencia.id_conta}}</div>
+			<div>Valor: {{pendencia.valor}}</div>
+			<div>Data da Transação: {{pendencia.data_inicio}}</div>
 		</div>
 
 		<div class="col-3 text-center">

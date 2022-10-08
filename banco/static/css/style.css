@@ -1,37 +1,21 @@
-header {
+.header-b {
   background-color: rgba(114, 114, 114, 0.65);
   height: 7vh;
   color: white;
 }
-header .logo > a {
+.header-b .logo-b > p {
   color: white;
-  text-decoration: none;
   font-weight: bold !important;
   letter-spacing: 2px;
-}
-header .logo > a:hover {
-  color: rgb(38, 0, 255);
-}
-header nav > ul li {
-  font-weight: 500;
-}
-header nav > ul li a {
-  color: white;
-  text-decoration: none;
-}
-header nav > ul li a:hover {
-  color: rgb(38, 0, 255);
-  border-bottom: 1px solid rgb(38, 0, 255);
-}
-header .funcao-direita .ola p {
-  text-transform: capitalize;
-}
-header .funcao-direita .sair {
-  border: none;
+  text-transform: uppercase;
 }
 
 .pg-login {
-  min-height: 100vh;
+  background-image: url("../../static/img/quadrados.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  min-height: 93vh;
 }
 .pg-login .caixa {
   background-color: rgb(209, 209, 209);
@@ -61,7 +45,7 @@ header .funcao-direita .sair {
 
 .pg-cadastro {
   background-color: rgb(209, 209, 209);
-  min-height: 92vh;
+  min-height: 93vh;
 }
 .pg-cadastro .form {
   padding-top: 3vh;
@@ -83,6 +67,29 @@ header .funcao-direita .sair {
 .pg-cadastro input {
   border: 1px solid #dee2e6;
   border-radius: 5px !important;
+}
+
+.header {
+  background-color: rgba(114, 114, 114, 0.65);
+  height: 7vh;
+  color: white;
+}
+.header .logo > p {
+  color: white;
+  font-weight: bold !important;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.funcao-direita .ola p {
+  text-transform: capitalize;
+}
+.funcao-direita .sair {
+  border: none;
+  background-color: grey;
+}
+.funcao-direita .sair i {
+  color: white;
 }
 
 .base-interna {
@@ -171,4 +178,13 @@ header .funcao-direita .sair {
 }
 .pnd {
   border-bottom: 1px solid black;
+}
+
+.pg-impressao {
+  min-height: 93vh;
+}
+.pg-impressao .caixa-impressao {
+  background-color: rgb(243, 243, 243);
+  width: 300px;
+  border: 2px solid black;
 }/*# sourceMappingURL=style.css.map */

@@ -1,8 +1,25 @@
 
 // CSS para pagina de login
 
+.header-b {
+    background-color: rgb(114, 114, 114, 0.650);
+    height: 7vh;
+    color: white;
+
+    .logo-b>p {
+        color: white;
+        font-weight: bold !important;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+}
+
 .pg-login {
-    min-height: 100vh;
+    background-image: url("../../static/img/quadrados.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    min-height: 93vh;
 
     .caixa {
         background-color: rgb(209, 209, 209);
