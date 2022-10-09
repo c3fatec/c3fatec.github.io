@@ -52,9 +52,10 @@
 					</p>
 					{%if comprovante.tipo=='depósito'%}
 					<p class="my-auto">
-						{%if comprovante.data_fim%} Data de Aprovacão:
-						{{comprovante.data_fim | datetime}} {%else%} Aguardando aprovação
-						{%endif%}
+						{%if comprovante.status == 'Efetivado'%} Data de Aprovacão:
+						{{comprovante.data_fim | datetime}} {%elif comprovante.status ==
+						'Aguardando'%} Aguardando aprovação {%else%}Depósito rejeitado:
+						{{comprovante.data_fim | datetime}}{%endif%}
 					</p>
 					{%endif%}
 				</div>
