@@ -1,28 +1,43 @@
 {%extends 'index.html'%} {%block head%}
-<title>Login</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
-{%endblock%} {%block body%}
-<div class="container">
-	<div class="caixa">
-		<div class="headerCaixa">
-			<h3>LOGIN</h3>
-		</div>
 
+<title>Xbank - Login</title>
+
+{%endblock%}
+{%block body%}
+
+<div class="pg-login container-fluid d-flex align-items-center">
+
+	<div class="caixa mx-auto">		
+		<div class="header-caixa">
+			<h3 class="fw-bold my-auto">LOGIN</h3>
+		</div>
 		<div class="login">
-			<form method="post">
-				<div>
-					<label for="numero_conta">Conta: </label>
-					<input type="text" name="numero_conta" id="numero_conta" />
+			<form method="post" class="d-grid gap-2 mt-4">
+				{%for message in get_flashed_messages()%} {%if message%}
+				<div class="d-flex justify-content-center">{{message}}</div>
+				{%endif%}{%endfor%}
+				<div class="d-flex justify-content-center">
+					<label for="id_conta" class="col-2 pe-2">Conta: </label>
+					<input type="text" name="id_conta" id="id_conta" class="col-8" />
 				</div>
-				<div>
-					<label for="senha_usuario">Senha: </label>
-					<input type="password" id="senha_usuario" name="senha_usuario" />
+				<div class="d-flex justify-content-center">
+					<label for="senha" class="col-2 pe-2">Senha: </label>
+					<input type="password" id="senha" name="senha" class="col-8"/>
 				</div>
-				<div class="botaoLogin">
-					<button type="submit">Entrar</button>
+			
+				<div class="d-flex justify-content-center gap-3 mt-3 mb-3">
+					<div class="col-3">
+						<button type="submit" class="btn btn-secondary btn-sm w-100">Entrar</button>
+					</div>
+					<div class="col-3">
+						<button type="button" class="btn btn-secondary btn-sm w-100" onclick="document.location='/cadastro'">Cadastrar</button>
+					</div>
 				</div>
 			</form>
-			<button onclick="document.location='/cadastro'">cadastrar</button>
+			<!-- <div class="" cadastre col-4 mb-2 mx-auto">
+			<button></button>
+				<a onclick="document.location='/cadastro'" class="link">Abra sua conta!</a>
+			</div> -->
 		</div>
 	</div>
 </div>

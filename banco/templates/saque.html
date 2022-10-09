@@ -1,16 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Saque</title>
-	</head>
+{% extends "baseinterna.html" %} {%block head%}
 
-	<body>
-		<form method="POST">
-			valor: <input type="number" step="0.01" name="valor" id="valor" />
-			<button type="submit">Confirma</button>
-		</form>
-	</body>
-</html>
+<title>Xbank - Saque</title>
+
+<style>
+	.ola > span {
+		display: none;
+	}
+</style>
+{%endblock%} {%block body%}
+
+<div class="saque-deposito h-100">
+	<div class="titulo">
+		<p class="h3 pt-3 text-center">Saque</p>
+	</div>
+	<div class="conteudo d-flex flex-column m-3 mt-5 h-50">
+		<div class="mx-auto text-center w-100">
+			<p class="h2">Saldo: R$ {{g.conta.saldo | dinheiro}}</p>
+		</div>
+
+		<div class="mt-2 h-75">
+			<form
+				method="POST"
+				class="d-flex justify-content-around align-items-center flex-column text-center h-100"
+			>
+				<label>Digite o valor:</label>
+				<input type="number" step="0.01" name="valor" id="valor" min="0.01" />
+				<button type="submit" class="btn btn-secondary btn-sm w-25">
+					Sacar
+				</button>
+			</form>
+			{% with messages = get_flashed_messages() %} {%if messages and id%} {%for
+			message in messages%}
+			<div class="msg d-flex align-items-center justify-content-center">
+				<div class="col-9">{{message}}</div>
+				<div class="col-3">
+					<a
+						href="{{url_for('conta.impressao', id_transacao=id)}}"
+						target="_blank"
+					>
+						<div class="btn btn-secondary">Gerar comprovante</div>
+					</a>
+				</div>
+			</div>
+			{%endfor%} {%endif%} {%endwith%}
+		</div>
+	</div>
+</div>
+
+{%endblock%}

@@ -1,0 +1,202 @@
+.header {
+  background-color: rgb(43, 43, 43);
+  height: 7vh;
+  color: white;
+}
+.header .logo > p {
+  color: white;
+  font-weight: bold !important;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.header-b {
+  background-color: rgb(43, 43, 43);
+  height: 7vh;
+  color: white;
+}
+.header-b .logo-b > p {
+  color: white;
+  font-weight: bold !important;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.pg-login {
+  background-image: url("../../static/img/quadrados.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  min-height: 93vh;
+}
+.pg-login .caixa {
+  background-color: rgb(209, 209, 209);
+  text-align: center;
+  border-radius: 15px;
+  width: 350px;
+  box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.45);
+}
+.pg-login .caixa .header-caixa {
+  background-color: rgb(43, 43, 43);
+  border-radius: 15px 15px 0 0;
+}
+.pg-login .caixa .header-caixa h3 {
+  color: white;
+}
+.pg-login .caixa .login label {
+  font-weight: bold;
+}
+.pg-login .caixa .login input {
+  border: 1px solid #dee2e6;
+  border-radius: 5px !important;
+}
+.pg-login .cadastre a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.pg-cadastro {
+  background-color: rgb(209, 209, 209);
+  min-height: 93vh;
+}
+.pg-cadastro .form {
+  padding-top: 3vh;
+}
+.pg-cadastro .titulo {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+.pg-cadastro .titulo p {
+  margin-bottom: 0 !important;
+}
+.pg-cadastro hr {
+  margin-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.pg-cadastro label {
+  font-weight: bold;
+}
+.pg-cadastro input {
+  border: 1px solid #dee2e6;
+  border-radius: 5px !important;
+}
+
+.funcao-direita .ola p {
+  text-transform: capitalize;
+}
+.funcao-direita .sair {
+  border: none;
+}
+.funcao-direita .sair i {
+  color: white;
+}
+
+.base-interna {
+  background-image: url("../../static/img/quadrados.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  min-height: 92vh;
+}
+.base-interna .caixa-principal {
+  width: 80%;
+  min-height: 80vh;
+}
+.base-interna .caixa-principal .botoes {
+  flex-wrap: wrap;
+  width: 70%;
+  margin: 0 auto;
+}
+.base-interna .caixa-principal .botoes .funcao {
+  background-color: rgba(209, 209, 209, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 160px;
+  height: 160px;
+  margin: 10px;
+  border: 2px solid black;
+  border-radius: 15px;
+  box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+}
+.base-interna .caixa-principal .botoes .funcao .head {
+  border-radius: 15px 15px 0 0;
+}
+.base-interna .caixa-principal .botoes .funcao .head p {
+  margin: 0;
+  padding-top: 4px;
+}
+.base-interna .caixa-principal .botoes .funcao:hover {
+  background-color: rgb(209, 209, 209);
+}
+.base-interna .caixa-principal .botoes .ger {
+  background-color: rgba(247, 211, 217, 0.6);
+}
+.base-interna .caixa-principal .botoes .ger:hover {
+  background-color: rgb(247, 211, 217);
+}
+.base-interna .caixa-principal .caixa-sistema {
+  background-color: rgba(209, 209, 209, 0.7);
+  border: 2px solid black;
+  border-radius: 15px;
+  box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.45);
+  width: 90%;
+  margin: 0 auto;
+  color: rgb(58, 58, 58);
+  overflow: auto;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(196, 196, 196, 0.699);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: grey;
+  border-radius: 10px;
+}
+
+.tt p {
+  margin-bottom: 0 !important;
+  text-indent: 5px;
+  border-bottom: 1px solid black;
+}
+.tt .ts {
+  border-bottom: 1px solid rgb(129, 129, 129);
+}
+
+.saque-deposito .titulo p {
+  margin-bottom: 0 !important;
+  text-indent: 5px;
+  border-bottom: 1px solid black;
+}
+.saque-deposito .conteudo .msg {
+  background-color: whitesmoke;
+  border-radius: 8px;
+  margin-top: 20px;
+  padding: 8px;
+}
+
+.pnd {
+  border-bottom: 1px solid black;
+}
+
+.msg {
+  background-color: whitesmoke;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.pg-impressao {
+  min-height: 93vh;
+}
+.pg-impressao .caixa-impressao {
+  background-color: rgb(243, 243, 243);
+  width: 300px;
+  border: 2px solid black;
+}/*# sourceMappingURL=style.css.map */

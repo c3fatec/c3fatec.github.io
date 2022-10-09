@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<!-- CSS -->
-		<link rel="stylesheet" href="{{ url_for('static', filename='main.css')}}" />
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='css/style.css')}}"
+		/>
 		<!-- CSS -->
 		<!-- Bootstrap -->
 		<link
@@ -23,6 +26,13 @@
 		{% block head %} {% endblock %}
 	</head>
 	<body>
+
+		<header class="header-b d-flex justify-content-center align-items-center">
+			<div class="logo-b w-50 h-100 d-flex justify-content-center text-center align-items-center">
+				<p class="h2 m-0 p-0">X-bank</p>
+			</div>
+		</header>
+		
 		{% block body %} {% endblock %}
 	</body>
 </html>

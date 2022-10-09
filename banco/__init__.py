@@ -29,9 +29,26 @@ def create_app():
     # importando rotas de transação
     app.register_blueprint(banco.bp)
 
+    from . import admin
+
+    # importando rotas de administrador
+    app.register_blueprint(admin.bp)
+
     from . import db
 
     # registrando comandos de banco de dados
     db.init_app(app)
+
+    # criar filtros
+
+    def dinheiro(txt):
+        txt = str(txt)
+        return txt.replace(".", ",")
+
+    def datetime(data, format="%d/%m/%Y %H:%M:%S"):
+        return data.strftime(format)
+
+    app.add_template_filter(dinheiro)
+    app.add_template_filter(datetime)
 
     return app

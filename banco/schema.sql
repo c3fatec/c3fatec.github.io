@@ -7,22 +7,36 @@ SET @OLD_SQL_MODE = @@SQL_MODE,
 CREATE SCHEMA IF NOT EXISTS `banco_api` DEFAULT CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS `banco_api`.`usuario` (
   `id_usuario` INT NOT NULL AUTO_INCREMENT,
-  `CPF` CHAR(11) NOT NULL,
-  `nome_usuario` VARCHAR(250) NOT NULL,
-  `senha_usuario` CHAR(245) NOT NULL,
+  `cpf` CHAR(11) NOT NULL,
+  `nome` VARCHAR(250) NOT NULL,
+  `senha` VARCHAR(245) NOT NULL,
+  `tipo` VARCHAR(30) NOT NULL,
   PRIMARY KEY (`id_usuario`),
-  UNIQUE INDEX `CPF_UNIQUE` (`CPF` ASC)
+  UNIQUE INDEX `cpf_UNIQUE` (`cpf` ASC)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `banco_api`.`conta` (
-  `id_numero_conta` INT(5) NOT NULL AUTO_INCREMENT,
-  `conta_saldo` DECIMAL(9, 2) NOT NULL,
-  `CPF` CHAR(11) NOT NULL,
-  PRIMARY KEY (`id_numero_conta`),
-  UNIQUE INDEX `id_numero_conta_UNIQUE` (`id_numero_conta` ASC),
-  INDEX `fk_conta_usuario1_idx` (`CPF` ASC),
-  CONSTRAINT `fk_conta_usuario1` FOREIGN KEY (`CPF`) REFERENCES `banco_api`.`usuario` (`CPF`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  `id_conta` INT(5) NOT NULL AUTO_INCREMENT,
+  `status` VARCHAR(30) NOT NULL,
+  `saldo` DECIMAL(9, 2) NOT NULL,
+  `cpf` CHAR(11) NOT NULL,
+  PRIMARY KEY (`id_conta`),
+  UNIQUE INDEX `id_conta_UNIQUE` (`id_conta` ASC),
+  INDEX `fk_conta_usuario1_idx` (`cpf` ASC),
+  CONSTRAINT `fk_conta_usuario1` FOREIGN KEY (`cpf`) REFERENCES `banco_api`.`usuario` (`cpf`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
 ALTER TABLE `banco_api`.`conta` AUTO_INCREMENT = 10000;
+CREATE TABLE IF NOT EXISTS `banco_api`.`transacoes`(
+  `id_transacao` INT(5) NOT NULL AUTO_INCREMENT,
+  `status` VARCHAR(145) NOT NULL,
+  `id_conta` INT(5) NOT NULL,
+  `valor` DECIMAL(9, 2) NOT NULL,
+  `data_inicio` DATETIME NOT NULL,
+  `data_fim` DATETIME,
+  `tipo` VARCHAR(145),
+  PRIMARY KEY (`id_transacao`),
+  INDEX `fk_transacoes_conta1_idx` (`id_conta`),
+  CONSTRAINT `fk_transacoes_conta1_idx` FOREIGN KEY (`id_conta`) REFERENCES `banco_api`.`conta` (`id_conta`)
+) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
 SET SQL_MODE = @OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS = @OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS = @OLD_UNIQUE_CHECKS;

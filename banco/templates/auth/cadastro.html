@@ -1,84 +1,135 @@
 {%extends 'index.html'%} {%block head%}
-
-<title>Cadastro</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
-
+<title>XBank - Cadastro</title>
 {%endblock%} {%block body%}
 
-<div class="container">
-	<form method="POST">
-		<!-- Dados pessoais -->
+<!-- header alternativo -->
+<div class="pg-cadastro container-fluid">
+	{%for message in get_flashed_messages()%} {%if message%}
+	<div class="d-flex justify-content-center">{{message}}</div>
+	{%endif%}{%endfor%}
 
-		<h3>Cadastro</h3>
+	<form method="post" class="form">
+		<!--Dados Pessoais-->
+		<div class="titulo d-flex justify-content-between">
+			<p class="h3">Dados Pessoais</p>
+			<div class="btn-sair text-center my-auto">
+				<button
+					type="button"
+					class="btn-close btn-sm"
+					aria-label="Close"
+					onclick="document.location='/'"
+				></button>
+			</div>
+		</div>
 		<hr />
-		<div>
-			<label>Nome:</label><br />
-			<input type="text" name="nome" />
+		<div class="d-flex row">
+			<div class="col-8">
+				<label for="nome">Nome*</label><br />
+				<input type="text" name="nome" id="nome" class="w-100" required />
+			</div>
+			<div class="col-4">
+				<label for="genero">Gênero*</label><br />
+				<input type="text" name="genero" id="genero" class="w-100" disabled />
+			</div>
+		</div>
+		<div class="d-flex mt-2 row">
+			<div class="col-4">
+				<label for="cpf">CPF*</label><br />
+				<input type="text" name="cpf" id="cpf" class="w-100" required />
+			</div>
+			<div class="col-4">
+				<label for="rg">RG</label><br />
+				<input type="text" name="rg" id="rg" class="w-100" disabled />
+			</div>
+			<div class="col-4">
+				<label for="data_nasc">Data de Nasc.*</label><br />
+				<input
+					type="text"
+					name="data-nasc"
+					id="data-nasc"
+					class="w-100"
+					disabled
+				/>
+			</div>
 		</div>
 
-		<div>
-			<label>CPF:</label><br />
-			<input type="text" name="cpf" />
+		<!--Endereço-->
+		<div class="titulo">
+			<p class="h3 mt-4">Endereço</p>
 		</div>
-		<!-- 
-		<div>
-			<label>Data de Nasc.:</label><br />
-			<input type="date" name="data_nasc" />
-		</div>
-
-		<div>
-			<label>E-mail:</label><br />
-			<input type="email" name="email" />
-		</div> -->
-
-		<!-- Dados de moradia -->
-		<!-- 
-		<h3>Endereço</h3>
 		<hr />
-		<div>
-			<label>Cep:</label><br />
-			<input type="text" style="width: 125px" /> -
-			<input type="text" style="width: 35px" />
+		<div class="d-flex mt-2 row">
+			<div class="col-4">
+				<label for="cep">CEP*</label><br />
+				<input type="number" name="cep" id="cep" class="w-100" disabled />
+			</div>
+			<div class="col-4">
+				<label for="bairro">Bairro</label><br />
+				<input type="text" name="bairro" id="bairro" class="w-100" disabled />
+			</div>
+			<div class="col-3">
+				<label for="cidade">Cidade</label><br />
+				<input type="text" name="cidade" id="cidade" class="w-100" disabled />
+			</div>
+			<div class="col-1">
+				<label for="uf">UF</label><br />
+				<input type="text" name="uf" id="uf" class="w-100" disabled />
+			</div>
+		</div>
+		<div class="d-flex row">
+			<div class="col-8">
+				<label for="rua">Rua</label><br />
+				<input type="text" name="rua" id="rua" class="w-100" disabled />
+			</div>
+			<div class="col-2">
+				<label for="numero">N°</label><br />
+				<input type="text" name="numero" id="numero" class="w-100" disabled />
+			</div>
+			<div class="col-2">
+				<label for="Complemento">Complemento</label><br />
+				<input
+					type="text"
+					name="complemento"
+					id="complemento"
+					class="w-100"
+					disabled
+				/>
+			</div>
 		</div>
 
-		<div>
-			<label>Rua:</label><br />
-			<input type="text" name="rua" />
+		<!--Dados da Conta-->
+		<div class="titulo">
+			<p class="h3 mt-4">Dados da Conta</p>
 		</div>
-
-		<div>
-			<label>Bairro:</label><br />
-			<input type="text" name="bairro" />
-		</div>
-
-		<div>
-			<label>Cidade:</label><br />
-			<input type="text" name="cidade" />
-			<label>UF:</label>
-			<input type="text" name="uf" style="width: 25px" />
-		</div>
-
-		<div>
-			<label>País:</label><br />
-			<input type="text" name="pais" />
-		</div> -->
-
-		<!-- Dados da Conta-->
-
-		<h3>Dados da Conta</h3>
 		<hr />
-		<div>
-			<label>Senha:</label><br />
-			<input type="password" name="senha" id="senha" /><br />
-			<!-- <label>Repita sua senha:</label><br />
-			<input type="Senha" /> -->
+		<div class="d-flex row">
+			<div class="col-8">
+				<label for="email">E-mail*</label><br />
+				<input type="email" name="email" id="email" class="w-100" disabled />
+			</div>
+			<div class="col-2">
+				<label for="senha">Senha*</label><br />
+				<input type="password" name="senha" id="senha" class="w-100" required />
+			</div>
+			<div class="col-2">
+				<label for="senha-repetida">Repita sua senha*</label><br />
+				<input
+					type="password"
+					name="senha-repetida"
+					id="senha-repetida"
+					class="w-100"
+					required
+				/>
+			</div>
 		</div>
 
-		<div>
-			<button type="submit">Cadastrar</button>
+		<!--Botão de salvar-->
+		<div class="mt-4 col-2 mx-auto">
+			<button type="submit" class="btn btn-secondary btn-sm w-100">
+				Cadastrar
+			</button>
 		</div>
 	</form>
-	<button onclick="document.location='/'">Ir para login</button>
 </div>
 
 {%endblock%}

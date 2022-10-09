@@ -1,15 +1,27 @@
-{% extends "index.html" %} {%block head%}
-<title>Página Principal</title>
+{% extends "baseinterna.html" %} {%block head%}
+
+<title>Xbank - Home</title>
+
 {%endblock%} {%block body%}
-<div>
-	<h1>Olá</h1>
+<div class="tt">
+	<p class="h3 pt-3 text-center">Últimas transações</p>
 
-	<button onclick="document.location='/conta/saque'">Saque</button>
-
-	<button onclick="document.location='/conta/deposito'">Deposito</button>
+	<div class="d-flex flex-column">
+		{%if comprovantes%} {%for comprovante in comprovantes%}
+		<div class="d-flex pt-2 ps-2">
+			<div class="col-4 h5">Tipo: {{comprovante.tipo}}</div>
+			<div class="col-8 h5">Status: {{comprovante.status}}</div>
+		</div>
+		<div class="ts d-flex ps-2 pb-2">
+			<div class="col-4 h5">Valor: {{comprovante.valor | dinheiro }}</div>
+			<div class="col-8 h5">
+				Criado em: {{comprovante.data_inicio | datetime}}
+			</div>
+		</div>
+		{%endfor%} {%else%}
+	</div>
 </div>
-<div>Seu saldo é de {{data.conta_saldo}} reais.</div>
-<div>
-	<button onclick="document.location='/logout'">Fazer logout</button>
+<div class="h-75 d-flex align-items-center justify-content-center">
+	<h2>Não foram feitas transações nessa conta</h2>
 </div>
-{%endblock%}
+{%endif%} {%endblock%}

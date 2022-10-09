@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- CSS -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}" />
+	<!-- CSS -->
+	<!-- botao off -->
+	<script src="https://kit.fontawesome.com/5a58e941dd.js" crossorigin="anonymous"></script>
+	<!-- Bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+		integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+		crossorigin="anonymous"></script>
+
+	<!-- Bootstrap -->
+
+	{% block head %} {% endblock %}
+</head>
+
+<body>
+	<header class="header d-flex justify-content-between">
+		<div class="w-25"></div>
+
+		<div class="logo w-50 h-100 d-flex justify-content-center text-center align-items-center">
+			<p class="h2 m-0 p-0">X-bank</p>
+		</div>
+
+		<div class="funcao-direita w-25 h-100 pe- d-flex justify-content-end align-items-center">
+			<div class="ola m-0 p-0 d-flex justify-content-center flex-column h-100 pe-2">
+				<p class="h5 m-0 p-0">Olá <b>{{g.usuario.nome}}</b><br /></p>
+				<span class="m-0 p-0"> Saldo: R$ {{g.conta.saldo | dinheiro}} </span>
+			</div>
+
+			<div class="sair col-2 d-flex justify-content-center align-items-center h-100 btn btn-outline-secondary p-0"
+				onclick="document.location='/logout'">
+				<i class="fa-solid fa-power-off"></i>
+			</div>
+		</div>
+	</header>
+
+	<div class="base-interna container-fluid d-flex justify-content-center align-items-center">
+		<div class="caixa-principal d-flex">
+			<div class="botoes d-flex justify-content-center text-center w-50 my-auto">
+				{%if 'cliente' in g.usuario.tipo%}
+				<div class="funcao" onclick="document.location='/conta'">
+					<div class="head w-100">
+						<p class="h4">Home</p>
+					</div>
+					<div class="w-100 my-auto">
+						<img src="../static/icons/home.png" alt="home" class="w-50" />
+					</div>
+				</div>
+
+				<div class="funcao" onclick="document.location='/conta/saque'">
+					<div class="head w-100">
+						<p class="h4">Saque</p>
+					</div>
+					<div class="w-100 my-auto">
+						<img src="../static/icons/sacar.png" alt="sacar" class="w-50" />
+					</div>
+				</div>
+
+				<div class="funcao" onclick="document.location='/conta/deposito'">
+					<div class="head w-100">
+						<p class="h4">Depósito</p>
+					</div>
+					<div class="w-100 my-auto">
+						<img src="../static/icons/depositar.png" alt="depositar" class="w-50" />
+					</div>
+				</div>
+
+				<div class="funcao" onclick="document.location='/conta/comprovantes'">
+					<div class="head w-100">
+						<p class="h4">Extrato</p>
+					</div>
+					<div class="w-100 my-auto">
+						<img src="../static/icons/extrato.png" alt="comprovante" class="w-50" />
+					</div>
+				</div>
+				{%endif%}
+				<!-- Funções de gerente -->
+				{%if 'gerente' in g.usuario.tipo%}
+				<div class="funcao" onclick="document.location='/admin/pendencias'">
+					<div class="head w-100">
+						<p class="h4">Pendências</p>
+					</div>
+					<div class="w-100 my-auto">
+						<img src="../static/icons/pendencia.png" alt="comprovante" class="w-50" />
+					</div>
+				</div>
+				<div class="funcao" onclick="document.location='/admin/cadastros'">
+					<div class="head w-100">
+						<p class="h4">Cadastros</p>
+					</div>
+					<div class="w-100 my-auto">
+						<img src="../static/icons/cadastro.png" alt="comprovante" class="w-50" />
+					</div>
+				</div>
+				{%endif%}
+			</div>
+
+			<div class="d-flex align-items-center w-75 m-">
+				<div class="caixa-sistema w-100 h-100">
+					{% block body %} {% endblock %}
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
