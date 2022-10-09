@@ -1,5 +1,6 @@
 {%extends 'baseinterna.html'%} {%block head%}
-<title>X-bank - Cadastros</title>
+
+<title>Xbank - Aprovação de Cadastros</title>
 <style>
 	.ola > span {
 		display: none;
@@ -23,7 +24,7 @@
 	cadastros%}
 	<div class="pnd d-flex w-100 p-2">
 		<div class="col-9">
-			<div>Nome: {{cadastro.nome}}</div>
+			<div class="text-capitalize">Nome: {{cadastro.nome}}</div>
 			<div>CPF: {{cadastro.cpf}}</div>
 			<div>Tipo de Conta: {{cadastro.tipo}}</div>
 		</div>

@@ -1,3 +1,28 @@
+.header {
+    background-color: rgb(43, 43, 43);
+    height: 7vh;
+    color: white;
+  
+    .logo>p {
+      color: white;
+      font-weight: bold !important;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+  }
+
+.header-b {
+    background-color: rgb(43, 43, 43);
+    height: 7vh;
+    color: white;
+
+    .logo-b>p {
+        color: white;
+        font-weight: bold !important;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+}
 
 @import 'login';
 @import 'cadastro';

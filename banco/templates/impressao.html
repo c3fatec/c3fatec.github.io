@@ -25,7 +25,7 @@
 		<!-- Bootstrap -->
 	</head>
 
-	<title>X-bank - Impressão</title>
+	<title>Xbank - Impressão</title>
 
 	<div class="pg-impressao container-fluid d-flex align-items-center">
 		<div class="caixa-impressao mx-auto">
@@ -42,7 +42,7 @@
 			<div class="d-flex flex-column">
 				<div class="d-flex pt-1 ps-1 mb-2">
 					<!-- <div class="col-6"><p class="my-auto">Agência:</p></div> -->
-					<div class="col-6">
+					<div class="col-8">
 						<p class="my-auto">Número da conta: {{comprovante.id_conta}}</p>
 					</div>
 				</div>
@@ -65,7 +65,9 @@
 			<div class="ps-1">
 				<p>Favorecido: {{comprovante.nome | capitalize}}</p>
 				<p>CPF: {{comprovante.cpf}}</p>
+				{%if comprovante.tipo=='depósito'%}
 				<p>Depositante: O próprio favorecido</p>
+				{%endif%}
 				<!-- <p>Favorecido:</p> -->
 			</div>
 

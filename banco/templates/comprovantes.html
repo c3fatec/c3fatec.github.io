@@ -39,7 +39,7 @@
 				<div>Aprovado em: {{comprovante.data_fim | datetime}}</div>
 				{%endif%}
 			</div>
-			<div class="col-3">
+			<div class="col-3 pe-2">
 				<a
 					href="{{url_for('conta.impressao', id_transacao=comprovante['id_transacao'])}}"
 					target="_blank"
