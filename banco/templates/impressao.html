@@ -63,10 +63,13 @@
 			<hr />
 
 			<div class="ps-1">
+				{%if comprovante.tipo=='depósito'%}
 				<p>Favorecido: {{comprovante.nome | capitalize}}</p>
 				<p>CPF: {{comprovante.cpf}}</p>
-				{%if comprovante.tipo=='depósito'%}
 				<p>Depositante: O próprio favorecido</p>
+				{%else%}
+				<p>Nome: {{comprovante.nome | capitalize}}</p>
+				<p>CPF: {{comprovante.cpf}}</p>
 				{%endif%}
 				<!-- <p>Favorecido:</p> -->
 			</div>
