@@ -1,15 +1,63 @@
-## API da turma de DSM da equipe C3 
-# Sobre o projeto
+
+
+<div align="center">
+    
+![banner](https://i.ibb.co/QDpNydM/APRESENTA-O-C3-1-SPRINT-Capa-para-Facebook.jpg)
+
+
+</div>
+<br id="topo">
+<p align="center">
+    <a href="#sobre">Sobre</a>  |  
+    <a href="#backlogs">Product Backlog</a>  |  
+    <a href="#sprints">Sprints</a>  |  
+    <a href="#tecnologias">Tecnologias</a>  |  
+    <a href="#equipe">Equipe</a> |
+    <a href="#instruções">Instruções</a>
+</p>
+
+## :bookmark_tabs: Sobre 
 Esse repositório contém o primeiro projeto API dos estudantes do primeiro semestre 2022/2 de DSM da Fatec de São José dos Campos. O projeto propõe a criação de uma aplicação que simule um banco digital, com funcionalidades para criação e manutenção de uma conta de usuário, gerenciamento interno e display responsivo para web.
 
 ----------
-## Tecnologias utilizadas
-O projeto foi criado utilizando as seguintes tecnologias:
-  - Versionamento: Git (Github)
-  - Banco de dados: MySQL
-  - Framework web: Flask
+## :date: Sprints
+
+| Sprint | Data Final | Status | 
+|:--:|:----------:|:----------------|:----------------------------------:|
+| 01 | 18/09/2022 | ✔️ Concluída    | 
+| 02 | 19/10/2022 | ✔️ Concluída    | 
+| 03 | 06/11/2022 |   | 
+| 04 | 27/11/2022 |   | 
+
+
 ----------
-## Instalando o projeto
+
+## :open_file_folder:Product Backlog
+<h4>1º Sprint -  <a href="https://i.ibb.co/TgW062T/pb1.png">Clique aqui</a>
+
+<h4>2º Sprint</h4>    
+<img src="https://i.ibb.co/M6n9cFr/Product-Backlog.jpg" alt="Product-Backlog" border="0">
+
+----------
+## :computer:Tecnologias Utilizadas
+
+<img src="https://i.ibb.co/pfvD7fv/Tecnologiasc3.jpg" alt="Tecnologiasc3" border="0">
+
+
+## :busts_in_silhouette:Equipe 
+
+|    Função     |                  Nome                 |                       
+| :-----------: | :------------------------------------ | 
+| Product Owner | Daniel Machado dos Santos             |           
+| Scrum Master  | Gabriel Oliveira Santos               |  
+|   Dev Team    | Ivan Suiyma                           | 
+|   Dev Team    | Jackles Kerley                        |   
+|   Dev Team    | Claudinei Paulista                    |                     
+----------
+## :gear:Instruções 
+
+ **Instalando o projeto**
+
 Para rodar o projeto em sua máquina, inicie um ambiente virtual:
 ```
 pip install virtualenv
@@ -30,8 +78,10 @@ Para criar configurações pessoais, crie uma pasta chamada "instance", e dentro
 
 
 ----------
-## Rodando o projeto <br>
+<h3>Rodando o projeto</h3>
+
 **Configurando seu usuário da base de dados**<br>
+
 A base de dados está configurada para se conectar ao usuário "root", sem senha em seu MySQL.
 Para alterar essa configuração, no arquivo de configurações locais "instance/config.py" determine as variáveis:
 ```
@@ -48,4 +98,4 @@ Após instalar as dependências, o projeto está pronto pra ser rodado na sua m�
 flask --app banco run
 ```
 
-<small>*Para evitar especificar "--app banco" ao executar os comandos, determine a variável **FLASK_APP="banco"** no seu arquivo .env*</small><br><br>
+<small>*Para evitar especificar "--app banco" ao executar os comandos, determine a variável **FLASK_APP="banco"** no seu arquivo .env*</small><br><br> 
