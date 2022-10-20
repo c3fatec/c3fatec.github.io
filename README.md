@@ -18,14 +18,14 @@
 
 ---
 
-#<h2 id='sobre'>:bookmark_tabs:Sobre</h2>
+<h2 id='sobre'>Sobre</h2>
 Esse repositório contém o primeiro projeto API dos estudantes do primeiro semestre 2022/2 de DSM da Fatec de São José dos Campos. O projeto propõe a criação de uma aplicação que simule um banco digital, com funcionalidades para criação e manutenção de uma conta de usuário, gerenciamento interno e display responsivo para web.
 
 ---
 
 <!-- ## :date: Sprints -->
 
-#<h2 id='sprints'>:date:Sprint</h2>
+<h2 id='sprints'>Sprint</h2>
 
 | Sprint | Data Final | Status       |
 | :----: | :--------: | :----------- |
@@ -38,7 +38,7 @@ Esse repositório contém o primeiro projeto API dos estudantes do primeiro seme
 
 <!-- ## :open_file_folder:Product Backlog -->
 
-#<h2 id='backlogs'>:open_file_folder:Product Backlog</h2>
+<h2 id='backlogs'>Product Backlog</h2>
 
 <h4>1º Sprint -  <a href="https://i.ibb.co/TgW062T/pb1.png">Clique aqui</a>
 
@@ -47,13 +47,13 @@ Esse repositório contém o primeiro projeto API dos estudantes do primeiro seme
 
 ---
 
-#<h2 name='tecnologias'>:computer:Tecnologias utilizadas</h2>
+<h2 name='tecnologias'>Tecnologias utilizadas</h2>
 
 <img src="https://i.ibb.co/pfvD7fv/Tecnologiasc3.jpg" alt="Tecnologiasc3" border="0">
 
 ---
 
-#<h2 id='demo'>:new:Demonstração</h2>
+<h2 id='demo'>Demonstração</h2>
 
 <!-- <video width="320" height="240" autoplay>
   <source src="banco/static/video/xbank.mp4" type="video/mp4" alt='video demo'>
@@ -61,7 +61,7 @@ Esse repositório contém o primeiro projeto API dos estudantes do primeiro seme
 <div style="position: relative; padding-bottom: 42.34375%; height: 0;"><iframe src="https://www.loom.com/embed/40d65d6ff2574e0586003a2e2f3d7e57" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 ---
 
-#<h2 id='equipe'>:busts_in_silhouette:Equipe</h2>
+<h2 id='equipe'>Equipe</h2>
 
 |    Função     | Nome                      |
 | :-----------: | :------------------------ |
@@ -73,7 +73,7 @@ Esse repositório contém o primeiro projeto API dos estudantes do primeiro seme
 
 ---
 
-#<h2 id='instru'>:gear:Instruções</h2>
+<h2 id='instru'>Instruções</h2>
 
 **Instalando o projeto**
 
