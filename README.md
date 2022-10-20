@@ -56,8 +56,6 @@ Esse repositório contém o primeiro projeto API dos estudantes do primeiro seme
 
 #<h2 id='demo'>:new:Demonstração</h2>
 
-<!-- <h4>Video - <a href="https://www.loom.com/share/40d65d6ff2574e0586003a2e2f3d7e57">Clique aqui</a> -->
-
 <div style="position: relative; padding-bottom: 42.34375%; height: 0;"><iframe src="https://www.loom.com/embed/40d65d6ff2574e0586003a2e2f3d7e57" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ----------
