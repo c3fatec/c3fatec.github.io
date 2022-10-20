@@ -33,14 +33,14 @@
 			<form action="" method="POST">
 				<input type="hidden" name="cpf" value="{{cadastro.cpf}}" />
 				<input type="hidden" name="status" value="aprovado" />
-				<button class="btn btn-secondary mb-1 w-100" type="submit">
+				<button class="btn btn-outline-success mb-1 w-100" type="submit">
 					Aprovar
 				</button>
 			</form>
 			<form action="" method="POST">
 				<input type="hidden" name="cpf" value="{{cadastro.cpf}}" />
 				<input type="hidden" name="status" value="rejeitado" />
-				<button class="btn btn-outline-dark w-100" type="submit">
+				<button class="btn btn-outline-danger w-100" type="submit">
 					Rejeitar
 				</button>
 			</form>
@@ -49,6 +49,6 @@
 	{%endfor%} {%else%}
 </div>
 <div class="h-75 d-flex align-items-center justify-content-center">
-	<h2>Não há pendências!</h2>
+	<h2 class="text-center">Não há pendências!</h2>
 </div>
 {%endif%} {%endblock%}
