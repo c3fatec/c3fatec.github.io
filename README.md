@@ -1,29 +1,36 @@
 
 
-<div align="center">
+<div>
     
-![banner](https://i.ibb.co/QDpNydM/APRESENTA-O-C3-1-SPRINT-Capa-para-Facebook.jpg)
+<!-- ![banner](https://i.ibb.co/QDpNydM/APRESENTA-O-C3-1-SPRINT-Capa-para-Facebook.jpg) -->
+
+<img src="https://i.ibb.co/QDpNydM/APRESENTA-O-C3-1-SPRINT-Capa-para-Facebook.jpg" alt="APRESENTA-O-C3-1-SPRINT-Capa-para-Facebook" border="0" />
 
 
 </div>
 <br id="topo">
 <p align="center">
     <a href="#sobre">Sobre</a>  |  
+    <a href="#sprints">Sprints</a>  | 
     <a href="#backlogs">Product Backlog</a>  |  
-    <a href="#sprints">Sprints</a>  |  
+    <a href="#demo">Demonstração</a>  |    
     <a href="#tecnologias">Tecnologias</a>  |  
     <a href="#equipe">Equipe</a> |
-    <a href="#instruções">Instruções</a>
+    <a href="#instru">Instruções</a>
 </p>
 
-## :bookmark_tabs: Sobre 
+----------
+
+#<h2 id='sobre'>:bookmark_tabs:Sobre</h2>
 Esse repositório contém o primeiro projeto API dos estudantes do primeiro semestre 2022/2 de DSM da Fatec de São José dos Campos. O projeto propõe a criação de uma aplicação que simule um banco digital, com funcionalidades para criação e manutenção de uma conta de usuário, gerenciamento interno e display responsivo para web.
 
 ----------
-## :date: Sprints
+
+<!-- ## :date: Sprints -->
+#<h2 id='sprints'>:date:Sprint</h2>
 
 | Sprint | Data Final | Status | 
-|:--:|:----------:|:----------------|:----------------------------------:|
+|:--:|:----------:|:----------------|
 | 01 | 18/09/2022 | ✔️ Concluída    | 
 | 02 | 19/10/2022 | ✔️ Concluída    | 
 | 03 | 06/11/2022 |   | 
@@ -32,19 +39,30 @@ Esse repositório contém o primeiro projeto API dos estudantes do primeiro seme
 
 ----------
 
-## :open_file_folder:Product Backlog
+<!-- ## :open_file_folder:Product Backlog -->
+#<h2 id='backlogs'>:open_file_folder:Product Backlog</h2>
 <h4>1º Sprint -  <a href="https://i.ibb.co/TgW062T/pb1.png">Clique aqui</a>
 
 <h4>2º Sprint</h4>    
 <img src="https://i.ibb.co/M6n9cFr/Product-Backlog.jpg" alt="Product-Backlog" border="0">
 
 ----------
-## :computer:Tecnologias Utilizadas
+
+#<h2 name='tecnologias'>:computer:Tecnologias utilizadas</h2>
 
 <img src="https://i.ibb.co/pfvD7fv/Tecnologiasc3.jpg" alt="Tecnologiasc3" border="0">
 
+----------
 
-## :busts_in_silhouette:Equipe 
+#<h2 id='demo'>:new:Demonstração</h2>
+
+<!-- <h4>Video - <a href="https://www.loom.com/share/40d65d6ff2574e0586003a2e2f3d7e57">Clique aqui</a> -->
+
+<div style="position: relative; padding-bottom: 42.34375%; height: 0;"><iframe src="https://www.loom.com/embed/40d65d6ff2574e0586003a2e2f3d7e57" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
+----------
+
+#<h2 id='equipe'>:busts_in_silhouette:Equipe</h2>
 
 |    Função     |                  Nome                 |                       
 | :-----------: | :------------------------------------ | 
@@ -53,8 +71,11 @@ Esse repositório contém o primeiro projeto API dos estudantes do primeiro seme
 |   Dev Team    | Ivan Suiyma                           | 
 |   Dev Team    | Jackles Kerley                        |   
 |   Dev Team    | Claudinei Paulista                    |                     
+
 ----------
-## :gear:Instruções 
+
+#<h2 id='instru'>:gear:Instruções</h2>
+
 
  **Instalando o projeto**
 
@@ -78,6 +99,7 @@ Para criar configurações pessoais, crie uma pasta chamada "instance", e dentro
 
 
 ----------
+
 <h3>Rodando o projeto</h3>
 
 **Configurando seu usuário da base de dados**<br>
