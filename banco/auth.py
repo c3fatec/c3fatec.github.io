@@ -11,7 +11,7 @@ from flask import (
 )
 from werkzeug.security import check_password_hash, generate_password_hash
 from .db import db_create, db_get
-
+from random import randint
 bp = Blueprint("auth", __name__, url_prefix="/")
 
 
@@ -32,11 +32,15 @@ def cadastro():
                     cpf=cpf,
                     tipo="cliente",
                 )
+                idconta = randint(11111, 99999)         
             except:
                 pass
             else:
-                db_create(table="conta", saldo=0, cpf=cpf, status="aguardando")
-                return redirect(url_for("auth.aguarde"))
+                try:
+                    db_create( table="conta", id_conta=idconta, saldo=0, cpf=cpf, status="aguardando")
+                    return redirect(url_for("auth.aguarde"))
+                except:
+                    idconta = randint(11111, 99999)
         else:
             flash("As senhas não são compatíveis.")
 
