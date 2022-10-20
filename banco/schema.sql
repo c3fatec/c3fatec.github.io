@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `banco_api`.`conta` (
   INDEX `fk_conta_usuario1_idx` (`cpf` ASC),
   CONSTRAINT `fk_conta_usuario1` FOREIGN KEY (`cpf`) REFERENCES `banco_api`.`usuario` (`cpf`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
-ALTER TABLE `banco_api`.`conta` AUTO_INCREMENT = 10000;
+ALTER TABLE `banco_api`.`conta` AUTO_INCREMENT = 20000;
 CREATE TABLE IF NOT EXISTS `banco_api`.`transacoes`(
   `id_transacao` INT(5) NOT NULL AUTO_INCREMENT,
   `status` VARCHAR(145) NOT NULL,
