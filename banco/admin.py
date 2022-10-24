@@ -72,3 +72,9 @@ def cadastros():
         conta.update(usuario)
 
     return render_template("cadastros.html", cadastros=cadastros)
+
+@bp.route("/atualizacaodados", methods=["POST", "GET"])
+@requer_login
+@rota_gerente
+def dados():
+    return render_template("atualizacaodados.html")
