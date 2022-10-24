@@ -111,10 +111,10 @@ def deposito():
     return render_template("deposito.html", id=id)
 
 
-@bp.route("/comprovantes", methods=["GET", "POST"])
+@bp.route("/extrato", methods=["GET", "POST"])
 @requer_login
 @rota_cliente
-def comprovantes():
+def extrato():
     conta = g.conta
     id_conta = conta["id_conta"]
     date_filter = None
@@ -133,7 +133,7 @@ def comprovantes():
         date_filter=date_filter,
     )
 
-    return render_template("comprovantes.html", comprovantes=comprovantes)
+    return render_template("extrato.html", comprovantes=comprovantes)
 
 
 @bp.route("/impressao")

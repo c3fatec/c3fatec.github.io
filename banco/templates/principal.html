@@ -3,23 +3,23 @@
 <title>Xbank - Home</title>
 
 {%endblock%} {%block body%}
-<div class="tt">
-	<p class="h3 pt-3 text-center">Últimas transações</p>
+<div class="pg-home">
+	<p class="h3 py-3 text-center border-bottom border-dark">Últimas transações</p>
 
-	<div class="d-flex flex-column">
-		{%if comprovantes%} {%for comprovante in comprovantes%}
-		<div class="d-flex pt-2 ps-2">
+	{%if comprovantes%} {%for comprovante in comprovantes%}
+	<div class="d-flex flex-column p-1 border-bottom border-dark">
+		<div class="d-flex">
 			<div class="col-4 h5">Tipo: {{comprovante.tipo}}</div>
 			<div class="col-8 h5">Status: {{comprovante.status}}</div>
 		</div>
-		<div class="ts d-flex ps-2 pb-2">
+		<div class="d-flex ">
 			<div class="col-4 h5">Valor: {{comprovante.valor | dinheiro }}</div>
 			<div class="col-8 h5">
 				Criado em: {{comprovante.data_inicio | datetime}}
 			</div>
 		</div>
-		{%endfor%} {%else%}
 	</div>
+	{%endfor%} {%else%}
 </div>
 <div class="h-75 d-flex align-items-center justify-content-center">
 	<h2 class="text-center">Não foram feitas transações nessa conta</h2>

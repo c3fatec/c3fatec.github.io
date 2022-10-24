@@ -3,26 +3,22 @@
 <title>Xbank - Saque</title>
 
 <style>
-	.ola > span {
+	.ola>span {
 		display: none;
 	}
 </style>
 {%endblock%} {%block body%}
 
-<div class="saque-deposito h-100">
-	<div class="titulo">
-		<p class="h3 pt-3 text-center">Saque</p>
-	</div>
+<div class="pg-saque h-100">
+	<p class="h3 py-3 text-center border-bottom border-dark">Saque</p>
+
 	<div class="conteudo d-flex flex-column m-3 mt-5 h-50">
 		<div class="mx-auto text-center w-100">
 			<p class="h2">Saldo: R$ {{g.conta.saldo | dinheiro}}</p>
 		</div>
 
 		<div class="mt-2 h-75">
-			<form
-				method="POST"
-				class="d-flex justify-content-around align-items-center flex-column text-center h-100"
-			>
+			<form method="POST" class="d-flex justify-content-around align-items-center flex-column text-center h-100">
 				<label>Digite o valor:</label>
 				<input type="number" step="0.01" name="valor" id="valor" min="0.01" />
 				<button type="submit" class="btn btn-secondary btn-sm w-25">
@@ -34,10 +30,7 @@
 			<div class="msg d-flex align-items-center justify-content-center">
 				<div class="col-9">{{message}}</div>
 				<div class="col-3">
-					<a
-						href="{{url_for('conta.impressao', id_transacao=id)}}"
-						target="_blank"
-					>
+					<a href="{{url_for('conta.impressao', id_transacao=id)}}" target="_blank">
 						<div class="btn btn-secondary">Gerar comprovante</div>
 					</a>
 				</div>

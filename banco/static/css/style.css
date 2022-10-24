@@ -124,7 +124,7 @@
 }
 .base-interna .caixa-principal .botoes {
   flex-wrap: wrap;
-  width: 70%;
+  width: 35%;
   margin: 0 auto;
 }
 .base-interna .caixa-principal .botoes .funcao {
@@ -132,8 +132,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 160px;
-  height: 160px;
+  width: 120px;
+  height: 120px;
   margin: 10px;
   border: 2px solid black;
   border-radius: 15px;
@@ -180,31 +180,6 @@
 *::-webkit-scrollbar-thumb {
   background-color: grey;
   border-radius: 10px;
-}
-
-.tt p {
-  margin-bottom: 0 !important;
-  text-indent: 5px;
-  border-bottom: 1px solid black;
-}
-.tt .ts {
-  border-bottom: 1px solid rgb(129, 129, 129);
-}
-
-.saque-deposito .titulo p {
-  margin-bottom: 0 !important;
-  text-indent: 5px;
-  border-bottom: 1px solid black;
-}
-.saque-deposito .conteudo .msg {
-  background-color: whitesmoke;
-  border-radius: 8px;
-  margin-top: 20px;
-  padding: 8px;
-}
-
-.pnd {
-  border-bottom: 1px solid black;
 }
 
 .msg {

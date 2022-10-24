@@ -41,7 +41,7 @@ def pendencias():
     return render_template("pendencias.html", pendencias=pendencias)
 
 
-@bp.route("/cadastros", methods=["POST", "GET"])
+@bp.route("/aprovacaocadastros", methods=["POST", "GET"])
 @requer_login
 @rota_gerente
 def cadastros():
@@ -71,10 +71,16 @@ def cadastros():
         usuario = db_get(table="usuario", many=False, cpf=cpf)
         conta.update(usuario)
 
-    return render_template("cadastros.html", cadastros=cadastros)
+    return render_template("aprovacaocadastros.html", cadastros=cadastros)
 
 @bp.route("/atualizacaodados", methods=["POST", "GET"])
 @requer_login
 @rota_gerente
-def dados():
+def attdados():
     return render_template("atualizacaodados.html")
+
+@bp.route("/dados", methods=["POST", "GET"])
+@requer_login
+@rota_gerente
+def dados():
+    return render_template("dados.html")

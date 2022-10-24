@@ -3,31 +3,19 @@
 <title>Xbank - Extrato</title>
 
 {%endblock%} {%block body%}
-<div class="tt">
-	<p class="h3 pt-3 text-center">Extrato</p>
+<div class="pg-extrato">
+	<p class="h3 py-3 text-center border-bottom border-dark">Extrato</p>
 
 	<div class="d-flex flex-column">
-		<div class="d-flex justify-content-center my-2">
-			<form action="" method="POST">
-				<input
-					type="datetime-local"
-					name="data_inicio"
-					id="data_inicio"
-					step="1"
-					required
-				/>
-				<input
-					type="datetime-local"
-					name="data_fim"
-					id="data_fim"
-					step="1"
-					required
-				/>
-				<input type="submit" value="Filtrar" class="btn btn-secondary btn-sm" />
+		<div class="d-flex justify-content-center p-2 border-bottom border-dark">
+			<form action="" method="POST" class="d-flex justify-content-center gap-2">
+				<input type="datetime-local" name="data_inicio" id="data_inicio" step="1" required class="col-5 border-1 rounded"/>
+				<input type="datetime-local" name="data_fim" id="data_fim" step="1" required class="col-5 border-1 rounded"/>
+				<input type="submit" value="Filtrar" class="btn btn-secondary btn-sm col-2 border-0"/>
 			</form>
 		</div>
 		{%if comprovantes%} {%for comprovante in comprovantes%}
-		<div class="d-flex pt-2 ps-2 border-bottom border-dark">
+		<div class="d-flex p-2 border-bottom border-dark">
 			<div class="col-4">
 				<div>Status: {{comprovante.status}}</div>
 				<div>Valor: {{comprovante.valor | dinheiro}}</div>
@@ -39,11 +27,8 @@
 				<div>Aprovado em: {{comprovante.data_fim | datetime}}</div>
 				{%endif%}
 			</div>
-			<div class="col-3 pe-2">
-				<a
-					href="{{url_for('conta.impressao', id_transacao=comprovante['id_transacao'])}}"
-					target="_blank"
-				>
+			<div class="col-3 my-auto d-flex justify-content-center">
+				<a href="{{url_for('conta.impressao', id_transacao=comprovante['id_transacao'])}}" target="_blank">
 					<div class="btn btn-outline-dark">Gerar comprovante</div>
 				</a>
 			</div>
