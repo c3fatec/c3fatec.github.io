@@ -39,7 +39,9 @@ def db_create(**params):
         print(e.args[1])
 
 
-def db_get(many=True, limit=None, order_by=None, order=None, date_filter=None, **params):
+def db_get(
+    many=True, limit=None, order_by=None, order=None, date_filter=None, **params
+):
     table = params.pop("table")
     key = "".join(params.keys())
     value = ",".join(str(v) for v in params.values())
@@ -48,9 +50,13 @@ def db_get(many=True, limit=None, order_by=None, order=None, date_filter=None, *
     response = None
 
     try:
-        command = f"SELECT * FROM {table} WHERE {key} = '{value}'"
+        command = f"SELECT * FROM {table}"
+        if key and value:
+            command += f" WHERE {key} = '{value}'"
         if date_filter:
-            command += f" AND data_inicio BETWEEN '{date_filter[0]}' AND '{date_filter[1]}'"
+            command += (
+                f" AND data_inicio BETWEEN '{date_filter[0]}' AND '{date_filter[1]}'"
+            )
         if order_by:
             command += f" ORDER BY {order_by}"
             if order:

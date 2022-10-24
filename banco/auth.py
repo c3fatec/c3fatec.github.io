@@ -12,6 +12,7 @@ from flask import (
 from werkzeug.security import check_password_hash, generate_password_hash
 from .db import db_create, db_get
 from random import randint
+
 bp = Blueprint("auth", __name__, url_prefix="/")
 
 
@@ -32,12 +33,18 @@ def cadastro():
                     cpf=cpf,
                     tipo="cliente",
                 )
-                idconta = randint(11111, 99999)         
+                idconta = randint(11111, 99999)
             except:
                 pass
             else:
                 try:
-                    db_create( table="conta", id_conta=idconta, saldo=0, cpf=cpf, status="aguardando")
+                    db_create(
+                        table="conta",
+                        id_conta=idconta,
+                        saldo=0,
+                        cpf=cpf,
+                        status="aguardando",
+                    )
                     return redirect(url_for("auth.aguarde"))
                 except:
                     idconta = randint(11111, 99999)
@@ -91,6 +98,18 @@ def login():
 def logout():
     session.clear()
     return redirect(url_for("auth.login"))
+
+
+@bp.route("/teste")
+def teste():
+    contas = list(map(lambda x: x["id_conta"], db_get(table="conta", many=True)))
+
+    idconta = randint(1, 9)
+    numbers = [2, 3, 4]
+    while idconta in numbers:
+        print(idconta)
+        idconta = randint(1, 9)
+    return [contas, idconta]
 
 
 @bp.before_app_request
