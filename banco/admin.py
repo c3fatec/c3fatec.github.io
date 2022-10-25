@@ -74,7 +74,7 @@ def cadastros():
     return render_template("cadastros.html", cadastros=cadastros)
 
 
-@bp.route("usuarios")
+@bp.route("/usuarios")
 # @requer_login
 # @rota_gerente
 def usuarios():
@@ -85,12 +85,12 @@ def usuarios():
     return dados
 
 
-@bp.route("dados", methods=["GET", "POST"])
+# @bp.route("/dados", methods=["GET", "POST"])
 # @requer_login
 # @rota_gerente
-def dados():
-    id_usuario = 3
-    usuario = db_get(many=False, table="usuario", id_usuario=id_usuario)
-    for f in ["id_usuario", "senha"]:
-        usuario.pop(f)
-    return usuario
+# def dados():
+#     id_usuario = 3
+#     usuario = db_get(many=False, table="usuario", id_usuario=id_usuario)
+#     for f in ["id_usuario", "senha"]:
+#         usuario.pop(f)
+#     return usuario
