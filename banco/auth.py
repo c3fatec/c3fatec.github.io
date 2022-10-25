@@ -33,21 +33,24 @@ def cadastro():
                     cpf=cpf,
                     tipo="cliente",
                 )
-                idconta = randint(11111, 99999)
             except:
                 pass
             else:
-                try:
-                    db_create(
-                        table="conta",
-                        id_conta=idconta,
-                        saldo=0,
-                        cpf=cpf,
-                        status="aguardando",
-                    )
-                    return redirect(url_for("auth.aguarde"))
-                except:
+                contas = list(
+                    map(lambda x: x["id_conta"], db_get(table="conta", many=True))
+                )
+                idconta = randint(11111, 99999)
+                while idconta in contas:
                     idconta = randint(11111, 99999)
+
+                db_create(
+                    table="conta",
+                    id_conta=idconta,
+                    saldo=0,
+                    cpf=cpf,
+                    status="aguardando",
+                )
+                return redirect(url_for("auth.aguarde"))
         else:
             flash("As senhas não são compatíveis.")
 
