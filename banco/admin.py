@@ -72,3 +72,25 @@ def cadastros():
         conta.update(usuario)
 
     return render_template("cadastros.html", cadastros=cadastros)
+
+
+@bp.route("usuarios")
+# @requer_login
+# @rota_gerente
+def usuarios():
+    dados = db_get(table="usuario", many=True)
+    for usuario in dados:
+        for f in ["id_usuario", "senha"]:
+            usuario.pop(f)
+    return dados
+
+
+@bp.route("dados", methods=["GET", "POST"])
+# @requer_login
+# @rota_gerente
+def dados():
+    id_usuario = 3
+    usuario = db_get(many=False, table="usuario", id_usuario=id_usuario)
+    for f in ["id_usuario", "senha"]:
+        usuario.pop(f)
+    return usuario
