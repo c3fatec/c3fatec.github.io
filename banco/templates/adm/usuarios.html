@@ -1,37 +1,37 @@
-{%extends 'baseinterna.html'%}
-
-{%block head%}
+{%extends 'baseinterna.html'%} {%block head%}
 <title>XBank - Dados do Cliente</title>
 
-{%endblock%}
+{%endblock%} {%block body%}
 
-{%block body%}
-
-<p class="h3 py-3 text-center border-bottom border-dark">Atualização de Cadastro</p>
-
-{%if dados%}
-{%for dado in dados%}
+<p class="h3 py-3 text-center border-bottom border-dark">
+	Atualização de Cadastro
+</p>
+{% with messages = get_flashed_messages() %} {%if messages %} {%for message in
+messages%}
+<div
+	class="pnd d-flex justify-content-center align-items-center text-center w-100 p-2"
+>
+	<div class="msg d-flex align-items-center">{{message}}</div>
+</div>
+{%endfor%} {%endif%} {%endwith%} {%if dados%} {%for dado in dados%}
 <div class="d-flex justify-content-between p-2 border-bottom border-dark">
 	<div class="col-4">
-		<div style="text-transform: capitalize;">Nome: {{dado.nome}} </div>
+		<div style="text-transform: capitalize">Nome: {{dado.nome}}</div>
 		<div>CPF: {{dado.cpf}}</div>
 	</div>
 	<div class="col-4">
 		<div>Tipo: {{dado.tipo}}</div>
 	</div>
 	<div class="col-3 my-auto d-flex justify-content-center">
-		<a href="#" class="w-100">
+		<a href="{{url_for('admin.dados', usuario=dado.id_usuario)}}" class="w-100">
 			<div class="btn btn-secondary w-100">Atualizar Cadastro</div>
 		</a>
 	</div>
 </div>
-{%endfor%}
-{%else%}
+{%endfor%} {%else%}
 
 <div class="h-75 d-flex align-items-center justify-content-center">
 	<h2 class="text-center">Sem cadastros realizados!</h2>
 </div>
 
-{%endif%}
-
-{%endblock%}
+{%endif%} {%endblock%}

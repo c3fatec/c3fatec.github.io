@@ -4,7 +4,7 @@ from banco.auth import requer_login, rota_gerente
 
 from datetime import datetime
 
-from .db import db_create, get_db, db_get
+from .db import get_db, db_get, db_update
 
 bp = Blueprint("admin", __name__, url_prefix="/admin")
 
@@ -73,31 +73,42 @@ def cadastros():
 
     return render_template("adm/aprovacaocadastros.html", cadastros=cadastros)
 
-@bp.route("/dados", methods=["POST", "GET"])
-@requer_login
-@rota_gerente
-def attdados():
-    return render_template("adm/atualizacaocadastro.html")
-
 
 @bp.route("/usuarios", methods=["POST", "GET"])
 @requer_login
 @rota_gerente
 def usuarios():
-    dados = db_get(table="usuario", many=True, order_by='nome')
+    dados = db_get(table="usuario", many=True, order_by="nome")
     for usuario in dados:
-        for f in ["id_usuario", "senha"]:
+        for f in ["senha"]:
             usuario.pop(f)
-    
+
     return render_template("adm/usuarios.html", dados=dados)
 
 
-# @bp.route("/dados", methods=["GET", "POST"])
-# @requer_login
-# @rota_gerente
-# def dados():
-#     id_usuario = 3
-#     usuario = db_get(many=False, table="usuario", id_usuario=id_usuario)
-#     for f in ["id_usuario", "senha"]:
-#         usuario.pop(f)
-#     return usuario
+@bp.route("/dados", methods=["GET", "POST"])
+@requer_login
+@rota_gerente
+def dados():
+    id_usuario = request.args.get("usuario")
+    usuario = db_get(many=False, table="usuario", id_usuario=id_usuario)
+    data = request.form
+    if request.method == "POST":
+        for f in data:
+            if data[f] != usuario[f]:
+                try:
+                    db_update(
+                        table="usuario",
+                        setter={"campo": f, "valor": data[f]},
+                        value={"campo": "id_usuario", "valor": id_usuario},
+                    )
+                except:
+                    flash("Erro ao atualizar cadastro.")
+                else:
+                    flash("Cadastro atualizado com sucesso!")
+                finally:
+                    return redirect(url_for("admin.usuarios"))
+
+    for f in ["id_usuario", "senha"]:
+        usuario.pop(f)
+    return render_template("adm/atualizacaocadastro.html", usuario=usuario)
