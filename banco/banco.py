@@ -27,7 +27,7 @@ def index():
         id_conta=id_conta,
     )
 
-    return render_template("principal.html", comprovantes=comprovantes)
+    return render_template("cliente/home.html", comprovantes=comprovantes)
 
 
 @bp.route("/saque", methods=("GET", "POST"))
@@ -71,7 +71,7 @@ def saque():
             id = saque["id_transacao"]
             return redirect(url_for("conta.saque", id=id))
 
-    return render_template("saque.html", id=id)
+    return render_template("cliente/saque.html", id=id)
 
 
 @bp.route("/deposito", methods=("GET", "POST"))
@@ -108,7 +108,7 @@ def deposito():
             id = deposito["id_transacao"]
             return redirect(url_for("conta.deposito", id=id))
 
-    return render_template("deposito.html", id=id)
+    return render_template("cliente/deposito.html", id=id)
 
 
 @bp.route("/extrato", methods=["GET", "POST"])
@@ -133,7 +133,7 @@ def extrato():
         date_filter=date_filter,
     )
 
-    return render_template("extrato.html", comprovantes=comprovantes)
+    return render_template("cliente/extrato.html", comprovantes=comprovantes)
 
 
 @bp.route("/impressao")
@@ -146,4 +146,4 @@ def impressao():
     usuario = db_get(table="usuario", many=False, cpf=conta["cpf"])
     data = {"nome": usuario["nome"], "cpf": usuario["cpf"]}
     comprovante.update(data)
-    return render_template("impressao.html", comprovante=comprovante)
+    return render_template("cliente/impressao.html", comprovante=comprovante)
