@@ -32,8 +32,8 @@
 				{%endif%}
 			</div>
 			<div class="col-3 my-auto d-flex justify-content-center">
-				<a href="{{url_for('conta.impressao', id_transacao=comprovante['id_transacao'])}}" target="_blank">
-					<div class="btn btn-outline-dark">Gerar comprovante</div>
+				<a href="{{url_for('conta.impressao', id_transacao=comprovante['id_transacao'])}}" target="_blank" class="w-100">
+					<div class="btn btn-secondary w-100">Gerar comprovante</div>
 				</a>
 			</div>
 		</div>

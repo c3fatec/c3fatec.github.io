@@ -117,6 +117,7 @@
   background-position: center center;
   background-size: cover;
   min-height: 92vh;
+  font-weight: 500;
 }
 .base-interna .caixa-principal {
   width: 80%;
@@ -190,10 +191,11 @@
 
 .pg-impressao {
   min-height: 93vh;
+  font-weight: 500;
 }
 .pg-impressao .caixa-impressao {
   background-color: rgb(243, 243, 243);
-  width: 300px;
+  width: 350px;
   border: 2px solid black;
 }
 

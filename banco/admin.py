@@ -73,31 +73,23 @@ def cadastros():
 
     return render_template("adm/aprovacaocadastros.html", cadastros=cadastros)
 
-@bp.route("/atualizacaocadastro", methods=["POST", "GET"])
+@bp.route("/dados", methods=["POST", "GET"])
 @requer_login
 @rota_gerente
 def attdados():
     return render_template("adm/atualizacaocadastro.html")
-    
 
-@bp.route("/cadastrocliente", methods=["POST", "GET"])
+
+@bp.route("/usuarios", methods=["POST", "GET"])
 @requer_login
 @rota_gerente
-def dados():
-    return render_template("adm/cadastrocliente.html")
-
-# precisa arrumar a rota dados
-
-
-@bp.route("/usuarios")
-# @requer_login
-# @rota_gerente
 def usuarios():
-    dados = db_get(table="usuario", many=True)
+    dados = db_get(table="usuario", many=True, order_by='nome')
     for usuario in dados:
         for f in ["id_usuario", "senha"]:
             usuario.pop(f)
-    return dados
+    
+    return render_template("adm/usuarios.html", dados=dados)
 
 
 # @bp.route("/dados", methods=["GET", "POST"])
