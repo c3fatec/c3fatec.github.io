@@ -1,28 +1,17 @@
 {%extends 'baseinterna.html'%} {%block head%}
 
 <title>Xbank - Aprovação de Cadastros</title>
-<style>
-	.ola > span {
-		display: none;
-	}
-</style>
 
 {%endblock%} {%block body%}
-<div class="tt">
-	<p class="h3 py-3 text-center">Aprovação de Cadastro</p>
-</div>
+<p class="h3 py-3 mb-0 text-center border-bottom border-dark">Aprovação de Cadastro</p>
 
 <div>
-	{% with messages = get_flashed_messages() %} {%if messages %} {%for message in
-	messages%}
-	<div
-		class="pnd d-flex justify-content-center align-items-center text-center w-100 p-2"
-	>
+	{% with messages = get_flashed_messages() %} {%if messages %} {%for message in messages%}
+	<div class="pnd d-flex justify-content-center align-items-center text-center w-100 p-2">
 		<div class="msg d-flex align-items-center">{{message}}</div>
 	</div>
-	{%endfor%} {%endif%} {%endwith%} {%if cadastros%} {%for cadastro in
-	cadastros%}
-	<div class="pnd d-flex w-100 p-2">
+	{%endfor%} {%endif%} {%endwith%} {%if cadastros%} {%for cadastro in	cadastros%}
+	<div class="d-flex w-100 p-2 border-bottom border-dark">
 		<div class="col-9">
 			<div class="text-capitalize">Nome: {{cadastro.nome}}</div>
 			<div>CPF: {{cadastro.cpf}}</div>
@@ -49,6 +38,6 @@
 	{%endfor%} {%else%}
 </div>
 <div class="h-75 d-flex align-items-center justify-content-center">
-	<h2>Não há pendências!</h2>
+	<h2 class="text-center">Não há pendências!</h2>
 </div>
 {%endif%} {%endblock%}

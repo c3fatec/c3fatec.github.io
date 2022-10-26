@@ -9,6 +9,16 @@
   letter-spacing: 2px;
   text-transform: uppercase;
 }
+.header .home {
+  border: none;
+  color: white;
+}
+.header .home span {
+  font-size: 27px;
+}
+.header .sair {
+  color: white;
+}
 
 .header-b {
   background-color: rgb(43, 43, 43);
@@ -80,6 +90,16 @@
   border: 1px solid #dee2e6;
   border-radius: 5px !important;
 }
+.pg-cadastro .btn-att {
+  background-color: rgba(209, 209, 209, 0.7);
+  border: 1px solid black;
+  border-radius: 15px;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+}
+.pg-cadastro .btn-att:hover {
+  background-color: rgb(141, 141, 141);
+}
 
 .funcao-direita .ola p {
   text-transform: capitalize;
@@ -97,6 +117,7 @@
   background-position: center center;
   background-size: cover;
   min-height: 92vh;
+  font-weight: 500;
 }
 .base-interna .caixa-principal {
   width: 80%;
@@ -104,7 +125,7 @@
 }
 .base-interna .caixa-principal .botoes {
   flex-wrap: wrap;
-  width: 70%;
+  width: 35%;
   margin: 0 auto;
 }
 .base-interna .caixa-principal .botoes .funcao {
@@ -112,8 +133,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 160px;
-  height: 160px;
+  width: 120px;
+  height: 120px;
   margin: 10px;
   border: 2px solid black;
   border-radius: 15px;
@@ -142,6 +163,7 @@
   border-radius: 15px;
   box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.45);
   width: 90%;
+  height: 85vh;
   margin: 0 auto;
   color: rgb(58, 58, 58);
   overflow: auto;
@@ -161,31 +183,6 @@
   border-radius: 10px;
 }
 
-.tt p {
-  margin-bottom: 0 !important;
-  text-indent: 5px;
-  border-bottom: 1px solid black;
-}
-.tt .ts {
-  border-bottom: 1px solid rgb(129, 129, 129);
-}
-
-.saque-deposito .titulo p {
-  margin-bottom: 0 !important;
-  text-indent: 5px;
-  border-bottom: 1px solid black;
-}
-.saque-deposito .conteudo .msg {
-  background-color: whitesmoke;
-  border-radius: 8px;
-  margin-top: 20px;
-  padding: 8px;
-}
-
-.pnd {
-  border-bottom: 1px solid black;
-}
-
 .msg {
   background-color: whitesmoke;
   border-radius: 8px;
@@ -194,9 +191,53 @@
 
 .pg-impressao {
   min-height: 93vh;
+  font-weight: 500;
 }
 .pg-impressao .caixa-impressao {
   background-color: rgb(243, 243, 243);
-  width: 300px;
+  width: 350px;
   border: 2px solid black;
+}
+
+.pg-attdados {
+  background-color: rgb(209, 209, 209);
+  min-height: 93vh;
+}
+.pg-attdados .caixa-dados {
+  width: 90%;
+  max-height: 90vh;
+  background-color: rgba(209, 209, 209, 0.7);
+  border: 2px solid black;
+  border-radius: 15px;
+  box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.45);
+  color: rgb(58, 58, 58);
+  overflow: auto;
+}
+.pg-attdados .caixa-dados .titulo {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+.pg-attdados .caixa-dados .titulo p {
+  margin-bottom: 0 !important;
+}
+.pg-attdados .caixa-dados hr {
+  margin-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.pg-attdados .caixa-dados label {
+  font-weight: bold;
+}
+.pg-attdados .caixa-dados input {
+  border: 1px solid #dee2e6;
+  border-radius: 5px !important;
+}
+.pg-attdados .caixa-dados .btn-att {
+  background-color: rgba(209, 209, 209, 0.7);
+  border: 1px solid black;
+  border-radius: 15px;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+}
+.pg-attdados .caixa-dados .btn-att:hover {
+  background-color: rgb(141, 141, 141);
 }/*# sourceMappingURL=style.css.map */

@@ -1,37 +1,27 @@
 {%extends 'baseinterna.html'%} {%block head%}
 
 <title>Xbank - Pendências de Depósito</title>
-<style>
-	.ola > span {
-		display: none;
-	}
-</style>
 
 {%endblock%} {%block body%}
-<div class="tt">
-	<p class="h3 pt-3 text-center">Pendências</p>
-</div>
 
-<div class="d-flex flex-column">
-	{%if pendencias%} {%for pendencia in pendencias%}
-	<div class="pnd d-flex w-100 p-2">
+<p class="h3 py-3 mb-0 text-center border-bottom border-dark">Pendências</p>
+
+{%if pendencias%} {%for pendencia in pendencias%}
+<div class="d-flex flex-column p-2 border-bottom border-dark">
+	<div class="d-flex w-100">
 		<div class="col-9">
 			<div>Conta: {{pendencia.id_conta}}</div>
 			<div>Valor: {{pendencia.valor | dinheiro}}</div>
 			<div>Data da Transação: {{pendencia.data_inicio | datetime}}</div>
 		</div>
 
-		<div class="col-3 text-center">
+		<div class="d-flex flex-column col-3 text-center gap-1">
 			<form action="" method="POST">
 				<input type="hidden" name="valor" value="{{pendencia.valor}}" />
 				<input type="hidden" name="id_conta" value="{{pendencia.id_conta}}" />
 				<input type="hidden" name="status" value="Efetivado" />
-				<input
-					type="hidden"
-					name="id_transacao"
-					value="{{pendencia.id_transacao}}"
-				/>
-				<button class="btn btn-secondary mb-1 w-100" type="submit">
+				<input type="hidden" name="id_transacao" value="{{pendencia.id_transacao}}" />
+				<button class="btn btn-secondary w-100" type="submit">
 					Aprovar
 				</button>
 			</form>
@@ -39,20 +29,16 @@
 				<input type="hidden" name="valor" value="{{pendencia.valor }}" />
 				<input type="hidden" name="id_conta" value="{{pendencia.id_conta}}" />
 				<input type="hidden" name="status" value="Rejeitado" />
-				<input
-					type="hidden"
-					name="id_transacao"
-					value="{{pendencia.id_transacao}}"
-				/>
+				<input type="hidden" name="id_transacao" value="{{pendencia.id_transacao}}" />
 				<button class="btn btn-outline-dark w-100" type="submit">
 					Rejeitar
 				</button>
 			</form>
 		</div>
 	</div>
-	{%endfor%} {%else%}
 </div>
+{%endfor%} {%else%}
 <div class="h-75 d-flex align-items-center justify-content-center">
-	<h2>Não há pendências!</h2>
+	<h2 class="text-center">Não há pendências!</h2>
 </div>
 {%endif%} {%endblock%}

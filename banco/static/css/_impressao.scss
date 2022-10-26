@@ -1,10 +1,11 @@
 
 .pg-impressao {
     min-height: 93vh;
+    font-weight: 500;
 
     .caixa-impressao {
         background-color: rgb(243, 243, 243);
-        width: 300px;
+        width: 350px;
         border: 2px solid black;
     }
 }

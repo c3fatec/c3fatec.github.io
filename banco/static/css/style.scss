@@ -9,6 +9,19 @@
       letter-spacing: 2px;
       text-transform: uppercase;
     }
+
+    .home {
+      border: none;
+      color: white;
+
+      span {
+        font-size: 27px;
+      }
+    }
+
+    .sair {
+      color: white;
+    }
   }
 
 .header-b {
@@ -28,6 +41,5 @@
 @import 'cadastro';
 @import 'baseinterna';
 @import 'principal';
-@import 'saquedeposito';
-@import 'pendencia';
 @import 'impressao';
+@import 'attdados';

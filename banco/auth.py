@@ -105,7 +105,8 @@ def logout():
 
 @bp.route("/teste")
 def teste():
-    contas = list(map(lambda x: x["id_conta"], db_get(table="conta", many=True)))
+    contas = list(map(lambda x: x["id_conta"],
+                  db_get(table="conta", many=True)))
 
     idconta = randint(1, 9)
     numbers = [2, 3, 4]

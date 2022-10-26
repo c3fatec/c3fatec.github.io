@@ -1,0 +1,32 @@
+{% extends "baseinterna.html" %} {%block head%}
+
+<title>Xbank - Home</title>
+
+{%endblock%} {%block body%}
+<div class="pg-home">
+	<p class="h3 py-3 text-center border-bottom border-dark">Últimas transações</p>
+
+	<!-- <div class="d-flex justify-content-center p-1 border-bottom border-dark text-center">
+		<div class="col-4 h4">Conta: {{g.conta.id_conta}}</div>
+		<div class="col-4 h4">Saldo: {{g.conta.saldo}}</div>
+	</div> -->
+
+	{%if comprovantes%} {%for comprovante in comprovantes%}
+	<div class="d-flex flex-column p-1 border-bottom border-dark">
+		<div class="d-flex">
+			<div class="col-4 h5">Tipo: {{comprovante.tipo}}</div>
+			<div class="col-8 h5">Status: {{comprovante.status}}</div>
+		</div>
+		<div class="d-flex ">
+			<div class="col-4 h5">Valor: {{comprovante.valor | dinheiro }}</div>
+			<div class="col-8 h5">
+				Criado em: {{comprovante.data_inicio | datetime}}
+			</div>
+		</div>
+	</div>
+	{%endfor%} {%else%}
+</div>
+<div class="h-75 d-flex align-items-center justify-content-center">
+	<h2 class="text-center">Não foram feitas transações nessa conta</h2>
+</div>
+{%endif%} {%endblock%}
