@@ -35,7 +35,7 @@ def db_create(**params):
         command = f"INSERT INTO {table} ({keys}) VALUES ({values})"
         cursor.execute(command)
     except Exception as e:
-        print("Erro ao ciar instância")
+        print("Erro ao criar instância")
         print(e.args[1])
 
 
