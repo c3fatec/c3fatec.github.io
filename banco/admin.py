@@ -41,7 +41,7 @@ def pendencias():
     return render_template("adm/pendencias.html", pendencias=pendencias)
 
 
-@bp.route("/aprovacaocadastros", methods=["POST", "GET"])
+@bp.route("/aprovacaoCadastros", methods=["POST", "GET"])
 @requer_login
 @rota_gerente
 def cadastros():
@@ -71,7 +71,7 @@ def cadastros():
         usuario = db_get(table="usuario", many=False, cpf=cpf)
         conta.update(usuario)
 
-    return render_template("adm/aprovacaocadastros.html", cadastros=cadastros)
+    return render_template("adm/aprovacaoCadastros.html", cadastros=cadastros)
 
 
 @bp.route("/usuarios", methods=["POST", "GET"])
@@ -111,7 +111,7 @@ def dados():
 
     for f in ["id_usuario", "senha"]:
         usuario.pop(f)
-    return render_template("adm/atualizacaocadastro.html", usuario=usuario)
+    return render_template("adm/atualizacaoCadastro.html", usuario=usuario)
 
 
 @bp.route("/agencia", methods=["GET", "POST"])
@@ -119,3 +119,15 @@ def dados():
 @rota_gerente
 def agencia():
     return render_template("adm/agencia.html")
+
+@bp.route("/gerente", methods=["GET", "POST"])
+@requer_login
+@rota_gerente
+def gerente():
+    return render_template("adm/gerente.html")
+
+@bp.route("/cadastroGerente", methods=["GET", "POST"])
+@requer_login
+@rota_gerente
+def cadastroGerente():
+    return render_template("adm/cadastroGerentes.html")

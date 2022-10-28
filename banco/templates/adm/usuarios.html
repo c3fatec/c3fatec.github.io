@@ -4,7 +4,7 @@
 {%endblock%} {%block body%}
 
 <p class="h3 py-3 mb-0 text-center border-bottom border-dark">
-	Atualização de Cadastro
+	Cadastro de Clientes
 </p>
 {% with messages = get_flashed_messages() %} {%if messages %} {%for message in
 messages%}
@@ -22,7 +22,8 @@ messages%}
 	<div class="col-4">
 		<div>Tipo: {{dado.tipo}}</div>
 	</div>
-	<div class="col-3 my-auto d-flex justify-content-center">
+
+	<div class="d-flex justify-content-center col-3 my-auto">
 		<a href="{{url_for('admin.dados', usuario=dado.id_usuario)}}" class="w-100">
 			<div class="btn btn-secondary w-100">Atualizar Cadastro</div>
 		</a>
