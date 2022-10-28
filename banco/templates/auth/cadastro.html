@@ -9,16 +9,13 @@
 	{%endif%}{%endfor%}
 
 	<form method="post" class="form">
+
 		<!--Dados Pessoais-->
 		<div class="titulo d-flex justify-content-between">
 			<p class="h3">Dados Pessoais</p>
 			<div class="btn-sair text-center my-auto">
-				<button
-					type="button"
-					class="btn-close btn-sm"
-					aria-label="Close"
-					onclick="document.location='/'"
-				></button>
+				<button type="button" class="btn-close btn-sm" aria-label="Close"
+					onclick="document.location='/'"></button>
 			</div>
 		</div>
 		<hr />
@@ -43,13 +40,7 @@
 			</div>
 			<div class="col-4">
 				<label for="data_nasc">Data de Nasc.*</label><br />
-				<input
-					type="text"
-					name="data-nasc"
-					id="data-nasc"
-					class="w-100"
-					disabled
-				/>
+				<input type="text" name="data-nasc" id="data-nasc" class="w-100" disabled />
 			</div>
 		</div>
 
@@ -87,13 +78,7 @@
 			</div>
 			<div class="col-2">
 				<label for="Complemento">Complemento</label><br />
-				<input
-					type="text"
-					name="complemento"
-					id="complemento"
-					class="w-100"
-					disabled
-				/>
+				<input type="text" name="complemento" id="complemento" class="w-100" disabled />
 			</div>
 		</div>
 
@@ -103,7 +88,7 @@
 		</div>
 		<hr />
 		<div class="d-flex row">
-			<div class="col-8">
+			<div class="col-6">
 				<label for="email">E-mail*</label><br />
 				<input type="email" name="email" id="email" class="w-100" disabled />
 			</div>
@@ -113,13 +98,17 @@
 			</div>
 			<div class="col-2">
 				<label for="senha-repetida">Repita sua senha*</label><br />
-				<input
-					type="password"
-					name="senha-repetida"
-					id="senha-repetida"
-					class="w-100"
-					required
-				/>
+				<input type="password" name="senha-repetida" id="senha-repetida" class="w-100" required />
+			</div>
+			<div class="d-flex flex-column justify-content-between col-2">
+				<div>
+					<label for="" class="col-8">Conta-Corrente</label>
+					<input type="radio" name="corrente" id="corrente">
+				</div>
+				<div>
+					<label for="" class="col-8">Conta-Poupança</label>
+					<input type="radio" name="poupanca" id="poupanca">
+				</div>
 			</div>
 		</div>
 
