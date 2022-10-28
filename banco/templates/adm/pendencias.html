@@ -8,7 +8,7 @@
 
 {%if pendencias%} {%for pendencia in pendencias%}
 <div class="d-flex flex-column p-2 border-bottom border-dark">
-	<div class="d-flex w-100">
+	<div class="d-flex align-items-center w-100">
 		<div class="col-9">
 			<div>Conta: {{pendencia.id_conta}}</div>
 			<div>Valor: {{pendencia.valor | dinheiro}}</div>

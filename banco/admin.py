@@ -112,3 +112,10 @@ def dados():
     for f in ["id_usuario", "senha"]:
         usuario.pop(f)
     return render_template("adm/atualizacaocadastro.html", usuario=usuario)
+
+
+@bp.route("/agencia", methods=["GET", "POST"])
+@requer_login
+@rota_gerente
+def agencia():
+    return render_template("adm/agencia.html")
