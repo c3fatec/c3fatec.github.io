@@ -10,7 +10,6 @@ CREATE TABLE IF NOT EXISTS `banco_api`.`usuario` (
   `cpf` CHAR(11) NOT NULL,
   `nome` VARCHAR(250) NOT NULL,
   `senha` VARCHAR(245) NOT NULL,
-  `tipo` VARCHAR(30) NOT NULL,
   PRIMARY KEY (`id_usuario`),
   UNIQUE INDEX `cpf_UNIQUE` (`cpf` ASC)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
@@ -18,6 +17,7 @@ CREATE TABLE IF NOT EXISTS `banco_api`.`conta` (
   `id_conta` INT(5) NOT NULL AUTO_INCREMENT,
   `status` VARCHAR(30) NOT NULL,
   `saldo` DECIMAL(9, 2) NOT NULL,
+  `tipo` VARCHAR(30) NOT NULL,
   `cpf` CHAR(11) NOT NULL,
   PRIMARY KEY (`id_conta`),
   UNIQUE INDEX `id_conta_UNIQUE` (`id_conta` ASC),
