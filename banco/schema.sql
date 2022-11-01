@@ -16,13 +16,16 @@ CREATE TABLE IF NOT EXISTS `banco_api`.`usuario` (
 CREATE TABLE IF NOT EXISTS `banco_api`.`conta` (
   `id_conta` INT(5) NOT NULL AUTO_INCREMENT,
   `status` VARCHAR(30) NOT NULL,
-  `saldo` DECIMAL(9, 2) NOT NULL,
+  `saldo` DECIMAL(9, 2),
   `tipo` VARCHAR(30) NOT NULL,
-  `cpf` CHAR(11) NOT NULL,
+  `usuario` int(5) NOT NULL,
+  `agencia` INT(5),
   PRIMARY KEY (`id_conta`),
   UNIQUE INDEX `id_conta_UNIQUE` (`id_conta` ASC),
-  INDEX `fk_conta_usuario1_idx` (`cpf` ASC),
-  CONSTRAINT `fk_conta_usuario1` FOREIGN KEY (`cpf`) REFERENCES `banco_api`.`usuario` (`cpf`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  INDEX `fk_conta_usuario1_idx` (`usuario` ASC),
+  INDEX `fk_conta_agencia1_idx` (`agencia` ASC),
+  CONSTRAINT `fk_conta_usuario1` FOREIGN KEY (`usuario`) REFERENCES `banco_api`.`usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_conta_agencia1` FOREIGN KEY (`agencia`) REFERENCES `banco_api`.`agencia` (`id_agencia`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
 ALTER TABLE `banco_api`.`conta` AUTO_INCREMENT = 20000;
 CREATE TABLE IF NOT EXISTS `banco_api`.`transacoes`(

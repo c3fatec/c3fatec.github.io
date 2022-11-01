@@ -37,6 +37,8 @@ def db_create(**params):
     except Exception as e:
         print("Erro ao criar instância")
         print(e.args[1])
+    else:
+        return db.insert_id()
 
 
 def db_get(
@@ -129,18 +131,19 @@ def init_db():
         table="usuario",
         nome="gerente",
         senha=generate_password_hash("gerente"),
-        cpf="99988877766",
+        cpf="99999999999",
+    )
+    last = db.insert_id()
+    print(last)
+
+    db_create(
+        table="conta",
+        saldo=0,
+        id_conta=1,
+        usuario=1,
+        status="aprovado",
         tipo="gerente",
     )
-    db_create(table="conta", saldo=0, cpf="99988877766", id_conta=1, status="aprovado")
-    db_create(
-        table="usuario",
-        nome="gerente-cliente",
-        senha=generate_password_hash("gerente"),
-        cpf="99988877765",
-        tipo="gerente-cliente",
-    )
-    db_create(table="conta", saldo=0, cpf="99988877765", id_conta=2, status="aprovado")
 
     db.close()
 

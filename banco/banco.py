@@ -143,7 +143,7 @@ def impressao():
     id_transacao = request.args.get("id_transacao")
     comprovante = db_get(table="transacoes", many=False, id_transacao=id_transacao)
     conta = db_get(table="conta", many=False, id_conta=comprovante["id_conta"])
-    usuario = db_get(table="usuario", many=False, cpf=conta["cpf"])
+    usuario = db_get(table="usuario", many=False, id_usuario=conta["usuario"])
     data = {"nome": usuario["nome"], "cpf": usuario["cpf"]}
     comprovante.update(data)
     return render_template("cliente/impressao.html", comprovante=comprovante)

@@ -47,19 +47,19 @@ def pendencias():
 def cadastros():
     if request.method == "POST":
         status = request.form["status"]
-        cpf = request.form["cpf"]
+        id_usuario = request.form["id_usuario"]
         db = get_db()
         cursor = db.cursor()
 
         try:
-            command = f"""UPDATE conta SET status = '{status}' WHERE cpf = {cpf}"""
+            command = f"""UPDATE conta SET status = '{status}' WHERE usuario = {id_usuario}"""
             cursor.execute(command)
         except:
             print(command)
             print("Erro ao atualizar status da conta")
         else:
             conta = db_get(
-                table="conta", many=False, cpf=cpf, order_by="id_conta", order="DESC"
+                table="conta", many=False, usuario=id_usuario, order_by="id_conta", order="DESC"
             )
             id_conta = conta["id_conta"]
             msg = f"A conta foi registrada com número {id_conta}"
@@ -67,8 +67,8 @@ def cadastros():
 
     cadastros = db_get(table="conta", status="Aguardando")
     for conta in cadastros:
-        cpf = conta["cpf"]
-        usuario = db_get(table="usuario", many=False, cpf=cpf)
+        usuario = conta["usuario"]
+        usuario = db_get(table="usuario", many=False, id_usuario=usuario)
         conta.update(usuario)
 
     return render_template("adm/aprovacaoCadastros.html", cadastros=cadastros)
@@ -120,11 +120,13 @@ def dados():
 def agencia():
     return render_template("adm/agencia.html")
 
+
 @bp.route("/gerente", methods=["GET", "POST"])
 @requer_login
 @rota_gerente
 def gerente():
     return render_template("adm/gerente.html")
+
 
 @bp.route("/cadastroGerente", methods=["GET", "POST"])
 @requer_login

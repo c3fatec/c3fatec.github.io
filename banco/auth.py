@@ -20,22 +20,19 @@ bp = Blueprint("auth", __name__, url_prefix="/")
 def cadastro():
     if request.method == "POST":
         nome = request.form["nome"]
+        cpf = request.form["cpf"]
         senha = request.form["senha"]
         senha_repetida = request.form["senha-repetida"]
-        cpf = request.form["cpf"]
+        tipo = request.form["tipo"]
 
         if senha == senha_repetida:
             try:
-                db_create(
+                novo_usuario = db_create(
                     table="usuario",
                     nome=nome,
                     senha=generate_password_hash(senha),
                     cpf=cpf,
-                    tipo="cliente",
                 )
-            except:
-                pass
-            else:
                 contas = list(
                     map(lambda x: x["id_conta"], db_get(table="conta", many=True))
                 )
@@ -47,9 +44,13 @@ def cadastro():
                     table="conta",
                     id_conta=idconta,
                     saldo=0,
-                    cpf=cpf,
+                    usuario=novo_usuario,
                     status="aguardando",
+                    tipo=tipo,
                 )
+            except:
+                print("Erro ao cadastrar novo usuário")
+            else:
                 return redirect(url_for("auth.aguarde"))
         else:
             flash("As senhas não são compatíveis.")
@@ -73,8 +74,8 @@ def login():
         conta = db_get(many=False, table="conta", id_conta=id_conta)
 
         if conta:
-            cpf = conta["cpf"]
-            usuario = db_get(many=False, table="usuario", cpf=cpf)
+            id_usuario = conta["usuario"]
+            usuario = db_get(many=False, table="usuario", id_usuario=id_usuario)
 
         if usuario is None:
             error = "Conta inexistente"
@@ -87,7 +88,7 @@ def login():
             session.clear()
             session["id_usuario"] = usuario["id_usuario"]
             session["id_conta"] = conta["id_conta"]
-            if "cliente" in usuario["tipo"]:
+            if "corrente" in conta["tipo"] and "poupanca" in conta["tipo"]:
                 return redirect(url_for("conta.index"))
             else:
                 return redirect(url_for("admin.pendencias"))
@@ -105,8 +106,7 @@ def logout():
 
 @bp.route("/teste")
 def teste():
-    contas = list(map(lambda x: x["id_conta"],
-                  db_get(table="conta", many=True)))
+    contas = list(map(lambda x: x["id_conta"], db_get(table="conta", many=True)))
 
     idconta = randint(1, 9)
     numbers = [2, 3, 4]
@@ -151,7 +151,7 @@ def requer_login(view):
 def rota_cliente(view):
     @functools.wraps(view)
     def wrapped_view(**kwargs):
-        if "cliente" not in g.usuario["tipo"]:
+        if "corrente" not in g.conta["tipo"] and "poupanca" not in g.conta["tipo"]:
             return redirect(url_for("admin.pendencias"))
 
         return view(**kwargs)
@@ -162,7 +162,7 @@ def rota_cliente(view):
 def rota_gerente(view):
     @functools.wraps(view)
     def wrapped_view(**kwargs):
-        if "gerente" not in g.usuario["tipo"]:
+        if "gerente" not in g.conta["tipo"]:
             return redirect(url_for("conta.index"))
 
         return view(**kwargs)
