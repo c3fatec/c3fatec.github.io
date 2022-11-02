@@ -19,27 +19,33 @@
 {%endblock%} {%block body%}
 
 <p class="h3 py-3 mb-0 text-center border-bottom border-dark">Agências</p>
-<!-- {% with messages = get_flashed_messages() %} {%if messages %} {%for message in
+{% with messages = get_flashed_messages() %} {%if messages %} {%for message in
 messages%}
 <div
 	class="pnd d-flex justify-content-center align-items-center text-center w-100 p-2"
 >
 	<div class="msg d-flex align-items-center">{{message}}</div>
 </div>
-{%endfor%} {%endif%} {%endwith%}  -->
+{%endfor%} {%endif%} {%endwith%}
 
-<!-- <div
-	class="d-flex justify-content-center p-2 border-bottom border-dark text-center"
->
-	<button class="btn-att w-25">Criar Agência</button>
-</div> -->
+<form method="POST" class="form">
+	<div
+		class="d-flex justify-content-center align-items-center p-2 border-bottom border-dark text-center"
+	>
+		<label for="nome">Nome da agência:</label>
+		<input type="text" id="nome" name="nome" class="mx-2" />
+		<button type="submit" class="btn-att w-25">Criar Agência</button>
+	</div>
+</form>
 
+{%if agencias%} {%for agencia in agencias%}
 <div class="d-flex flex-column p-2 border-bottom border-dark">
 	<div class="d-flex align-items-center w-100">
 		<div class="col-9">
-			<div style="text-transform: capitalize">Agência: 0001</div>
-			<div>Gerente: Maria Brasileira</div>
-			<div>Quantidade de Clientes: 10</div>
+			<div style="text-transform: capitalize">Agência: {{agencia.nome}}</div>
+			<div>Código: {{agencia.id_agencia}}</div>
+			<div>Gerente: {{agencia.gerente}}</div>
+			<div>Quantidade de Clientes: {{agencia.quantidade}}</div>
 		</div>
 
 		<!-- <div class="d-flex flex-column col-3 text-center gap-1">
@@ -56,9 +62,8 @@ messages%}
 		</div> -->
 	</div>
 </div>
-
-<!-- <div class="h-75 d-flex align-items-center justify-content-center">
-	<h2 class="text-center">Sem Agências Cadastradas!</h2>
-</div> -->
-
-{%endblock%}
+{%endfor%} {%else%}
+<div class="h-75 d-flex align-items-center justify-content-center">
+	<h2 class="text-center">Sem agências cadastradas!</h2>
+</div>
+{%endif%} {%endblock%}

@@ -43,9 +43,9 @@ CREATE TABLE IF NOT EXISTS `banco_api`.`transacoes`(
 CREATE TABLE IF NOT EXISTS `banco_api`.`agencia`(
   `id_agencia` INT(4) NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(145) NOT NULL,
-  PRIMARY KEY (`id_agencia`)
+  PRIMARY KEY (`id_agencia`),
+  UNIQUE INDEX `nome_UNIQUE` (`nome` ASC)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
-alter table `banco_api`.`agencia` AUTO_INCREMENT = 1000;
 SET SQL_MODE = @OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS = @OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS = @OLD_UNIQUE_CHECKS;

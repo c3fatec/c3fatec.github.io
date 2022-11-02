@@ -4,7 +4,7 @@ from banco.auth import requer_login, rota_gerente
 
 from datetime import datetime
 
-from .db import get_db, db_get, db_update
+from .db import get_db, db_get, db_update, db_create
 
 bp = Blueprint("admin", __name__, url_prefix="/admin")
 
@@ -124,7 +124,26 @@ def dados():
 @requer_login
 @rota_gerente
 def agencia():
-    return render_template("adm/agencia.html")
+    if request.method == "POST":
+        nome = request.form["nome"]
+
+        db_create(table="agencia", nome=nome)
+
+    agencias = db_get(table="agencia", many=True)
+    for agencia in agencias:
+        gerente = {"nome": None}
+        quantidade = db_get(
+            count=True, many=False, table="conta", agencia=agencia["id_agencia"]
+        )
+        conta_gerente = db_get(many=False, table="conta", agencia=agencia["id_agencia"])
+        if conta_gerente:
+            gerente = db_get(
+                many=False, table="usuario", id_usuario=conta_gerente["usuario"]
+            )
+        agencia.update(
+            {"quantidade": quantidade["COUNT(*)"], "gerente": gerente["nome"]}
+        )
+    return render_template("adm/agencia.html", agencias=agencias)
 
 
 @bp.route("/gerente", methods=["GET", "POST"])

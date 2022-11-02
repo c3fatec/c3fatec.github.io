@@ -42,7 +42,13 @@ def db_create(**params):
 
 
 def db_get(
-    many=True, limit=None, order_by=None, order=None, date_filter=None, **params
+    count=False,
+    many=True,
+    limit=None,
+    order_by=None,
+    order=None,
+    date_filter=None,
+    **params,
 ):
     table = params.pop("table")
     key = "".join(params.keys())
@@ -53,6 +59,8 @@ def db_get(
 
     try:
         command = f"SELECT * FROM {table}"
+        if count:
+            command = f"SELECT COUNT(*) FROM {table}"
         if key and value:
             command += f" WHERE {key} = '{value}'"
         if date_filter:
