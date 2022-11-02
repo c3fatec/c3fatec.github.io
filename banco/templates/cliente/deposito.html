@@ -3,7 +3,7 @@
 <title>Xbank - Depósito</title>
 
 <style>
-	.ola>span {
+	.ola > span {
 		display: none;
 	}
 </style>
@@ -13,25 +13,35 @@
 	<p class="h3 py-3 text-center border-bottom border-dark">Depósito</p>
 
 	<div class="d-flex flex-column m-3 mt-5 h-75">
-
 		<div class="mx-auto text-center pt-3">
 			<p class="h2">Saldo: R$ {{g.conta.saldo | dinheiro }}</p>
 		</div>
 
-		<div class="d-flex flex-column justify-content-center align-items-center h-75">
-			<form method="POST" class="d-flex align-items-center flex-column text-center h-50 w-50">
+		<div
+			class="d-flex flex-column justify-content-center align-items-center h-75"
+		>
+			<form
+				method="POST"
+				class="d-flex align-items-center flex-column text-center h-50 w-50"
+			>
 				<label class="mb-1 h5">Digite o valor:</label>
 				<input type="number" step="0.01" name="valor" id="valor" min="0.01" />
 				<button type="submit" class="btn btn-secondary btn-sm w-50 mt-5">
 					Depositar
 				</button>
 			</form>
-			{% with messages = get_flashed_messages() %} {%if
-			messages and id%} {%for message in messages%}
-			<div class="msg d-flex align-items-center justify-content-center m-4 w-75">
+			{% with messages = get_flashed_messages() %} {%if messages and id%} {%for
+			message in messages%}
+			<div
+				class="msg d-flex align-items-center justify-content-center m-4 w-75"
+			>
 				<div class="col-9">{{message}}</div>
 				<div class="col-3">
-					<a href="{{url_for('conta.impressao', id_transacao=id)}}" target="_blank" class="w-100">
+					<a
+						href="{{url_for('conta.impressao', id_transacao=id)}}"
+						target="_blank"
+						class="w-100"
+					>
 						<div class="btn btn-secondary w-100">Gerar comprovante</div>
 					</a>
 				</div>

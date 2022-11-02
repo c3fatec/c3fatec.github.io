@@ -52,14 +52,20 @@ def cadastros():
         cursor = db.cursor()
 
         try:
-            command = f"""UPDATE conta SET status = '{status}' WHERE usuario = {id_usuario}"""
+            command = (
+                f"""UPDATE conta SET status = '{status}' WHERE usuario = {id_usuario}"""
+            )
             cursor.execute(command)
         except:
             print(command)
             print("Erro ao atualizar status da conta")
         else:
             conta = db_get(
-                table="conta", many=False, usuario=id_usuario, order_by="id_conta", order="DESC"
+                table="conta",
+                many=False,
+                usuario=id_usuario,
+                order_by="id_conta",
+                order="DESC",
             )
             id_conta = conta["id_conta"]
             msg = f"A conta foi registrada com número {id_conta}"
@@ -125,7 +131,13 @@ def agencia():
 @requer_login
 @rota_gerente
 def gerente():
-    return render_template("adm/gerente.html")
+    gerentes = db_get(table="conta", many=True, tipo="gerente")
+    for gerente in gerentes:
+        id_usuario = gerente["usuario"]
+        usuario = db_get(table="usuario", many=False, id_usuario=id_usuario)
+        gerente.update(usuario)
+
+    return render_template("adm/gerente.html", gerentes=gerentes)
 
 
 @bp.route("/cadastroGerente", methods=["GET", "POST"])

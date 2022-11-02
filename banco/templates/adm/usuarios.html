@@ -4,7 +4,7 @@
 {%endblock%} {%block body%}
 
 <p class="h3 py-3 mb-0 text-center border-bottom border-dark">
-	Cadastro de Clientes
+	Usuários cadastrados
 </p>
 {% with messages = get_flashed_messages() %} {%if messages %} {%for message in
 messages%}
@@ -19,8 +19,7 @@ messages%}
 		<div style="text-transform: capitalize">Nome: {{dado.nome}}</div>
 		<div>CPF: {{dado.cpf}}</div>
 	</div>
-	<div class="col-4">
-	</div>
+	<div class="col-4"></div>
 
 	<div class="d-flex justify-content-center col-3 my-auto">
 		<a href="{{url_for('admin.dados', usuario=dado.id_usuario)}}" class="w-100">

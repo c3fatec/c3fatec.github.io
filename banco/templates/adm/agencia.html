@@ -1,31 +1,24 @@
-{%extends 'baseinterna.html'%}
-
-{%block head%}
+{%extends 'baseinterna.html'%} {%block head%}
 
 <title>Xbank - Agência</title>
 
 <style>
-    .btn-att {
-        background-color: rgb(209, 209, 209, .700);
-        border: 1px solid black;
-        border-radius: 15px;
-        box-shadow: 0px 3px 10px rgba(black, .450);
-        cursor: pointer;
-    
-    }
+	.btn-att {
+		background-color: rgb(209, 209, 209, 0.7);
+		border: 1px solid black;
+		border-radius: 15px;
+		box-shadow: 0px 3px 10px rgba(black, 0.45);
+		cursor: pointer;
+	}
 
-    .btn-att:hover {
-        background-color: rgb(141, 141, 141);
-      }
+	.btn-att:hover {
+		background-color: rgb(141, 141, 141);
+	}
 </style>
 
-{%endblock%}
+{%endblock%} {%block body%}
 
-{%block body%}
-
-<p class="h3 py-3 mb-0 text-center border-bottom border-dark">
-	Cadastro de Agências
-</p>
+<p class="h3 py-3 mb-0 text-center border-bottom border-dark">Agências</p>
 <!-- {% with messages = get_flashed_messages() %} {%if messages %} {%for message in
 messages%}
 <div
@@ -35,46 +28,37 @@ messages%}
 </div>
 {%endfor%} {%endif%} {%endwith%}  -->
 
-<div class="d-flex justify-content-center p-2 border-bottom border-dark text-center">
-    <form action="" class="d-flex justify-content-center align-items-center gap-2">
-        <label for="">Ag:</label>
-        <input type="number" class="col-3 border-1 rounded">
-        <label for="">Gerente:</label>
-        <input type="text" class="col-3 border-1 rounded">
-        <button class="btn-att w-25">
-            Criar Agência
-        </button>
-    </form>
-</div>
+<!-- <div
+	class="d-flex justify-content-center p-2 border-bottom border-dark text-center"
+>
+	<button class="btn-att w-25">Criar Agência</button>
+</div> -->
 
 <div class="d-flex flex-column p-2 border-bottom border-dark">
-    
-    <div class="d-flex align-items-center w-100">
-        <div class="col-9">
-            <div style="text-transform: capitalize">Agência: 0001</div>
-            <div>Gerente: Maria Brasileira</div>
-            <div>Quantidade de Clientes: 10</div>
-        </div>
+	<div class="d-flex align-items-center w-100">
+		<div class="col-9">
+			<div style="text-transform: capitalize">Agência: 0001</div>
+			<div>Gerente: Maria Brasileira</div>
+			<div>Quantidade de Clientes: 10</div>
+		</div>
 
-        <div class="d-flex flex-column col-3 text-center gap-1">
-            <form action="" method="POST">
-                <button class="btn btn-secondary mb-1 w-100" type="submit">
-                    Atualizar Dados
-                </button>
-            </form>
-            <form action="" method="POST">
-                <button class="btn btn-outline-dark w-100" type="submit">
-                    Excluir Agência
-                </button>
-            </form>
-        </div>
-    </div>
+		<!-- <div class="d-flex flex-column col-3 text-center gap-1">
+			<form action="" method="POST">
+				<button class="btn btn-secondary mb-1 w-100" type="submit">
+					Atualizar Dados
+				</button>
+			</form>
+			<form action="" method="POST">
+				<button class="btn btn-outline-dark w-100" type="submit">
+					Excluir Agência
+				</button>
+			</form>
+		</div> -->
+	</div>
 </div>
-
 
 <!-- <div class="h-75 d-flex align-items-center justify-content-center">
 	<h2 class="text-center">Sem Agências Cadastradas!</h2>
 </div> -->
-
 
 {%endblock%}

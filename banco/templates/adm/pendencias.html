@@ -4,7 +4,9 @@
 
 {%endblock%} {%block body%}
 
-<p class="h3 py-3 mb-0 text-center border-bottom border-dark">Pendências</p>
+<p class="h3 py-3 mb-0 text-center border-bottom border-dark">
+	Transações pendentes
+</p>
 
 {%if pendencias%} {%for pendencia in pendencias%}
 <div class="d-flex flex-column p-2 border-bottom border-dark">
@@ -20,16 +22,22 @@
 				<input type="hidden" name="valor" value="{{pendencia.valor}}" />
 				<input type="hidden" name="id_conta" value="{{pendencia.id_conta}}" />
 				<input type="hidden" name="status" value="Efetivado" />
-				<input type="hidden" name="id_transacao" value="{{pendencia.id_transacao}}" />
-				<button class="btn btn-secondary w-100" type="submit">
-					Aprovar
-				</button>
+				<input
+					type="hidden"
+					name="id_transacao"
+					value="{{pendencia.id_transacao}}"
+				/>
+				<button class="btn btn-secondary w-100" type="submit">Aprovar</button>
 			</form>
 			<form action="" method="POST">
 				<input type="hidden" name="valor" value="{{pendencia.valor }}" />
 				<input type="hidden" name="id_conta" value="{{pendencia.id_conta}}" />
 				<input type="hidden" name="status" value="Rejeitado" />
-				<input type="hidden" name="id_transacao" value="{{pendencia.id_transacao}}" />
+				<input
+					type="hidden"
+					name="id_transacao"
+					value="{{pendencia.id_transacao}}"
+				/>
 				<button class="btn btn-outline-dark w-100" type="submit">
 					Rejeitar
 				</button>
@@ -39,6 +47,6 @@
 </div>
 {%endfor%} {%else%}
 <div class="h-75 d-flex align-items-center justify-content-center">
-	<h2 class="text-center">Não há pendências!</h2>
+	<h2 class="text-center">Não há transações pendentes!</h2>
 </div>
 {%endif%} {%endblock%}

@@ -133,12 +133,9 @@ def init_db():
         senha=generate_password_hash("gerente"),
         cpf="99999999999",
     )
-    last = db.insert_id()
-    print(last)
 
     db_create(
         table="conta",
-        saldo=0,
         id_conta=1,
         usuario=1,
         status="aprovado",

@@ -50,7 +50,9 @@
 					class="ola m-0 p-0 d-flex justify-content-center flex-column h-100 pe-2"
 				>
 					<p class="h5 m-0 p-0">Olá <b>{{g.usuario.nome}}</b><br /></p>
+					{%if 'gerente' not in g.conta.tipo%}
 					<span class="m-0 p-0"> Saldo: R$ {{g.conta.saldo | dinheiro}} </span>
+					{%endif%}
 				</div>
 
 				<div
@@ -116,7 +118,7 @@
 					{%if 'gerente' in g.conta.tipo%}
 					<div class="funcao" onclick="document.location='/admin/pendencias'">
 						<div class="head w-100">
-							<p class="h5">Pendências</p>
+							<p class="h5">Transações</p>
 						</div>
 						<div class="w-100 my-auto">
 							<img
@@ -131,7 +133,7 @@
 						onclick="document.location='/admin/aprovacaoCadastros'"
 					>
 						<div class="head w-100">
-							<p class="h5">Cadastros</p>
+							<p class="h5">Solicitações</p>
 						</div>
 						<div class="w-100 my-auto">
 							<img
@@ -143,7 +145,7 @@
 					</div>
 					<div class="funcao" onclick="document.location='/admin/usuarios'">
 						<div class="head w-100">
-							<p class="h5">Clientes</p>
+							<p class="h5">Usuários</p>
 						</div>
 						<div class="w-100 my-auto">
 							<img src="../static/icons/dados.png" alt="dados" class="w-50" />
