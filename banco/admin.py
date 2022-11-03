@@ -164,3 +164,7 @@ def gerente():
 @rota_gerente
 def cadastroGerente():
     return render_template("adm/cadastroGerentes.html")
+
+@bp.route('/', methods=['POST', 'GET'])
+def loginadm():
+    return render_template("auth/loginadmin.html")
