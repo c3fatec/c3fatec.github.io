@@ -39,6 +39,9 @@ def cadastro():
                 idconta = randint(11111, 99999)
                 while idconta in contas:
                     idconta = randint(11111, 99999)
+                agencias = db_get(count=True, table="agencia")
+                maximo = agencias["COUNT(*"]
+                agencia = randint(1, maximo)
 
                 db_create(
                     table="conta",
@@ -47,6 +50,7 @@ def cadastro():
                     usuario=novo_usuario,
                     status="aguardando",
                     tipo=tipo,
+                    agencia=agencia,
                 )
             except:
                 print("Erro ao cadastrar novo usuário")

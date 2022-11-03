@@ -1,7 +1,9 @@
 {%extends 'index.html'%} {%block head%}
 
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link
+	rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+/>
 
 <title>XBank - Cadastro de Gerentes</title>
 
@@ -16,24 +18,33 @@
 {%if 'gerente' in g.conta.tipo%}
 <header class="header d-flex justify-content-between">
 	<div class="w-25">
-		<div class="home col-2 d-flex justify-content-center align-items-center h-100 btn btn-outline-secondary p-0"
-			onclick="document.location='/admin/gerente'">
+		<div
+			class="home col-2 d-flex justify-content-center align-items-center h-100 btn btn-outline-secondary p-0"
+			onclick="document.location='/admin/gerente'"
+		>
 			<span class="material-symbols-outlined"> undo </span>
 		</div>
 	</div>
 
-	<div class="logo w-50 h-100 d-flex justify-content-center text-center align-items-center">
+	<div
+		class="logo w-50 h-100 d-flex justify-content-center text-center align-items-center"
+	>
 		<p class="h2 m-0 p-0">X-bank</p>
 	</div>
 
-	<div class="funcao-direita w-25 h-100 pe- d-flex justify-content-end align-items-center">
-		<div class="ola m-0 p-0 d-flex justify-content-center flex-column h-100 pe-2">
+	<div
+		class="funcao-direita w-25 h-100 pe- d-flex justify-content-end align-items-center"
+	>
+		<div
+			class="ola m-0 p-0 d-flex justify-content-center flex-column h-100 pe-2"
+		>
 			<p class="h5 m-0 p-0">Olá <b>{{g.usuario.nome}}</b><br /></p>
-
 		</div>
 
-		<div class="sair col-2 d-flex justify-content-center align-items-center h-100 btn btn-outline-secondary p-0"
-			onclick="document.location='/logout'">
+		<div
+			class="sair col-2 d-flex justify-content-center align-items-center h-100 btn btn-outline-secondary p-0"
+			onclick="document.location='/logout'"
+		>
 			<span class="material-symbols-outlined"> power_settings_new </span>
 		</div>
 	</div>
@@ -41,7 +52,6 @@
 {%endif%}
 
 <div class="pg-attdados container-fluid d-flex align-items-center">
-
 	<div class="caixa-dados mx-auto px-2">
 		<form method="POST" class="form">
 			<!--Dados Pessoais-->
@@ -70,23 +80,37 @@
 				</div>
 				<div class="col-4">
 					<label for="data_nasc">Data de Nasc.*</label><br />
-					<input type="text" name="data-nasc" id="data-nasc" class="w-100" disabled />
+					<input
+						type="text"
+						name="data-nasc"
+						id="data-nasc"
+						class="w-100"
+						disabled
+					/>
 				</div>
 			</div>
 			<div class="d-flex">
-				<div class="col-8 pe-2">
+				<div class="col-6 pe-2">
 					<label for="email">E-mail*</label><br />
 					<input type="email" name="email" id="email" class="w-100" disabled />
 				</div>
-				<div class="col-4">
-					<label for="matricula">Matrícula</label>
-					<input type="text" name="matricula" id="matricula" class="w-100">
+				<div class="col-3">
+					<label for="senha">Senha</label>
+					<input type="password" name="senha" id="senha" class="w-100" />
 				</div>
-				
+				<div class="col-3">
+					<label for="senha">Senha</label>
+					<input
+						type="password"
+						name="senha-repetida"
+						id="senha-repetida"
+						class="w-100"
+					/>
+				</div>
 			</div>
 
 			<!--Endereço-->
-			<div class="titulo">
+			<!-- <div class="titulo">
 				<p class="h3 mt-4">Endereço</p>
 			</div>
 			<hr />
@@ -119,9 +143,15 @@
 				</div>
 				<div class="col-2">
 					<label for="Complemento">Complemento</label><br />
-					<input disabled type="text" name="complemento" id="complemento" class="w-100" />
+					<input
+						disabled
+						type="text"
+						name="complemento"
+						id="complemento"
+						class="w-100"
+					/>
 				</div>
-			</div>
+			</div> -->
 
 			<div class="d-flex justify-content-center gap-2 mx-auto w-75 mt-4 mb-3">
 				<div class="col-2">

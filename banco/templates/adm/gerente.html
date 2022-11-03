@@ -23,7 +23,7 @@
 >
 	<div class="col-3"></div>
 	<p class="h3 py-3 mb-0 text-center col-6">Cadastro de Gerentes</p>
-	<div class="col-3" onclick="document.location='/admin/cadastroGerente'">
+	<div class="col-3" onclick="document.location='/admin/cadastrar-gerente'">
 		<button class="btn-att w-100">Novo Gerente</button>
 	</div>
 </div>
@@ -47,7 +47,24 @@ messages%}
 	<div class="col-4">
 		<div>Número de matrícula: {{gerente.id_conta}}</div>
 		{%if gerente.agencia%}
-		<div>Agência: {{gerente.agencia}}</div>
+		<div>Agência: {{gerente.agencia_nome}}</div>
+		{%elif agencias and gerente.id_conta != 1%}
+		<div>
+			<form method="POST" class="d-flex justify-content-between w-100">
+				<select name="agencia" id="agencia">
+					{%for agencia in agencias%}
+					<option value="{{agencia.id_agencia}}">{{agencia.nome}}</option>
+					{%endfor%}
+				</select>
+				<input
+					type="hidden"
+					name="gerente"
+					id="gerente"
+					value="{{gerente.id_conta}}"
+				/>
+				<button class="btn-att" type="submit">Enviar</button>
+			</form>
+		</div>
 		{%endif%}
 	</div>
 

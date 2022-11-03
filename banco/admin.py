@@ -6,6 +6,9 @@ from datetime import datetime
 
 from .db import get_db, db_get, db_update, db_create
 
+from werkzeug.security import check_password_hash, generate_password_hash
+from random import randint
+
 bp = Blueprint("admin", __name__, url_prefix="/admin")
 
 
@@ -120,7 +123,7 @@ def dados():
     return render_template("adm/atualizacaoCadastro.html", usuario=usuario)
 
 
-@bp.route("/agencia", methods=["GET", "POST"])
+@bp.route("/agencias", methods=["GET", "POST"])
 @requer_login
 @rota_gerente
 def agencia():
@@ -146,21 +149,67 @@ def agencia():
     return render_template("adm/agencia.html", agencias=agencias)
 
 
-@bp.route("/gerente", methods=["GET", "POST"])
+@bp.route("/gerentes", methods=["GET", "POST"])
 @requer_login
 @rota_gerente
 def gerente():
+    if request.method == "POST":
+        nova_agencia = request.form["agencia"]
+        gerente_att = request.form["gerente"]
+        setter = {"campo": "agencia", "valor": nova_agencia}
+        value = {"campo": "id_conta", "valor": gerente_att}
+        db_update(table="conta", setter=setter, value=value)
+
+    agencias = db_get(table="agencia")
     gerentes = db_get(table="conta", many=True, tipo="gerente")
     for gerente in gerentes:
         id_usuario = gerente["usuario"]
         usuario = db_get(table="usuario", many=False, id_usuario=id_usuario)
         gerente.update(usuario)
+        for agencia in agencias:
+            if gerente["agencia"] == agencia["id_agencia"]:
+                gerente["agencia_nome"] = agencia["nome"]
+                agencias.remove(agencia)
 
-    return render_template("adm/gerente.html", gerentes=gerentes)
+    return render_template("adm/gerente.html", gerentes=gerentes, agencias=agencias)
 
 
-@bp.route("/cadastroGerente", methods=["GET", "POST"])
+@bp.route("/cadastrar-gerente", methods=["GET", "POST"])
 @requer_login
 @rota_gerente
 def cadastroGerente():
+    if request.method == "POST":
+        form = request.form
+        nome = form["nome"]
+        cpf = form["cpf"]
+        senha = form["senha"]
+        senha_repetida = form["senha-repetida"]
+        if senha == senha_repetida:
+            try:
+                usuario = db_create(
+                    table="usuario",
+                    nome=nome,
+                    cpf=cpf,
+                    senha=generate_password_hash(senha),
+                )
+            except:
+                print("Erro ao cadastrar gerente")
+            else:
+                contas = list(
+                    map(lambda x: x["id_conta"], db_get(table="conta", many=True))
+                )
+                idconta = randint(11111, 99999)
+                while idconta in contas:
+                    idconta = randint(11111, 99999)
+
+                db_create(
+                    table="conta",
+                    id_conta=idconta,
+                    status="aprovado",
+                    tipo="gerente",
+                    usuario=usuario,
+                )
+            finally:
+                return redirect(url_for("admin.gerente"))
+
     return render_template("adm/cadastroGerentes.html")
