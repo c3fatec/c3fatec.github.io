@@ -1,0 +1,41 @@
+{%extends 'loginadm.html'%} {%block head%}
+
+<title>Xbank - Login</title>
+
+{%endblock%}
+{%block body%}
+
+<div class="pg-login container-fluid d-flex align-items-center">
+
+	<div class="caixa mx-auto">		
+		<div class="header-caixa">
+			<h3 class="fw-bold my-auto">LOGIN</h3>
+		</div>
+		<div class="login">
+			<form method="post" class="d-grid gap-2 mt-4">
+				{%for message in get_flashed_messages()%} {%if message%}
+				<div class="d-flex justify-content-center">{{message}}</div>
+				{%endif%}{%endfor%}
+				<div class="d-flex justify-content-center">
+					<label for="id_conta" class="col-2 pe-2">Matrícula: </label>
+					<input type="text" name="id_conta" id="id_conta" class="col-8" />
+				</div>
+				<div class="d-flex justify-content-center">
+					<label for="senha" class="col-2 pe-2">Senha: </label>
+					<input type="password" id="senha" name="senha" class="col-8"/>
+				</div>
+			
+				<div class="d-flex justify-content-center gap-3 mt-3 mb-3">
+					<div class="col-3">
+						<button type="submit" class="btn btn-secondary btn-sm w-100">Entrar</button>
+					</div>
+					<!-- <div class="col-3">
+						<button type="button" class="btn btn-secondary btn-sm w-100" onclick="document.location='/cadastro'">Cadastrar</button>
+					</div> -->
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+{%endblock%}
