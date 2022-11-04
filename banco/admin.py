@@ -242,6 +242,8 @@ def loginadm():
             or conta["status"] != "aprovado"
             or conta["tipo"] not in ["gerente"]
             or not check_password_hash(usuario["senha"], senha)
+            or conta["agencia"] is None
+            and id_conta != "1"
         ):
             error = "Conta inexistente"
 
@@ -249,7 +251,7 @@ def loginadm():
             session.clear()
             session["id_usuario"] = usuario["id_usuario"]
             session["id_conta"] = conta["id_conta"]
-            if "corrente" in conta["tipo"] and "poupanca" in conta["tipo"]:
+            if "corrente" in conta["tipo"] or "poupanca" in conta["tipo"]:
                 return redirect(url_for("conta.index"))
             else:
                 return redirect(url_for("admin.pendencias"))

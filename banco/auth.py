@@ -39,8 +39,8 @@ def cadastro():
                 idconta = randint(11111, 99999)
                 while idconta in contas:
                     idconta = randint(11111, 99999)
-                agencias = db_get(count=True, table="agencia")
-                maximo = agencias["COUNT(*"]
+                agencias = db_get(count=True, table="agencia", many=False)
+                maximo = agencias["COUNT(*)"]
                 agencia = randint(1, maximo)
 
                 db_create(
@@ -111,14 +111,8 @@ def logout():
 
 @bp.route("/teste")
 def teste():
-    contas = list(map(lambda x: x["id_conta"], db_get(table="conta", many=True)))
 
-    idconta = randint(1, 9)
-    numbers = [2, 3, 4]
-    while idconta in numbers:
-        print(idconta)
-        idconta = randint(1, 9)
-    return [contas, idconta]
+    return ""
 
 
 @bp.before_app_request

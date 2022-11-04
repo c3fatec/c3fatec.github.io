@@ -165,19 +165,19 @@ def init_db():
     jackles = db_create(
         table="usuario",
         nome="Jackles",
-        senha=generate_password_hash("daniel"),
+        senha=generate_password_hash("jackles"),
         cpf="22233344455",
     )
     ivan = db_create(
         table="usuario",
         nome="Ivan",
-        senha=generate_password_hash("daniel"),
+        senha=generate_password_hash("ivan"),
         cpf="33344455566",
     )
     paulista = db_create(
         table="usuario",
         nome="Paulista",
-        senha=generate_password_hash("daniel"),
+        senha=generate_password_hash("paulista"),
         cpf="44455566677",
     )
 
