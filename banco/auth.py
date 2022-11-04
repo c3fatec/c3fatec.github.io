@@ -81,11 +81,12 @@ def login():
             id_usuario = conta["usuario"]
             usuario = db_get(many=False, table="usuario", id_usuario=id_usuario)
 
-        if usuario is None:
-            error = "Conta inexistente"
-        elif conta["status"] != "aprovado":
-            error = "Conta inexistente"
-        elif not check_password_hash(usuario["senha"], senha):
+        if (
+            usuario is None
+            or conta["status"] != "aprovado"
+            or conta["tipo"] not in ["corrente", "poupanca"]
+            or not check_password_hash(usuario["senha"], senha)
+        ):
             error = "Conta inexistente"
 
         if error is None:

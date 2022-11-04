@@ -1,4 +1,12 @@
-from flask import Blueprint, g, redirect, render_template, request, url_for, flash
+from flask import (
+    Blueprint,
+    redirect,
+    render_template,
+    request,
+    url_for,
+    flash,
+    session,
+)
 
 from banco.auth import requer_login, rota_gerente
 
@@ -214,6 +222,38 @@ def cadastroGerente():
 
     return render_template("adm/cadastroGerentes.html")
 
-@bp.route('/', methods=['POST', 'GET'])
+
+@bp.route("/", methods=["POST", "GET"])
 def loginadm():
+    if request.method == "POST":
+        id_conta = str(request.form["id_conta"])
+        senha = request.form["senha"]
+        usuario = None
+        error = None
+
+        conta = db_get(many=False, table="conta", id_conta=id_conta)
+
+        if conta:
+            id_usuario = conta["usuario"]
+            usuario = db_get(many=False, table="usuario", id_usuario=id_usuario)
+
+        if (
+            usuario is None
+            or conta["status"] != "aprovado"
+            or conta["tipo"] not in ["gerente"]
+            or not check_password_hash(usuario["senha"], senha)
+        ):
+            error = "Conta inexistente"
+
+        if error is None:
+            session.clear()
+            session["id_usuario"] = usuario["id_usuario"]
+            session["id_conta"] = conta["id_conta"]
+            if "corrente" in conta["tipo"] and "poupanca" in conta["tipo"]:
+                return redirect(url_for("conta.index"))
+            else:
+                return redirect(url_for("admin.pendencias"))
+
+        flash(error)
+
     return render_template("auth/loginadmin.html")
