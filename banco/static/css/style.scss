@@ -5,22 +5,22 @@
 
     .funcao-inicio {
       @media (max-width: 575px) {
-        width: 30% !important;
-      }
-
-      @media (max-width: 414px) {
         width: 35% !important;
       }
+
+      // @media (max-width: 414px) {
+      //   width: 35% !important;
+      // }
     }
   
     .logo {
       @media (max-width: 575px) {
-        width: 40% !important;
-      }
-
-      @media (max-width: 414px) {
         width: 30% !important;
       }
+
+      // @media (max-width: 414px) {
+      //   width: 30% !important;
+      // }
 
       p {
         color: white;
@@ -32,22 +32,33 @@
 
     .funcao-direita {
       @media (max-width: 575px) {
-        width: 30% !important;
-      }
-
-      @media (max-width: 414px) {
         width: 35% !important;
       }
 
+      // @media (max-width: 414px) {
+      //   width: 35% !important;
+      // }
+
       .ola {
-        p, span {
+        p {
           text-transform: capitalize;
           
           @media (max-width: 575px) {
             font-size: 15px !important;
           }
-          @media (max-width: 375px) {
+          @media (max-width: 393px) {
             font-size: 12px !important;
+          }
+        }
+
+        span {
+          text-transform: capitalize;
+          
+          @media (max-width: 900px) {
+            font-size: 12px !important;
+          }
+          @media (max-width: 393px) {
+            font-size: 10px !important;
           }
         }
     

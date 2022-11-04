@@ -5,20 +5,10 @@
 }
 @media (max-width: 575px) {
   .header .funcao-inicio {
-    width: 30% !important;
-  }
-}
-@media (max-width: 414px) {
-  .header .funcao-inicio {
     width: 35% !important;
   }
 }
 @media (max-width: 575px) {
-  .header .logo {
-    width: 40% !important;
-  }
-}
-@media (max-width: 414px) {
   .header .logo {
     width: 30% !important;
   }
@@ -31,25 +21,33 @@
 }
 @media (max-width: 575px) {
   .header .funcao-direita {
-    width: 30% !important;
-  }
-}
-@media (max-width: 414px) {
-  .header .funcao-direita {
     width: 35% !important;
   }
 }
-.header .funcao-direita .ola p, .header .funcao-direita .ola span {
+.header .funcao-direita .ola p {
   text-transform: capitalize;
 }
 @media (max-width: 575px) {
-  .header .funcao-direita .ola p, .header .funcao-direita .ola span {
+  .header .funcao-direita .ola p {
     font-size: 15px !important;
   }
 }
-@media (max-width: 375px) {
-  .header .funcao-direita .ola p, .header .funcao-direita .ola span {
+@media (max-width: 393px) {
+  .header .funcao-direita .ola p {
     font-size: 12px !important;
+  }
+}
+.header .funcao-direita .ola span {
+  text-transform: capitalize;
+}
+@media (max-width: 900px) {
+  .header .funcao-direita .ola span {
+    font-size: 12px !important;
+  }
+}
+@media (max-width: 393px) {
+  .header .funcao-direita .ola span {
+    font-size: 10px !important;
   }
 }
 .header .funcao-direita .sair {
