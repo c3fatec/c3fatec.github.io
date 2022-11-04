@@ -3,11 +3,60 @@
   height: 7vh;
   color: white;
 }
-.header .logo > p {
+@media (max-width: 575px) {
+  .header .funcao-inicio {
+    width: 30% !important;
+  }
+}
+@media (max-width: 414px) {
+  .header .funcao-inicio {
+    width: 35% !important;
+  }
+}
+@media (max-width: 575px) {
+  .header .logo {
+    width: 40% !important;
+  }
+}
+@media (max-width: 414px) {
+  .header .logo {
+    width: 30% !important;
+  }
+}
+.header .logo p {
   color: white;
   font-weight: bold !important;
   letter-spacing: 2px;
   text-transform: uppercase;
+}
+@media (max-width: 575px) {
+  .header .funcao-direita {
+    width: 30% !important;
+  }
+}
+@media (max-width: 414px) {
+  .header .funcao-direita {
+    width: 35% !important;
+  }
+}
+.header .funcao-direita .ola p, .header .funcao-direita .ola span {
+  text-transform: capitalize;
+}
+@media (max-width: 575px) {
+  .header .funcao-direita .ola p, .header .funcao-direita .ola span {
+    font-size: 15px !important;
+  }
+}
+@media (max-width: 375px) {
+  .header .funcao-direita .ola p, .header .funcao-direita .ola span {
+    font-size: 12px !important;
+  }
+}
+.header .funcao-direita .sair {
+  border: none;
+}
+.header .funcao-direita .sair i {
+  color: white;
 }
 .header .home {
   border: none;
@@ -101,21 +150,6 @@
   background-color: rgb(141, 141, 141);
 }
 
-.funcao-direita .ola p {
-  text-transform: capitalize;
-}
-@media (max-width: 575px) {
-  .funcao-direita .ola p {
-    font-size: 13px !important;
-  }
-}
-.funcao-direita .sair {
-  border: none;
-}
-.funcao-direita .sair i {
-  color: white;
-}
-
 .base-interna {
   background-image: url("../../static/img/quadrados.png");
   background-repeat: no-repeat;
@@ -127,6 +161,11 @@
 .base-interna .caixa-principal {
   width: 90%;
   min-height: 80vh;
+}
+@media (max-width: 575px) {
+  .base-interna .caixa-principal {
+    width: 98%;
+  }
 }
 .base-interna .caixa-principal .botoes {
   flex-wrap: wrap;
@@ -155,6 +194,7 @@
   margin: 0;
   padding-top: 4px;
   font-size: 15px;
+  font-weight: bold;
 }
 @media (max-width: 575px) {
   .base-interna .caixa-principal .botoes .funcao .head p {
