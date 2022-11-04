@@ -19,15 +19,25 @@
   letter-spacing: 2px;
   text-transform: uppercase;
 }
+@media (max-width: 360px) {
+  .header .logo p {
+    font-size: 23px !important;
+  }
+}
 @media (max-width: 575px) {
   .header .funcao-direita {
     width: 35% !important;
   }
 }
+@media (max-width: 575px) {
+  .header .funcao-direita .ola {
+    align-items: flex-end !important;
+  }
+}
 .header .funcao-direita .ola p {
   text-transform: capitalize;
 }
-@media (max-width: 575px) {
+@media (max-width: 830px) {
   .header .funcao-direita .ola p {
     font-size: 15px !important;
   }
@@ -40,7 +50,7 @@
 .header .funcao-direita .ola span {
   text-transform: capitalize;
 }
-@media (max-width: 900px) {
+@media (max-width: 991px) {
   .header .funcao-direita .ola span {
     font-size: 12px !important;
   }
@@ -52,9 +62,6 @@
 }
 .header .funcao-direita .sair {
   border: none;
-}
-.header .funcao-direita .sair i {
-  color: white;
 }
 .header .home {
   border: none;
@@ -213,7 +220,7 @@
 }
 @media (max-width: 575px) {
   .base-interna .caixa-principal .caixa-sistema {
-    height: 75vh;
+    height: 70vh;
     margin-top: 6px;
   }
 }
@@ -237,7 +244,13 @@
   border-radius: 8px;
   padding: 8px;
 }
-
+@media (max-width: 1200px) {
+  .msg {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+}
 .pg-impressao {
   min-height: 93vh;
   font-weight: 500;

@@ -18,15 +18,16 @@
         width: 30% !important;
       }
 
-      // @media (max-width: 414px) {
-      //   width: 30% !important;
-      // }
-
       p {
         color: white;
         font-weight: bold !important;
         letter-spacing: 2px;
         text-transform: uppercase;
+
+        @media (max-width: 360px) {
+          font-size: 23px !important;
+        }
+
       }
     }
 
@@ -35,15 +36,16 @@
         width: 35% !important;
       }
 
-      // @media (max-width: 414px) {
-      //   width: 35% !important;
-      // }
 
       .ola {
+        @media (max-width: 575px) {
+          align-items: flex-end !important;
+        }
+
         p {
           text-transform: capitalize;
           
-          @media (max-width: 575px) {
+          @media (max-width: 830px) {
             font-size: 15px !important;
           }
           @media (max-width: 393px) {
@@ -54,7 +56,7 @@
         span {
           text-transform: capitalize;
           
-          @media (max-width: 900px) {
+          @media (max-width: 991px) {
             font-size: 12px !important;
           }
           @media (max-width: 393px) {
@@ -66,10 +68,6 @@
     
       .sair {
         border: none;
-    
-        i {
-          color: white;
-        }
       }
     }
 
