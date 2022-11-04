@@ -93,10 +93,7 @@ def login():
             session.clear()
             session["id_usuario"] = usuario["id_usuario"]
             session["id_conta"] = conta["id_conta"]
-            if "corrente" in conta["tipo"] and "poupanca" in conta["tipo"]:
-                return redirect(url_for("conta.index"))
-            else:
-                return redirect(url_for("admin.pendencias"))
+            return redirect(url_for("conta.index"))
 
         flash(error)
 
