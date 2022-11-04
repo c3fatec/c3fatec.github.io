@@ -35,7 +35,7 @@
 
 	<body>
 		<header class="header d-flex justify-content-between">
-			<div class="w-25"></div>
+			<div class="funcao-inicio w-25"></div>
 
 			<div
 				class="logo w-50 h-100 d-flex justify-content-center text-center align-items-center"
@@ -59,7 +59,9 @@
 					class="sair col-2 d-flex justify-content-center align-items-center h-100 btn btn-outline-secondary p-0"
 					onclick="document.location='/logout'"
 				>
-					<span class="material-symbols-outlined"> power_settings_new </span>
+					<span class="material-symbols-outlined m-0 p-0">
+						power_settings_new
+					</span>
 				</div>
 			</div>
 		</header>
@@ -67,114 +69,152 @@
 		<div
 			class="base-interna container-fluid d-flex justify-content-center align-items-center"
 		>
-			<div class="caixa-principal d-flex">
-				<div class="botoes d-flex justify-content-center text-center my-auto">
+			<div class="caixa-principal d-flex row">
+				<div
+					class="botoes d-flex justify-content-center text-center my-auto col-xxl-3 col-xl-4 col-md-4 col-sm-3 col-12 gap-3 p-3"
+				>
 					{%if 'corrente' in g.conta.tipo or 'poupanca' in g.conta.tipo%}
-					<div class="funcao" onclick="document.location='/conta'">
+					<div
+						class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
+						onclick="document.location='/conta'"
+					>
 						<div class="head w-100">
-							<p class="h5">Home</p>
+							<p>Home</p>
 						</div>
 						<div class="w-100 my-auto">
-							<img src="../static/icons/home.png" alt="home" class="w-50" />
+							<img src="../static/icons/home.png" alt="home" class="w-50 p-1" />
 						</div>
 					</div>
 
-					<div class="funcao" onclick="document.location='/conta/saque'">
+					<div
+						class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
+						onclick="document.location='/conta/saque'"
+					>
 						<div class="head w-100">
-							<p class="h5">Saque</p>
+							<p>Saque</p>
 						</div>
 						<div class="w-100 my-auto">
-							<img src="../static/icons/sacar.png" alt="sacar" class="w-50" />
+							<img
+								src="../static/icons/sacar.png"
+								alt="sacar"
+								class="w-50 p-1"
+							/>
 						</div>
 					</div>
 
-					<div class="funcao" onclick="document.location='/conta/deposito'">
+					<div
+						class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
+						onclick="document.location='/conta/deposito'"
+					>
 						<div class="head w-100">
-							<p class="h5">Depósito</p>
+							<p>Depósito</p>
 						</div>
 						<div class="w-100 my-auto">
 							<img
 								src="../static/icons/depositar.png"
 								alt="depositar"
-								class="w-50"
+								class="w-50 p-1"
 							/>
 						</div>
 					</div>
 
-					<div class="funcao" onclick="document.location='/conta/extrato'">
+					<div
+						class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
+						onclick="document.location='/conta/extrato'"
+					>
 						<div class="head w-100">
-							<p class="h5">Extrato</p>
+							<p>Extrato</p>
 						</div>
 						<div class="w-100 my-auto">
 							<img
 								src="../static/icons/extrato.png"
 								alt="comprovante"
-								class="w-50"
+								class="w-50 p-1"
 							/>
 						</div>
 					</div>
-					{%endif%}
-					<!-- Funções de gerente -->
-					{%if 'gerente' in g.conta.tipo%}
-					<div class="funcao" onclick="document.location='/admin/pendencias'">
+					{%endif%} {%if 'gerente' in g.conta.tipo%}
+					<div
+						class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
+						onclick="document.location='/admin/pendencias'"
+					>
 						<div class="head w-100">
-							<p class="h5">Transações</p>
+							<p>Transações</p>
 						</div>
 						<div class="w-100 my-auto">
 							<img
 								src="../static/icons/pendencia.png"
 								alt="comprovante"
-								class="w-50"
+								class="w-50 p-1"
 							/>
 						</div>
 					</div>
 					<div
-						class="funcao"
+						class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
 						onclick="document.location='/admin/aprovacaoCadastros'"
 					>
 						<div class="head w-100">
-							<p class="h5">Solicitações</p>
+							<p>Solicitações</p>
 						</div>
 						<div class="w-100 my-auto">
 							<img
 								src="../static/icons/cadastro.png"
 								alt="comprovante"
-								class="w-50"
+								class="w-50 p-1"
 							/>
 						</div>
 					</div>
-					<div class="funcao" onclick="document.location='/admin/usuarios'">
+					<div
+						class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
+						onclick="document.location='/admin/usuarios'"
+					>
 						<div class="head w-100">
-							<p class="h5">Usuários</p>
+							<p>Usuários</p>
 						</div>
 						<div class="w-100 my-auto">
-							<img src="../static/icons/dados.png" alt="dados" class="w-50" />
+							<img
+								src="../static/icons/dados.png"
+								alt="dados"
+								class="w-50 p-1"
+							/>
 						</div>
 					</div>
-					<div class="funcao" onclick="document.location='/admin/agencias'">
+					<div
+						class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
+						onclick="document.location='/admin/agencias'"
+					>
 						<div class="head w-100">
-							<p class="h5">Agências</p>
+							<p>Agências</p>
 						</div>
 						<div class="w-100 my-auto">
-							<img src="../static/icons/agencia.png" alt="dados" class="w-50" />
+							<img
+								src="../static/icons/agencia.png"
+								alt="dados"
+								class="w-50 p-1"
+							/>
 						</div>
 					</div>
-					<div class="funcao" onclick="document.location='/admin/gerentes'">
+					<div
+						class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
+						onclick="document.location='/admin/gerentes'"
+					>
 						<div class="head w-100">
-							<p class="h5">Gerentes</p>
+							<p>Gerentes</p>
 						</div>
 						<div class="w-100 my-auto">
 							<img
 								src="../static/icons/colaboradores.png"
 								alt="dados"
-								class="w-50"
+								class="w-50 p-1"
 							/>
 						</div>
 					</div>
 					{%endif%}
 				</div>
 
-				<div class="d-flex align-items-center w-75">
+				<div
+					class="caixa-s d-flex align-items-center col-xxl-9 col-xl-8 col-md-8 col-sm-9 col-12"
+				>
 					<div class="caixa-sistema w-100">{% block body %} {% endblock %}</div>
 				</div>
 			</div>

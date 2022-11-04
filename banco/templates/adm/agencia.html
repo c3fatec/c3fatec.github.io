@@ -21,20 +21,16 @@
 <p class="h3 py-3 mb-0 text-center border-bottom border-dark">Agências</p>
 {% with messages = get_flashed_messages() %} {%if messages %} {%for message in
 messages%}
-<div
-	class="pnd d-flex justify-content-center align-items-center text-center w-100 p-2"
->
+<div class="pnd d-flex justify-content-center align-items-center text-center w-100 p-2">
 	<div class="msg d-flex align-items-center">{{message}}</div>
 </div>
 {%endfor%} {%endif%} {%endwith%}
 
 <form method="POST" class="form">
-	<div
-		class="d-flex justify-content-center align-items-center p-2 border-bottom border-dark text-center"
-	>
-		<label for="nome">Nome da agência:</label>
-		<input type="text" id="nome" name="nome" class="mx-2" />
-		<button type="submit" class="btn-att w-25">Criar Agência</button>
+	<div class="d-flex justify-content-center align-items-center p-2 border-bottom border-dark w-100 gap-2">
+		<label for="nome" class="text-center">Nome da agência:</label>
+		<input type="text" id="nome" name="nome" class="col-xxl-4 col-xl-4 col-md-4 col-sm-4 col-4"/>
+		<button type="submit" class="btn-att col-xxl-2 col-xl-2 col-md-4 col-sm-4 col-4">Criar Agência</button>
 	</div>
 </form>
 

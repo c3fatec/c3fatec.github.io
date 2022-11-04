@@ -2,12 +2,75 @@
     background-color: rgb(43, 43, 43);
     height: 7vh;
     color: white;
+
+    .funcao-inicio {
+      @media (max-width: 575px) {
+        width: 35% !important;
+      }
+
+      // @media (max-width: 414px) {
+      //   width: 35% !important;
+      // }
+    }
   
-    .logo>p {
-      color: white;
-      font-weight: bold !important;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+    .logo {
+      @media (max-width: 575px) {
+        width: 30% !important;
+      }
+
+      // @media (max-width: 414px) {
+      //   width: 30% !important;
+      // }
+
+      p {
+        color: white;
+        font-weight: bold !important;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+    }
+
+    .funcao-direita {
+      @media (max-width: 575px) {
+        width: 35% !important;
+      }
+
+      // @media (max-width: 414px) {
+      //   width: 35% !important;
+      // }
+
+      .ola {
+        p {
+          text-transform: capitalize;
+          
+          @media (max-width: 575px) {
+            font-size: 15px !important;
+          }
+          @media (max-width: 393px) {
+            font-size: 12px !important;
+          }
+        }
+
+        span {
+          text-transform: capitalize;
+          
+          @media (max-width: 900px) {
+            font-size: 12px !important;
+          }
+          @media (max-width: 393px) {
+            font-size: 10px !important;
+          }
+        }
+    
+      }
+    
+      .sair {
+        border: none;
+    
+        i {
+          color: white;
+        }
+      }
     }
 
     .home {
@@ -24,7 +87,7 @@
     }
   }
 
-.header-b {
+.header-b, .header-adm {
     background-color: rgb(43, 43, 43);
     height: 7vh;
     color: white;

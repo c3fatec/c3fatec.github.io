@@ -10,32 +10,30 @@
 <div>
 	{% with messages = get_flashed_messages() %} {%if messages %} {%for message in
 	messages%}
-	<div
-		class="pnd d-flex justify-content-center align-items-center text-center w-100 p-2"
-	>
+	<div class="pnd d-flex justify-content-center align-items-center text-center w-100 p-2">
 		<div class="msg d-flex align-items-center">{{message}}</div>
 	</div>
 	{%endfor%} {%endif%} {%endwith%} {%if cadastros%} {%for cadastro in
 	cadastros%}
 	<div class="d-flex align-items-center w-100 p-2 border-bottom border-dark">
-		<div class="col-9">
+		<div class="col-xxl-9 col-xl-9 col-md-9 col-sm-10 col-9">
 			<div class="text-capitalize">Nome: {{cadastro.nome}}</div>
 			<div>CPF: {{cadastro.cpf}}</div>
 			<div>Tipo de Conta: {{cadastro.tipo | capitalize}}</div>
 		</div>
 
-		<div class="col-3 text-center">
+		<div class="d-flex flex-column text-center col-xxl-3 col-xl-3 col-md-3 col-sm-2 col-3 gap-1">
 			<form action="" method="POST">
 				<input type="hidden" name="id_usuario" value="{{cadastro.id_usuario}}" />
 				<input type="hidden" name="status" value="aprovado" />
-				<button class="btn btn-secondary mb-1 w-100" type="submit">
+				<button class="btn btn-secondary w-100 text-center mx-0 px-0" type="submit">
 					Aprovar
 				</button>
 			</form>
 			<form action="" method="POST">
 				<input type="hidden" name="id_usuario" value="{{cadastro.id_usuario}}" />
 				<input type="hidden" name="status" value="rejeitado" />
-				<button class="btn btn-outline-dark w-100" type="submit">
+				<button class="btn btn-outline-dark w-100 text-center mx-0 px-0" type="submit">
 					Rejeitar
 				</button>
 			</form>
