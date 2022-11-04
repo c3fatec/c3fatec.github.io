@@ -179,6 +179,7 @@
 							/>
 						</div>
 					</div>
+					{%if not g.conta.agencia%}
 					<div
 						class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
 						onclick="document.location='/admin/agencias'"
@@ -209,7 +210,7 @@
 							/>
 						</div>
 					</div>
-					{%endif%}
+					{%endif%} {%endif%}
 				</div>
 
 				<div
