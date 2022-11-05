@@ -17,7 +17,7 @@
 <header class="header d-flex justify-content-between">
 	<div class="w-25">
 		<div class="home col-2 d-flex justify-content-center align-items-center h-100 btn btn-outline-secondary p-0"
-			onclick="document.location='/admin/gerente'">
+			onclick="document.location='/admin/gerentes'">
 			<span class="material-symbols-outlined"> undo </span>
 		</div>
 	</div>
@@ -40,47 +40,47 @@
 {%endif%}
 
 <div class="pg-attdados container-fluid d-flex align-items-center">
-	<div class="caixa-dados mx-auto px-2">
+	<div class="caixa-dados mx-auto col-11">
 		<form method="POST" class="form">
 			<!--Dados Pessoais-->
-			<div class="titulo">
-				<p class="h3">Dados Pessoais</p>
+			<div class="titulo px-2">
+				<p class="h3">Dados Pessoais - Gerente</p>
 			</div>
 			<hr />
-			<div class="d-flex mt-2">
-				<div class="col-8 pe-2">
+			<div class="d-flex">
+				<div class="col-8 px-2">
 					<label for="nome">Nome*</label><br />
 					<input type="text" name="nome" id="nome" class="w-100" required />
 				</div>
-				<div class="col-4">
+				<div class="col-4 px-2">
 					<label for="genero">Gênero*</label><br />
 					<input type="text" name="genero" id="genero" class="w-100" disabled />
 				</div>
 			</div>
 			<div class="d-flex">
-				<div class="col-4 pe-2">
+				<div class="col-4 px-2">
 					<label for="cpf">CPF*</label><br />
 					<input type="text" name="cpf" id="cpf" class="w-100" required />
 				</div>
-				<div class="col-4 pe-2">
+				<div class="col-4 px-2">
 					<label for="rg">RG</label><br />
 					<input type="text" name="rg" id="rg" class="w-100" disabled />
 				</div>
-				<div class="col-4">
+				<div class="col-4 px-2">
 					<label for="data_nasc">Data de Nasc.*</label><br />
 					<input type="text" name="data-nasc" id="data-nasc" class="w-100" disabled />
 				</div>
 			</div>
 			<div class="d-flex">
-				<div class="col-6 pe-2">
+				<div class="col-6 px-2">
 					<label for="email">E-mail*</label><br />
 					<input type="email" name="email" id="email" class="w-100" disabled />
 				</div>
-				<div class="col-3">
+				<div class="col-3 px-2">
 					<label for="senha">Senha</label>
 					<input type="password" name="senha" id="senha" class="w-100" />
 				</div>
-				<div class="col-3">
+				<div class="col-3 px-2">
 					<label for="senha">Senha</label>
 					<input type="password" name="senha-repetida" id="senha-repetida" class="w-100" />
 				</div>
