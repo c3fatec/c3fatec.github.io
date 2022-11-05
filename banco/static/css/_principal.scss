@@ -3,4 +3,16 @@
     background-color: whitesmoke;
     border-radius: 8px;
     padding: 8px;
+
+    @media (max-width: 1200px) {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    div {
+        @media (max-width: 1200px) {
+            
+        }
+    }
 }

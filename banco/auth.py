@@ -48,6 +48,9 @@ def cadastro():
                 idconta = randint(11111, 99999)
                 while idconta in contas:
                     idconta = randint(11111, 99999)
+                agencias = db_get(count=True, table="agencia", many=False)
+                maximo = agencias["COUNT(*)"]
+                agencia = randint(1, maximo)
 
                 db_create(
                     table="conta",
@@ -56,6 +59,7 @@ def cadastro():
                     usuario=novo_usuario,
                     status="aguardando",
                     tipo=tipo,
+                    agencia=agencia,
                 )
             except:
                 print("Erro ao cadastrar novo usuário")
@@ -76,6 +80,7 @@ def aguarde():
 def login():
     if request.method == "POST":
         id_conta = str(request.form["id_conta"])
+        id_agencia = request.form["id_agencia"]
         senha = request.form["senha"]
         usuario = None
         error = None
@@ -86,21 +91,20 @@ def login():
             id_usuario = conta["usuario"]
             usuario = db_get(many=False, table="usuario", id_usuario=id_usuario)
 
-        if usuario is None:
-            error = "Conta inexistente"
-        elif conta["status"] != "aprovado":
-            error = "Conta inexistente"
-        elif not check_password_hash(usuario["senha"], senha):
+        if (
+            usuario is None
+            or conta["agencia"] != int(id_agencia)
+            or conta["status"] != "aprovado"
+            or conta["tipo"] not in ["corrente", "poupanca"]
+            or not check_password_hash(usuario["senha"], senha)
+        ):
             error = "Conta inexistente"
 
         if error is None:
             session.clear()
             session["id_usuario"] = usuario["id_usuario"]
             session["id_conta"] = conta["id_conta"]
-            if "corrente" in conta["tipo"] and "poupanca" in conta["tipo"]:
-                return redirect(url_for("conta.index"))
-            else:
-                return redirect(url_for("admin.pendencias"))
+            return redirect(url_for("conta.index"))
 
         flash(error)
 
@@ -115,14 +119,8 @@ def logout():
 
 @bp.route("/teste")
 def teste():
-    contas = list(map(lambda x: x["id_conta"], db_get(table="conta", many=True)))
 
-    idconta = randint(1, 9)
-    numbers = [2, 3, 4]
-    while idconta in numbers:
-        print(idconta)
-        idconta = randint(1, 9)
-    return [contas, idconta]
+    return ""
 
 
 @bp.before_app_request

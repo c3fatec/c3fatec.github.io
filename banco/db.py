@@ -135,19 +135,101 @@ def init_db():
                 cursor.execute(comando + ";")
         db.commit()
 
+    # gerente geral
     db_create(
         table="usuario",
-        nome="gerente",
+        nome="Gabriel Oliveira",
         senha=generate_password_hash("gerente"),
-        cpf="99999999999",
+        cpf="52504467876",
     )
-
     db_create(
         table="conta",
         id_conta=1,
         usuario=1,
         status="aprovado",
         tipo="gerente",
+    )
+
+    # agencias
+    db_create(table="agencia", nome="Morumbi")
+    db_create(table="agencia", nome="Cidade Jardim")
+    db_create(table="agencia", nome="Vista Verde")
+
+    # gerentes
+    daniel = db_create(
+        table="usuario",
+        nome="Daniel",
+        senha=generate_password_hash("daniel"),
+        cpf="11122233344",
+    )
+    jackles = db_create(
+        table="usuario",
+        nome="Jackles",
+        senha=generate_password_hash("jackles"),
+        cpf="22233344455",
+    )
+    ivan = db_create(
+        table="usuario",
+        nome="Ivan",
+        senha=generate_password_hash("ivan"),
+        cpf="33344455566",
+    )
+    paulista = db_create(
+        table="usuario",
+        nome="Paulista",
+        senha=generate_password_hash("paulista"),
+        cpf="44455566677",
+    )
+
+    db_create(
+        table="conta", id_conta=99999, usuario=daniel, status="aprovado", tipo="gerente"
+    )
+    db_create(
+        table="conta",
+        id_conta=88888,
+        usuario=jackles,
+        status="aprovado",
+        tipo="gerente",
+    )
+    db_create(
+        table="conta", id_conta=77777, usuario=ivan, status="aprovado", tipo="gerente"
+    )
+    db_create(
+        table="conta",
+        id_conta=66666,
+        usuario=paulista,
+        status="aprovado",
+        tipo="gerente",
+    )
+    cliente_1 = db_create(
+        table="usuario",
+        nome="Cliente 1",
+        senha=generate_password_hash("cliente"),
+        cpf="12332112332",
+    )
+    cliente_2 = db_create(
+        table="usuario",
+        nome="Cliente 2",
+        senha=generate_password_hash("cliente"),
+        cpf="12332112333",
+    )
+    db_create(
+        saldo=0,
+        table="conta",
+        id_conta=10000,
+        usuario=cliente_1,
+        status="aprovado",
+        tipo="poupanca",
+        agencia=1,
+    )
+    db_create(
+        saldo=0,
+        table="conta",
+        id_conta=20000,
+        usuario=cliente_2,
+        status="aprovado",
+        tipo="corrente",
+        agencia=2,
     )
 
     db.close()

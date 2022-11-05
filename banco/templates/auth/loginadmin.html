@@ -1,0 +1,61 @@
+{%extends 'index.html'%} {%block head%}
+
+<title>Xbank - Login Admin</title>
+
+<style>
+	.header-b {
+		display: none !important;
+	}
+
+	.logo-b>p {
+        color: white;
+        font-weight: bold !important;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+</style>
+
+{%endblock%} {%block body%}
+
+<header class="header d-flex justify-content-center align-items-center">
+	<div class="logo-b w-50 h-100 d-flex justify-content-center text-center align-items-center">
+		<p class="h2 m-0 p-0">X-bank - Gerente</p>
+	</div>
+</header>
+
+<div class="pg-login container-fluid d-flex align-items-center">
+	<div class="caixa mx-auto">
+		<div class="header-caixa">
+			<h3 class="fw-bold my-auto">LOGIN</h3>
+		</div>
+		<div class="login">
+			<form method="post" class="d-grid gap-2 mt-4">
+				{%for message in get_flashed_messages()%} {%if message%}
+				<div class="d-flex justify-content-center">{{message}}</div>
+				{%endif%}{%endfor%}
+				<div class="d-flex justify-content-center">
+					<label for="id_conta" class="col-3 pe-2 text-start">Matrícula:
+					</label>
+					<input type="text" name="id_conta" id="id_conta" class="col-7" />
+				</div>
+				<div class="d-flex justify-content-center">
+					<label for="senha" class="col-3 pe-2 text-start">Senha: </label>
+					<input type="password" id="senha" name="senha" class="col-7" />
+				</div>
+
+				<div class="d-flex justify-content-center gap-3 mt-3 mb-3">
+					<div class="col-3">
+						<button type="submit" class="btn btn-secondary btn-sm w-100">
+							Entrar
+						</button>
+					</div>
+					<!-- <div class="col-3">
+						<button type="button" class="btn btn-secondary btn-sm w-100" onclick="document.location='/cadastro'">Cadastrar</button>
+					</div> -->
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+{%endblock%}

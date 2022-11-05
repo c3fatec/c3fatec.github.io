@@ -2,12 +2,73 @@
     background-color: rgb(43, 43, 43);
     height: 7vh;
     color: white;
+
+    .funcao-inicio {
+      @media (max-width: 575px) {
+        width: 35% !important;
+      }
+
+      // @media (max-width: 414px) {
+      //   width: 35% !important;
+      // }
+    }
   
-    .logo>p {
-      color: white;
-      font-weight: bold !important;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+    .logo {
+      @media (max-width: 575px) {
+        width: 30% !important;
+      }
+
+      p {
+        color: white;
+        font-weight: bold !important;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
+        @media (max-width: 360px) {
+          font-size: 23px !important;
+        }
+
+      }
+    }
+
+    .funcao-direita {
+      @media (max-width: 575px) {
+        width: 35% !important;
+      }
+
+
+      .ola {
+        @media (max-width: 575px) {
+          align-items: flex-end !important;
+        }
+
+        p {
+          text-transform: capitalize;
+          
+          @media (max-width: 830px) {
+            font-size: 15px !important;
+          }
+          @media (max-width: 393px) {
+            font-size: 12px !important;
+          }
+        }
+
+        span {
+          text-transform: capitalize;
+          
+          @media (max-width: 991px) {
+            font-size: 12px !important;
+          }
+          @media (max-width: 393px) {
+            font-size: 10px !important;
+          }
+        }
+    
+      }
+    
+      .sair {
+        border: none;
+      }
     }
 
     .home {
@@ -24,7 +85,7 @@
     }
   }
 
-.header-b {
+.header-b, .header-adm {
     background-color: rgb(43, 43, 43);
     height: 7vh;
     color: white;
