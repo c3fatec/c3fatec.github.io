@@ -3,96 +3,58 @@
 <title>Xbank - Transferência</title>
 
 <style>
-	.ola > span {
-		display: none;
-	}
+  .ola>span {
+    display: none;
+  }
 </style>
 {%endblock%} {%block body%}
 
 <div class="pg-saque h-100">
-	<p class="h3 py-3 text-center border-bottom border-dark">Transferência</p>
+  <p class="h3 py-3 text-center border-bottom border-dark">Transferência</p>
 
-	<div class="d-flex flex-column gap-4 mt-2">
-		<div class="mx-auto text-center">
-			<p class="h2">Saldo: R$ {{g.conta.saldo | dinheiro}}</p>
-		</div>
+  <div class="d-flex flex-column gap-4 mt-2">
+    <div class="mx-auto text-center">
+      <p class="h2">Saldo: R$ {{g.conta.saldo | dinheiro}}</p>
+    </div>
 
-		<div class="d-flex flex-column">
-			<form
-				method="POST"
-				class="d-flex align-items-center flex-column col-12 mb-4 gap-1"
-			>
-				<div
-					class="d-flex justify-content-center col-xxl-6 col-xl-6 col-md-6 col-sm-8 col-10"
-				>
-					<label class="h5 col-xxl-2 col-xl-2 col-md-3 col-sm-3 col-3"
-						>Valor:</label
-					>
-					<input
-						type="number"
-						step="0.01"
-						name="valor"
-						id="valor"
-						min="0.01"
-						class="col-xxl-5 col-xl-5 col-md-5 col-sm-5 col-7"
-					/>
-				</div>
-				<div
-					class="d-flex justify-content-center col-xxl-6 col-xl-6 col-md-6 col-sm-8 col-10"
-				>
-					<label class="h5 col-xxl-2 col-xl-2 col-md-3 col-sm-3 col-3"
-						>Conta:</label
-					>
-					<input
-						type="number"
-						step="1"
-						name="conta"
-						id="conta"
-						min="10000"
-						class="col-xxl-5 col-xl-5 col-md-5 col-sm-5 col-7"
-					/>
-				</div>
-				<div
-					class="d-flex justify-content-center col-xxl-6 col-xl-6 col-md-6 col-sm-8 col-10"
-				>
-					<label class="h5 col-xxl-2 col-xl-2 col-md-3 col-sm-3 col-3"
-						>Agência:</label
-					>
-					<input
-						type="number"
-						step="1"
-						name="agencia"
-						id="agencia"
-						min="1"
-						class="col-xxl-5 col-xl-5 col-md-5 col-sm-5 col-7"
-					/>
-				</div>
+    <div class="d-flex flex-column">
+      <form method="POST" class="d-flex align-items-center flex-column col-12 mb-4 gap-1">
+        <div class="d-flex justify-content-center col-xxl-6 col-xl-6 col-md-6 col-sm-8 col-10">
+          <label class="h5 col-xxl-2 col-xl-2 col-md-3 col-sm-3 col-3">Valor:</label>
+          <input type="number" step="0.01" name="valor" id="valor" min="0.01"
+            class="col-xxl-5 col-xl-5 col-md-5 col-sm-5 col-7" />
+        </div>
+        <div class="d-flex justify-content-center col-xxl-6 col-xl-6 col-md-6 col-sm-8 col-10">
+          <label class="h5 col-xxl-2 col-xl-2 col-md-3 col-sm-3 col-3">Conta:</label>
+          <input type="number" step="1" name="conta" id="conta" min="10000"
+            class="col-xxl-5 col-xl-5 col-md-5 col-sm-5 col-7" />
+        </div>
+        <div class="d-flex justify-content-center col-xxl-6 col-xl-6 col-md-6 col-sm-8 col-10">
+          <label class="h5 col-xxl-2 col-xl-2 col-md-3 col-sm-3 col-3">Ag:</label>
+          <input type="number" step="1" name="agencia" id="agencia" min="1"
+            class="col-xxl-5 col-xl-5 col-md-5 col-sm-5 col-7" />
+        </div>
 
-				<button type="submit" class="btn btn-secondary btn-sm w-25 mt-4">
-					Transferir
-				</button>
-			</form>
-			{% with messages = get_flashed_messages() %} {%if messages and id%} {%for
-			message in messages%}
-			<div
-				class="msg d-flex align-items-center justify-content-center mx-auto mt-5 col-xxl-11 col-xl-11 col-md-11 col-sm-11 col-11"
-			>
-				<div class="col-xxl-8 col-xl-8 col-md-12 col-sm-12 col-12">
-					{{message}}
-				</div>
-				<div class="col-xxl-4 col-xl-4 col-md-5 col-sm-8 col-8">
-					<a
-						href="{{url_for('conta.impressao', id_transacao=id)}}"
-						target="_blank"
-						class="w-100"
-					>
-						<div class="btn btn-secondary w-100">Gerar comprovante</div>
-					</a>
-				</div>
-			</div>
-			{%endfor%} {%endif%} {%endwith%}
-		</div>
-	</div>
+        <button type="submit" class="btn btn-secondary btn-sm w-25 mt-4">
+          Transferir
+        </button>
+      </form>
+      {% with messages = get_flashed_messages() %} {%if messages and id%} {%for
+      message in messages%}
+      <div
+        class="msg d-flex align-items-center justify-content-center mx-auto mt-5 col-xxl-11 col-xl-11 col-md-11 col-sm-11 col-11">
+        <div class="col-xxl-8 col-xl-8 col-md-12 col-sm-12 col-12">
+          {{message}}
+        </div>
+        <div class="col-xxl-4 col-xl-4 col-md-5 col-sm-8 col-8">
+          <a href="{{url_for('conta.impressao', id_transacao=id)}}" target="_blank" class="w-100">
+            <div class="btn btn-secondary w-100">Gerar comprovante</div>
+          </a>
+        </div>
+      </div>
+      {%endfor%} {%endif%} {%endwith%}
+    </div>
+  </div>
 </div>
 
 {%endblock%}
