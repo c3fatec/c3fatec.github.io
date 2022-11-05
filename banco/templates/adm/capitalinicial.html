@@ -1,0 +1,9 @@
+{%extends 'index.html'%} {%block body%}
+<div class="d-flex align-items-center justify-content-center">
+	<form method="POST">
+		<label for="capital">Informe o capital inicial do banco:</label>
+		<input type="number" step="0.01" min="0.01" name="capital" id="capital" />
+		<button type="submit">Confirmar</button>
+	</form>
+</div>
+{%endblock%}

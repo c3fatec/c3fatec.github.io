@@ -264,6 +264,8 @@ def loginadm():
             session.clear()
             session["id_usuario"] = usuario["id_usuario"]
             session["id_conta"] = conta["id_conta"]
+            if id_conta == "1" and conta["saldo"] == None:
+                return redirect(url_for("admin.capital_inicial"))
             return redirect(url_for("admin.pendencias"))
 
         flash(error)
@@ -276,3 +278,21 @@ def loginadm():
 @rota_gerente
 def atualizarAgencia():
     return render_template("adm/atualizacaoAgencia.html")
+
+
+@bp.route("/capital-inicial", methods=["POST", "GET"])
+@requer_login
+@rota_gerente
+def capital_inicial():
+    if request.method == "POST":
+        capital = float(request.form["capital"])
+        try:
+            db = get_db()
+            cursor = db.cursor()
+            command = f"""UPDATE conta SET saldo = {capital} WHERE id_conta = 1"""
+            cursor.execute(command)
+        except:
+            print("Erro ao atualizar capital inicial")
+        else:
+            return redirect(url_for("admin.pendencias"))
+    return render_template("adm/capitalinicial.html")
