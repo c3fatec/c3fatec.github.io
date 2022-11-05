@@ -71,6 +71,7 @@ def aguarde():
 def login():
     if request.method == "POST":
         id_conta = str(request.form["id_conta"])
+        id_agencia = request.form["id_agencia"]
         senha = request.form["senha"]
         usuario = None
         error = None
@@ -83,6 +84,7 @@ def login():
 
         if (
             usuario is None
+            or conta["agencia"] != int(id_agencia)
             or conta["status"] != "aprovado"
             or conta["tipo"] not in ["corrente", "poupanca"]
             or not check_password_hash(usuario["senha"], senha)
