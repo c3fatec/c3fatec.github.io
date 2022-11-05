@@ -147,3 +147,10 @@ def impressao():
     data = {"nome": usuario["nome"], "cpf": usuario["cpf"]}
     comprovante.update(data)
     return render_template("cliente/impressao.html", comprovante=comprovante)
+
+
+@bp.route("/transferencia", methods=["POST", "GET"])
+@requer_login
+@rota_cliente
+def transferir():
+    return render_template("cliente/transferencia.html")
