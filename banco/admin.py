@@ -3,6 +3,7 @@ from flask import (
     redirect,
     render_template,
     request,
+    g,
     url_for,
     flash,
     session,
@@ -95,10 +96,19 @@ def cadastros():
 @requer_login
 @rota_gerente
 def usuarios():
-    dados = db_get(table="usuario", many=True, order_by="nome")
-    for usuario in dados:
-        for f in ["senha"]:
-            usuario.pop(f)
+    contas = None
+    ag = g.conta["agencia"]
+    if ag:
+        contas = db_get(table="conta", agencia=ag)
+    else:
+        contas = db_get(table="conta")
+    dados = []
+    for conta in contas:
+        usuario = db_get(table="usuario", id_usuario=conta["usuario"], many=False)
+        conta.update(usuario)
+        conta.pop("senha")
+        if conta["tipo"] != "gerente":
+            dados.append(conta)
 
     return render_template("adm/usuarios.html", dados=dados)
 
@@ -135,6 +145,8 @@ def dados():
 @requer_login
 @rota_gerente
 def agencia():
+    db = get_db()
+    cursor = db.cursor()
     if request.method == "POST":
         nome = request.form["nome"]
 
@@ -146,7 +158,9 @@ def agencia():
         quantidade = db_get(
             count=True, many=False, table="conta", agencia=agencia["id_agencia"]
         )
-        conta_gerente = db_get(many=False, table="conta", agencia=agencia["id_agencia"])
+        command = f"""SELECT * FROM conta WHERE tipo = 'gerente' AND agencia = {agencia['id_agencia']}"""
+        cursor.execute(command)
+        conta_gerente = cursor.fetchone()
         if conta_gerente:
             gerente = db_get(
                 many=False, table="usuario", id_usuario=conta_gerente["usuario"]
