@@ -3,7 +3,7 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
-<title>XBank - Atualização Cadastral de Gerentes</title>
+<title>XBank - Atualização de Agência</title>
 
 <style>
 	.header-b {
@@ -17,7 +17,7 @@
 <header class="header d-flex justify-content-between">
 	<div class="w-25">
 		<div class="home col-2 d-flex justify-content-center align-items-center h-100 btn btn-outline-secondary p-0"
-			onclick="document.location='/admin/gerentes'">
+			onclick="document.location='/admin/agencias'">
 			<span class="material-symbols-outlined"> undo </span>
 		</div>
 	</div>
@@ -44,51 +44,33 @@
 		<form method="POST" class="form">
 			<!--Dados Pessoais-->
 			<div class="titulo px-2">
-				<p class="h3">Dados Pessoais - Gerente</p>
+				<p class="h3">Dados da Agência</p>
 			</div>
 			<hr />
 			<div class="d-flex">
-				<div class="col-8 px-2">
+				<div class="col-9 px-2">
 					<label for="nome">Nome*</label><br />
 					<input type="text" name="nome" id="nome" class="w-100" required />
 				</div>
-				<div class="col-4 px-2">
-					<label for="genero">Gênero*</label><br />
-					<input type="text" name="genero" id="genero" class="w-100" disabled />
+				<div class="col-3 px-2">
+					<label for="genero">Número*</label><br />
+					<input type="text" name="numero" id="numero" class="w-100" disabled />
 				</div>
 			</div>
 			<div class="d-flex">
-				<div class="col-4 px-2">
-					<label for="cpf">CPF*</label><br />
-					<input type="text" name="cpf" id="cpf" class="w-100" required />
-				</div>
-				<div class="col-4 px-2">
-					<label for="rg">RG</label><br />
-					<input type="text" name="rg" id="rg" class="w-100" disabled />
-				</div>
-				<div class="col-4 px-2">
-					<label for="data_nasc">Data de Nasc.*</label><br />
-					<input type="text" name="data-nasc" id="data-nasc" class="w-100" disabled />
-				</div>
-			</div>
-			<div class="d-flex">
-				<div class="col-6 px-2">
-					<label for="email">E-mail*</label><br />
-					<input type="email" name="email" id="email" class="w-100" disabled />
+				<div class="col-9 px-2">
+					<label for="cpf">Gerente*</label><br />
+					<input type="text" name="gerente" id="gerente" class="w-100" required />
 				</div>
 				<div class="col-3 px-2">
-					<label for="senha">Senha</label>
-					<input type="password" name="senha" id="senha" class="w-100" />
-				</div>
-				<div class="col-3 px-2">
-					<label for="senha">Senha</label>
-					<input type="password" name="senha-repetida" id="senha-repetida" class="w-100" />
+					<label for="rg">Quantidade de Clientes</label><br />
+					<input type="text" name="qtdClientes" id="qtdClientes" class="w-100" disabled />
 				</div>
 			</div>
 
 			<div class="d-flex justify-content-center gap-2 mx-auto w-75 mt-4 mb-3">
 				<div class="col-2">
-					<button class="btn-att w-100" type="submit">Cadastrar</button>
+					<button class="btn-att w-100" type="submit">Salvar</button>
 				</div>
 			</div>
 		</form>
