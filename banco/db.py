@@ -201,6 +201,36 @@ def init_db():
         status="aprovado",
         tipo="gerente",
     )
+    cliente_1 = db_create(
+        table="usuario",
+        nome="Cliente 1",
+        senha=generate_password_hash("cliente"),
+        cpf="12332112332",
+    )
+    cliente_2 = db_create(
+        table="usuario",
+        nome="Cliente 2",
+        senha=generate_password_hash("cliente"),
+        cpf="12332112333",
+    )
+    db_create(
+        saldo=0,
+        table="conta",
+        id_conta=10000,
+        usuario=cliente_1,
+        status="aprovado",
+        tipo="poupanca",
+        agencia=1,
+    )
+    db_create(
+        saldo=0,
+        table="conta",
+        id_conta=20000,
+        usuario=cliente_2,
+        status="aprovado",
+        tipo="corrente",
+        agencia=2,
+    )
 
     db.close()
 

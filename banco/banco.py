@@ -170,4 +170,64 @@ def impressao():
 @requer_login
 @rota_cliente
 def transferir():
+    db = get_db()
+    cursor = db.cursor()
+    if request.method == "POST":
+        valor = request.form["valor"]
+        conta = request.form["conta"]
+        agencia = request.form["agencia"]
+        try:
+            command = f"""SELECT * FROM conta WHERE id_conta = {int(conta)} AND agencia = {int(agencia)}"""
+            cursor.execute(command)
+            recipiente = cursor.fetchone()
+            if not recipiente or int(conta) == g.conta["id_conta"]:
+                raise Exception("Esta conta não existe")
+        except:
+            print("Esta conta não existe")
+        else:
+            try:
+                saldo = g.conta["saldo"]
+                id_conta = g.conta["id_conta"]
+                novo_saldo = float(saldo) - float(valor)
+                if novo_saldo < 0:
+                    banco = db_get(table="conta", many=False, id_conta=1)
+                    capital_banco = banco["saldo"]
+                    novo_capital = float(capital_banco) + novo_saldo
+                    if novo_capital >= 0:
+                        cursor.execute(
+                            "UPDATE conta SET saldo = %s WHERE id_conta = 1",
+                            novo_capital,
+                        )
+                        cursor.execute(
+                            "UPDATE banco_api.conta SET saldo = %s WHERE id_conta = %s",
+                            (novo_saldo, id_conta),
+                        )
+                    else:
+                        raise Exception(f"{capital_banco}, {novo_capital}")
+                else:
+                    cursor.execute(
+                        "UPDATE banco_api.conta SET saldo = %s WHERE id_conta = %s",
+                        (novo_saldo, id_conta),
+                    )
+            except:
+                pass
+            else:
+                saldo_r = recipiente["saldo"]
+                novo_saldo_r = float(saldo_r) + float(valor)
+                cursor.execute(
+                    "UPDATE conta SET saldo = %s WHERE id_conta = %s",
+                    (novo_saldo_r, int(conta)),
+                )
+                db_create(
+                    table="transacoes",
+                    id_conta=id_conta,
+                    status="Efetivado",
+                    data_inicio=datetime.now(),
+                    tipo="Transferência",
+                    valor=float(valor),
+                    destino=int(conta),
+                )
+            finally:
+                redirect(url_for("conta.transferir"))
+
     return render_template("cliente/transferencia.html")

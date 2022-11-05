@@ -32,10 +32,11 @@ CREATE TABLE IF NOT EXISTS `banco_api`.`transacoes`(
   `id_transacao` INT(5) NOT NULL AUTO_INCREMENT,
   `status` VARCHAR(145) NOT NULL,
   `id_conta` INT(5) NOT NULL,
-  `valor` DECIMAL(9, 2) NOT NULL,
+  `valor` DECIMAL(15, 2) NOT NULL,
   `data_inicio` DATETIME NOT NULL,
   `data_fim` DATETIME,
   `tipo` VARCHAR(145),
+  `destino` INT(5),
   PRIMARY KEY (`id_transacao`),
   INDEX `fk_transacoes_conta1_idx` (`id_conta`),
   CONSTRAINT `fk_transacoes_conta1_idx` FOREIGN KEY (`id_conta`) REFERENCES `banco_api`.`conta` (`id_conta`)
