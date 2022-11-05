@@ -6,14 +6,19 @@
 	.header-b {
 		display: none !important;
 	}
+
+	.logo-b>p {
+        color: white;
+        font-weight: bold !important;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
 </style>
 
 {%endblock%} {%block body%}
 
 <header class="header d-flex justify-content-center align-items-center">
-	<div
-		class="logo-b w-50 h-100 d-flex justify-content-center text-center align-items-center"
-	>
+	<div class="logo-b w-50 h-100 d-flex justify-content-center text-center align-items-center">
 		<p class="h2 m-0 p-0">X-bank - Gerente</p>
 	</div>
 </header>
@@ -29,8 +34,7 @@
 				<div class="d-flex justify-content-center">{{message}}</div>
 				{%endif%}{%endfor%}
 				<div class="d-flex justify-content-center">
-					<label for="id_conta" class="col-3 pe-2 text-start"
-						>Matrícula:
+					<label for="id_conta" class="col-3 pe-2 text-start">Matrícula:
 					</label>
 					<input type="text" name="id_conta" id="id_conta" class="col-7" />
 				</div>

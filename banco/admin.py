@@ -269,3 +269,10 @@ def loginadm():
         flash(error)
 
     return render_template("auth/loginadmin.html")
+
+
+@bp.route("/atualizar-agencia", methods=["GET", "POST"])
+@requer_login
+@rota_gerente
+def atualizarAgencia():
+    return render_template("adm/atualizacaoAgencia.html")
