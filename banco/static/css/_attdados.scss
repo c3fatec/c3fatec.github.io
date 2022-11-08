@@ -1,5 +1,8 @@
 .pg-cadastro {
-    background-color: rgb(209, 209, 209);
+    background-image: url("../../static/img/quadrados.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
     min-height: 90vh;
 
     .caixa-dados {
@@ -31,13 +34,20 @@
         }
     
         input {
-            border: 1px solid #dee2e6;
+            border: 1px solid #b6b9bd;
             border-radius: 5px !important;
+        }
+
+        select {
+            border: 1px solid #b6b9bd;
+            border-radius: 5px !important;
+            padding: 2px 0px;
+            margin: 0;
         }
     
         .btn-att {
             background-color: rgb(209, 209, 209, .700);
-            border: 1px solid black;
+            border: 1px solid rgba(0, 0, 0, 0.568);
             border-radius: 15px;
             box-shadow: 0px 3px 10px rgba(black, .450);
             cursor: pointer;
