@@ -180,6 +180,7 @@ def impressao():
 def transferir():
     db = get_db()
     cursor = db.cursor()
+    id = None
     if request.method == "POST":
         valor = request.form["valor"]
         conta = request.form["conta"]
@@ -226,7 +227,7 @@ def transferir():
                     "UPDATE conta SET saldo = %s WHERE id_conta = %s",
                     (novo_saldo_r, int(conta)),
                 )
-                db_create(
+                id = db_create(
                     table="transacoes",
                     id_conta=id_conta,
                     status="Efetivado",
@@ -235,7 +236,8 @@ def transferir():
                     valor=float(valor),
                     destino=int(conta),
                 )
+                flash("Transferência realizada com sucesso!")
             finally:
                 redirect(url_for("conta.transferir"))
 
-    return render_template("cliente/transferencia.html")
+    return render_template("cliente/transferencia.html", id=id)

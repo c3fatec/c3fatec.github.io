@@ -11,7 +11,7 @@ from flask import (
 )
 from werkzeug.security import check_password_hash, generate_password_hash
 from .db import db_create, db_get
-from random import randint
+from random import randint, choice
 from datetime import datetime
 
 bp = Blueprint("auth", __name__, url_prefix="/")
@@ -21,7 +21,7 @@ bp = Blueprint("auth", __name__, url_prefix="/")
 def cadastro():
     if request.method == "POST":
         nome = request.form["nome"]
-        rg = request.form["rg"]
+        # rg = request.form["rg"]
         data_nasc = request.form["data-nasc"]
         cpf = request.form["cpf"]
         senha = request.form["senha"]
@@ -29,14 +29,12 @@ def cadastro():
         tipo = request.form["tipo"]
 
         if senha == senha_repetida:
-            data_nasc = datetime.strptime(data_nasc, "%d-%m-%Y").strftime("%Y-%m-%d")
             try:
                 novo_usuario = db_create(
                     table="usuario",
                     nome=nome,
                     senha=generate_password_hash(senha),
                     cpf=cpf,
-                    rg=rg,
                     data_nasc=data_nasc,
                 )
                 contas = list(
@@ -45,9 +43,11 @@ def cadastro():
                 idconta = randint(11111, 99999)
                 while idconta in contas:
                     idconta = randint(11111, 99999)
-                agencias = db_get(count=True, table="agencia", many=False)
-                maximo = agencias["COUNT(*)"]
-                agencia = randint(1, maximo)
+                agencias = db_get(table="agencia", many=True)
+                opt = []
+                for agencia in agencias:
+                    opt.append(agencia["id_agencia"])
+                agencia = choice(opt)
 
                 db_create(
                     table="conta",
