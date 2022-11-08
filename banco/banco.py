@@ -141,14 +141,13 @@ def extrato():
         data_fim = " ".join(request.form["data_fim"].split("T")) + ":00"
         date_filter = [data_inicio, data_fim]
 
-    comprovantes = db_get(
-        many=True,
-        order_by="id_transacao",
-        order="DESC",
-        table="transacoes",
-        id_conta=id_conta,
-        date_filter=date_filter,
-    )
+    db = get_db()
+    cursor = db.cursor()
+    command = f"""SELECT * FROM transacoes WHERE  id_conta = {id_conta} OR destino = {id_conta}"""
+    if date_filter:
+        command += f" AND data_inicio BETWEEN '{date_filter[0]}' AND '{date_filter[1]}'"
+    cursor.execute(command)
+    comprovantes = cursor.fetchall()
 
     return render_template("cliente/extrato.html", comprovantes=comprovantes)
 
