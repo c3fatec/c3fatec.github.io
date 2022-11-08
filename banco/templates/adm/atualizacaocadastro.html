@@ -51,10 +51,10 @@
 </header>
 {%endif%}
 
-<div class="pg-attdados container-fluid d-flex align-items-center">
-	{%for message in get_flashed_messages()%} {%if message%}
-	<div class="d-flex justify-content-center">{{message}}</div>
-	{%endif%}{%endfor%}
+<div class="pg-cadastro container-fluid d-flex align-items-center">
+  {%for message in get_flashed_messages()%} {%if message%}
+  <div class="d-flex justify-content-center">{{message}}</div>
+  {%endif%}{%endfor%}
 
 	<div class="caixa-dados mx-auto col-11">
 		<form method="POST" class="form">
