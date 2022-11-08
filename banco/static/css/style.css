@@ -119,42 +119,6 @@
   cursor: pointer;
 }
 
-.pg-cadastro {
-  background-color: rgb(209, 209, 209);
-  min-height: 93vh;
-}
-.pg-cadastro .form {
-  padding-top: 3vh;
-}
-.pg-cadastro .titulo {
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
-}
-.pg-cadastro .titulo p {
-  margin-bottom: 0 !important;
-}
-.pg-cadastro hr {
-  margin-top: 0 !important;
-  padding-bottom: 0 !important;
-}
-.pg-cadastro label {
-  font-weight: bold;
-}
-.pg-cadastro input {
-  border: 1px solid #dee2e6;
-  border-radius: 5px !important;
-}
-.pg-cadastro .btn-att {
-  background-color: rgba(209, 209, 209, 0.7);
-  border: 1px solid black;
-  border-radius: 15px;
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.45);
-  cursor: pointer;
-}
-.pg-cadastro .btn-att:hover {
-  background-color: rgb(141, 141, 141);
-}
-
 .base-interna {
   background-image: url("../../static/img/quadrados.png");
   background-repeat: no-repeat;
@@ -261,11 +225,11 @@
   border: 2px solid black;
 }
 
-.pg-attdados {
+.pg-cadastro {
   background-color: rgb(209, 209, 209);
   min-height: 93vh;
 }
-.pg-attdados .caixa-dados {
+.pg-cadastro .caixa-dados {
   max-height: 90vh;
   background-color: rgba(209, 209, 209, 0.7);
   border: 2px solid black;
@@ -274,31 +238,31 @@
   color: rgb(58, 58, 58);
   overflow: auto;
 }
-.pg-attdados .caixa-dados .titulo {
+.pg-cadastro .caixa-dados .titulo {
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
 }
-.pg-attdados .caixa-dados .titulo p {
+.pg-cadastro .caixa-dados .titulo p {
   margin-bottom: 0 !important;
 }
-.pg-attdados .caixa-dados hr {
+.pg-cadastro .caixa-dados hr {
   margin-top: 0 !important;
   padding-bottom: 0 !important;
 }
-.pg-attdados .caixa-dados label {
+.pg-cadastro .caixa-dados label {
   font-weight: bold;
 }
-.pg-attdados .caixa-dados input {
+.pg-cadastro .caixa-dados input {
   border: 1px solid #dee2e6;
   border-radius: 5px !important;
 }
-.pg-attdados .caixa-dados .btn-att {
+.pg-cadastro .caixa-dados .btn-att {
   background-color: rgba(209, 209, 209, 0.7);
   border: 1px solid black;
   border-radius: 15px;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.45);
   cursor: pointer;
 }
-.pg-attdados .caixa-dados .btn-att:hover {
+.pg-cadastro .caixa-dados .btn-att:hover {
   background-color: rgb(141, 141, 141);
 }/*# sourceMappingURL=style.css.map */
