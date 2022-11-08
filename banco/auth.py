@@ -22,13 +22,11 @@ def cadastro():
     if request.method == "POST":
         nome = request.form["nome"]
         rg = request.form["rg"]
-        email = request.form["email"]
         data_nasc = request.form["data-nasc"]
         cpf = request.form["cpf"]
         senha = request.form["senha"]
         senha_repetida = request.form["senha-repetida"]
         tipo = request.form["tipo"]
-        # d,m,a = data_nasc.split('-')
 
         if senha == senha_repetida:
             data_nasc = datetime.strptime(data_nasc, "%d-%m-%Y").strftime("%Y-%m-%d")
@@ -39,7 +37,6 @@ def cadastro():
                     senha=generate_password_hash(senha),
                     cpf=cpf,
                     rg=rg,
-                    email=email,
                     data_nasc=data_nasc,
                 )
                 contas = list(

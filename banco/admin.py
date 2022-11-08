@@ -129,7 +129,8 @@ def dados():
                         setter={"campo": f, "valor": data[f]},
                         value={"campo": "id_usuario", "valor": id_usuario},
                     )
-                except:
+                except Exception as e:
+                    print(e.args[1])
                     flash("Erro ao atualizar cadastro.")
                 else:
                     flash("Cadastro atualizado com sucesso!")

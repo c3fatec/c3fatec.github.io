@@ -12,7 +12,6 @@ CREATE TABLE IF NOT EXISTS `banco_api`.`usuario` (
   `nome` VARCHAR(250),
   `senha` VARCHAR(245) NOT NULL,
   `data_nasc` DATE,
-  `email` varchar(240),
   PRIMARY KEY (`id_usuario`),
   UNIQUE INDEX `cpf_UNIQUE` (`cpf` ASC)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
