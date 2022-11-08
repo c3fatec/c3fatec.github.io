@@ -31,7 +31,7 @@ def cadastro():
         # d,m,a = data_nasc.split('-')
 
         if senha == senha_repetida:
-            data_nasc = datetime.strptime(data_nasc, '%d-%m-%Y').strftime('%Y-%m-%d')
+            data_nasc = datetime.strptime(data_nasc, "%d-%m-%Y").strftime("%Y-%m-%d")
             try:
                 novo_usuario = db_create(
                     table="usuario",
@@ -40,7 +40,7 @@ def cadastro():
                     cpf=cpf,
                     rg=rg,
                     email=email,
-                    data_nasc=data_nasc
+                    data_nasc=data_nasc,
                 )
                 contas = list(
                     map(lambda x: x["id_conta"], db_get(table="conta", many=True))
@@ -95,7 +95,7 @@ def login():
             usuario is None
             or conta["agencia"] != int(id_agencia)
             or conta["status"] != "aprovado"
-            or conta["tipo"] not in ["corrente", "poupanca"]
+            or conta["tipo"] not in ["corrente", "poupança"]
             or not check_password_hash(usuario["senha"], senha)
         ):
             error = "Conta inexistente"
@@ -158,7 +158,7 @@ def requer_login(view):
 def rota_cliente(view):
     @functools.wraps(view)
     def wrapped_view(**kwargs):
-        if "corrente" not in g.conta["tipo"] and "poupanca" not in g.conta["tipo"]:
+        if "corrente" not in g.conta["tipo"] and "poupança" not in g.conta["tipo"]:
             return redirect(url_for("admin.pendencias"))
 
         return view(**kwargs)

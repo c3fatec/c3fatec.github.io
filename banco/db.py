@@ -219,7 +219,7 @@ def init_db():
         id_conta=10000,
         usuario=cliente_1,
         status="aprovado",
-        tipo="poupanca",
+        tipo="poupança",
         agencia=1,
     )
     db_create(
