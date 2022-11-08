@@ -162,6 +162,15 @@ def impressao():
     usuario = db_get(table="usuario", many=False, id_usuario=conta["usuario"])
     data = {"nome": usuario["nome"], "cpf": usuario["cpf"]}
     comprovante.update(data)
+    if comprovante["destino"]:
+        destino_conta = db_get(
+            table="conta", many=False, id_conta=comprovante["destino"]
+        )
+        destino = db_get(
+            table="usuario", id_usuario=destino_conta["usuario"], many=False
+        )
+        data = {"nome_destino": destino["nome"]}
+        comprovante.update(data)
     return render_template("cliente/impressao.html", comprovante=comprovante)
 
 
