@@ -273,6 +273,11 @@ def loginadm():
 
     return render_template("auth/loginadmin.html")
 
+@bp.route("/logoutadmin")
+def logoutadmin():
+    session.clear()
+    return redirect(url_for("admin.loginadm"))
+
 
 @bp.route("/atualizar-agencia", methods=["GET", "POST"])
 @requer_login

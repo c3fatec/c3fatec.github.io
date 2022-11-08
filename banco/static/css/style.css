@@ -1,6 +1,6 @@
 .header {
   background-color: rgb(43, 43, 43);
-  height: 7vh;
+  height: 10vh;
   color: white;
 }
 @media (max-width: 575px) {
@@ -33,9 +33,6 @@
   .header .funcao-direita .ola {
     align-items: flex-end !important;
   }
-}
-.header .funcao-direita .ola p {
-  text-transform: capitalize;
 }
 @media (max-width: 830px) {
   .header .funcao-direita .ola p {
@@ -76,7 +73,7 @@
 
 .header-b, .header-adm {
   background-color: rgb(43, 43, 43);
-  height: 7vh;
+  height: 10vh;
   color: white;
 }
 .header-b .logo-b > p, .header-adm .logo-b > p {
@@ -91,7 +88,7 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  min-height: 93vh;
+  min-height: 90vh;
 }
 .pg-login .caixa {
   background-color: rgb(209, 209, 209);
@@ -124,12 +121,12 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  min-height: 92vh;
+  min-height: 90vh;
   font-weight: 500;
 }
 .base-interna .caixa-principal {
   width: 90%;
-  min-height: 80vh;
+  min-height: 78vh;
 }
 @media (max-width: 575px) {
   .base-interna .caixa-principal {
@@ -178,13 +175,13 @@
   border: 2px solid black;
   border-radius: 15px;
   box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.45);
-  height: 85vh;
+  height: 82vh;
   margin: 0 auto;
   overflow: auto;
 }
 @media (max-width: 575px) {
   .base-interna .caixa-principal .caixa-sistema {
-    height: 70vh;
+    height: 68vh;
     margin-top: 6px;
   }
 }
@@ -216,7 +213,7 @@
   }
 }
 .pg-impressao {
-  min-height: 93vh;
+  min-height: 90vh;
   font-weight: 500;
 }
 .pg-impressao .caixa-impressao {
@@ -227,10 +224,10 @@
 
 .pg-cadastro {
   background-color: rgb(209, 209, 209);
-  min-height: 93vh;
+  min-height: 90vh;
 }
 .pg-cadastro .caixa-dados {
-  max-height: 90vh;
+  max-height: 87vh;
   background-color: rgba(209, 209, 209, 0.7);
   border: 2px solid black;
   border-radius: 15px;

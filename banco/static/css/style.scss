@@ -1,6 +1,6 @@
 .header {
     background-color: rgb(43, 43, 43);
-    height: 7vh;
+    height: 10vh;
     color: white;
 
     .funcao-inicio {
@@ -42,9 +42,7 @@
           align-items: flex-end !important;
         }
 
-        p {
-          text-transform: capitalize;
-          
+        p {          
           @media (max-width: 830px) {
             font-size: 15px !important;
           }
@@ -87,7 +85,7 @@
 
 .header-b, .header-adm {
     background-color: rgb(43, 43, 43);
-    height: 7vh;
+    height: 10vh;
     color: white;
 
     .logo-b>p {
