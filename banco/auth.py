@@ -21,7 +21,7 @@ bp = Blueprint("auth", __name__, url_prefix="/")
 def cadastro():
     if request.method == "POST":
         nome = request.form["nome"]
-        rg = request.form["rg"]
+        # rg = request.form["rg"]
         data_nasc = request.form["data-nasc"]
         cpf = request.form["cpf"]
         senha = request.form["senha"]
@@ -29,14 +29,12 @@ def cadastro():
         tipo = request.form["tipo"]
 
         if senha == senha_repetida:
-            data_nasc = datetime.strptime(data_nasc, "%d-%m-%Y").strftime("%Y-%m-%d")
             try:
                 novo_usuario = db_create(
                     table="usuario",
                     nome=nome,
                     senha=generate_password_hash(senha),
                     cpf=cpf,
-                    rg=rg,
                     data_nasc=data_nasc,
                 )
                 contas = list(
@@ -48,7 +46,7 @@ def cadastro():
                 agencias = db_get(table="agencia", many=True)
                 opt = []
                 for agencia in agencias:
-                    opt += agencia["id_agencia"]
+                    opt.append(agencia["id_agencia"])
                 agencia = choice(opt)
 
                 db_create(

@@ -87,9 +87,12 @@ def cadastros():
 
     cadastros = db_get(table="conta", status="Aguardando")
     for conta in cadastros:
-        usuario = conta["usuario"]
-        usuario = db_get(table="usuario", many=False, id_usuario=usuario)
-        conta.update(usuario)
+        if g.conta["agencia"] and conta["agencia"] != g.conta["agencia"]:
+            cadastros.remove(conta)
+        else:
+            usuario = conta["usuario"]
+            usuario = db_get(table="usuario", many=False, id_usuario=usuario)
+            conta.update(usuario)
 
     return render_template("adm/aprovacaoCadastros.html", cadastros=cadastros)
 
@@ -330,10 +333,14 @@ def excluir_agencia():
         for conta in contas:
             agencia = choice(opt)
             if conta["tipo"] == "gerente":
-                agencia = None
-            setter = {"campo": "agencia", "valor": agencia}
-            value = {"campo": "id_conta", "valor": conta["id_conta"]}
-            db_update(table="conta", setter=setter, value=value)
+                db = get_db()
+                cursor = db.cursor()
+                command = f"""UPDATE conta SET agencia = NULL WHERE id_conta = {conta['id_conta']}"""
+                cursor.execute(command)
+            else:
+                setter = {"campo": "agencia", "valor": agencia}
+                value = {"campo": "id_conta", "valor": conta["id_conta"]}
+                db_update(table="conta", setter=setter, value=value)
 
     db_delete(table="agencia", id_agencia=id_agencia)
     flash("Agência excluída.")
