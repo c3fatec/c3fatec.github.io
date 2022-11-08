@@ -62,7 +62,12 @@
 				<div
 					class="ola m-0 p-0 d-flex justify-content-center flex-column h-100 pe-2 col-xxl-5 col-xl-6 col-lg-7 col-md-7 col-sm-9 col-11"
 				>
-					<p class="h5 m-0 p-0">Olá <b>{{g.usuario.nome}}</b><br /></p>
+					<a
+						class="text-decoration-none text-white"
+						href="{{url_for('conta.saque')}}"
+					>
+						<p class="h5 m-0 p-0">Olá <b>{{g.usuario.nome}}</b><br /></p>
+					</a>
 					{%if g.conta.tipo != 'gerente'%}
 					<span class="m-0 p-0"> Saldo: R$ {{g.conta.saldo | dinheiro}} </span>
 					{%endif%}
@@ -198,7 +203,7 @@
 						onclick="document.location='/admin/usuarios'"
 					>
 						<div class="head w-100">
-							<p>Usuários</p>
+							<p>Contas</p>
 						</div>
 						<div class="w-100 my-auto">
 							<img

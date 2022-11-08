@@ -5,35 +5,39 @@
 {%endblock%} {%block body%}
 
 <p class="h3 py-3 mb-0 text-center border-bottom border-dark">
-  Contas cadastradas
+	Contas cadastradas
 </p>
 {% with messages = get_flashed_messages() %} {%if messages %} {%for message in
 messages%}
-<div class="pnd d-flex justify-content-center align-items-center text-center w-100 p-2">
-  <div class="msg d-flex align-items-center">{{message}}</div>
+<div
+	class="pnd d-flex justify-content-center align-items-center text-center w-100 p-2"
+>
+	<div class="msg d-flex align-items-center">{{message}}</div>
 </div>
 {%endfor%} {%endif%} {%endwith%} {%if dados%} {%for dado in dados%}
 <div class="d-flex justify-content-between p-2 border-bottom border-dark">
-  <div class="col-xxl-8 col-xl-8 col-md-8 col-sm-8 col-6">
-    <div style="text-transform: capitalize">Nome: {{dado.nome}}</div>
-    <div>CPF: {{dado.cpf}}</div>
-    <div>Tipo de conta: {{dado.tipo}}</div>
-    <div>Número da conta: {{dado.id_conta}}</div>
-    <div>Agência: {{dado.agencia}}</div>
-  </div>
+	<div class="col-xxl-8 col-xl-8 col-md-8 col-sm-8 col-6">
+		<div>Número da conta: {{dado.id_conta}}</div>
+		<div>Agência: {{dado.agencia}}</div>
+		<div>Tipo de conta: {{dado.tipo | capitalize}}</div>
+		<div>Usuário: {{dado.nome | capitalize}}</div>
+		<div>CPF: {{dado.cpf}}</div>
+	</div>
 
-  <div class="d-flex justify-content-center col-xxl-4 col-xl-4 col-md-4 col-sm-4 col-6 my-auto">
-    <a href="{{url_for('admin.dados', usuario=dado.id_usuario)}}" class="w-100">
-      <div class="btn btn-secondary w-100 text-center mx-0 px-0">
-        Atualizar Cadastro
-      </div>
-    </a>
-  </div>
+	<div
+		class="d-flex justify-content-center col-xxl-4 col-xl-4 col-md-4 col-sm-4 col-6 my-auto"
+	>
+		<a href="{{url_for('admin.dados', usuario=dado.id_usuario)}}" class="w-100">
+			<div class="btn btn-secondary w-100 text-center mx-0 px-0">
+				Atualizar Cadastro
+			</div>
+		</a>
+	</div>
 </div>
 {%endfor%} {%else%}
 
 <div class="h-75 d-flex align-items-center justify-content-center">
-  <h2 class="text-center">Sem cadastros realizados!</h2>
+	<h2 class="text-center">Sem cadastros realizados!</h2>
 </div>
 
 {%endif%} {%endblock%}

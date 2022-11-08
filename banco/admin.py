@@ -200,7 +200,7 @@ def gerente():
 @bp.route("/cadastrar-gerente", methods=["GET", "POST"])
 @requer_login
 @rota_gerente
-def cadastroGerente():
+def cadastrar_gerente():
     if request.method == "POST":
         form = request.form
         nome = form["nome"]
@@ -297,3 +297,24 @@ def capital_inicial():
         else:
             return redirect(url_for("admin.pendencias"))
     return render_template("adm/capitalinicial.html")
+
+
+@bp.route("/atualizar-gerente", methods=["POST", "GET"])
+@requer_login
+@rota_gerente
+def atualizar_gerente():
+    id_gerente = request.args["gerente"]
+    conta = db_get(table="conta", many=False, id_conta=id_gerente)
+    gerente = db_get(table="usuario", many=False, id_usuario=conta["usuario"])
+
+    if request.method == "POST":
+        for f in request.form:
+            if request.form[f] != gerente[f]:
+                setter = {"campo": f, "valor": request.form[f]}
+                value = {"campo": "id_usuario", "valor": gerente["id_usuario"]}
+                db_update(table="usuario", setter=setter, value=value)
+
+        flash("Dados atualizados.")
+        return redirect(url_for("admin.gerente"))
+
+    return render_template("adm/atualizargerente.html", gerente=gerente)
