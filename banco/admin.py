@@ -276,13 +276,6 @@ def loginadm():
     return render_template("auth/loginadmin.html")
 
 
-@bp.route("/atualizar-agencia", methods=["GET", "POST"])
-@requer_login
-@rota_gerente
-def atualizarAgencia():
-    return render_template("adm/atualizacaoAgencia.html")
-
-
 @bp.route("/capital-inicial", methods=["POST", "GET"])
 @requer_login
 @rota_gerente
@@ -345,3 +338,66 @@ def excluir_agencia():
     db_delete(table="agencia", id_agencia=id_agencia)
     flash("Agência excluída.")
     return redirect(url_for("admin.agencia"))
+
+
+@bp.route("atualizar-agencia", methods=["POST", "GET"])
+@requer_login
+@rota_gerente
+def atualizar_agencia():
+    db = get_db()
+    cursor = db.cursor()
+    id_agencia = int(request.args["agencia"])
+    agencia = db_get(table="agencia", many=False, id_agencia=id_agencia)
+    command = (
+        f"""SELECT * FROM conta WHERE tipo = 'gerente' AND agencia = {id_agencia}"""
+    )
+    cursor.execute(command)
+    gerente_atual = cursor.fetchone()
+    if gerente_atual:
+        usr = db_get(table="usuario", many=False, id_usuario=gerente_atual["usuario"])
+        data = {
+            "gerente": usr["id_usuario"],
+            "gerente_nome": usr["nome"],
+            "gerente_conta": gerente_atual["id_conta"],
+        }
+        agencia.update(data)
+
+    if request.method == "POST":
+        gerente = int(request.form["gerente"])
+        nome = request.form["nome"]
+        if nome != agencia["nome"]:
+            db_update(
+                table="agencia",
+                setter={"campo": "nome", "valor": nome},
+                value={"campo": "id_agencia", "valor": id_agencia},
+            )
+        if gerente and gerente != agencia.get("gerente"):
+            command = f"""SELECT * FROM conta WHERE tipo = 'gerente' AND usuario = {gerente}"""
+            cursor.execute(command)
+            gerente = cursor.fetchone()
+            db_update(
+                table="conta",
+                setter={"campo": "agencia", "valor": id_agencia},
+                value={"campo": "id_conta", "valor": gerente["id_conta"]},
+            )
+            if agencia.get("gerente_conta"):
+                command = f"""UPDATE conta SET agencia = NULL WHERE id_conta = {agencia['gerente_conta']}"""
+                cursor.execute(command)
+        elif not gerente and agencia.get("gerente_conta"):
+            db_update(
+                table="conta",
+                setter={"campo": "agencia", "valor": None},
+                value={"campo": "id_conta", "valor": agencia["gerente_conta"]},
+            )
+        return redirect(url_for("admin.agencia"))
+
+    command = """SELECT * FROM conta WHERE tipo = 'gerente' AND agencia IS NULL AND id_conta != 1"""
+    cursor.execute(command)
+    gerentes = cursor.fetchall()
+    for gerente in gerentes:
+        usr = db_get(table="usuario", many=False, id_usuario=gerente["usuario"])
+        gerente["nome"] = usr["nome"]
+
+    return render_template(
+        "adm/atualizaragencia.html", agencia=agencia, gerentes=gerentes
+    )
