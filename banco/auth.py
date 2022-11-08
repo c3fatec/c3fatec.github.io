@@ -11,7 +11,7 @@ from flask import (
 )
 from werkzeug.security import check_password_hash, generate_password_hash
 from .db import db_create, db_get
-from random import randint
+from random import randint, choice
 from datetime import datetime
 
 bp = Blueprint("auth", __name__, url_prefix="/")
@@ -45,9 +45,11 @@ def cadastro():
                 idconta = randint(11111, 99999)
                 while idconta in contas:
                     idconta = randint(11111, 99999)
-                agencias = db_get(count=True, table="agencia", many=False)
-                maximo = agencias["COUNT(*)"]
-                agencia = randint(1, maximo)
+                agencias = db_get(table="agencia", many=True)
+                opt = []
+                for agencia in agencias:
+                    opt += agencia["id_agencia"]
+                agencia = choice(opt)
 
                 db_create(
                     table="conta",

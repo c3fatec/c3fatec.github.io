@@ -110,6 +110,15 @@ def db_update(table: str, setter: dict, value: dict):
         print(e.args[1])
 
 
+def db_delete(table: str, **params):
+    key = "".join(params.keys())
+    value = ",".join(str(v) for v in params.values())
+    db = get_db()
+    cursor = db.cursor()
+    command = f"""DELETE FROM {table} WHERE {key} = {value}"""
+    cursor.execute(command)
+
+
 def close_db(e=None):
     db = g.pop("db", None)
 

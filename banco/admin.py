@@ -1,3 +1,4 @@
+from crypt import methods
 from flask import (
     Blueprint,
     redirect,
@@ -8,12 +9,13 @@ from flask import (
     flash,
     session,
 )
+from random import choice
 
 from banco.auth import requer_login, rota_gerente
 
 from datetime import datetime
 
-from .db import get_db, db_get, db_update, db_create
+from .db import db_delete, get_db, db_get, db_update, db_create
 
 from werkzeug.security import check_password_hash, generate_password_hash
 from random import randint
@@ -318,3 +320,28 @@ def atualizar_gerente():
         return redirect(url_for("admin.gerente"))
 
     return render_template("adm/atualizargerente.html", gerente=gerente)
+
+
+@bp.route("excluir-ag")
+@requer_login
+@rota_gerente
+def excluir_agencia():
+    id_agencia = request.args["agencia"]
+    contas = db_get(table="conta", agencia=id_agencia)
+    if contas:
+        agencias = db_get(table="agencia", many=True)
+        opt = []
+        for agencia in agencias:
+            opt.append(agencia["id_agencia"])
+        opt.remove(int(id_agencia))
+        for conta in contas:
+            agencia = choice(opt)
+            if conta["tipo"] == "gerente":
+                agencia = None
+            setter = {"campo": "agencia", "valor": agencia}
+            value = {"campo": "id_conta", "valor": conta["id_conta"]}
+            db_update(table="conta", setter=setter, value=value)
+
+    db_delete(table="agencia", id_agencia=id_agencia)
+    flash("Agência excluída.")
+    return redirect(url_for("admin.agencia"))
