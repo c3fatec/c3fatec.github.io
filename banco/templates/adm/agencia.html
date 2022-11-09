@@ -21,28 +21,16 @@
 <p class="h3 py-3 mb-0 text-center border-bottom border-dark">Agências</p>
 {% with messages = get_flashed_messages() %} {%if messages %} {%for message in
 messages%}
-<div
-	class="pnd d-flex justify-content-center align-items-center text-center w-100 p-2"
->
+<div class="pnd d-flex justify-content-center align-items-center text-center w-100 p-2">
 	<div class="msg d-flex align-items-center">{{message}}</div>
 </div>
 {%endfor%} {%endif%} {%endwith%}
 
 <form method="POST" class="form">
-	<div
-		class="d-flex justify-content-center align-items-center p-2 border-bottom border-dark w-100 gap-2"
-	>
+	<div class="d-flex justify-content-center align-items-center p-2 border-bottom border-dark w-100 gap-2">
 		<label for="nome" class="text-center">Nome da agência:</label>
-		<input
-			type="text"
-			id="nome"
-			name="nome"
-			class="col-xxl-4 col-xl-4 col-md-4 col-sm-4 col-4 border-1 rounded"
-		/>
-		<button
-			type="submit"
-			class="btn-att col-xxl-2 col-xl-2 col-md-4 col-sm-4 col-4"
-		>
+		<input type="text" id="nome" name="nome" class="col-xxl-4 col-xl-4 col-md-4 col-sm-4 col-4 border-1 rounded" />
+		<button type="submit" class="btn-att col-xxl-2 col-xl-2 col-md-4 col-sm-4 col-4">
 			Criar Agência
 		</button>
 	</div>
@@ -61,20 +49,13 @@ messages%}
 		</div>
 
 		<div
-			class="d-flex justify-content-center flex-column align-items-center col-xxl-3 col-xl-3 col-md-4 col-sm-4 col-4 gap-2"
-		>
-			<a
-				href="{{url_for('admin.atualizar_agencia', agencia=agencia.id_agencia)}}"
-				class="col-12"
-			>
+			class="d-flex justify-content-center flex-column align-items-center col-xxl-3 col-xl-3 col-md-4 col-sm-4 col-4 gap-2">
+			<a href="{{url_for('admin.atualizar_agencia', agencia=agencia.id_agencia)}}" class="col-12">
 				<div class="btn btn-secondary w-100 text-center mx-0 px-0">
 					Atualizar Dados
 				</div>
 			</a>
-			<a
-				href="{{url_for('admin.excluir_agencia', agencia=agencia.id_agencia)}}"
-				class="col-12"
-			>
+			<a href="{{url_for('admin.excluir_agencia', agencia=agencia.id_agencia)}}" class="col-12">
 				<div class="btn btn-outline-dark w-100 text-center mx-0 px-0">
 					Excluir Agência
 				</div>
