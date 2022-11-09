@@ -42,8 +42,13 @@ def create_app():
     # criar filtros
 
     def dinheiro(txt):
-        txt = str(txt)
-        return txt.replace(".", ",")
+        x = f"{txt:,.2f}"
+        txt = str(x)
+        a = txt.replace(",", "/")
+        b = a.replace(".", ",")
+        c = b.replace("/", ".")
+        return c
+        
 
     def datetime(data, format="%d/%m/%Y %H:%M:%S"):
         return data.strftime(format)
