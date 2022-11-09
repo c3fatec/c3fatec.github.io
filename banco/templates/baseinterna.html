@@ -61,7 +61,7 @@
 
         <div class="ola m-0 p-0 d-flex justify-content-center flex-column h-100 col-auto">
           <!-- <a class="text-decoration-none text-white" href="{{url_for('conta.saque')}}"> -->
-          <p class="h5 p-0 m-0">{{g.usuario.nome | primeironomegit }}</p>
+          <p class="h5 p-0 m-0">{{g.usuario.nome | primeironome}}</p>
           <!-- </a> -->
           {%if g.conta.tipo != 'gerente'%}
           <span class="p-0 m-0">
