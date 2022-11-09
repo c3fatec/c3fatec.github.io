@@ -48,6 +48,10 @@ def create_app():
         b = a.replace(".", ",")
         c = b.replace("/", ".")
         return c
+
+    def primeironome(nome):
+        x = nome.split()
+        return x[0].capitalize()
         
 
     def datetime(data, format="%d/%m/%Y %H:%M:%S"):
@@ -55,5 +59,6 @@ def create_app():
 
     app.add_template_filter(dinheiro)
     app.add_template_filter(datetime)
+    app.add_template_filter(primeironome)
 
     return app
