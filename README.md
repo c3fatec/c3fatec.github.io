@@ -1,6 +1,5 @@
 <div>
-    
-<!-- ![banner](https://i.ibb.co/QDpNydM/APRESENTA-O-C3-1-SPRINT-Capa-para-Facebook.jpg) -->
+
 
 <img src="https://i.ibb.co/QDpNydM/APRESENTA-O-C3-1-SPRINT-Capa-para-Facebook.jpg" alt="APRESENTA-O-C3-1-SPRINT-Capa-para-Facebook" border="0" />
 
@@ -25,13 +24,13 @@ Esse repositório contém o primeiro projeto API dos estudantes do primeiro seme
 
 <!-- ## :date: Sprints -->
 
-<h2 id='sprints'>Sprint</h2>
+<h2 id='sprints'>Sprints</h2>
 
 | Sprint | Data Final | Status       |
 | :----: | :--------: | :----------- |
 |   01   | 18/09/2022 | ✔️ Concluída |
 |   02   | 19/10/2022 | ✔️ Concluída |
-|   03   | 06/11/2022 |              |
+|   03   | 06/11/2022 | ✔️ Concluída |
 |   04   | 27/11/2022 |              |
 
 ---
@@ -40,10 +39,13 @@ Esse repositório contém o primeiro projeto API dos estudantes do primeiro seme
 
 <h2 id='backlogs'>Product Backlog</h2>
 
-<h4>1º Sprint -  <a href="https://i.ibb.co/TgW062T/pb1.png">Clique aqui</a>
+<img src="https://i.ibb.co/QkjxWmN/backlog-total.jpg" alt="Product-Backlog" border="0">
 
-<h4>2º Sprint</h4>    
-<img src="https://i.ibb.co/M6n9cFr/Product-Backlog.jpg" alt="Product-Backlog" border="0">
+<h5>1º Sprint -  <a href="https://i.ibb.co/TgW062T/pb1.png">Clique aqui</a>
+
+<h5>2º Sprint -  <a href="https://i.ibb.co/M6n9cFr/Product-Backlog.jpg">Clique aqui</a>
+
+<h5>3º Sprint -  <a href="https://i.ibb.co/HHS62zn/back-log-sprint-3.jpg">Clique aqui</a>
 
 ---
 
@@ -58,18 +60,33 @@ Esse repositório contém o primeiro projeto API dos estudantes do primeiro seme
 <!-- <video width="320" height="240" autoplay>
   <source src="banco/static/video/xbank.mp4" type="video/mp4" alt='video demo'>
 </video> -->
-<div style="position: relative; padding-bottom: 42.34375%; height: 0;"><iframe src="https://www.loom.com/embed/40d65d6ff2574e0586003a2e2f3d7e57" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+<!-- <div style="position: relative; padding-bottom: 42.34375%; height: 0;"><iframe src="https://www.loom.com/embed/40d65d6ff2574e0586003a2e2f3d7e57" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0;
+left: 0; width: 100%; height: 100%;"></iframe></div> -->
+
+<div style="position: relative; padding-bottom: 42.34375%; height: 0;"><iframe src="https://www.loom.com/embed/a5c05efc58e44b94b086379f886e833c" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+<h5>1º Sprint -  <a href="https://www.loom.com/share/40d65d6ff2574e0586003a2e2f3d7e57">Clique aqui</a>
+<h5>2º Sprint -  <a href="https://www.loom.com/share/40d65d6ff2574e0586003a2e2f3d7e57">Clique aqui</a>
+
 ---
 
 <h2 id='equipe'>Equipe</h2>
 
-|    Função     | Nome                      |
+<!-- |    Função     | Nome                      |
 | :-----------: | :------------------------ |
-| Product Owner | Daniel Machado dos Santos |
-| Scrum Master  | Gabriel Oliveira Santos   |
-|   Dev Team    | Ivan Suiyma               |
-|   Dev Team    | Jackles Kerley            |
-|   Dev Team    | Claudinei Paulista        |
+| Product Owner | Daniel Machado dos Santos [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/dmssjk/) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/)|
+| Scrum Master  | Gabriel Oliveira Santos   [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/dosantos-ogabriel) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/)||
+|   Dev Team    | Ivan Suiyma               [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/IvanSuiyama) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/)|
+|   Dev Team    | Jackles Kerley            [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/JacklesKerley) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/)|
+|   Dev Team    | Claudinei Paulista        [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/)|
+ -->
+
+|    Função     | Nome                                                                                                                                                                                         |
+| :-----------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Product Owner | [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/dmssjk/) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/) Daniel Machado dos Santos         |
+| Scrum Master  | [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/dosantos-ogabriel) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/) Gabriel Oliveira Santos |
+|   Dev Team    | [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/IvanSuiyama) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/) Ivan Suiyma                   |
+|   Dev Team    | [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/JacklesKerley) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/) Jackles Kerley              |
+|   Dev Team    | [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/) Claudinei Paulista                       |
 
 ---
 
