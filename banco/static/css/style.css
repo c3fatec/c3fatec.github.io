@@ -57,6 +57,10 @@
   border: none;
   color: white;
 }
+.header .funcao-direita .menu .setting span:hover {
+  color: rgb(163, 163, 163);
+  cursor: pointer;
+}
 @media (max-width: 575px) {
   .header .funcao-direita .menu .ola {
     align-items: flex-end !important;

@@ -70,6 +70,13 @@
       .setting {
         border: none;
         color: white;
+
+        span {
+          &:hover {
+            color: rgb(163, 163, 163);
+            cursor: pointer;
+          }
+        }
       }
 
       .ola {
