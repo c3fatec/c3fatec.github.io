@@ -140,6 +140,7 @@ def extrato():
     command = f"""SELECT * FROM transacoes WHERE  id_conta = {id_conta} OR destino = {id_conta}"""
     if date_filter:
         command += f" AND data_inicio BETWEEN '{date_filter[0]}' AND '{date_filter[1]}'"
+    command += " ORDER BY data_inicio DESC"
     cursor.execute(command)
     comprovantes = cursor.fetchall()
 

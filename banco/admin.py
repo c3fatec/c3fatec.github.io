@@ -46,7 +46,13 @@ def pendencias():
                 valor_atual = float(conta["saldo"])
                 novo_saldo = valor_atual + float(valor)
                 command = f"""UPDATE conta SET saldo = {novo_saldo} WHERE id_conta = {id_conta}"""
-                print(command)
+                cursor.execute(command)
+                banco = db_get(many=False, table="conta", id_conta=1)
+                capital = banco["saldo"]
+                novo_capital = float(capital) + float(valor)
+                command = (
+                    f"""UPDATE conta SET saldo = {novo_capital} WHERE id_conta = 1"""
+                )
                 cursor.execute(command)
 
     pendencias = db_get(many=True, table="transacoes", status="aguardando")
