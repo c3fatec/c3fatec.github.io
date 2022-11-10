@@ -42,28 +42,24 @@ def saque():
             saldo = g.conta["saldo"]
             id_conta = g.conta["id_conta"]
             novo_saldo = float(saldo) - float(v)
-            if novo_saldo < 0:
-                banco = db_get(table="conta", many=False, id_conta=1)
-                capital_banco = banco["saldo"]
-                novo_capital = float(capital_banco) + novo_saldo
-                if novo_capital >= 0:
-                    cursor.execute(
-                        "UPDATE conta SET saldo = %s WHERE id_conta = 1", novo_capital
-                    )
-                    cursor.execute(
-                        "UPDATE banco_api.conta SET saldo = %s WHERE id_conta = %s",
-                        (novo_saldo, id_conta),
-                    )
-                else:
-                    raise Exception(f"{capital_banco}, {novo_capital}")
-            else:
+            banco = db_get(table="conta", many=False, id_conta=1)
+            capital_banco = banco["saldo"]
+            novo_capital = float(capital_banco) - float(v)
+            if novo_capital >= 0:
+                cursor.execute(
+                    "UPDATE conta SET saldo = %s WHERE id_conta = 1", novo_capital
+                )
                 cursor.execute(
                     "UPDATE banco_api.conta SET saldo = %s WHERE id_conta = %s",
                     (novo_saldo, id_conta),
                 )
+            else:
+                raise Exception(f"{capital_banco}, {novo_capital}")
 
         except Exception as e:
+            flash("Impossível efetuar o saque")
             print(e)
+            return redirect(url_for("conta.saque", id=None))
 
         else:
             db_create(
