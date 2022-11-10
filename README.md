@@ -1,6 +1,5 @@
 <div>
 
-
 <img src="https://i.ibb.co/QDpNydM/APRESENTA-O-C3-1-SPRINT-Capa-para-Facebook.jpg" alt="APRESENTA-O-C3-1-SPRINT-Capa-para-Facebook" border="0" />
 
 </div>
@@ -26,8 +25,8 @@ Esse repositório contém o primeiro projeto API dos estudantes do primeiro seme
 
 <h2 id='sprints'>Sprints</h2>
 
-| Sprint | Data Final | Status       |
-| :----: | :--------: | :----------- |
+| Sprint | Data Final |    Status    |
+| :----: | :--------: | :----------: |
 |   01   | 18/09/2022 | ✔️ Concluída |
 |   02   | 19/10/2022 | ✔️ Concluída |
 |   03   | 06/11/2022 | ✔️ Concluída |
@@ -49,7 +48,7 @@ Esse repositório contém o primeiro projeto API dos estudantes do primeiro seme
 
 ---
 
-<h2 name='tecnologias'>Tecnologias utilizadas</h2>
+<h2 name='tecnologias'>Tecnologias Utilizadas</h2>
 
 <img src="https://i.ibb.co/pfvD7fv/Tecnologiasc3.jpg" alt="Tecnologiasc3" border="0">
 
@@ -80,13 +79,13 @@ left: 0; width: 100%; height: 100%;"></iframe></div> -->
 |   Dev Team    | Claudinei Paulista        [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/)|
  -->
 
-|    Função     | Nome                                                                                                                                                                                         |
-| :-----------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Função        | Nome                                                                                                                                                                                         |
+| :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Product Owner | [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/dmssjk/) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/) Daniel Machado dos Santos         |
 | Scrum Master  | [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/dosantos-ogabriel) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/) Gabriel Oliveira Santos |
-|   Dev Team    | [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/IvanSuiyama) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/) Ivan Suiyma                   |
-|   Dev Team    | [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/JacklesKerley) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/) Jackles Kerley              |
-|   Dev Team    | [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/) Claudinei Paulista                       |
+| Dev Team      | [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/IvanSuiyama) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/) Ivan Suiyma                   |
+| Dev Team      | [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/JacklesKerley) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/) Jackles Kerley              |
+| Dev Team      | [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/) Claudinei Paulista                       |
 
 ---
 
@@ -117,7 +116,7 @@ Para criar configurações pessoais, crie uma pasta chamada "instance", e dentro
 
 ---
 
-<h3>Rodando o projeto</h3>
+<h3>Rodando o Projeto</h3>
 
 **Configurando seu usuário da base de dados**<br>
 
