@@ -187,32 +187,19 @@ def transferir():
             if not recipiente or int(conta) == g.conta["id_conta"]:
                 raise Exception("Esta conta não existe")
         except:
-            print("Esta conta não existe")
+            flash("Esta conta não existe")
         else:
             try:
                 saldo = g.conta["saldo"]
                 id_conta = g.conta["id_conta"]
                 novo_saldo = float(saldo) - float(valor)
-                if novo_saldo < 0:
-                    banco = db_get(table="conta", many=False, id_conta=1)
-                    capital_banco = banco["saldo"]
-                    novo_capital = float(capital_banco) + novo_saldo
-                    if novo_capital >= 0:
-                        cursor.execute(
-                            "UPDATE conta SET saldo = %s WHERE id_conta = 1",
-                            novo_capital,
-                        )
-                        cursor.execute(
-                            "UPDATE banco_api.conta SET saldo = %s WHERE id_conta = %s",
-                            (novo_saldo, id_conta),
-                        )
-                    else:
-                        raise Exception(f"{capital_banco}, {novo_capital}")
-                else:
-                    cursor.execute(
-                        "UPDATE banco_api.conta SET saldo = %s WHERE id_conta = %s",
-                        (novo_saldo, id_conta),
-                    )
+                if novo_saldo < 0 and g.conta["tipo"] == "poupança":
+                    flash("Impossível realizar transação")
+                    return redirect(url_for("conta.transferir"))
+                cursor.execute(
+                    "UPDATE banco_api.conta SET saldo = %s WHERE id_conta = %s",
+                    (novo_saldo, id_conta),
+                )
             except:
                 pass
             else:
@@ -232,7 +219,5 @@ def transferir():
                     destino=int(conta),
                 )
                 flash("Transferência realizada com sucesso!")
-            finally:
-                redirect(url_for("conta.transferir"))
 
     return render_template("cliente/transferencia.html", id=id)
