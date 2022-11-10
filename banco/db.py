@@ -227,7 +227,12 @@ def init_db():
     )
 
     db_create(
-        table="conta", id_conta=99999, usuario=daniel, status="aprovado", tipo="gerente"
+        table="conta",
+        id_conta=99999,
+        usuario=daniel,
+        status="aprovado",
+        tipo="gerente",
+        agencia=1,
     )
     db_create(
         table="conta",
@@ -235,6 +240,7 @@ def init_db():
         usuario=jackles,
         status="aprovado",
         tipo="gerente",
+        agencia=2,
     )
     db_create(
         table="conta", id_conta=77777, usuario=ivan, status="aprovado", tipo="gerente"
