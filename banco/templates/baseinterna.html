@@ -58,18 +58,41 @@
 
     <div class="funcao-direita w-25 h-100 d-flex justify-content-between align-items-center">
 
-      <div class="h-100 col-10 d-flex justify-content-end pe-2">
+      
+      <div class="h-100 col-10 d-flex justify-content-end">
 
-        <div class="ola m-0 p-0 d-flex justify-content-center flex-column h-100 col-auto">
-          <!-- <a class="text-decoration-none text-white" href="{{url_for('conta.saque')}}"> -->
-          <p class="h5 p-0 m-0">{{g.usuario.nome | primeironome}}</p>
-          <!-- </a> -->
+        <div class="menu h-100 col-auto d-flex justify-content-end">
+          
           {%if g.conta.tipo != 'gerente'%}
-          <span class="p-0 m-0">
-            Saldo: R$ {{g.conta.saldo | dinheiro}}
-          </span>
+          <div class="setting d-flex px-3 align-items-center h-100 btn btn-outline-secondary p-0" onclick="abrirOuFecharMenu()">
+            <span class="material-symbols-outlined mx-auto">
+              settings
+            </span>
+          </div>
           {%endif%}
+
+          <div class="menu-cliente col-12 d-flex flex-column">
+            <div class="w-100">
+              <ul class="w-100 m-0 p-0">
+                <li class="w-100 m-0 p-0"><a href="#" class="d-flex justify-content-center flex-column w-100 m-0 px-2 py-4">Trocar Conta</a></li>
+                <li class="w-100 m-0 p-0"><a href="#" class="d-flex justify-content-center flex-column w-100 m-0 px-2 py-4">Atualizar Dados</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="ola m-0 p-0 d-flex justify-content-center flex-column h-100 col-auto pe-1">
+            <!-- <a class="text-decoration-none text-white" href="{{url_for('conta.saque')}}"> -->
+            <p class="h5 p-0 m-0">{{g.usuario.nome | primeironome}}</p>
+            <!-- </a> -->
+            {%if g.conta.tipo != 'gerente'%}
+            <span class="p-0 m-0">
+              Saldo: R$ {{g.conta.saldo | dinheiro}}
+            </span>
+            {%endif%}
+          </div>
+
         </div>
+        
       </div>
 
       {%if g.conta.tipo != 'gerente'%}
@@ -79,6 +102,7 @@
           power_settings_new
         </span>
       </div>
+
       {%else%}
       <div class="sair col-2 d-flex justify-content-center align-items-center h-100 btn btn-outline-secondary p-0"
         onclick="document.location='/admin/logoutadmin'">
@@ -198,6 +222,8 @@
       </div>
     </div>
   </div>
+
+  <script src="../static/js/script.js"></script>
 </body>
 
 </html>

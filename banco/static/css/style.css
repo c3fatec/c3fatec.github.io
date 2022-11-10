@@ -29,36 +29,65 @@
     width: 35% !important;
   }
 }
+.header .funcao-direita .menu {
+  position: relative;
+}
+.header .funcao-direita .menu .menu-cliente {
+  display: none !important;
+  background-color: rgb(43, 43, 43);
+  position: absolute;
+  top: 10vh;
+}
+.header .funcao-direita .menu .menu-cliente.aberto {
+  display: block !important;
+}
+.header .funcao-direita .menu .menu-cliente ul {
+  list-style: none;
+}
+.header .funcao-direita .menu .menu-cliente ul li > a {
+  color: white;
+  display: flex;
+  height: 2em;
+  text-decoration: none;
+}
+.header .funcao-direita .menu .menu-cliente ul li > a:hover {
+  background-color: rgb(175, 175, 175);
+}
+.header .funcao-direita .menu .setting {
+  border: none;
+  color: white;
+}
 @media (max-width: 575px) {
-  .header .funcao-direita .ola {
+  .header .funcao-direita .menu .ola {
     align-items: flex-end !important;
   }
 }
 @media (max-width: 830px) {
-  .header .funcao-direita .ola p {
+  .header .funcao-direita .menu .ola p {
     font-size: 15px !important;
   }
 }
 @media (max-width: 393px) {
-  .header .funcao-direita .ola p {
+  .header .funcao-direita .menu .ola p {
     font-size: 12px !important;
   }
 }
-.header .funcao-direita .ola span {
+.header .funcao-direita .menu .ola span {
   text-transform: capitalize;
 }
 @media (max-width: 991px) {
-  .header .funcao-direita .ola span {
+  .header .funcao-direita .menu .ola span {
     font-size: 12px !important;
   }
 }
 @media (max-width: 393px) {
-  .header .funcao-direita .ola span {
+  .header .funcao-direita .menu .ola span {
     font-size: 10px !important;
   }
 }
 .header .funcao-direita .sair {
   border: none;
+  color: white;
 }
 .header .home {
   border: none;
@@ -67,16 +96,15 @@
 .header .home span {
   font-size: 27px;
 }
-.header .sair {
-  color: white;
-}
 
-.header-b, .header-adm {
+.header-b,
+.header-adm {
   background-color: rgb(43, 43, 43);
   height: 10vh;
   color: white;
 }
-.header-b .logo-b > p, .header-adm .logo-b > p {
+.header-b .logo-b > p,
+.header-adm .logo-b > p {
   color: white;
   font-weight: bold !important;
   letter-spacing: 2px;
