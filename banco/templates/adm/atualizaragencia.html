@@ -27,13 +27,17 @@
 	</div>
 
 	<div class="funcao-direita w-25 h-100 pe- d-flex justify-content-end align-items-center">
-		<div class="ola m-0 p-0 d-flex justify-content-center flex-column h-100 pe-2">
-			<p class="h5 m-0 p-0">Olá <b>{{g.usuario.nome}}</b><br /></p>
+
+		<div class="h-100 col-10 d-flex justify-content-end pe-2">
+			<div class="ola m-0 p-0 d-flex justify-content-center flex-column h-100 col-auto">
+				<p class="h5 p-0 m-0">{{g.usuario.nome | primeironome}}</p>
+			</div>
 		</div>
 
-		<div class="sair col-2 d-flex justify-content-center align-items-center h-100 btn btn-outline-secondary p-0"
-			onclick="document.location='/logout'">
-			<span class="material-symbols-outlined"> power_settings_new </span>
+		<div class="sair col-2 d-flex justify-content-center align-items-center h-100 btn btn-outline-secondary p-0" onclick="document.location='/admin/logoutadmin'">
+			<span class="material-symbols-outlined m-0 p-0">
+				power_settings_new
+			</span>
 		</div>
 	</div>
 </header>
