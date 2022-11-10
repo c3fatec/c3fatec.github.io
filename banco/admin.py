@@ -8,13 +8,12 @@ from flask import (
     flash,
     session,
 )
-from random import choice
 
 from banco.auth import requer_login, rota_gerente
 
 from datetime import datetime
 
-from .db import db_delete, get_db, db_get, db_update, db_create
+from .db import db_delete, get_db, db_get, db_update, db_create, selecionar_agencia
 
 from werkzeug.security import check_password_hash, generate_password_hash
 from random import randint
@@ -160,9 +159,9 @@ def agencia():
     agencias = db_get(table="agencia", many=True)
     for agencia in agencias:
         gerente = {"nome": None}
-        quantidade = db_get(
-            count=True, many=False, table="conta", agencia=agencia["id_agencia"]
-        )
+        command = f"""SELECT COUNT(*) FROM conta WHERE agencia = {agencia['id_agencia']} AND tipo != 'gerente'"""
+        cursor.execute(command)
+        quantidade = cursor.fetchone()
         command = f"""SELECT * FROM conta WHERE tipo = 'gerente' AND agencia = {agencia['id_agencia']}"""
         cursor.execute(command)
         conta_gerente = cursor.fetchone()
@@ -277,6 +276,7 @@ def loginadm():
 
     return render_template("auth/loginadmin.html")
 
+
 @bp.route("/logoutadmin")
 def logoutadmin():
     session.clear()
@@ -326,28 +326,28 @@ def atualizar_gerente():
 @requer_login
 @rota_gerente
 def excluir_agencia():
-    id_agencia = request.args["agencia"]
+    id_agencia = int(request.args["agencia"])
     contas = db_get(table="conta", agencia=id_agencia)
+    msg = None
     if contas:
-        agencias = db_get(table="agencia", many=True)
-        opt = []
-        for agencia in agencias:
-            opt.append(agencia["id_agencia"])
-        opt.remove(int(id_agencia))
         for conta in contas:
-            agencia = choice(opt)
-            if conta["tipo"] == "gerente":
-                db = get_db()
-                cursor = db.cursor()
-                command = f"""UPDATE conta SET agencia = NULL WHERE id_conta = {conta['id_conta']}"""
-                cursor.execute(command)
+            nova_agencia = selecionar_agencia(agencia=id_agencia)
+            if type(nova_agencia) is int:
+                if conta["tipo"] == "gerente":
+                    db = get_db()
+                    cursor = db.cursor()
+                    command = f"""UPDATE conta SET agencia = NULL WHERE id_conta = {conta['id_conta']}"""
+                    cursor.execute(command)
+                else:
+                    setter = {"campo": "agencia", "valor": nova_agencia}
+                    value = {"campo": "id_conta", "valor": conta["id_conta"]}
+                    db_update(table="conta", setter=setter, value=value)
             else:
-                setter = {"campo": "agencia", "valor": agencia}
-                value = {"campo": "id_conta", "valor": conta["id_conta"]}
-                db_update(table="conta", setter=setter, value=value)
-
-    db_delete(table="agencia", id_agencia=id_agencia)
-    flash("Agência excluída.")
+                msg = nova_agencia
+    if msg is None:
+        db_delete(table="agencia", id_agencia=id_agencia)
+        msg = "Agência excluída."
+    flash(msg)
     return redirect(url_for("admin.agencia"))
 
 
@@ -390,6 +390,11 @@ def atualizar_agencia():
                 table="conta",
                 setter={"campo": "agencia", "valor": id_agencia},
                 value={"campo": "id_conta", "valor": gerente["id_conta"]},
+            )
+            db_update(
+                table="agencia",
+                setter={"campo": "gerente", "valor": gerente["id_conta"]},
+                value={"campo": "id_agencia", "valor": id_agencia},
             )
             if agencia.get("gerente_conta"):
                 command = f"""UPDATE conta SET agencia = NULL WHERE id_conta = {agencia['gerente_conta']}"""

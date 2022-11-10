@@ -10,9 +10,8 @@ from flask import (
     url_for,
 )
 from werkzeug.security import check_password_hash, generate_password_hash
-from .db import db_create, db_get
-from random import randint, choice
-from datetime import datetime
+from .db import db_create, db_get, selecionar_agencia
+from random import randint
 
 bp = Blueprint("auth", __name__, url_prefix="/")
 
@@ -43,11 +42,7 @@ def cadastro():
                 idconta = randint(11111, 99999)
                 while idconta in contas:
                     idconta = randint(11111, 99999)
-                agencias = db_get(table="agencia", many=True)
-                opt = []
-                for agencia in agencias:
-                    opt.append(agencia["id_agencia"])
-                agencia = choice(opt)
+                agencia = selecionar_agencia()
 
                 db_create(
                     table="conta",
@@ -116,8 +111,22 @@ def logout():
 
 @bp.route("/teste")
 def teste():
+    from .db import selecionar_agencia, get_db, db_update
 
-    return ""
+    id_agencia = 1
+    contas = db_get(table="conta", agencia=id_agencia)
+    if contas:
+        for conta in contas:
+            if conta["tipo"] == "gerente":
+                db = get_db()
+                cursor = db.cursor()
+                command = f"""UPDATE conta SET agencia = NULL WHERE id_conta = {conta['id_conta']}"""
+                cursor.execute(command)
+            else:
+                nova_agencia = selecionar_agencia(agencia=id_agencia)
+                setter = {"campo": "agencia", "valor": nova_agencia}
+                value = {"campo": "id_conta", "valor": conta["id_conta"]}
+                db_update(table="conta", setter=setter, value=value)
 
 
 @bp.before_app_request

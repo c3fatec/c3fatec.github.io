@@ -29,7 +29,6 @@ CREATE TABLE IF NOT EXISTS `banco_api`.`conta` (
   CONSTRAINT `fk_conta_usuario1` FOREIGN KEY (`usuario`) REFERENCES `banco_api`.`usuario` (`id_usuario`),
   CONSTRAINT `fk_conta_agencia1` FOREIGN KEY (`agencia`) REFERENCES `banco_api`.`agencia` (`id_agencia`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
-ALTER TABLE `banco_api`.`conta` AUTO_INCREMENT = 20000;
 CREATE TABLE IF NOT EXISTS `banco_api`.`transacoes`(
   `id_transacao` INT(5) NOT NULL AUTO_INCREMENT,
   `status` VARCHAR(145) NOT NULL,
@@ -45,9 +44,12 @@ CREATE TABLE IF NOT EXISTS `banco_api`.`transacoes`(
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `banco_api`.`agencia`(
   `id_agencia` INT(4) NOT NULL AUTO_INCREMENT,
+  `gerente` INT(5),
   `nome` VARCHAR(145) NOT NULL,
   PRIMARY KEY (`id_agencia`),
-  UNIQUE INDEX `nome_UNIQUE` (`nome` ASC)
+  UNIQUE INDEX `nome_UNIQUE` (`nome` ASC),
+  UNIQUE INDEX `gerente_UNIQUE` (`gerente` ASC),
+  CONSTRAINT `fk_agencia_conta1_idx` FOREIGN KEY (`gerente`) REFERENCES `banco_api`.`conta` (`id_conta`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
 SET SQL_MODE = @OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS = @OLD_FOREIGN_KEY_CHECKS;

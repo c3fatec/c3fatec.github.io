@@ -1,5 +1,3 @@
-import json
-import re
 from flask import Blueprint, g, redirect, render_template, request, url_for, flash
 
 from banco.auth import requer_login, rota_cliente

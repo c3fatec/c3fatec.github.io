@@ -5,6 +5,42 @@ import pymysql
 from werkzeug.security import generate_password_hash
 
 
+def selecionar_agencia(user=None, agencia=None):
+    tem_gerente = list(filter(lambda a: a["gerente"], db_get(table="agencia")))
+    agencias = list(map(lambda a: a["id_agencia"], tem_gerente))
+    if agencia:
+        try:
+            agencias.remove(agencia)
+        except:
+            pass
+    # if user:
+    #     contas = db_get(table="conta", usuario=user)
+    #     conta_gerente = next(filter(lambda c: c["tipo"] == "gerente", contas), None)
+    #     if (
+    #         conta_gerente
+    #         and conta_gerente["agencia"]
+    #         and conta_gerente["agencia"] in agencias
+    #     ):
+    #         agencias.remove(conta_gerente["agencia"])
+    agencias = list(
+        map(
+            lambda a: {
+                "id": a,
+                "count": db_get(count=True, many=False, table="conta", agencia=a)[
+                    "COUNT(*)"
+                ],
+            },
+            agencias,
+        )
+    )
+    ag = {}
+    if agencias:
+        menor = min(list(map(lambda a: a["count"], agencias)))
+        ag = next(a for a in agencias if a["count"] == menor)
+
+    return ag.get("id") or "Não há agências disponíveis"
+
+
 def get_db():
     """Função para estabelecer conexão com o banco de dados."""
 
