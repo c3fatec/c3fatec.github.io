@@ -54,6 +54,8 @@ def pendencias():
                     f"""UPDATE conta SET saldo = {novo_capital} WHERE id_conta = 1"""
                 )
                 cursor.execute(command)
+                flash("Transação aprovada")
+                return redirect(url_for("admin.pendencias"))
 
     pendencias = db_get(many=True, table="transacoes", status="aguardando")
     return render_template("adm/pendencias.html", pendencias=pendencias)
