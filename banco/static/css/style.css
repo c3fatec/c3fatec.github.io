@@ -34,7 +34,7 @@
 }
 .header .funcao-direita .menu .menu-cliente {
   display: none !important;
-  background-color: rgb(43, 43, 43);
+  background-color: rgba(43, 43, 43, 0.95);
   position: absolute;
   top: 10vh;
 }
