@@ -425,3 +425,10 @@ def atualizar_agencia():
     return render_template(
         "adm/atualizaragencia.html", agencia=agencia, gerentes=gerentes
     )
+
+@bp.route("/taxas")
+@requer_login
+@rota_gerente
+def taxas():
+    return render_template ("adm/taxas.html")
+    

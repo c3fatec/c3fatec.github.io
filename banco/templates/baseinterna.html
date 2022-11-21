@@ -134,7 +134,7 @@
             <p>Saque</p>
           </div>
           <div class="w-100 my-auto">
-            <img src="../static/icons/sacar.png" alt="sacar" class="w-50 p-1" />
+            <img src="../static/icons/sacar.png" alt="saque" class="w-50 p-1" />
           </div>
         </div>
 
@@ -144,7 +144,7 @@
             <p>Depósito</p>
           </div>
           <div class="w-100 my-auto">
-            <img src="../static/icons/depositar.png" alt="depositar" class="w-50 p-1" />
+            <img src="../static/icons/depositar.png" alt="deposito" class="w-50 p-1" />
           </div>
         </div>
 
@@ -164,7 +164,7 @@
             <p>Extrato</p>
           </div>
           <div class="w-100 my-auto">
-            <img src="../static/icons/extrato.png" alt="comprovante" class="w-50 p-1" />
+            <img src="../static/icons/extrato.png" alt="extrato" class="w-50 p-1" />
           </div>
         </div>
         {%endif%} {%if 'gerente' in g.conta.tipo%}
@@ -174,7 +174,7 @@
             <p>Transações</p>
           </div>
           <div class="w-100 my-auto">
-            <img src="../static/icons/pendencia.png" alt="comprovante" class="w-50 p-1" />
+            <img src="../static/icons/pendencia.png" alt="transacoes" class="w-50 p-1" />
           </div>
         </div>
         <div class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
@@ -183,7 +183,7 @@
             <p>Solicitações</p>
           </div>
           <div class="w-100 my-auto">
-            <img src="../static/icons/cadastro.png" alt="comprovante" class="w-50 p-1" />
+            <img src="../static/icons/cadastro.png" alt="solicitacoes" class="w-50 p-1" />
           </div>
         </div>
         <div class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
@@ -192,7 +192,7 @@
             <p>Contas</p>
           </div>
           <div class="w-100 my-auto">
-            <img src="../static/icons/dados.png" alt="dados" class="w-50 p-1" />
+            <img src="../static/icons/dados.png" alt="contas" class="w-50 p-1" />
           </div>
         </div>
         {%if not g.conta.agencia%}
@@ -202,7 +202,7 @@
             <p>Agências</p>
           </div>
           <div class="w-100 my-auto">
-            <img src="../static/icons/agencia.png" alt="dados" class="w-50 p-1" />
+            <img src="../static/icons/agencia.png" alt="agencia" class="w-50 p-1" />
           </div>
         </div>
         <div class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
@@ -211,7 +211,16 @@
             <p>Gerentes</p>
           </div>
           <div class="w-100 my-auto">
-            <img src="../static/icons/colaboradores.png" alt="dados" class="w-50 p-1" />
+            <img src="../static/icons/colaboradores.png" alt="gerentes" class="w-50 p-1" />
+          </div>
+        </div>
+        <div class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
+          onclick="document.location='/admin/taxas'">
+          <div class="head w-100">
+            <p>Taxas</p>
+          </div>
+          <div class="w-100 my-auto">
+            <img src="../static/icons/porcentagem.png" alt="taxas" class="w-50 p-1" />
           </div>
         </div>
         {%endif%} {%endif%}
