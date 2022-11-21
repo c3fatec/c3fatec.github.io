@@ -4,17 +4,31 @@
   color: white;
 
   .funcao-inicio {
-    @media (max-width: 575px) {
+    @media (max-width: 900px) {
       width: 35% !important;
     }
+    @media (max-width: 400px) {
+      display: none !important;
+    }
 
-    // @media (max-width: 414px) {
-    //   width: 35% !important;
-    // }
+    .p1 {
+      @media (max-width: 540px) {
+        font-size: 15px !important;
+      }
+    }
+    .p2 {
+      @media (max-width: 540px) {
+        font-size: 12px !important;
+      }
+    }
+
   }
 
   .logo {
-    @media (max-width: 575px) {
+    @media (max-width: 900px) {
+      width: 30% !important;
+    }
+    @media (max-width: 400px) {
       width: 30% !important;
     }
 
@@ -24,16 +38,24 @@
       letter-spacing: 2px;
       text-transform: uppercase;
 
-      @media (max-width: 360px) {
-        font-size: 23px !important;
+      @media (max-width: 540px) {
+        font-size: 25px !important;
+      }
+
+      @media (max-width: 400px) {
+        font-size: 18px !important;
       }
 
     }
   }
 
-  .funcao-direita {
-    @media (max-width: 575px) {
+  .funcao-direita {    
+    @media (max-width: 900px) {
       width: 35% !important;
+    }
+
+    @media (max-width: 400px) {
+      width: 70% !important;
     }
 
     .menu {
@@ -71,25 +93,35 @@
         border: none;
         color: white;
 
-        span {
+        @media (max-width: 680px) {
+          padding-left: 1px !important;
+          padding-right: 1px !important;
+        }
+
+        @media (max-width: 400px) {
+          padding-left: 4px !important;
+          padding-right: 4px !important;
+        }
+        
+        span {          
           &:hover {
             color: rgb(163, 163, 163);
             cursor: pointer;
+          }
+
+          @media (max-width: 540px) {
+            font-size: 18px !important;
           }
         }
       }
 
       .ola {
-        @media (max-width: 575px) {
-          align-items: flex-end !important;
-        }
   
         p {
-          @media (max-width: 830px) {
+          @media (max-width: 540px) {
             font-size: 15px !important;
           }
-  
-          @media (max-width: 393px) {
+          @media (max-width: 400px) {
             font-size: 12px !important;
           }
         }
@@ -97,12 +129,17 @@
         span {
           text-transform: capitalize;
   
-          @media (max-width: 991px) {
+          @media (max-width: 540px) {
             font-size: 12px !important;
           }
-  
-          @media (max-width: 393px) {
+          @media (max-width: 400px) {
             font-size: 10px !important;
+          }
+        }
+
+        .s2 {
+          @media (max-width: 400px) {
+            display: block !important;
           }
         }
   
@@ -113,15 +150,31 @@
     .sair {
       border: none;
       color: white;
+
+      span {
+        @media (max-width: 400px) {
+          font-size: 20px;
+        }
+      }
     }
   }
 
   .home {
-    border: none;
-    color: white;
+    @media (max-width: 400px) {
+      width: 8% !important;
+    }
 
-    span {
-      font-size: 27px;
+    .home1 {
+      border: none;
+      color: white;
+
+      @media (max-width: 400px) {
+        width: 100% !important;
+      }
+  
+      span {
+        font-size: 27px;
+      }
     }
   }
 }
