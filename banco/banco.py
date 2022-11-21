@@ -46,6 +46,8 @@ def saque():
             capital_banco = banco["saldo"]
             novo_capital = float(capital_banco) - float(v)
             if novo_capital >= 0:
+                if g.conta["tipo"] == "poupança" and novo_saldo < 0:
+                    raise Exception("Saldo negativo em conta poupança")
                 cursor.execute(
                     "UPDATE conta SET saldo = %s WHERE id_conta = 1", novo_capital
                 )
