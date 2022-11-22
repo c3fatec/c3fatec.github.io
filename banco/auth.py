@@ -21,12 +21,20 @@ bp = Blueprint("auth", __name__, url_prefix="/")
 def cadastro():
     if request.method == "POST":
         nome = request.form["nome"]
-        # rg = request.form["rg"]
+        rg = request.form["rg"]
+        rua = request.form["rua"]
+        cep = request.form["cep"]
+        bairro = request.form["bairro"]
+        cidade = request.form["cidade"]
+        uf = request.form["uf"]
+        numero = request.form["numero"]
+        complemento = request.form["complemento"]
         data_nasc = request.form["data-nasc"]
         cpf = request.form["cpf"]
         senha = request.form["senha"]
         senha_repetida = request.form["senha-repetida"]
         tipo = request.form["tipo"]
+        genero = request.form["genero"]
 
         if senha == senha_repetida:
             try:
@@ -36,6 +44,17 @@ def cadastro():
                     senha=generate_password_hash(senha),
                     cpf=cpf,
                     data_nasc=data_nasc,
+                    rg=rg,
+                    cep=cep,
+                    rua=rua,
+                    bairro=bairro,
+                    numero=numero,
+                    complemento=complemento,
+                    uf=uf,
+                    cidade=cidade,
+                    genero=genero
+               
+                    
                 )
                 contas = list(
                     map(lambda x: x["id_conta"], db_get(table="conta", many=True))
