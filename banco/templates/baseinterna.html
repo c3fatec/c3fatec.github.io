@@ -30,20 +30,20 @@
       {%if g.conta.id_conta==1%}
       <div class="d-flex flex-column h-100 justify-content-center">
         <div>
-          <p class="h5 p-0 m-0">Capital do Banco</p>
+          <p class="p1 h5 p-0 m-0">Capital do Banco</p>
         </div>
         <div>
-          <p class="h-6 p-0 m-0">R$ {{g.conta.saldo | dinheiro}}</p>
+          <p class="p2 h6 p-0 m-0">R$ {{g.conta.saldo | dinheiro}}</p>
         </div>
       </div>
       {%endif%}
       {%if g.conta.tipo != 'gerente'%}
       <div class="d-flex flex-column h-100 justify-content-center">
         <div>
-          <p class="h5 p-0 m-0">{{g.conta.tipo|capitalize}}</p>
+          <p class="p1 h5 p-0 m-0">{{g.conta.tipo|capitalize}}</p>
         </div>
         <div>
-          <p class="p-0 m-0">
+          <p class="p2 h6 p-0 m-0">
             Conta: {{g.conta.id_conta}}
             Ag: {{g.conta.agencia}}
           </p>
@@ -85,8 +85,12 @@
             <p class="h5 p-0 m-0">{{g.usuario.nome | primeironome}}</p>
             <!-- </a> -->
             {%if g.conta.tipo != 'gerente'%}
-            <span class="p-0 m-0">
+            <span class="h6 p-0 m-0">
               Saldo: R$ {{g.conta.saldo | dinheiro}}
+            </span>
+            <span class="s2 h6 p-0 m-0 d-none">
+                Conta: {{g.conta.id_conta}}
+                Ag: {{g.conta.agencia}}
             </span>
             {%endif%}
           </div>
