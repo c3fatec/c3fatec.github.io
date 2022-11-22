@@ -1,6 +1,8 @@
 from flask import Flask
 import os
 import secrets
+from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.triggers.cron import CronTrigger
 
 
 def create_app():
@@ -52,7 +54,6 @@ def create_app():
     def primeironome(nome):
         x = nome.split()
         return x[0].capitalize()
-        
 
     def datetime(data, format="%d/%m/%Y %H:%M:%S"):
         return data.strftime(format)
@@ -60,5 +61,21 @@ def create_app():
     app.add_template_filter(dinheiro)
     app.add_template_filter(datetime)
     app.add_template_filter(primeironome)
+
+    def aplicar_taxas():
+        with app.app_context():
+            db.aplicar_taxas()
+
+    def aumentar_data():
+        with app.app_context():
+            db.aumentar_data()
+
+    trigger = CronTrigger(
+        year="*", month="*", day="*", hour="08", minute="33", second="0"
+    )
+    schedule = BackgroundScheduler(daemon=True)
+    schedule.add_job(aplicar_taxas, trigger=trigger)
+    schedule.add_job(aumentar_data, trigger=trigger)
+    schedule.start()
 
     return app

@@ -13,7 +13,15 @@ from banco.auth import requer_login, rota_gerente
 
 from datetime import datetime
 
-from .db import db_delete, get_db, db_get, db_update, db_create, selecionar_agencia
+from .db import (
+    db_delete,
+    get_db,
+    db_get,
+    db_update,
+    db_create,
+    selecionar_agencia,
+    db_execute,
+)
 
 from werkzeug.security import check_password_hash, generate_password_hash
 from random import randint
@@ -242,6 +250,7 @@ def cadastrar_gerente():
                     status="aprovado",
                     tipo="gerente",
                     usuario=usuario,
+                    abertura=datetime.now(),
                 )
             finally:
                 return redirect(url_for("admin.gerente"))
@@ -426,9 +435,19 @@ def atualizar_agencia():
         "adm/atualizaragencia.html", agencia=agencia, gerentes=gerentes
     )
 
-@bp.route("/taxas")
+
+@bp.route("/taxas", methods=["GET", "POST"])
 @requer_login
 @rota_gerente
 def taxas():
-    return render_template ("adm/taxas.html")
-    
+    config = db_get(table="config", many=False)
+    if request.method == "POST":
+        if request.form.get("juros") != config.get("taxa_juros"):
+            db_execute(f"UPDATE config SET taxa_juros = {request.form.get('juros')}")
+        if request.form.get("rendimento") != config.get("taxa_rendimento"):
+            db_execute(
+                f"UPDATE config SET taxa_rendimento = {request.form.get('rendimento')}"
+            )
+        return redirect(url_for("admin.taxas"))
+
+    return render_template("adm/taxas.html", config=config)

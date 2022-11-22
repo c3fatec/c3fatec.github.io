@@ -12,6 +12,7 @@ from flask import (
 from werkzeug.security import check_password_hash, generate_password_hash
 from .db import db_create, db_get, selecionar_agencia
 from random import randint
+from datetime import datetime as dt
 
 bp = Blueprint("auth", __name__, url_prefix="/")
 
@@ -52,6 +53,8 @@ def cadastro():
                     status="aguardando",
                     tipo=tipo,
                     agencia=agencia,
+                    abertura=dt.now(),
+                    ultima_cobranca=dt.now(),
                 )
             except:
                 print("Erro ao cadastrar novo usuário")

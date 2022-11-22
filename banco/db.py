@@ -1,6 +1,9 @@
 import click
 from flask import current_app, g
 import pymysql
+from datetime import datetime as dt
+from datetime import timedelta as td
+from dateutil.relativedelta import relativedelta
 
 from werkzeug.security import generate_password_hash
 
@@ -193,6 +196,7 @@ def init_db():
         usuario=1,
         status="aprovado",
         tipo="gerente",
+        abertura=dt.now(),
     )
 
     # agencias
@@ -233,6 +237,7 @@ def init_db():
         status="aprovado",
         tipo="gerente",
         agencia=1,
+        abertura=dt.now(),
     )
     db_create(
         table="conta",
@@ -241,9 +246,15 @@ def init_db():
         status="aprovado",
         tipo="gerente",
         agencia=2,
+        abertura=dt.now(),
     )
     db_create(
-        table="conta", id_conta=77777, usuario=ivan, status="aprovado", tipo="gerente"
+        table="conta",
+        id_conta=77777,
+        usuario=ivan,
+        status="aprovado",
+        tipo="gerente",
+        abertura=dt.now(),
     )
     db_create(
         table="conta",
@@ -251,6 +262,7 @@ def init_db():
         usuario=paulista,
         status="aprovado",
         tipo="gerente",
+        abertura=dt.now(),
     )
     cliente_1 = db_create(
         table="usuario",
@@ -265,25 +277,165 @@ def init_db():
         cpf="12332112333",
     )
     db_create(
-        saldo=0,
+        saldo=100,
         table="conta",
         id_conta=10000,
         usuario=cliente_1,
         status="aprovado",
         tipo="poupança",
         agencia=1,
+        abertura=dt.now(),
+        ultima_cobranca=dt.now(),
     )
     db_create(
-        saldo=0,
+        saldo=-100,
         table="conta",
         id_conta=20000,
         usuario=cliente_2,
         status="aprovado",
         tipo="corrente",
         agencia=2,
+        abertura=dt.now(),
+        ultima_cobranca=dt.now(),
     )
+    db_create(table="config", data=dt.now())
 
+    db_execute("UPDATE agencia SET gerente = 99999 WHERE id_agencia = 1")
+    db_execute("UPDATE agencia SET gerente = 88888 WHERE id_agencia = 2")
     db.close()
+
+
+def db_execute(*arg: str):
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute(arg[0])
+
+
+def aumentar_data():
+    config = db_get(table="config", many=False)
+    data = config.get("data")
+    data += relativedelta(days=+1)
+    db_execute(f"UPDATE config SET data = '{data}'")
+    print(f"Data alterada para {data}")
+
+
+def aplicar_taxas():
+    config = db_get(table="config", many=False)
+    momento = config["data"]
+
+    poupança = db_get(table="conta", tipo="poupança")
+
+    for conta in poupança:
+        ultima = conta["ultima_cobranca"]
+
+        years = momento.year - ultima.year
+        tempo = momento.month - ultima.month
+        dias = momento.day - ultima.day
+
+        if years:
+            tempo += years * 12
+        if dias < 0:
+            tempo -= 1
+
+        if tempo and tempo > 0:
+            taxa = config["taxa_rendimento"]
+            banco = db_get(table="conta", many=False, id_conta=1)
+            saldo_banco = banco["saldo"]
+            saldo = conta["saldo"]
+            id_conta = conta["id_conta"]
+
+            for _ in range(tempo):
+                aumento = round(saldo * taxa / 100, 2)
+                saldo_banco -= aumento
+                saldo += aumento
+                ultima += relativedelta(months=+1)
+
+            command = (
+                f"""UPDATE conta SET saldo = {saldo} WHERE id_conta = {id_conta}"""
+            )
+            db_execute(command)
+            command = f"""UPDATE conta SET ultima_cobranca = '{ultima}' WHERE id_conta = {id_conta}"""
+            db_execute(command)
+            command = f"""UPDATE conta SET saldo = {saldo_banco} WHERE id_conta = 1"""
+            db_execute(command)
+
+    corrente = db_get(table="conta", tipo="corrente")
+
+    for conta in list(filter(lambda c: c.get("saldo") < 0, corrente)):
+        ultima = conta["ultima_cobranca"]
+
+        years = momento.year - ultima.year
+        tempo = momento.month - ultima.month
+        dias = momento.day - ultima.day
+
+        if years:
+            tempo += years * 12
+        if dias < 0:
+            tempo -= 1
+
+        if tempo and tempo > 0:
+            taxa = config["taxa_juros"]
+            saldo = conta["saldo"]
+            id_conta = conta["id_conta"]
+
+            for _ in range(tempo):
+                juros = round(saldo * taxa / 100, 2)
+                saldo += juros
+                ultima += relativedelta(months=+1)
+
+            command = (
+                f"""UPDATE conta SET saldo = {saldo} WHERE id_conta = {id_conta}"""
+            )
+            db_execute(command)
+            command = f"""UPDATE conta SET ultima_cobranca = '{ultima}' WHERE id_conta = {id_conta}"""
+            db_execute(command)
+
+    print("Taxas aplicadas")
+
+
+@click.command("change-time")
+@click.option("--time", default=None, type=str)
+def change_system_time(time):
+    try:
+        new_time = None
+        if time:
+            new_time = dt.strptime(time, "%Y-%m-%d")
+        else:
+            new_time = dt.now()
+    except:
+        print("Inserir data no formato (yyyy-mm-dd)")
+        print(time)
+    else:
+        config = db_get(many=False, table="config")
+        tempo_atual = config["data"]
+
+        years = new_time.year - tempo_atual.year
+        tempo = new_time.month - tempo_atual.month
+        dias = new_time.day - tempo_atual.day
+
+        if years:
+            tempo += years * 12
+        if dias < 0:
+            tempo -= 1
+
+        if tempo < 0:
+            contas = list(
+                filter(lambda c: c["tipo"] != "gerente", db_get(table="conta"))
+            )
+            for conta in contas:
+                ultima = conta["ultima_cobranca"]
+                ultima += relativedelta(months=+tempo)
+                id_conta = conta["id_conta"]
+                command = f"""UPDATE conta SET ultima_cobranca = '{ultima}' WHERE id_conta = {id_conta}"""
+                db_execute(command)
+        db_execute(f"UPDATE config SET data = '{new_time}'")
+        config = db_get(many=False, table="config")
+        print(config["data"])
+
+
+@click.command("tax")
+def tax():
+    aplicar_taxas()
 
 
 @click.command("init-db")
@@ -314,3 +466,5 @@ def init_app(app):
     app.teardown_appcontext(close_db)
     app.cli.add_command(init_db_command)
     app.cli.add_command(drop_db_command)
+    app.cli.add_command(change_system_time)
+    app.cli.add_command(tax)
