@@ -60,13 +60,14 @@
 			<div
 				class="d-flex justify-content-center align-items-center col-xxl-3 col-xl-3 col-md-3 col-sm-3 col-3"
 			>
+				{%if comprovante.tipo != 'rendimento'%}
 				<a
 					href="{{url_for('conta.impressao', id_transacao=comprovante['id_transacao'])}}"
 					target="_blank"
 					class="w-100 px-0 mx-0"
 				>
-					<div class="btn btn-secondary w-100">Gerar</div>
-				</a>
+					<div class="btn btn-secondary w-100">Gerar</div> </a
+				>{%endif%}
 			</div>
 		</div>
 		{%endfor%} {%else%}

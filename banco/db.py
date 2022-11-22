@@ -340,15 +340,23 @@ def aplicar_taxas():
         if tempo and tempo > 0:
             taxa = config["taxa_rendimento"]
             banco = db_get(table="conta", many=False, id_conta=1)
-            saldo_banco = banco["saldo"]
+            # saldo_banco = banco["saldo"]
             saldo = conta["saldo"]
             id_conta = conta["id_conta"]
 
             for _ in range(tempo):
                 aumento = round(saldo * taxa / 100, 2)
-                saldo_banco -= aumento
+                # saldo_banco += aumento
                 saldo += aumento
                 ultima += relativedelta(months=+1)
+                db_create(
+                    table="transacoes",
+                    id_conta=id_conta,
+                    valor=aumento,
+                    status="Efetivado",
+                    data_inicio=ultima,
+                    tipo="rendimento",
+                )
 
             command = (
                 f"""UPDATE conta SET saldo = {saldo} WHERE id_conta = {id_conta}"""
@@ -356,8 +364,8 @@ def aplicar_taxas():
             db_execute(command)
             command = f"""UPDATE conta SET ultima_cobranca = '{ultima}' WHERE id_conta = {id_conta}"""
             db_execute(command)
-            command = f"""UPDATE conta SET saldo = {saldo_banco} WHERE id_conta = 1"""
-            db_execute(command)
+            # command = f"""UPDATE conta SET saldo = {saldo_banco} WHERE id_conta = 1"""
+            # db_execute(command)
 
     corrente = db_get(table="conta", tipo="corrente")
 

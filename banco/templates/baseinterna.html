@@ -92,6 +92,10 @@
                 Conta: {{g.conta.id_conta}}
                 Ag: {{g.conta.agencia}}
             </span>
+            {%else%}
+            <span class="s2 h6 p-0 m-0 d-none">
+              Saldo: R$ {{g.conta.saldo | dinheiro}}
+            </span>
             {%endif%}
           </div>
 
