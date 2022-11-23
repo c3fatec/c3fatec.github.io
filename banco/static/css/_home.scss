@@ -1,0 +1,41 @@
+.pg-home {
+  .titulo {
+    @media (max-width: 575px) {
+      font-size: 20px !important;
+    }
+  }
+
+  .transacoes {
+    @media (max-width: 409px) {
+      flex-direction: column !important;
+    }
+
+    .t1 {
+      @media (max-width: 409px) {
+        width: 100% !important;
+      }
+
+      p {
+        @media (max-width: 1050px) {
+          font-size: 18px !important;
+        }
+        @media (max-width: 830px) {
+          font-size: 14px !important;
+        }
+      }
+    }
+
+
+  }
+}
+
+.mensagem {
+  h2 {
+    @media (max-width: 990px) {
+      font-size: 22px !important;
+    }
+    @media (max-width: 575px) {
+      font-size: 20px !important;
+    }
+  }
+}

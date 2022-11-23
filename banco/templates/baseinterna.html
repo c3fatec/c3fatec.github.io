@@ -58,11 +58,11 @@
 
     <div class="funcao-direita w-25 h-100 d-flex justify-content-between align-items-center">
 
-      
+
       <div class="h-100 col-10 d-flex justify-content-end">
 
         <div class="menu h-100 col-auto d-flex justify-content-end">
-          
+
           {%if g.conta.tipo != 'gerente'%}
           <div class="setting d-flex px-3 align-items-center h-100 p-0" onclick="abrirOuFecharMenu()">
             <span class="material-symbols-outlined mx-auto">
@@ -74,8 +74,10 @@
           <div class="menu-cliente col-12 d-flex flex-column">
             <div class="w-100">
               <ul class="w-100 m-0 p-0">
-                <li class="w-100 m-0 p-0"><a href="#" class="d-flex justify-content-center flex-column w-100 m-0 px-2 py-4">Trocar Conta</a></li>
-                <li class="w-100 m-0 p-0"><a href="#" class="d-flex justify-content-center flex-column w-100 m-0 px-2 py-4">Atualizar Dados</a></li>
+                <li class="w-100 m-0 p-0"><a href="#"
+                    class="d-flex justify-content-center flex-column w-100 m-0 px-2 py-4">Trocar Conta</a></li>
+                <li class="w-100 m-0 p-0"><a href="#"
+                    class="d-flex justify-content-center flex-column w-100 m-0 px-2 py-4">Atualizar Dados</a></li>
               </ul>
             </div>
           </div>
@@ -89,8 +91,8 @@
               Saldo: R$ {{g.conta.saldo | dinheiro}}
             </span>
             <span class="s2 h6 p-0 m-0 d-none">
-                Conta: {{g.conta.id_conta}}
-                Ag: {{g.conta.agencia}}
+              Conta: {{g.conta.id_conta}}
+              Ag: {{g.conta.agencia}}
             </span>
             {%else%}
             <span class="s2 h6 p-0 m-0 d-none">
@@ -100,7 +102,7 @@
           </div>
 
         </div>
-        
+
       </div>
 
       {%if g.conta.tipo != 'gerente'%}
