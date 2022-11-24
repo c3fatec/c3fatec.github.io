@@ -114,22 +114,11 @@ def logout():
 
 @bp.route("/teste")
 def teste():
-    from .db import selecionar_agencia, get_db, db_update
-
-    id_agencia = 1
-    contas = db_get(table="conta", agencia=id_agencia)
-    if contas:
-        for conta in contas:
-            if conta["tipo"] == "gerente":
-                db = get_db()
-                cursor = db.cursor()
-                command = f"""UPDATE conta SET agencia = NULL WHERE id_conta = {conta['id_conta']}"""
-                cursor.execute(command)
-            else:
-                nova_agencia = selecionar_agencia(agencia=id_agencia)
-                setter = {"campo": "agencia", "valor": nova_agencia}
-                value = {"campo": "id_conta", "valor": conta["id_conta"]}
-                db_update(table="conta", setter=setter, value=value)
+    contas = db_get(table="conta", usuario=400)
+    msg = "sapo"
+    if not contas:
+        msg = "sopa"
+    return msg
 
 
 @bp.before_app_request

@@ -1,8 +1,17 @@
-from flask import Blueprint, g, redirect, render_template, request, url_for, flash
+from flask import (
+    Blueprint,
+    g,
+    redirect,
+    render_template,
+    request,
+    url_for,
+    flash,
+    session,
+)
 
 from banco.auth import requer_login, rota_cliente
 
-from .db import db_create, get_db, db_get, db_update
+from .db import db_create, get_db, db_get, db_update, db_delete
 
 from datetime import datetime
 
@@ -250,3 +259,23 @@ def dados():
     for f in ["id_usuario", "senha"]:
         usuario.pop(f)
     return render_template("adm/atualizacaoCadastro.html", usuario=usuario)
+
+
+@bp.route("/fechamento-de-conta", methods=["GET", "POST"])
+@requer_login
+@rota_cliente
+def fechar():
+    if request.method == "POST":
+        try:
+            session.clear()
+            db_delete(table="conta", id_conta=g.conta.get("id_conta"))
+        except:
+            flash("Erro ao deletar a conta")
+            return redirect(url_for("conta.index"))
+        else:
+            contas = db_get(table="conta", usuario=g.usuario.get("id_usuario"))
+            if not contas:
+                db_delete(table="usuario", id_usuario=g.usuario.get("id_usuario"))
+            return redirect(url_for("auth.login"))
+
+    return render_template("cliente/fechamento.html")
