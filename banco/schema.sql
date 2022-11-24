@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `banco_api`.`usuario` (
 CREATE TABLE IF NOT EXISTS `banco_api`.`conta` (
   `id_conta` INT(5) NOT NULL AUTO_INCREMENT,
   `status` VARCHAR(30) NOT NULL,
-  `saldo` DECIMAL(9, 2),
+  `saldo` DECIMAL(40, 2),
   `tipo` VARCHAR(30) NOT NULL,
   `usuario` int(5) NOT NULL,
   `agencia` INT(5),
@@ -54,8 +54,8 @@ CREATE TABLE IF NOT EXISTS `banco_api`.`agencia`(
   CONSTRAINT `fk_agencia_conta1_idx` FOREIGN KEY (`gerente`) REFERENCES `banco_api`.`conta` (`id_conta`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `banco_api`.`config`(
-  `taxa_juros` DECIMAL(4, 2) DEFAULT 10.00,
-  `taxa_rendimento` DECIMAL(4, 2) DEFAULT 10.00,
+  `taxa_juros` DECIMAL(4, 2) DEFAULT 1.00,
+  `taxa_rendimento` DECIMAL(4, 2) DEFAULT 1.00,
   `data` DATETIME NOT NULL
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
 SET SQL_MODE = @OLD_SQL_MODE;
