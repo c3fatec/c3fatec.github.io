@@ -215,6 +215,24 @@
     font-size: 20px !important;
   }
 }
+@media (max-width: 1050px) {
+  .pg-home .transacoes {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+}
+@media (max-width: 830px) {
+  .pg-home .transacoes {
+    padding-top: 18px !important;
+    padding-bottom: 18px !important;
+  }
+}
+@media (max-width: 584px) {
+  .pg-home .transacoes {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+}
 @media (max-width: 409px) {
   .pg-home .transacoes {
     flex-direction: column !important;
