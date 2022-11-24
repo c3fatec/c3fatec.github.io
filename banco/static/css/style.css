@@ -332,7 +332,7 @@
 }
 @media (max-width: 575px) {
   .base-interna .caixa-principal .caixa-sistema {
-    height: 68vh;
+    height: 65vh;
     margin-top: 6px;
   }
 }
@@ -352,18 +352,63 @@
   border-radius: 10px;
 }
 
-.msg {
+@media (max-width: 575px) {
+  .pg-saque .titulo, .pg-deposito .titulo {
+    font-size: 20px !important;
+  }
+}
+@media (max-width: 575px) {
+  .pg-saque form label, .pg-deposito form label {
+    font-size: 18px !important;
+  }
+}
+.pg-saque .msg, .pg-deposito .msg {
   background-color: whitesmoke;
   border-radius: 8px;
   padding: 8px;
 }
-@media (max-width: 1200px) {
-  .msg {
+@media (max-width: 414px) {
+  .pg-saque .msg, .pg-deposito .msg {
     flex-direction: column;
-    text-align: center;
-    gap: 10px;
+    margin-top: 2px !important;
   }
 }
+@media (max-width: 926px) {
+  .pg-saque .msg .texto, .pg-deposito .msg .texto {
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 822px) {
+  .pg-saque .msg .texto, .pg-deposito .msg .texto {
+    font-size: 13px !important;
+  }
+}
+@media (max-width: 457px) {
+  .pg-saque .msg .texto, .pg-deposito .msg .texto {
+    font-size: 12px !important;
+  }
+}
+@media (max-width: 414px) {
+  .pg-saque .msg .texto, .pg-deposito .msg .texto {
+    width: 90% !important;
+  }
+}
+@media (max-width: 926px) {
+  .pg-saque .msg .botao div, .pg-deposito .msg .botao div {
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 822px) {
+  .pg-saque .msg .botao div, .pg-deposito .msg .botao div {
+    font-size: 13px !important;
+  }
+}
+@media (max-width: 457px) {
+  .pg-saque .msg .botao div, .pg-deposito .msg .botao div {
+    font-size: 12px !important;
+  }
+}
+
 .pg-impressao {
   min-height: 90vh;
   font-weight: 500;

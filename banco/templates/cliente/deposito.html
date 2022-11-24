@@ -10,11 +10,11 @@
 {%endblock%} {%block body%}
 
 <div class="pg-deposito h-100">
-	<p class="h3 py-3 text-center border-bottom border-dark">Depósito</p>
+	<p class="titulo h3 py-3 text-center border-bottom border-dark">Depósito</p>
 
 	<div class="d-flex flex-column gap-4 mt-2">
 		<div class="mx-auto text-center">
-			<p class="h2">Saldo: R$ {{g.conta.saldo | dinheiro }}</p>
+			<p class="titulo h3 mt-2">Saldo: R$ {{g.conta.saldo | dinheiro }}</p>
 		</div>
 
 		<div class="d-flex flex-column">
@@ -22,17 +22,20 @@
 				<label class="my-2 h5">Digite o valor:</label>
 				<input type="number" step="0.01" name="valor" id="valor" min="0.01"
 					class="col-xxl-4 col-xl-4 col-md-5 col-sm-5 col-4" />
-				<button type="submit" class="btn btn-secondary btn-sm w-25 mt-4">
+				<button type="submit" class="btn btn-secondary btn-sm col-xxl-4 col-xl-4 col-md-5 col-sm-5 col-6 mt-4">
 					Depositar
 				</button>
 			</form>
 			{% with messages = get_flashed_messages() %} {%if messages and id%} {%for
 			message in messages%}
-			<div class="msg d-flex align-items-center justify-content-center mx-auto mt-5 col-xxl-11 col-xl-11 col-md-11 col-sm-11 col-11">
-				<div class="col-xxl-8 col-xl-8 col-md-12 col-sm-12 col-12">{{message}}</div>
-				<div class="col-xxl-4 col-xl-4 col-md-5 col-sm-8 col-8">
-					<a href="{{url_for('conta.impressao', id_transacao=id)}}" target="_blank" class="w-100">
-						<div class="btn btn-secondary w-100">Gerar comprovante</div>
+			<div class="msg d-flex align-items-center justify-content-center mx-auto mt-3 col-11">
+				<div class="texto text-center col-xxl-8 col-xl-8 col-md-8 col-sm-7 col-7">
+					{{message}}
+				</div>
+				<div class="botao d-flex justify-content-center col-xxl-4 col-xl-4 col-md-4 col-sm-5 col-5">
+					<a href="{{url_for('conta.impressao', id_transacao=id)}}" target="_blank"
+						class="col-xxl-10 col-xl-10 col-md-11 col-sm-11 col-12 p-0 m-0">
+						<div class="btn btn-secondary w-100 px-0">Gerar comprovante</div>
 					</a>
 				</div>
 			</div>
