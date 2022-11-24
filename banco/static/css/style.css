@@ -210,6 +210,61 @@
   cursor: pointer;
 }
 
+@media (max-width: 575px) {
+  .pg-home .titulo {
+    font-size: 20px !important;
+  }
+}
+@media (max-width: 1050px) {
+  .pg-home .transacoes {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+}
+@media (max-width: 830px) {
+  .pg-home .transacoes {
+    padding-top: 18px !important;
+    padding-bottom: 18px !important;
+  }
+}
+@media (max-width: 584px) {
+  .pg-home .transacoes {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+}
+@media (max-width: 409px) {
+  .pg-home .transacoes {
+    flex-direction: column !important;
+  }
+}
+@media (max-width: 409px) {
+  .pg-home .transacoes .t1 {
+    width: 100% !important;
+  }
+}
+@media (max-width: 1050px) {
+  .pg-home .transacoes .t1 p {
+    font-size: 18px !important;
+  }
+}
+@media (max-width: 830px) {
+  .pg-home .transacoes .t1 p {
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 990px) {
+  .mensagem h2 {
+    font-size: 22px !important;
+  }
+}
+@media (max-width: 575px) {
+  .mensagem h2 {
+    font-size: 20px !important;
+  }
+}
+
 .base-interna {
   background-image: url("../../static/img/quadrados.png");
   background-repeat: no-repeat;
@@ -247,6 +302,11 @@
   box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.45);
   cursor: pointer;
 }
+@media (max-width: 330px) {
+  .base-interna .caixa-principal .botoes .funcao {
+    width: 66px !important;
+  }
+}
 .base-interna .caixa-principal .botoes .funcao .head {
   border-radius: 15px 15px 0 0;
 }
@@ -256,9 +316,24 @@
   font-size: 15px;
   font-weight: bold;
 }
-@media (max-width: 575px) {
+@media (max-width: 855px) {
   .base-interna .caixa-principal .botoes .funcao .head p {
-    font-size: 13px;
+    font-size: 13px !important;
+  }
+}
+@media (max-width: 400px) {
+  .base-interna .caixa-principal .botoes .funcao .head p {
+    font-size: 12px !important;
+  }
+}
+@media (max-width: 356px) {
+  .base-interna .caixa-principal .botoes .funcao .head p {
+    font-size: 11px !important;
+  }
+}
+@media (max-width: 330px) {
+  .base-interna .caixa-principal .botoes .funcao .head p {
+    font-size: 10px !important;
   }
 }
 .base-interna .caixa-principal .botoes .funcao:hover {
@@ -275,13 +350,14 @@
 }
 @media (max-width: 575px) {
   .base-interna .caixa-principal .caixa-sistema {
-    height: 68vh;
+    height: 65vh;
     margin-top: 6px;
   }
 }
 
 *::-webkit-scrollbar {
   width: 8px;
+  height: 3px;
   border-radius: 10px;
 }
 
@@ -294,18 +370,63 @@
   border-radius: 10px;
 }
 
-.msg {
+@media (max-width: 575px) {
+  .pg-saque .titulo, .pg-deposito .titulo, .pg-transferencia .titulo {
+    font-size: 20px !important;
+  }
+}
+@media (max-width: 575px) {
+  .pg-saque form label, .pg-deposito form label, .pg-transferencia form label {
+    font-size: 18px !important;
+  }
+}
+.pg-saque .msg, .pg-deposito .msg, .pg-transferencia .msg {
   background-color: whitesmoke;
   border-radius: 8px;
   padding: 8px;
 }
-@media (max-width: 1200px) {
-  .msg {
+@media (max-width: 414px) {
+  .pg-saque .msg, .pg-deposito .msg, .pg-transferencia .msg {
     flex-direction: column;
-    text-align: center;
-    gap: 10px;
+    margin-top: 2px !important;
   }
 }
+@media (max-width: 926px) {
+  .pg-saque .msg .texto, .pg-deposito .msg .texto, .pg-transferencia .msg .texto {
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 822px) {
+  .pg-saque .msg .texto, .pg-deposito .msg .texto, .pg-transferencia .msg .texto {
+    font-size: 13px !important;
+  }
+}
+@media (max-width: 457px) {
+  .pg-saque .msg .texto, .pg-deposito .msg .texto, .pg-transferencia .msg .texto {
+    font-size: 12px !important;
+  }
+}
+@media (max-width: 414px) {
+  .pg-saque .msg .texto, .pg-deposito .msg .texto, .pg-transferencia .msg .texto {
+    width: 90% !important;
+  }
+}
+@media (max-width: 926px) {
+  .pg-saque .msg .botao div, .pg-deposito .msg .botao div, .pg-transferencia .msg .botao div {
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 822px) {
+  .pg-saque .msg .botao div, .pg-deposito .msg .botao div, .pg-transferencia .msg .botao div {
+    font-size: 13px !important;
+  }
+}
+@media (max-width: 457px) {
+  .pg-saque .msg .botao div, .pg-deposito .msg .botao div, .pg-transferencia .msg .botao div {
+    font-size: 12px !important;
+  }
+}
+
 .pg-impressao {
   min-height: 90vh;
   font-weight: 500;
@@ -314,6 +435,62 @@
   background-color: rgb(243, 243, 243);
   width: 350px;
   border: 2px solid black;
+}
+
+@media (max-width: 400px) {
+  .pg-extrato form .btn {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+}
+@media (max-width: 984px) {
+  .pg-extrato form .btn {
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 830px) {
+  .pg-extrato form .btn {
+    font-size: 12px !important;
+  }
+}
+@media (max-width: 575px) {
+  .pg-extrato .titulo {
+    font-size: 20px !important;
+  }
+}
+@media (max-width: 491px) {
+  .pg-extrato .transacoes {
+    flex-direction: column !important;
+  }
+}
+@media (max-width: 491px) {
+  .pg-extrato .transacoes div {
+    width: 100% !important;
+  }
+}
+@media (max-width: 984px) {
+  .pg-extrato .transacoes div p {
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 830px) {
+  .pg-extrato .transacoes div p {
+    font-size: 12px !important;
+  }
+}
+@media (max-width: 984px) {
+  .pg-extrato .botao a div {
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 830px) {
+  .pg-extrato .botao a div {
+    font-size: 12px !important;
+  }
 }
 
 .pg-cadastro {
@@ -365,4 +542,38 @@
 }
 .pg-cadastro .caixa-dados .btn-att:hover {
   background-color: rgb(141, 141, 141);
+}
+
+@media (max-width: 575px) {
+  .pg-pendencias .titulo {
+    font-size: 20px !important;
+  }
+}
+@media (max-width: 400px) {
+  .pg-pendencias form .btn {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+}
+@media (max-width: 984px) {
+  .pg-pendencias form .btn {
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 830px) {
+  .pg-pendencias form .btn {
+    font-size: 12px !important;
+  }
+}
+@media (max-width: 984px) {
+  .pg-pendencias .conteudo p {
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 830px) {
+  .pg-pendencias .conteudo p {
+    font-size: 12px !important;
+  }
 }/*# sourceMappingURL=style.css.map */

@@ -1,18 +1,54 @@
+.pg-saque, .pg-deposito, .pg-transferencia {
+  .titulo {
+    @media (max-width: 575px) {
+      font-size: 20px !important;
+    }
+  }
 
-.msg {
+  form {
+    label {
+      @media (max-width: 575px) {
+        font-size: 18px !important;
+      }
+    }
+  }
+  .msg {
     background-color: whitesmoke;
     border-radius: 8px;
     padding: 8px;
 
-    @media (max-width: 1200px) {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
+    @media (max-width: 414px) {
+      flex-direction: column;
+      margin-top: 2px !important;
     }
 
-    div {
-        @media (max-width: 1200px) {
-            
-        }
+    .texto {
+      @media (max-width: 926px) {
+        font-size: 14px !important;
+      }
+      @media (max-width: 822px) {
+        font-size: 13px !important;
+      }
+      @media (max-width: 457px) {
+        font-size: 12px !important;
+      }
+      @media (max-width: 414px) {
+        width: 90% !important;
+      }
     }
+
+    .botao {
+      div {
+        @media (max-width: 926px) {
+          font-size: 14px !important;
+        }
+        @media (max-width: 822px) {
+          font-size: 13px !important;
+        }
+        @media (max-width: 457px) {
+          font-size: 12px !important;
+        }
+      }
+    }
+  }
 }

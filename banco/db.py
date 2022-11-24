@@ -155,7 +155,10 @@ def db_delete(table: str, **params):
     db = get_db()
     cursor = db.cursor()
     command = f"""DELETE FROM {table} WHERE {key} = {value}"""
-    cursor.execute(command)
+    try:
+        cursor.execute(command)
+    except Exception as e:
+        print(e.args[1])
 
 
 def close_db(e=None):
@@ -344,32 +347,40 @@ def aplicar_taxas():
             saldo = conta["saldo"]
             id_conta = conta["id_conta"]
 
-            for _ in range(tempo):
-                aumento = round(saldo * taxa / 100, 2)
-                # saldo_banco += aumento
-                saldo += aumento
-                ultima += relativedelta(months=+1)
-                db_create(
-                    table="transacoes",
-                    id_conta=id_conta,
-                    valor=aumento,
-                    status="Efetivado",
-                    data_inicio=ultima,
-                    tipo="rendimento",
-                )
+            registros = []
 
-            command = (
-                f"""UPDATE conta SET saldo = {saldo} WHERE id_conta = {id_conta}"""
-            )
-            db_execute(command)
-            command = f"""UPDATE conta SET ultima_cobranca = '{ultima}' WHERE id_conta = {id_conta}"""
-            db_execute(command)
-            # command = f"""UPDATE conta SET saldo = {saldo_banco} WHERE id_conta = 1"""
-            # db_execute(command)
+            try:
+                for _ in range(tempo):
+                    aumento = round((saldo / 100) * taxa, 2)
+                    # saldo_banco += aumento
+                    saldo += aumento
+                    ultima += relativedelta(months=+1)
+                    tr = db_create(
+                        table="transacoes",
+                        id_conta=id_conta,
+                        valor=aumento,
+                        status="Efetivado",
+                        data_inicio=ultima,
+                        tipo="rendimento",
+                    )
+                    registros.append(tr)
+            except:
+                print("Impossível calcular o rendimento para esse prazo")
+                for id in registros:
+                    db_delete(table="transacoes", id_transacao=id)
+            else:
+                command = (
+                    f"""UPDATE conta SET saldo = {saldo} WHERE id_conta = {id_conta}"""
+                )
+                db_execute(command)
+                command = f"""UPDATE conta SET ultima_cobranca = '{ultima}' WHERE id_conta = {id_conta}"""
+                db_execute(command)
+                # command = f"""UPDATE conta SET saldo = {saldo_banco} WHERE id_conta = 1"""
+                # db_execute(command)
 
     corrente = db_get(table="conta", tipo="corrente")
 
-    for conta in list(filter(lambda c: c.get("saldo") < 0, corrente)):
+    for conta in corrente:
         ultima = conta["ultima_cobranca"]
 
         years = momento.year - ultima.year
@@ -386,17 +397,25 @@ def aplicar_taxas():
             saldo = conta["saldo"]
             id_conta = conta["id_conta"]
 
-            for _ in range(tempo):
-                juros = round(saldo * taxa / 100, 2)
-                saldo += juros
-                ultima += relativedelta(months=+1)
+            if conta["saldo"] >= 0:
+                taxa = 0
 
-            command = (
-                f"""UPDATE conta SET saldo = {saldo} WHERE id_conta = {id_conta}"""
-            )
-            db_execute(command)
-            command = f"""UPDATE conta SET ultima_cobranca = '{ultima}' WHERE id_conta = {id_conta}"""
-            db_execute(command)
+            try:
+                for _ in range(tempo):
+                    juros = round(saldo * taxa / 100, 2)
+                    saldo += juros
+                    ultima += relativedelta(months=+1)
+            except:
+
+                print("Impossível calcular os juros para esse prazo")
+                print(f"Data do sistema atualizada para {dt.now()}.")
+            else:
+                command = (
+                    f"""UPDATE conta SET saldo = {saldo} WHERE id_conta = {id_conta}"""
+                )
+                db_execute(command)
+                command = f"""UPDATE conta SET ultima_cobranca = '{ultima}' WHERE id_conta = {id_conta}"""
+                db_execute(command)
 
     print("Taxas aplicadas")
 
@@ -432,7 +451,9 @@ def change_system_time(time):
             )
             for conta in contas:
                 ultima = conta["ultima_cobranca"]
-                ultima += relativedelta(months=+tempo)
+                while ultima > new_time:
+                    ultima += relativedelta(months=-1)
+
                 id_conta = conta["id_conta"]
                 command = f"""UPDATE conta SET ultima_cobranca = '{ultima}' WHERE id_conta = {id_conta}"""
                 db_execute(command)
