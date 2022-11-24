@@ -97,7 +97,6 @@
 											>Atualizar Dados</a
 										>
 									</li>
-									{%if g.conta.tipo != 'gerente'%}
 									<li class="w-100 m-0 p-0">
 										<a
 											href="{{url_for('conta.fechar')}}"
@@ -106,7 +105,6 @@
 											Fechar conta
 										</a>
 									</li>
-									{%endif%}
 								</ul>
 							</div>
 						</div>
@@ -121,10 +119,6 @@
 							</span>
 							<span class="s2 h6 p-0 m-0 d-none">
 								Conta: {{g.conta.id_conta}} Ag: {{g.conta.agencia}}
-							</span>
-							{%else%}
-							<span class="s2 h6 p-0 m-0 d-none">
-								Saldo: R$ {{g.conta.saldo | dinheiro}}
 							</span>
 							{%endif%}
 						</div>
