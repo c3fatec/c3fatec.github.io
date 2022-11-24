@@ -29,7 +29,7 @@
       width: 30% !important;
     }
     @media (max-width: 400px) {
-      width: 30% !important;
+      width: 35% !important;
     }
 
     p {
@@ -55,7 +55,7 @@
     }
 
     @media (max-width: 400px) {
-      width: 70% !important;
+      width: 65% !important;
     }
 
     .menu {
@@ -194,7 +194,7 @@
 }
 
 @import 'login';
-@import 'cadastro';
+@import 'home';
 @import 'baseinterna';
 @import 'principal';
 @import 'impressao';

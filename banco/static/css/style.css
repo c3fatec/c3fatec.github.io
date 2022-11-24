@@ -30,7 +30,7 @@
 }
 @media (max-width: 400px) {
   .header .logo {
-    width: 30% !important;
+    width: 35% !important;
   }
 }
 .header .logo p {
@@ -56,7 +56,7 @@
 }
 @media (max-width: 400px) {
   .header .funcao-direita {
-    width: 70% !important;
+    width: 65% !important;
   }
 }
 .header .funcao-direita .menu {
@@ -210,6 +210,43 @@
   cursor: pointer;
 }
 
+@media (max-width: 575px) {
+  .pg-home .titulo {
+    font-size: 20px !important;
+  }
+}
+@media (max-width: 409px) {
+  .pg-home .transacoes {
+    flex-direction: column !important;
+  }
+}
+@media (max-width: 409px) {
+  .pg-home .transacoes .t1 {
+    width: 100% !important;
+  }
+}
+@media (max-width: 1050px) {
+  .pg-home .transacoes .t1 p {
+    font-size: 18px !important;
+  }
+}
+@media (max-width: 830px) {
+  .pg-home .transacoes .t1 p {
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 990px) {
+  .mensagem h2 {
+    font-size: 22px !important;
+  }
+}
+@media (max-width: 575px) {
+  .mensagem h2 {
+    font-size: 20px !important;
+  }
+}
+
 .base-interna {
   background-image: url("../../static/img/quadrados.png");
   background-repeat: no-repeat;
@@ -247,6 +284,11 @@
   box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.45);
   cursor: pointer;
 }
+@media (max-width: 330px) {
+  .base-interna .caixa-principal .botoes .funcao {
+    width: 66px !important;
+  }
+}
 .base-interna .caixa-principal .botoes .funcao .head {
   border-radius: 15px 15px 0 0;
 }
@@ -256,9 +298,24 @@
   font-size: 15px;
   font-weight: bold;
 }
-@media (max-width: 575px) {
+@media (max-width: 855px) {
   .base-interna .caixa-principal .botoes .funcao .head p {
-    font-size: 13px;
+    font-size: 13px !important;
+  }
+}
+@media (max-width: 400px) {
+  .base-interna .caixa-principal .botoes .funcao .head p {
+    font-size: 12px !important;
+  }
+}
+@media (max-width: 356px) {
+  .base-interna .caixa-principal .botoes .funcao .head p {
+    font-size: 11px !important;
+  }
+}
+@media (max-width: 330px) {
+  .base-interna .caixa-principal .botoes .funcao .head p {
+    font-size: 10px !important;
   }
 }
 .base-interna .caixa-principal .botoes .funcao:hover {
@@ -275,13 +332,14 @@
 }
 @media (max-width: 575px) {
   .base-interna .caixa-principal .caixa-sistema {
-    height: 68vh;
+    height: 65vh;
     margin-top: 6px;
   }
 }
 
 *::-webkit-scrollbar {
   width: 8px;
+  height: 3px;
   border-radius: 10px;
 }
 
@@ -294,18 +352,63 @@
   border-radius: 10px;
 }
 
-.msg {
+@media (max-width: 575px) {
+  .pg-saque .titulo, .pg-deposito .titulo {
+    font-size: 20px !important;
+  }
+}
+@media (max-width: 575px) {
+  .pg-saque form label, .pg-deposito form label {
+    font-size: 18px !important;
+  }
+}
+.pg-saque .msg, .pg-deposito .msg {
   background-color: whitesmoke;
   border-radius: 8px;
   padding: 8px;
 }
-@media (max-width: 1200px) {
-  .msg {
+@media (max-width: 414px) {
+  .pg-saque .msg, .pg-deposito .msg {
     flex-direction: column;
-    text-align: center;
-    gap: 10px;
+    margin-top: 2px !important;
   }
 }
+@media (max-width: 926px) {
+  .pg-saque .msg .texto, .pg-deposito .msg .texto {
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 822px) {
+  .pg-saque .msg .texto, .pg-deposito .msg .texto {
+    font-size: 13px !important;
+  }
+}
+@media (max-width: 457px) {
+  .pg-saque .msg .texto, .pg-deposito .msg .texto {
+    font-size: 12px !important;
+  }
+}
+@media (max-width: 414px) {
+  .pg-saque .msg .texto, .pg-deposito .msg .texto {
+    width: 90% !important;
+  }
+}
+@media (max-width: 926px) {
+  .pg-saque .msg .botao div, .pg-deposito .msg .botao div {
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 822px) {
+  .pg-saque .msg .botao div, .pg-deposito .msg .botao div {
+    font-size: 13px !important;
+  }
+}
+@media (max-width: 457px) {
+  .pg-saque .msg .botao div, .pg-deposito .msg .botao div {
+    font-size: 12px !important;
+  }
+}
+
 .pg-impressao {
   min-height: 90vh;
   font-weight: 500;
