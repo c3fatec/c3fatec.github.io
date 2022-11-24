@@ -2,7 +2,7 @@ from flask import Blueprint, g, redirect, render_template, request, url_for, fla
 
 from banco.auth import requer_login, rota_cliente
 
-from .db import db_create, get_db, db_get
+from .db import db_create, get_db, db_get, db_update
 
 from datetime import datetime
 
@@ -223,3 +223,30 @@ def transferir():
                 flash("Transferência realizada com sucesso!")
 
     return render_template("cliente/transferencia.html", id=id)
+
+
+@bp.route("/dados", methods=["GET", "POST"])
+@requer_login
+@rota_cliente
+def dados():
+    id_usuario = request.args.get("usuario")
+    usuario = db_get(many=False, table="usuario", id_usuario=id_usuario)
+    data = request.form
+    if request.method == "POST":
+        for f in data:
+            if data[f] != usuario[f]:
+                try:
+                    db_update(
+                        table="usuario",
+                        setter={"campo": f, "valor": data[f]},
+                        value={"campo": "id_usuario", "valor": id_usuario},
+                    )
+                except Exception as e:
+                    flash("Erro ao atualizar cadastro.")
+                else:
+                    print(data[f])
+        return redirect(url_for("conta.index"))
+
+    for f in ["id_usuario", "senha"]:
+        usuario.pop(f)
+    return render_template("adm/atualizacaoCadastro.html", usuario=usuario)
