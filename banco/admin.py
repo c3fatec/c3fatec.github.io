@@ -95,8 +95,9 @@ def cadastros():
                 order_by="id_conta",
                 order="DESC",
             )
+            agencia = conta["agencia"]
             id_conta = conta["id_conta"]
-            msg = f"A conta foi registrada com número {id_conta}"
+            msg = f"A conta foi registrada com número {id_conta} na agência {agencia}."
             flash(msg)
 
     cadastros = db_get(table="conta", status="Aguardando")
@@ -282,7 +283,10 @@ def loginadm():
             error = "Conta inexistente"
 
         if error is None:
+            config = db_get(table="config", many=False)
+            data = config.get("data")
             session.clear()
+            session["data"] = data
             session["id_usuario"] = usuario["id_usuario"]
             session["id_conta"] = conta["id_conta"]
             if id_conta == "1" and conta["saldo"] == None:

@@ -45,7 +45,7 @@ def cadastro():
                     idconta = randint(11111, 99999)
                 agencia = selecionar_agencia()
 
-                db_create(
+                nova_conta = db_create(
                     table="conta",
                     id_conta=idconta,
                     saldo=0,
@@ -57,9 +57,13 @@ def cadastro():
                     ultima_cobranca=dt.now(),
                 )
             except:
-                print("Erro ao cadastrar novo usuário")
+                pass
             else:
-                return redirect(url_for("auth.aguarde"))
+                if nova_conta:
+                    return redirect(url_for("auth.aguarde", conta=nova_conta))
+                else:
+                    flash("Erro ao criar conta")
+                    return redirect(url_for("auth.login"))
         else:
             flash("As senhas não são compatíveis.")
 
@@ -68,7 +72,10 @@ def cadastro():
 
 @bp.route("/aguarde")
 def aguarde():
-    return render_template("auth/aguarde.html")
+    id_conta = request.args.get("conta")
+    conta = db_get(table="conta", many=False, id_conta=id_conta)
+
+    return render_template("auth/aguarde.html", conta=conta)
 
 
 @bp.route("/", methods=("GET", "POST"))
@@ -96,9 +103,12 @@ def login():
             error = "Conta inexistente"
 
         if error is None:
+            config = db_get(table="config", many=False)
+            data = config.get("data")
             session.clear()
             session["id_usuario"] = usuario["id_usuario"]
             session["id_conta"] = conta["id_conta"]
+            session["tempo"] = data
             return redirect(url_for("conta.index"))
 
         flash(error)
@@ -127,13 +137,16 @@ def carregar_usuario_logado():
     para determinar o usuário da sessão."""
     id_usuario = session.get("id_usuario")
     id_conta = session.get("id_conta")
+    data = session.get("data")
 
-    if id_conta is None or id_usuario is None:
+    if id_conta is None or id_usuario is None or data is None:
+        g.data = None
         g.usuario = None
         g.conta = None
     else:
         g.usuario = db_get(many=False, table="usuario", id_usuario=id_usuario)
         g.conta = db_get(many=False, table="conta", id_conta=id_conta)
+        g.data = data
 
 
 def requer_login(view):

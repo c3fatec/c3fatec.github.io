@@ -58,6 +58,10 @@ def create_app():
     def datetime(data, format="%d/%m/%Y %H:%M:%S"):
         return data.strftime(format)
 
+    def date(data, format="%d/%m/%Y"):
+        return data.strftime(format)
+
+    app.add_template_filter(date)
     app.add_template_filter(dinheiro)
     app.add_template_filter(datetime)
     app.add_template_filter(primeironome)

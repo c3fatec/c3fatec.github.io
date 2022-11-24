@@ -36,9 +36,9 @@
 
 	<body>
 		<header class="header d-flex justify-content-between">
-			<div class="funcao-inicio w-25 h-100 d-flex align-items-center ps-2">
+			<div class="funcao-inicio w-25 h-100 row align-items-center ps-2">
 				{%if g.conta.id_conta==1%}
-				<div class="d-flex flex-column h-100 justify-content-center">
+				<div class="d-flex col-8 flex-column h-100 justify-content-center">
 					<div>
 						<p class="p1 h5 p-0 m-0">Capital do Banco</p>
 					</div>
@@ -47,7 +47,7 @@
 					</div>
 				</div>
 				{%endif%} {%if g.conta.tipo != 'gerente'%}
-				<div class="d-flex flex-column h-100 justify-content-center">
+				<div class="d-flex col-8 flex-column h-100 justify-content-center">
 					<div>
 						<p class="p1 h5 p-0 m-0">{{g.conta.tipo|capitalize}}</p>
 					</div>
@@ -58,6 +58,11 @@
 					</div>
 				</div>
 				{%endif%}
+				<div
+					class="d-flex h-100 justify-content-center align-items-start col-4"
+				>
+					<small class="m-0 mt-2">{{g.data | date}}</small>
+				</div>
 			</div>
 
 			<div
@@ -97,7 +102,6 @@
 											>Atualizar Dados</a
 										>
 									</li>
-									{%if g.conta.tipo != 'gerente'%}
 									<li class="w-100 m-0 p-0">
 										<a
 											href="{{url_for('conta.fechar')}}"
@@ -106,7 +110,6 @@
 											Fechar conta
 										</a>
 									</li>
-									{%endif%}
 								</ul>
 							</div>
 						</div>
@@ -121,10 +124,6 @@
 							</span>
 							<span class="s2 h6 p-0 m-0 d-none">
 								Conta: {{g.conta.id_conta}} Ag: {{g.conta.agencia}}
-							</span>
-							{%else%}
-							<span class="s2 h6 p-0 m-0 d-none">
-								Saldo: R$ {{g.conta.saldo | dinheiro}}
 							</span>
 							{%endif%}
 						</div>
