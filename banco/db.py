@@ -155,7 +155,10 @@ def db_delete(table: str, **params):
     db = get_db()
     cursor = db.cursor()
     command = f"""DELETE FROM {table} WHERE {key} = {value}"""
-    cursor.execute(command)
+    try:
+        cursor.execute(command)
+    except Exception as e:
+        print(e.args[1])
 
 
 def close_db(e=None):

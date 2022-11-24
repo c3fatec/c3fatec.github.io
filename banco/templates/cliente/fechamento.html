@@ -1,0 +1,25 @@
+{% extends "baseinterna.html" %} {%block head%}
+
+<title>Xbank - Home</title>
+
+{%endblock%} {%block body%} {%if g.conta.saldo > 0%}
+<div>
+	Você ainda possui R${{g.conta.saldo | dinheiro}} na sua conta. Retire esse
+	valor antes de fechar sua conta.
+</div>
+{%elif g.conta.saldo < 0%}
+<div>
+	Você deve R${{g.conta.saldo}} ao banco. Pague sua dívida antes de fechar sua
+	conta.
+</div>
+{%else%}
+<div>Você tem certeza de que deseja fechar sua conta?</div>
+<div class="d-flex">
+	<a href="{{url_for('conta.index')}}">
+		<button>Cancelar</button>
+	</a>
+	<form method="POST">
+		<button type="submit">Fechar conta</button>
+	</form>
+</div>
+{%endif%} {%endblock%}

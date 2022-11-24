@@ -97,6 +97,16 @@
 											>Atualizar Dados</a
 										>
 									</li>
+									{%if g.conta.tipo != 'gerente'%}
+									<li class="w-100 m-0 p-0">
+										<a
+											href="{{url_for('conta.fechar')}}"
+											class="d-flex justify-content-center flex-column w-100 px-2 py-4"
+										>
+											Fechar conta
+										</a>
+									</li>
+									{%endif%}
 								</ul>
 							</div>
 						</div>
