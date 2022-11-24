@@ -4,13 +4,12 @@
 
 {%endblock%} {%block body%} {%if g.conta.saldo > 0%}
 <div>
-	Você ainda possui R${{g.conta.saldo | dinheiro}} na sua conta. Retire esse
+	Você ainda possui R${{g.conta.saldo | dinheiro}} na sua conta. Por favor efetue um saque do valor 
 	valor antes de fechar sua conta.
 </div>
 {%elif g.conta.saldo < 0%}
 <div>
-	Você deve R${{g.conta.saldo}} ao banco. Pague sua dívida antes de fechar sua
-	conta.
+	Você deve R${{g.conta.saldo}} ao banco. Por favor regularize esse débito antes de solicitar encerramento da conta.
 </div>
 {%else%}
 <div>Você tem certeza de que deseja fechar sua conta?</div>
