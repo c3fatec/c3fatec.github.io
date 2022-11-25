@@ -1,344 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<!-- CSS -->
-		<link
-			rel="stylesheet"
-			href="{{ url_for('static', filename='css/style.css')}}"
-		/>
-		<!-- CSS -->
-		<!-- botao off -->
-		<link
-			rel="stylesheet"
-			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
-		/>
-		<!-- Bootstrap -->
-		<link
-			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-			rel="stylesheet"
-			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-			crossorigin="anonymous"
-		/>
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-			integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-			crossorigin="anonymous"
-		></script>
-		<!-- Bootstrap -->
 
-		<link rel="shortcut icon" href="../static/icons/logo.png" />
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- CSS -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}" />
+	<!-- CSS -->
+	<!-- botao off -->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+	<!-- Bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+		integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+		crossorigin="anonymous"></script>
+	<!-- Bootstrap -->
 
-		{% block head %} {% endblock %}
-	</head>
+	<link rel="shortcut icon" href="../static/icons/logo.png" />
 
-	<body>
-		<header class="header d-flex justify-content-between">
-			<div class="funcao-inicio w-25 h-100 row align-items-center ps-2">
-				{%if g.conta.id_conta==1%}
-				<div class="d-flex col-8 flex-column h-100 justify-content-center">
-					<div>
-						<p class="p1 h5 p-0 m-0">Capital do Banco</p>
-					</div>
-					<div>
-						<p class="p2 h6 p-0 m-0">R$ {{g.conta.saldo | dinheiro}}</p>
-					</div>
+	{% block head %} {% endblock %}
+</head>
+
+<body>
+	<header class="header d-flex justify-content-between">
+		<div class="funcao-inicio w-25 h-100 row align-items-center ps-2">
+			{%if g.conta.id_conta==1%}
+			<div class="d-flex col-8 flex-column h-100 justify-content-center">
+				<div>
+					<p class="p1 h5 p-0 m-0">Capital do Banco</p>
 				</div>
-				{%endif%} {%if g.conta.tipo != 'gerente'%}
-				<div class="d-flex col-8 flex-column h-100 justify-content-center">
-					<div>
-						<p class="p1 h5 p-0 m-0">{{g.conta.tipo|capitalize}}</p>
-					</div>
-					<div>
-						<p class="p2 h6 p-0 m-0">
-							Conta: {{g.conta.id_conta}} Ag: {{g.conta.agencia}}
-						</p>
-					</div>
-				</div>
-				{%endif%}
-				<div
-					class="d-flex h-100 justify-content-center align-items-start col-4"
-				>
-					<small class="m-0 mt-2">{{g.data | date}}</small>
+				<div>
+					<p class="p2 h6 p-0 m-0">R$ {{g.conta.saldo | dinheiro}}</p>
 				</div>
 			</div>
-
-			<div
-				class="logo w-50 h-100 d-flex justify-content-center text-center align-items-center"
-			>
-				<p class="h1 m-0 p-0">X-bank</p>
-			</div>
-
-			<div
-				class="funcao-direita w-25 h-100 d-flex justify-content-between align-items-center"
-			>
-				<div class="h-100 col-10 d-flex justify-content-end">
-					<div class="menu h-100 col-auto d-flex justify-content-end">
-						{%if g.conta.tipo != 'gerente'%}
-						<div
-							class="setting d-flex px-3 align-items-center h-100 p-0"
-							onclick="abrirOuFecharMenu()"
-						>
-							<span class="material-symbols-outlined mx-auto"> settings </span>
-						</div>
-						{%endif%}
-
-						<div class="menu-cliente col-12 d-flex flex-column">
-							<div class="w-100">
-								<ul class="w-100 m-0 p-0">
-									<li class="w-100 m-0 p-0">
-										<a
-											href="#"
-											class="d-flex justify-content-center flex-column w-100 m-0 px-2 py-4"
-											>Trocar Conta</a
-										>
-									</li>
-									<li class="w-100 m-0 p-0">
-										<a
-											href="{{url_for('conta.dados', usuario=g.usuario.id_usuario)}}"
-											class="d-flex justify-content-center flex-column w-100 m-0 px-2 py-4"
-											>Atualizar Dados</a
-										>
-									</li>
-									<li class="w-100 m-0 p-0">
-										<a
-											href="{{url_for('conta.fechar')}}"
-											class="d-flex justify-content-center flex-column w-100 px-2 py-4"
-										>
-											Fechar conta
-										</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-
-						<div
-							class="ola m-0 p-0 d-flex justify-content-center flex-column h-100 col-auto pe-1"
-						>
-							<p class="h5 p-0 m-0">{{g.usuario.nome | primeironome}}</p>
-							{%if g.conta.tipo != 'gerente'%}
-							<span class="h6 p-0 m-0">
-								Saldo: R$ {{g.conta.saldo | dinheiro}}
-							</span>
-							<span class="s2 h6 p-0 m-0 d-none">
-								Conta: {{g.conta.id_conta}} Ag: {{g.conta.agencia}}
-							</span>
-							{%endif%}
-						</div>
-					</div>
+			{%endif%} {%if g.conta.tipo != 'gerente'%}
+			<div class="d-flex flex-column h-100 justify-content-center">
+				<div>
+					<p class="p1 h5 p-0 m-0">{{g.conta.tipo|capitalize}}</p>
 				</div>
-
-				{%if g.conta.tipo != 'gerente'%}
-				<div
-					class="sair col-2 d-flex justify-content-center align-items-center h-100 btn btn-outline-secondary p-0"
-					onclick="document.location='/logout'"
-				>
-					<span class="material-symbols-outlined m-0 p-0">
-						power_settings_new
-					</span>
-				</div>
-
-				{%else%}
-				<div
-					class="sair col-2 d-flex justify-content-center align-items-center h-100 btn btn-outline-secondary p-0"
-					onclick="document.location='/admin/logoutadmin'"
-				>
-					<span class="material-symbols-outlined m-0 p-0">
-						power_settings_new
-					</span>
-				</div>
-				{%endif%}
-			</div>
-		</header>
-
-		<div
-			class="base-interna container-fluid d-flex justify-content-center align-items-center"
-		>
-			<div class="caixa-principal d-flex row">
-				<div
-					class="botoes d-flex justify-content-center text-center my-auto col-xxl-3 col-xl-4 col-md-4 col-sm-3 col-12 gap-3 p-3"
-				>
-					{%if 'corrente' in g.conta.tipo or 'poupança' in g.conta.tipo%}
-					<div
-						class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
-						onclick="document.location='/conta'"
-					>
-						<div class="head w-100">
-							<p>Home</p>
-						</div>
-						<div class="w-100 my-auto">
-							<img src="../static/icons/home.png" alt="home" class="w-50 p-1" />
-						</div>
-					</div>
-
-					<div
-						class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
-						onclick="document.location='/conta/saque'"
-					>
-						<div class="head w-100">
-							<p>Saque</p>
-						</div>
-						<div class="w-100 my-auto">
-							<img
-								src="../static/icons/sacar.png"
-								alt="saque"
-								class="w-50 p-1"
-							/>
-						</div>
-					</div>
-
-					<div
-						class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
-						onclick="document.location='/conta/deposito'"
-					>
-						<div class="head w-100">
-							<p>Depósito</p>
-						</div>
-						<div class="w-100 my-auto">
-							<img
-								src="../static/icons/depositar.png"
-								alt="deposito"
-								class="w-50 p-1"
-							/>
-						</div>
-					</div>
-
-					<div
-						class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
-						onclick="document.location='/conta/transferencia'"
-					>
-						<div class="head w-100">
-							<p>Transferência</p>
-						</div>
-						<div class="w-100 my-auto">
-							<img
-								src="../static/icons/transferir.png"
-								alt="transferencia"
-								class="w-50 p-1"
-							/>
-						</div>
-					</div>
-
-					<div
-						class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
-						onclick="document.location='/conta/extrato'"
-					>
-						<div class="head w-100">
-							<p>Extrato</p>
-						</div>
-						<div class="w-100 my-auto">
-							<img
-								src="../static/icons/extrato.png"
-								alt="extrato"
-								class="w-50 p-1"
-							/>
-						</div>
-					</div>
-					{%endif%} {%if 'gerente' in g.conta.tipo%}
-					<div
-						class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
-						onclick="document.location='/admin/pendencias'"
-					>
-						<div class="head w-100">
-							<p>Transações</p>
-						</div>
-						<div class="w-100 my-auto">
-							<img
-								src="../static/icons/pendencia.png"
-								alt="transacoes"
-								class="w-50 p-1"
-							/>
-						</div>
-					</div>
-					<div
-						class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
-						onclick="document.location='/admin/aprovacaoCadastros'"
-					>
-						<div class="head w-100">
-							<p>Solicitações</p>
-						</div>
-						<div class="w-100 my-auto">
-							<img
-								src="../static/icons/cadastro.png"
-								alt="solicitacoes"
-								class="w-50 p-1"
-							/>
-						</div>
-					</div>
-					<div
-						class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
-						onclick="document.location='/admin/usuarios'"
-					>
-						<div class="head w-100">
-							<p>Contas</p>
-						</div>
-						<div class="w-100 my-auto">
-							<img
-								src="../static/icons/dados.png"
-								alt="contas"
-								class="w-50 p-1"
-							/>
-						</div>
-					</div>
-					{%if not g.conta.agencia%}
-					<div
-						class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
-						onclick="document.location='/admin/agencias'"
-					>
-						<div class="head w-100">
-							<p>Agências</p>
-						</div>
-						<div class="w-100 my-auto">
-							<img
-								src="../static/icons/agencia.png"
-								alt="agencia"
-								class="w-50 p-1"
-							/>
-						</div>
-					</div>
-					<div
-						class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
-						onclick="document.location='/admin/gerentes'"
-					>
-						<div class="head w-100">
-							<p>Gerentes</p>
-						</div>
-						<div class="w-100 my-auto">
-							<img
-								src="../static/icons/colaboradores.png"
-								alt="gerentes"
-								class="w-50 p-1"
-							/>
-						</div>
-					</div>
-					<div
-						class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
-						onclick="document.location='/admin/taxas'"
-					>
-						<div class="head w-100">
-							<p>Taxas</p>
-						</div>
-						<div class="w-100 my-auto">
-							<img
-								src="../static/icons/porcentagem.png"
-								alt="taxas"
-								class="w-50 p-1"
-							/>
-						</div>
-					</div>
-					{%endif%} {%endif%}
-				</div>
-
-				<div
-					class="caixa-s d-flex align-items-center col-xxl-9 col-xl-8 col-md-8 col-sm-9 col-12"
-				>
-					<div class="caixa-sistema w-100">{% block body %} {% endblock %}</div>
+				<div>
+					<p class="p2 h6 p-0 m-0">
+						Conta: {{g.conta.id_conta}} Ag: {{g.conta.agencia}}
+					</p>
 				</div>
 			</div>
+			{%endif%}
+		</div>
+		<div class="data">
+			<small class="m-0 mt-2">{{g.data | date}}</small>
+		</div>
+		
+		<div class="logo w-50 h-100 d-flex justify-content-center text-center align-items-center">
+			<p class="h1 m-0 p-0">X-bank</p>
 		</div>
 
-		<script src="../static/js/script.js"></script>
-	</body>
+		<div class="funcao-direita w-25 h-100 d-flex justify-content-between align-items-center">
+			<div class="h-100 col-10 d-flex justify-content-end">
+				<div class="menu h-100 col-auto d-flex justify-content-end">
+					{%if g.conta.tipo != 'gerente'%}
+					<div class="setting d-flex px-3 align-items-center h-100 p-0" onclick="abrirOuFecharMenu()">
+						<span class="material-symbols-outlined mx-auto"> settings </span>
+					</div>
+					{%endif%}
+
+					<div class="menu-cliente col-12 d-flex flex-column">
+						<div class="w-100">
+							<ul class="w-100 m-0 p-0">
+								<li class="w-100 m-0 p-0">
+									<a href="#"
+										class="d-flex justify-content-center flex-column w-100 m-0 px-2 py-4">Trocar
+										Conta</a>
+								</li>
+								<li class="w-100 m-0 p-0">
+									<a href="{{url_for('conta.dados', usuario=g.usuario.id_usuario)}}"
+										class="d-flex justify-content-center flex-column w-100 m-0 px-2 py-4">Atualizar
+										Dados</a>
+								</li>
+								<li class="w-100 m-0 p-0">
+									<a href="{{url_for('conta.fechar')}}"
+										class="d-flex justify-content-center flex-column w-100 px-2 py-4">
+										Fechar conta
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="ola m-0 p-0 d-flex justify-content-center flex-column h-100 col-auto pe-1">
+						<p class="h5 p-0 m-0">{{g.usuario.nome | primeironome}}</p>
+						{%if g.conta.tipo != 'gerente'%}
+						<span class="h6 p-0 m-0">
+							Saldo: R$ {{g.conta.saldo | dinheiro}}
+						</span>
+						<span class="s2 h6 p-0 m-0 d-none">
+							Conta: {{g.conta.id_conta}} Ag: {{g.conta.agencia}}
+						</span>
+						{%endif%}
+					</div>
+				</div>
+			</div>
+
+			{%if g.conta.tipo != 'gerente'%}
+			<div class="sair col-2 d-flex justify-content-center align-items-center h-100 btn btn-outline-secondary p-0"
+				onclick="document.location='/logout'">
+				<span class="material-symbols-outlined m-0 p-0">
+					power_settings_new
+				</span>
+			</div>
+
+			{%else%}
+			<div class="sair col-2 d-flex justify-content-center align-items-center h-100 btn btn-outline-secondary p-0"
+				onclick="document.location='/admin/logoutadmin'">
+				<span class="material-symbols-outlined m-0 p-0">
+					power_settings_new
+				</span>
+			</div>
+			{%endif%}
+		</div>
+	</header>
+
+	<div class="base-interna container-fluid d-flex justify-content-center align-items-center">
+		<div class="caixa-principal d-flex row">
+			<div
+				class="botoes d-flex justify-content-center text-center my-auto col-xxl-3 col-xl-4 col-md-4 col-sm-3 col-12 gap-3 p-3">
+				{%if 'corrente' in g.conta.tipo or 'poupança' in g.conta.tipo%}
+				<div class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
+					onclick="document.location='/conta'">
+					<div class="head w-100">
+						<p>Home</p>
+					</div>
+					<div class="w-100 my-auto">
+						<img src="../static/icons/home.png" alt="home" class="w-50 p-1" />
+					</div>
+				</div>
+
+				<div class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
+					onclick="document.location='/conta/saque'">
+					<div class="head w-100">
+						<p>Saque</p>
+					</div>
+					<div class="w-100 my-auto">
+						<img src="../static/icons/sacar.png" alt="saque" class="w-50 p-1" />
+					</div>
+				</div>
+
+				<div class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
+					onclick="document.location='/conta/deposito'">
+					<div class="head w-100">
+						<p>Depósito</p>
+					</div>
+					<div class="w-100 my-auto">
+						<img src="../static/icons/depositar.png" alt="deposito" class="w-50 p-1" />
+					</div>
+				</div>
+
+				<div class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
+					onclick="document.location='/conta/transferencia'">
+					<div class="head w-100">
+						<p>Transferência</p>
+					</div>
+					<div class="w-100 my-auto">
+						<img src="../static/icons/transferir.png" alt="transferencia" class="w-50 p-1" />
+					</div>
+				</div>
+
+				<div class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
+					onclick="document.location='/conta/extrato'">
+					<div class="head w-100">
+						<p>Extrato</p>
+					</div>
+					<div class="w-100 my-auto">
+						<img src="../static/icons/extrato.png" alt="extrato" class="w-50 p-1" />
+					</div>
+				</div>
+				{%endif%} {%if 'gerente' in g.conta.tipo%}
+				<div class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
+					onclick="document.location='/admin/pendencias'">
+					<div class="head w-100">
+						<p>Transações</p>
+					</div>
+					<div class="w-100 my-auto">
+						<img src="../static/icons/pendencia.png" alt="transacoes" class="w-50 p-1" />
+					</div>
+				</div>
+				<div class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
+					onclick="document.location='/admin/aprovacaoCadastros'">
+					<div class="head w-100">
+						<p>Solicitações</p>
+					</div>
+					<div class="w-100 my-auto">
+						<img src="../static/icons/cadastro.png" alt="solicitacoes" class="w-50 p-1" />
+					</div>
+				</div>
+				<div class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
+					onclick="document.location='/admin/usuarios'">
+					<div class="head w-100">
+						<p>Contas</p>
+					</div>
+					<div class="w-100 my-auto">
+						<img src="../static/icons/dados.png" alt="contas" class="w-50 p-1" />
+					</div>
+				</div>
+				{%if not g.conta.agencia%}
+				<div class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
+					onclick="document.location='/admin/agencias'">
+					<div class="head w-100">
+						<p>Agências</p>
+					</div>
+					<div class="w-100 my-auto">
+						<img src="../static/icons/agencia.png" alt="agencia" class="w-50 p-1" />
+					</div>
+				</div>
+				<div class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
+					onclick="document.location='/admin/gerentes'">
+					<div class="head w-100">
+						<p>Gerentes</p>
+					</div>
+					<div class="w-100 my-auto">
+						<img src="../static/icons/colaboradores.png" alt="gerentes" class="w-50 p-1" />
+					</div>
+				</div>
+				<div class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
+					onclick="document.location='/admin/taxas'">
+					<div class="head w-100">
+						<p>Taxas</p>
+					</div>
+					<div class="w-100 my-auto">
+						<img src="../static/icons/porcentagem.png" alt="taxas" class="w-50 p-1" />
+					</div>
+				</div>
+				{%endif%} {%endif%}
+			</div>
+
+			<div class="caixa-s d-flex align-items-center col-xxl-9 col-xl-8 col-md-8 col-sm-9 col-12">
+				<div class="caixa-sistema w-100">{% block body %} {% endblock %}</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="../static/js/script.js"></script>
+</body>
+
 </html>

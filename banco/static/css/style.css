@@ -23,6 +23,12 @@
     font-size: 12px !important;
   }
 }
+.header .data {
+  color: black;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+}
 @media (max-width: 900px) {
   .header .logo {
     width: 30% !important;
@@ -210,28 +216,16 @@
   cursor: pointer;
 }
 
+.pg-home {
+  height: 100%;
+}
 @media (max-width: 575px) {
   .pg-home .titulo {
     font-size: 20px !important;
   }
 }
-@media (max-width: 1050px) {
-  .pg-home .transacoes {
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
-  }
-}
-@media (max-width: 830px) {
-  .pg-home .transacoes {
-    padding-top: 18px !important;
-    padding-bottom: 18px !important;
-  }
-}
-@media (max-width: 584px) {
-  .pg-home .transacoes {
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
-  }
+.pg-home .transacoes {
+  height: 16%;
 }
 @media (max-width: 409px) {
   .pg-home .transacoes {
