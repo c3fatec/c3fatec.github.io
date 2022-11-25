@@ -9,6 +9,10 @@
   .transacoes {
     height: 16%;
 
+    @media (max-width: 409px) {
+      flex-direction: column !important;
+    }
+
     .t1 {
       @media (max-width: 409px) {
         width: 100% !important;

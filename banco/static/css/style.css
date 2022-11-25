@@ -23,6 +23,12 @@
     font-size: 12px !important;
   }
 }
+.header .data {
+  color: black;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+}
 @media (max-width: 900px) {
   .header .logo {
     width: 30% !important;
@@ -220,6 +226,11 @@
 }
 .pg-home .transacoes {
   height: 16%;
+}
+@media (max-width: 409px) {
+  .pg-home .transacoes {
+    flex-direction: column !important;
+  }
 }
 @media (max-width: 409px) {
   .pg-home .transacoes .t1 {

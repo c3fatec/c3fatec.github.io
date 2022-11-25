@@ -75,7 +75,7 @@ def create_app():
             db.aumentar_data()
 
     trigger = CronTrigger(
-        year="*", month="*", day="*", hour="08", minute="33", second="0"
+        year="*", month="*", day="*", hour="08", minute="27", second="0"
     )
     schedule = BackgroundScheduler(daemon=True)
     schedule.add_job(aplicar_taxas, trigger=trigger)
