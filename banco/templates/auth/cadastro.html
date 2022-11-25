@@ -3,7 +3,7 @@
 {%endblock%} {%block body%}
 
 <!-- header alternativo -->
-<div class="pg-cadastro container-fluid align-items-center">
+<div class="pg-cadastro container-fluid d-flex align-items-center">
   {%for message in get_flashed_messages()%} {%if message%}
   <div class="d-flex justify-content-center">{{message}}</div>
   {%endif%}{%endfor%}
