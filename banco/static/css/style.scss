@@ -27,7 +27,7 @@
   .data {
     color: black;
     position: fixed;
-    bottom: 10px;
+    bottom: 1px;
     left: 10px;
   }
 
@@ -207,3 +207,5 @@
 @import 'impressao';
 @import 'attdados';
 @import 'pendencias';
+@import 'usuario';
+@import 'agencia';

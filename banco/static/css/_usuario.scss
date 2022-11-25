@@ -1,0 +1,48 @@
+.pg-usuario {
+    .titulo {
+        @media (max-width: 575px) {
+            font-size: 20px !important;
+        }
+    }
+
+    .conteudo{
+        p {
+            @media (max-width: 984px) {
+                font-size: 14px !important;
+            }
+    
+            @media (max-width: 830px) {
+                font-size: 12px !important;
+            }
+        }
+
+        .d1 {
+            @media (max-width: 575px) {
+                flex-direction: column;
+            }
+            p {
+                @media (max-width: 575px) {
+                    width: 100%;
+                } 
+            }
+        }
+
+    }
+    
+    .botao {
+        a {
+            div {
+                @media (max-width: 984px) {
+                    padding-top: 1px !important;
+                    padding-bottom: 1px !important;
+                    font-size: 14px !important;
+                }
+
+                @media (max-width: 830px) {
+                    font-size: 12px !important;
+                }
+
+            }
+        }
+    }
+}
