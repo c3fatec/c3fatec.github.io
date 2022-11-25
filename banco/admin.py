@@ -141,21 +141,30 @@ def dados():
     usuario = db_get(many=False, table="usuario", id_usuario=id_usuario)
     data = request.form
     if request.method == "POST":
-        for f in data:
-            if data[f] != usuario[f]:
-                try:
-                    db_update(
-                        table="usuario",
-                        setter={"campo": f, "valor": data[f]},
-                        value={"campo": "id_usuario", "valor": id_usuario},
-                    )
-                except Exception as e:
-                    print(e.args[1])
-                    flash("Erro ao atualizar cadastro.")
-                else:
-                    flash("Cadastro atualizado com sucesso!")
-                finally:
-                    return redirect(url_for("admin.usuarios"))
+        if data.get("recuperar"):
+            db_update(
+                table="usuario",
+                setter={"campo": "senha", "valor": generate_password_hash("1234")},
+                value={"campo": "id_usuario", "valor": id_usuario},
+            )
+            flash("Senha recuperada para o padrão (1234).")
+            return redirect(url_for("admin.usuarios"))
+        else:
+            for f in data:
+                if data[f] != usuario[f]:
+                    try:
+                        db_update(
+                            table="usuario",
+                            setter={"campo": f, "valor": data[f]},
+                            value={"campo": "id_usuario", "valor": id_usuario},
+                        )
+                    except Exception as e:
+                        print(e.args[1])
+                        flash("Erro ao atualizar cadastro.")
+                    else:
+                        flash("Cadastro atualizado com sucesso!")
+                    finally:
+                        return redirect(url_for("admin.usuarios"))
 
     for f in ["id_usuario", "senha"]:
         usuario.pop(f)
