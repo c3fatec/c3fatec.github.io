@@ -11,7 +11,7 @@
 			valor
 			antes de encerrar.</p>
 
-		<a href="#" target="_blank" class="botao col-xxl-4 col-xl-4 col-md-4 col-sm-3 col-3 p-0 m-0">
+		<a href="{{url_for('conta.saque')}}"class="botao col-xxl-4 col-xl-4 col-md-4 col-sm-3 col-3 p-0 m-0">
 			<div class="btn btn-secondary w-100 px-0">Sacar</div>
 		</a>
 	</div>
@@ -20,7 +20,7 @@
 	<div class="mensagem d-flex flex-column justify-content-center align-items-center gap-4">
 		<p class="h3 p-0 m-0 text-center">Você deve R${{g.conta.saldo}} ao banco. Pague sua dívida antes de fechar sua conta.</p>
 
-		<a href="#" class="botao col-xxl-4 col-xl-4 col-md-4 col-sm-3 col-3 p-0 m-0">
+		<a href="{{url_for('conta.deposito')}}" class="botao col-xxl-4 col-xl-4 col-md-4 col-sm-3 col-3 p-0 m-0">
 			<div class="btn btn-secondary w-100 px-0">
 				Depositar
 			</div>
