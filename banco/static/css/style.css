@@ -570,4 +570,32 @@
   .pg-pendencias .conteudo p {
     font-size: 12px !important;
   }
+}
+
+@media (max-width: 575px) {
+  .pg-usuario .titulo {
+    font-size: 20px !important;
+  }
+}
+@media (max-width: 984px) {
+  .pg-usuario .conteudo p {
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 830px) {
+  .pg-usuario .conteudo p {
+    font-size: 12px !important;
+  }
+}
+@media (max-width: 984px) {
+  .pg-usuario .botao a div {
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 830px) {
+  .pg-usuario .botao a div {
+    font-size: 12px !important;
+  }
 }/*# sourceMappingURL=style.css.map */
