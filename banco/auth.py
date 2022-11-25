@@ -38,14 +38,7 @@ def cadastro():
         senha_repetida = request.form["senha-repetida"]
         tipo = request.form["tipo"]
 
-        error = None
-
-        if len(cpf) != 11:
-            error = "CPF inválido"
-        elif senha == senha_repetida:
-            error = "As senhas são incompatíveis"
-
-        if error is None:
+        if senha == senha_repetida and len(cpf) == 11:
             try:
                 novo_usuario = db_create(
                     table="usuario",
@@ -54,7 +47,7 @@ def cadastro():
                     cpf=cpf,
                     data_nasc=data_nasc,
                     rg=rg,
-                    cep=int(cep),
+                    cep=cep,
                     rua=rua,
                     bairro=bairro,
                     numero=numero,
@@ -90,8 +83,10 @@ def cadastro():
                 else:
                     flash("Erro ao criar conta")
                     return redirect(url_for("auth.login"))
+        elif len(cpf) != 11:
+            flash("CPF inválido")
         else:
-            flash(error)
+            flash("As senhas não são compatíveis.")
 
     return render_template("auth/cadastro.html")
 
