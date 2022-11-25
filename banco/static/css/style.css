@@ -95,6 +95,21 @@
   height: 2em;
   text-decoration: none;
 }
+@media (max-width: 926px) {
+  .header .funcao-direita .menu .menu-cliente ul li > a {
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 822px) {
+  .header .funcao-direita .menu .menu-cliente ul li > a {
+    font-size: 13px !important;
+  }
+}
+@media (max-width: 457px) {
+  .header .funcao-direita .menu .menu-cliente ul li > a {
+    font-size: 12px !important;
+  }
+}
 .header .funcao-direita .menu .menu-cliente ul li > a:hover {
   background-color: rgb(175, 175, 175);
 }
@@ -783,5 +798,46 @@
 @media (max-width: 575px) {
   .pg-transacoes .d1 p {
     width: 100%;
+  }
+}
+
+@media (max-width: 926px) {
+  .pg-fechamento .texto {
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 822px) {
+  .pg-fechamento .texto {
+    font-size: 13px !important;
+  }
+}
+@media (max-width: 457px) {
+  .pg-fechamento .texto {
+    font-size: 12px !important;
+  }
+}
+@media (max-width: 414px) {
+  .pg-fechamento .texto {
+    width: 90% !important;
+  }
+}
+@media (max-width: 926px) {
+  .pg-fechamento .botao div, .pg-fechamento .botao button {
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 822px) {
+  .pg-fechamento .botao div, .pg-fechamento .botao button {
+    font-size: 13px !important;
+  }
+}
+@media (max-width: 457px) {
+  .pg-fechamento .botao div, .pg-fechamento .botao button {
+    font-size: 12px !important;
+  }
+}
+@media (max-width: 575px) {
+  .pg-fechamento .mensagem p {
+    font-size: 20px !important;
   }
 }/*# sourceMappingURL=style.css.map */

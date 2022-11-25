@@ -9,6 +9,7 @@
     @media (max-width: 900px) {
       width: 35% !important;
     }
+
     @media (max-width: 400px) {
       display: none !important;
     }
@@ -18,12 +19,13 @@
         font-size: 15px !important;
       }
     }
+
     .p2 {
       @media (max-width: 540px) {
         font-size: 12px !important;
       }
     }
-    
+
   }
 
   .data {
@@ -39,6 +41,7 @@
     @media (max-width: 900px) {
       width: 30% !important;
     }
+
     @media (max-width: 400px) {
       width: 35% !important;
     }
@@ -60,9 +63,9 @@
     }
   }
 
-  .funcao-direita {  
+  .funcao-direita {
     width: 30%;
-      
+
     @media (max-width: 900px) {
       width: 35% !important;
     }
@@ -84,15 +87,27 @@
         background-color: rgb(43, 43, 43, .950);
         position: absolute;
         top: 10vh;
-        
+
         ul {
           list-style: none;
-          
+
           li>a {
             color: white;
             display: flex;
             height: 2em;
             text-decoration: none;
+
+            @media (max-width: 926px) {
+              font-size: 14px !important;
+            }
+
+            @media (max-width: 822px) {
+              font-size: 13px !important;
+            }
+
+            @media (max-width: 457px) {
+              font-size: 12px !important;
+            }
 
             &:hover {
               background-color: rgb(175, 175, 175);
@@ -115,8 +130,8 @@
           padding-left: 4px !important;
           padding-right: 4px !important;
         }
-        
-        span {          
+
+        span {
           &:hover {
             color: rgb(163, 163, 163);
             cursor: pointer;
@@ -129,22 +144,24 @@
       }
 
       .ola {
-  
+
         p {
           @media (max-width: 540px) {
             font-size: 15px !important;
           }
+
           @media (max-width: 400px) {
             font-size: 12px !important;
           }
         }
-  
+
         span {
           text-transform: capitalize;
-  
+
           @media (max-width: 540px) {
             font-size: 12px !important;
           }
+
           @media (max-width: 400px) {
             font-size: 10px !important;
           }
@@ -155,7 +172,7 @@
             display: block !important;
           }
         }
-  
+
       }
     }
 
@@ -184,7 +201,7 @@
       @media (max-width: 400px) {
         width: 100% !important;
       }
-  
+
       span {
         font-size: 27px;
       }
@@ -218,3 +235,4 @@
 @import 'gerente';
 @import 'taxas';
 @import 'transacoes';
+@import 'fechamento';

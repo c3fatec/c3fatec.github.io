@@ -2,24 +2,46 @@
 
 <title>Xbank - Home</title>
 
-{%endblock%} {%block body%} {%if g.conta.saldo > 0%}
-<div>
-	Você ainda possui R${{g.conta.saldo | dinheiro}} na sua conta. Retire esse
-	valor antes de fechar sua conta.
+{%endblock%} {%block body%}
+
+<div class="pg-fechamento w-100 h-100 d-flex justify-content-center align-items-center">
+	{%if g.conta.saldo > 0%}
+	<div class="mensagem d-flex flex-column justify-content-center align-items-center gap-4 col-11">
+		<p class="h3 p-0 m-0 text-center">Você ainda possui R${{g.conta.saldo | dinheiro}} na sua conta, retire esse
+			valor
+			antes de encerrar.</p>
+
+		<a href="#" target="_blank" class="botao col-xxl-4 col-xl-4 col-md-4 col-sm-3 col-3 p-0 m-0">
+			<div class="btn btn-secondary w-100 px-0">Sacar</div>
+		</a>
+	</div>
+
+	{%elif g.conta.saldo < 0%}
+	<div class="mensagem d-flex flex-column justify-content-center align-items-center gap-4">
+		<p class="h3 p-0 m-0 text-center">Você deve R${{g.conta.saldo}} ao banco. Pague sua dívida antes de fechar sua conta.</p>
+
+		<a href="#" class="botao col-xxl-4 col-xl-4 col-md-4 col-sm-3 col-3 p-0 m-0">
+			<div class="btn btn-secondary w-100 px-0">
+				Depositar
+			</div>
+		</a>
+	</div>
+
+	{%else%}
+	<div class="mensagem d-flex flex-column justify-content-center align-items-center gap-4">
+		<p class="h3 p-0 m-0 text-center">Você tem certeza de que deseja fechar sua conta?</p>
+
+		<div class="botao col-xxl-4 col-xl-4 col-md-4 col-sm-3 col-3 p-0 m-0 gap-2 d-flex justify-content-center flex-column align-items-center">
+			<form method="POST" class="w-100">
+				<button type="submit" class="btn btn-secondary w-100 px-0">Fechar conta</button>
+			</form>
+			<a href="{{url_for('conta.index')}}" class="w-100">
+				<div class="btn btn-outline-dark w-100 px-0">
+					Cancelar
+				</div>
+			</a>
+		</div>
+	</div>
+	{%endif%} {%endblock%}
+
 </div>
-{%elif g.conta.saldo < 0%}
-<div>
-	Você deve R${{g.conta.saldo}} ao banco. Pague sua dívida antes de fechar sua
-	conta.
-</div>
-{%else%}
-<div>Você tem certeza de que deseja fechar sua conta?</div>
-<div class="d-flex">
-	<a href="{{url_for('conta.index')}}">
-		<button>Cancelar</button>
-	</a>
-	<form method="POST">
-		<button type="submit">Fechar conta</button>
-	</form>
-</div>
-{%endif%} {%endblock%}

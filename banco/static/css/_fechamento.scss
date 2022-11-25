@@ -1,0 +1,45 @@
+.pg-fechamento {
+
+
+    .texto {
+        @media (max-width: 926px) {
+            font-size: 14px !important;
+        }
+
+        @media (max-width: 822px) {
+            font-size: 13px !important;
+        }
+
+        @media (max-width: 457px) {
+            font-size: 12px !important;
+        }
+
+        @media (max-width: 414px) {
+            width: 90% !important;
+        }
+    }
+
+    .botao {
+        div, button {
+            @media (max-width: 926px) {
+                font-size: 14px !important;
+            }
+
+            @media (max-width: 822px) {
+                font-size: 13px !important;
+            }
+
+            @media (max-width: 457px) {
+                font-size: 12px !important;
+            }
+        }
+    }
+
+    .mensagem {
+        p {
+            @media (max-width: 575px) {
+                font-size: 20px !important;
+            }
+        }
+    }
+}
