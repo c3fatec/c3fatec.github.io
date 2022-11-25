@@ -17,11 +17,18 @@
 	{%endfor%} {%endif%} {%endwith%} {%if dados%} {%for dado in dados%}
 	<div class="conteudo d-flex justify-content-between p-2 border-bottom border-dark">
 		<div class="col-9">
-			<p class="p-0 m-0">Número da conta: {{dado.id_conta}}</p>
-			<p class="p-0 m-0">Agência: {{dado.agencia}}</p>
-			<p class="p-0 m-0">Tipo de conta: {{dado.tipo | capitalize}}</p>
-			<p class="p-0 m-0">Usuário: {{dado.nome | capitalize}}
-			CPF: {{dado.cpf}}</p>
+			<div class="d1 d-flex">
+				<p class="col-xxl-6 col-xl-6 col-md-6 col-sm-6 p-0 m-0">Número da conta: {{dado.id_conta}}</p>
+				<p class="col-xxl-6 col-xl-6 col-md-6 col-sm-6 p-0 m-0">Agência: {{dado.agencia}}</p>
+			</div>
+			<div class="d1 d-flex">
+				<p class="col-xxl-6 col-xl-6 col-md-6 col-sm-6 p-0 m-0">Tipo de conta: {{dado.tipo | capitalize}}</p>
+				<p class="col-xxl-6 col-xl-6 col-md-6 col-sm-6 p-0 m-0">Dt abertura: {{dado.abertura | date}}</p>
+			</div>
+			<div class="d1 d-flex">
+				<p class="col-xxl-6 col-xl-6 col-md-6 col-sm-6 p-0 m-0">Usuário: {{dado.nome | capitalize}}
+				<p class="col-xxl-6 col-xl-6 col-md-6 col-sm-6 p-0 m-0">CPF: {{dado.cpf}}</p>
+			</div>
 		</div>
 	
 		<div class="botao d-flex justify-content-center col-3 my-auto">

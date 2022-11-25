@@ -15,6 +15,18 @@
                 font-size: 12px !important;
             }
         }
+
+        .d1 {
+            @media (max-width: 575px) {
+                flex-direction: column;
+            }
+            p {
+                @media (max-width: 575px) {
+                    width: 100%;
+                } 
+            }
+        }
+
     }
     
     .botao {
