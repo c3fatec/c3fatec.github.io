@@ -52,7 +52,7 @@
 		<div class="data">
 			<small class="m-0 mt-2">{{g.data | date}}</small>
 		</div>
-		
+
 		<div class="logo w-50 h-100 d-flex justify-content-center text-center align-items-center">
 			<p class="h1 m-0 p-0">X-bank</p>
 		</div>
@@ -124,8 +124,7 @@
 
 	<div class="base-interna container-fluid d-flex justify-content-center align-items-center">
 		<div class="caixa-principal d-flex row">
-			<div
-				class="botoes d-flex justify-content-center text-center my-auto col-xxl-3 col-xl-4 col-md-4 col-sm-3 col-12 gap-3 p-3">
+			<div class="botoes d-flex justify-content-center text-center my-auto col-xxl-3 col-xl-4 col-md-4 col-sm-3 col-12 gap-3 p-3">
 				{%if 'corrente' in g.conta.tipo or 'poupança' in g.conta.tipo%}
 				<div class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
 					onclick="document.location='/conta'">

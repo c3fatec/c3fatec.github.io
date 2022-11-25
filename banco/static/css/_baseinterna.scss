@@ -17,6 +17,7 @@
     .botoes {
       flex-wrap: wrap;
       overflow: auto;
+      max-height: 82vh !important;
 
       @media (max-width: 575px) {
         flex-wrap: nowrap;

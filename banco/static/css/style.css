@@ -216,34 +216,39 @@
   cursor: pointer;
 }
 
-.pg-home {
-  height: 100%;
-}
 @media (max-width: 575px) {
   .pg-home .titulo {
     font-size: 20px !important;
   }
 }
-.pg-home .transacoes {
-  height: 16%;
+.pg-home .tamanho {
+  height: 65vh;
+}
+@media (max-width: 575px) {
+  .pg-home .tamanho {
+    height: auto;
+  }
+}
+.pg-home .tamanho .transacoes {
+  height: 20%;
 }
 @media (max-width: 409px) {
-  .pg-home .transacoes {
+  .pg-home .tamanho .transacoes {
     flex-direction: column !important;
   }
 }
 @media (max-width: 409px) {
-  .pg-home .transacoes .t1 {
+  .pg-home .tamanho .transacoes .t1 {
     width: 100% !important;
   }
 }
 @media (max-width: 1050px) {
-  .pg-home .transacoes .t1 p {
+  .pg-home .tamanho .transacoes .t1 p {
     font-size: 18px !important;
   }
 }
 @media (max-width: 830px) {
-  .pg-home .transacoes .t1 p {
+  .pg-home .tamanho .transacoes .t1 p {
     font-size: 14px !important;
   }
 }
@@ -279,6 +284,7 @@
 .base-interna .caixa-principal .botoes {
   flex-wrap: wrap;
   overflow: auto;
+  max-height: 82vh !important;
 }
 @media (max-width: 575px) {
   .base-interna .caixa-principal .botoes {
@@ -640,6 +646,84 @@
 }
 @media (max-width: 830px) {
   .pg-agencia .btn {
+    font-size: 12px !important;
+  }
+}
+
+@media (max-width: 575px) {
+  .pg-gerente .titulo {
+    font-size: 20px !important;
+  }
+}
+@media (max-width: 984px) {
+  .pg-gerente .conteudo p, .pg-gerente .conteudo label {
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 830px) {
+  .pg-gerente .conteudo p, .pg-gerente .conteudo label {
+    font-size: 12px !important;
+  }
+}
+@media (max-width: 400px) {
+  .pg-gerente .btn {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+}
+@media (max-width: 984px) {
+  .pg-gerente .btn {
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 830px) {
+  .pg-gerente .btn {
+    font-size: 12px !important;
+  }
+}
+
+@media (max-width: 575px) {
+  .pg-taxas .titulo {
+    font-size: 20px !important;
+  }
+}
+@media (max-width: 984px) {
+  .pg-taxas .conteudo p, .pg-taxas .conteudo label, .pg-taxas .conteudo input {
+    font-size: 15px !important;
+  }
+}
+@media (max-width: 830px) {
+  .pg-taxas .conteudo p, .pg-taxas .conteudo label, .pg-taxas .conteudo input {
+    font-size: 13px !important;
+  }
+}
+@media (max-width: 364px) {
+  .pg-taxas .conteudo div {
+    width: 100%;
+  }
+}
+@media (max-width: 364px) {
+  .pg-taxas .conteudo div p {
+    width: 72%;
+  }
+}
+@media (max-width: 400px) {
+  .pg-taxas .btn {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+}
+@media (max-width: 984px) {
+  .pg-taxas .btn {
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 830px) {
+  .pg-taxas .btn {
     font-size: 12px !important;
   }
 }/*# sourceMappingURL=style.css.map */

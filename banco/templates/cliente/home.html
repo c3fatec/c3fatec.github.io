@@ -6,18 +6,20 @@
 <div class="pg-home">
 	<p class="titulo h3 py-3 text-center border-bottom border-dark">Últimas transações</p>
 
+	<div class="tamanho">
 	{%if comprovantes%} {%for comprovante in comprovantes%}
-	<div class="transacoes d-flex align-items-center p-1 border-bottom border-dark">
-		<div class="t1 d-flex flex-column col-5">
-			<div class="col-12"><p class="h5 p-0 m-0">Tipo: {{comprovante.tipo}}</p></div>
-			<div class="col-12"><p class="h5 p-0 m-0">Status: {{comprovante.status}}</p></div>
+		<div class="transacoes d-flex align-items-center p-1 border-bottom border-dark">
+			<div class="t1 d-flex flex-column col-5">
+				<div class="col-12"><p class="h5 p-0 m-0">Tipo: {{comprovante.tipo}}</p></div>
+				<div class="col-12"><p class="h5 p-0 m-0">Status: {{comprovante.status}}</p></div>
+			</div>
+			<div class="t1 d-flex flex-column col-7">
+				<div class="col-12"><p class="h5 p-0 m-0">Valor: R$ {{comprovante.valor | dinheiro }}</p></div>
+				<div class="col-12"><p class="h5 p-0 m-0">Criado em: {{comprovante.data_inicio | datetime}}</p></div>
+			</div>
 		</div>
-		<div class="t1 d-flex flex-column col-7">
-			<div class="col-12"><p class="h5 p-0 m-0">Valor: R$ {{comprovante.valor | dinheiro }}</p></div>
-			<div class="col-12"><p class="h5 p-0 m-0">Criado em: {{comprovante.data_inicio | datetime}}</p></div>
-		</div>
+		{%endfor%} {%else%}
 	</div>
-	{%endfor%} {%else%}
 </div>
 <div class="mensagem h-75 d-flex align-items-center justify-content-center">
 	<h2 class="text-center">Não foram feitas transações nessa conta</h2>

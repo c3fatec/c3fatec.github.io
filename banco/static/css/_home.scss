@@ -1,35 +1,39 @@
 .pg-home {
-  height: 100%;
   .titulo {
     @media (max-width: 575px) {
       font-size: 20px !important;
     }
   }
+
+  .tamanho {
+    height: 65vh;
+    @media (max-width: 575px) {
+      height: auto;
+    }
+    .transacoes {
+      height: 20%;
   
-  .transacoes {
-    height: 16%;
-
-    @media (max-width: 409px) {
-      flex-direction: column !important;
-    }
-
-    .t1 {
       @media (max-width: 409px) {
-        width: 100% !important;
+        flex-direction: column !important;
       }
-
-      p {
-        @media (max-width: 1050px) {
-          font-size: 18px !important;
+  
+      .t1 {
+        @media (max-width: 409px) {
+          width: 100% !important;
         }
-        @media (max-width: 830px) {
-          font-size: 14px !important;
+  
+        p {
+          @media (max-width: 1050px) {
+            font-size: 18px !important;
+          }
+          @media (max-width: 830px) {
+            font-size: 14px !important;
+          }
         }
       }
     }
-
-
   }
+  
 }
 
 .mensagem {
