@@ -122,12 +122,9 @@ def login():
             error = "Conta inexistente"
 
         if error is None:
-            config = db_get(table="config", many=False)
-            data = config.get("data")
             session.clear()
             session["id_usuario"] = usuario["id_usuario"]
             session["id_conta"] = conta["id_conta"]
-            session["data"] = data
             return redirect(url_for("conta.index"))
         else:
             flash(error)
@@ -156,7 +153,7 @@ def carregar_usuario_logado():
     para determinar o usuário da sessão."""
     id_usuario = session.get("id_usuario")
     id_conta = session.get("id_conta")
-    data = session.get("data")
+    data = db_get(table="config", many=False).get("data")
 
     if id_conta is None or id_usuario is None or data is None:
         g.data = None
