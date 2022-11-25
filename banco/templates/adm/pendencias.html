@@ -1,11 +1,11 @@
 {%extends 'baseinterna.html'%} {%block head%}
 
-<title>Xbank - Depósitos</title>
+<title>Xbank - Pendências</title>
 
 {%endblock%} {%block body%}
 <div class="pg-pendencias w-100 h-100">
 	<p class="titulo h3 py-3 text-center border-bottom border-dark">
-		Depósitos pendentes
+		Pendências
 	</p>
 	{% with messages = get_flashed_messages() %} {%if messages %} {%for message in
 	messages%}

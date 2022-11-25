@@ -25,8 +25,8 @@
 </head>
 
 <body>
-	<header class="header d-flex justify-content-between">
-		<div class="funcao-inicio w-25 h-100 row align-items-center ps-2">
+	<header class="header d-flex">
+		<div class="funcao-inicio h-100 align-items-center ps-2">
 			{%if g.conta.id_conta==1%}
 			<div class="d-flex flex-column h-100 justify-content-center">
 				<div>
@@ -54,11 +54,11 @@
 			<small class="m-0 mt-2">{{g.data | date}}</small>
 		</div>
 
-		<div class="logo w-50 h-100 d-flex justify-content-center text-center align-items-center">
+		<div class="logo h-100 d-flex justify-content-center text-center align-items-center">
 			<p class="h1 m-0 p-0">X-bank</p>
 		</div>
 
-		<div class="funcao-direita w-25 h-100 d-flex justify-content-between align-items-center">
+		<div class="funcao-direita h-100 d-flex justify-content-between align-items-center">
 			<div class="h-100 col-10 d-flex justify-content-end">
 				<div class="menu h-100 col-auto d-flex justify-content-end">
 					{%if g.conta.tipo != 'gerente'%}
@@ -181,7 +181,7 @@
 				<div class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
 					onclick="document.location='/admin/pendencias'">
 					<div class="head w-100">
-						<p>Depósitos</p>
+						<p>Pendências</p>
 					</div>
 					<div class="w-100 my-auto">
 						<img src="../static/icons/pendencia.png" alt="depositos" class="w-50 p-1" />
@@ -214,7 +214,7 @@
 						<p>Transações</p>
 					</div>
 					<div class="w-100 my-auto">
-						<img src="../static/icons/dados.png" alt="contas" class="w-50 p-1" />
+						<img src="../static/icons/transacao.png" alt="contas" class="w-50 p-1" />
 					</div>
 				</div>
 
@@ -228,6 +228,7 @@
 						<img src="../static/icons/agencia.png" alt="agencia" class="w-50 p-1" />
 					</div>
 				</div>
+
 				<div class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
 					onclick="document.location='/admin/gerentes'">
 					<div class="head w-100">
@@ -237,6 +238,7 @@
 						<img src="../static/icons/colaboradores.png" alt="gerentes" class="w-50 p-1" />
 					</div>
 				</div>
+
 				<div class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
 					onclick="document.location='/admin/taxas'">
 					<div class="head w-100">

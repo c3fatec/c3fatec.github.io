@@ -4,6 +4,8 @@
   color: white;
 
   .funcao-inicio {
+    width: 30%;
+
     @media (max-width: 900px) {
       width: 35% !important;
     }
@@ -32,6 +34,8 @@
   }
 
   .logo {
+    width: 40%;
+
     @media (max-width: 900px) {
       width: 30% !important;
     }
@@ -56,7 +60,9 @@
     }
   }
 
-  .funcao-direita {    
+  .funcao-direita {  
+    width: 30%;
+      
     @media (max-width: 900px) {
       width: 35% !important;
     }
@@ -211,3 +217,4 @@
 @import 'agencia';
 @import 'gerente';
 @import 'taxas';
+@import 'transacoes';

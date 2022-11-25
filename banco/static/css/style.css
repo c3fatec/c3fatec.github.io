@@ -3,6 +3,9 @@
   height: 10vh;
   color: white;
 }
+.header .funcao-inicio {
+  width: 30%;
+}
 @media (max-width: 900px) {
   .header .funcao-inicio {
     width: 35% !important;
@@ -29,6 +32,9 @@
   bottom: 1px;
   left: 10px;
 }
+.header .logo {
+  width: 40%;
+}
 @media (max-width: 900px) {
   .header .logo {
     width: 30% !important;
@@ -54,6 +60,9 @@
   .header .logo p {
     font-size: 18px !important;
   }
+}
+.header .funcao-direita {
+  width: 30%;
 }
 @media (max-width: 900px) {
   .header .funcao-direita {
@@ -725,5 +734,54 @@
 @media (max-width: 830px) {
   .pg-taxas .btn {
     font-size: 12px !important;
+  }
+}
+
+@media (max-width: 575px) {
+  .pg-transacoes .titulo {
+    font-size: 20px !important;
+  }
+}
+@media (max-width: 400px) {
+  .pg-transacoes form .btn {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+}
+@media (max-width: 984px) {
+  .pg-transacoes form .btn {
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 830px) {
+  .pg-transacoes form .btn {
+    font-size: 12px !important;
+  }
+}
+@media (max-width: 491px) {
+  .pg-transacoes div {
+    width: 100% !important;
+  }
+}
+@media (max-width: 984px) {
+  .pg-transacoes div p {
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 830px) {
+  .pg-transacoes div p {
+    font-size: 12px !important;
+  }
+}
+@media (max-width: 575px) {
+  .pg-transacoes .d1 {
+    flex-direction: column;
+  }
+}
+@media (max-width: 575px) {
+  .pg-transacoes .d1 p {
+    width: 100%;
   }
 }/*# sourceMappingURL=style.css.map */
