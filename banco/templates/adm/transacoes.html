@@ -1,0 +1,76 @@
+{%extends 'baseinterna.html'%} {%block head%}
+
+<title>Xbank - Transações</title>
+
+{%endblock%} {%block body%}
+<div class="pg-extrato">
+	<p class="titulo h3 py-3 text-center border-bottom border-dark">Extrato</p>
+
+	<div class="d-flex flex-column">
+		<div class="d-flex justify-content-center p-2 border-bottom border-dark">
+			<form
+				action=""
+				method="POST"
+				class="d-flex justify-content-center gap-2 w-100"
+			>
+				<input
+					type="datetime-local"
+					name="data_inicio"
+					id="data_inicio"
+					step="1"
+					required
+					class="col-xxl-4 col-xl-4 col-md-4 col-sm-4 col-4 border-1 rounded"
+				/>
+				<input
+					type="datetime-local"
+					name="data_fim"
+					id="data_fim"
+					step="1"
+					required
+					class="col-xxl-4 col-xl-4 col-md-4 col-sm-4 col-4 border-1 rounded"
+				/>
+				<input
+					type="submit"
+					value="Filtrar"
+					class="btn btn-secondary btn-sm col-xxl-2 col-xl-2 col-md-2 col-sm-2 col-2 border-0"
+				/>
+			</form>
+		</div>
+		{%if comprovantes%} {%for comprovante in comprovantes%}
+		<div class="d-flex p-1 border-bottom border-dark">
+			<div class="transacoes d-flex col-xxl-9 col-xl-9 col-md-9 col-sm-9 col-9">
+				<div
+					class="d-flex flex-column col-xxl-4 col-xl-4 col-md-5 col-sm-5 col-4"
+				>
+					<p class="p-0 m-0">Status: {{comprovante.status}}</p>
+					<p class="p-0 m-0">Valor: R$ {{comprovante.valor | dinheiro}}</p>
+					<p class="p-0 m-0">Tipo: {{comprovante.tipo | capitalize}}</p>
+				</div>
+				<div
+					class="d-flex flex-column col-xxl-8 col-xl-8 col-md-7 col-sm-7 col-5"
+				>
+					<p class="p-0 m-0">
+						Criado em: {{comprovante.data_inicio | datetime}}
+					</p>
+					{%if comprovante.tipo=='depósito' and comprovante.status ==
+					'Efetivado'%}
+					<p class="p-0 m-0">
+						Aprovado em: {{comprovante.data_fim | datetime}}
+					</p>
+					{%elif comprovante.tipo=='depósito' and comprovante.status ==
+					'Rejeitado'%}
+					<p class="p-0 m-0">
+						Rejeitado em: {{comprovante.data_fim | datetime}}
+					</p>
+					{%endif%}
+				</div>
+			</div>
+		</div>
+
+		{%endfor%} {%else%}
+	</div>
+</div>
+<div class="mensagem h-75 d-flex align-items-center justify-content-center">
+	<h2 class="text-center">Não foram feitas transações.</h2>
+</div>
+{%endif%} {%endblock%}

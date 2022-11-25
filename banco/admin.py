@@ -462,3 +462,22 @@ def taxas():
         return redirect(url_for("admin.taxas"))
 
     return render_template("adm/taxas.html", config=config)
+
+
+@bp.route("/transacoes", methods=["GET", "POST"])
+@requer_login
+@rota_gerente
+def transacoes():
+    agencia = g.conta.get("agencia")
+    command = "SELECT * FROM transacoes"
+    if agencia:
+        contas = list(
+            map(lambda c: c.get("id_conta"), db_get(table="conta", agencia=agencia))
+        )
+        contas = str(contas)
+        contas = contas.removeprefix("[")
+        contas = contas.removesuffix("]")
+        command += f" WHERE id_conta IN ({contas}) OR destino IN ({contas})"
+    transacoes = db_execute(command)
+
+    return render_template("adm/transacoes.html", comprovantes=transacoes)
