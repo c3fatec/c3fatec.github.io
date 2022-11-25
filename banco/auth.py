@@ -108,10 +108,10 @@ def login():
             session.clear()
             session["id_usuario"] = usuario["id_usuario"]
             session["id_conta"] = conta["id_conta"]
-            session["tempo"] = data
+            session["data"] = data
             return redirect(url_for("conta.index"))
-
-        flash(error)
+        else:
+            flash(error)
 
     return render_template("auth/login.html")
 
