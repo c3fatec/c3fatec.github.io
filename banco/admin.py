@@ -171,7 +171,8 @@ def agencia():
     if request.method == "POST":
         nome = request.form["nome"]
 
-        db_create(table="agencia", nome=nome)
+        if nome:
+            db_create(table="agencia", nome=nome)
 
     agencias = db_get(table="agencia", many=True)
     for agencia in agencias:
