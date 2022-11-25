@@ -21,9 +21,19 @@ bp = Blueprint("auth", __name__, url_prefix="/")
 def cadastro():
     if request.method == "POST":
         nome = request.form["nome"]
-        # rg = request.form["rg"]
-        data_nasc = request.form["data-nasc"]
+        genero = request.form["genero"]
         cpf = request.form["cpf"]
+        rg = request.form["rg"]
+        data_nasc = request.form["data-nasc"]
+
+        rua = request.form["rua"]
+        cep = request.form["cep"]
+        bairro = request.form["bairro"]
+        cidade = request.form["cidade"]
+        uf = request.form["uf"]
+        numero = request.form["numero"]
+        complemento = request.form["complemento"]
+
         senha = request.form["senha"]
         senha_repetida = request.form["senha-repetida"]
         tipo = request.form["tipo"]
@@ -36,6 +46,15 @@ def cadastro():
                     senha=generate_password_hash(senha),
                     cpf=cpf,
                     data_nasc=data_nasc,
+                    rg=rg,
+                    cep=int(cep),
+                    rua=rua,
+                    bairro=bairro,
+                    numero=numero,
+                    complemento=complemento,
+                    uf=uf,
+                    cidade=cidade,
+                    genero=genero,
                 )
                 contas = list(
                     map(lambda x: x["id_conta"], db_get(table="conta", many=True))
@@ -103,12 +122,9 @@ def login():
             error = "Conta inexistente"
 
         if error is None:
-            config = db_get(table="config", many=False)
-            data = config.get("data")
             session.clear()
             session["id_usuario"] = usuario["id_usuario"]
             session["id_conta"] = conta["id_conta"]
-            session["data"] = data
             return redirect(url_for("conta.index"))
         else:
             flash(error)
@@ -137,7 +153,7 @@ def carregar_usuario_logado():
     para determinar o usuário da sessão."""
     id_usuario = session.get("id_usuario")
     id_conta = session.get("id_conta")
-    data = session.get("data")
+    data = db_get(table="config", many=False).get("data")
 
     if id_conta is None or id_usuario is None or data is None:
         g.data = None
