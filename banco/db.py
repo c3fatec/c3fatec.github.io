@@ -312,6 +312,8 @@ def db_execute(*arg: str):
     db = get_db()
     cursor = db.cursor()
     cursor.execute(arg[0])
+    if "SELECT" in arg[0]:
+        return cursor.fetchall()
 
 
 def aumentar_data():
