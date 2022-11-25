@@ -1,15 +1,17 @@
 {%extends 'baseinterna.html'%} {%block head%}
 
-<title>Xbank - Transações</title>
+<title>Xbank - Depósitos</title>
 
 {%endblock%} {%block body%}
 <div class="pg-pendencias w-100 h-100">
 	<p class="titulo h3 py-3 text-center border-bottom border-dark">
-		Transações pendentes
+		Depósitos pendentes
 	</p>
 	{% with messages = get_flashed_messages() %} {%if messages %} {%for message in
 	messages%}
-	<div class="pnd d-flex justify-content-center align-items-center text-center w-100 p-2">
+	<div
+		class="pnd d-flex justify-content-center align-items-center text-center w-100 p-2"
+	>
 		<div class="msg d-flex align-items-center">{{message}}</div>
 	</div>
 	{%endfor%} {%endif%} {%endwith%} {%if pendencias%} {%for pendencia in
@@ -19,16 +21,25 @@
 			<div class="col-9">
 				<p class="p-0 m-0">Conta: {{pendencia.id_conta}}</p>
 				<p class="p-0 m-0">Valor: R$ {{pendencia.valor | dinheiro}}</p>
-				<p class="p-0 m-0">Data da Transação: {{pendencia.data_inicio | datetime}}</p>
+				<p class="p-0 m-0">
+					Data da Transação: {{pendencia.data_inicio | datetime}}
+				</p>
 			</div>
-	
+
 			<div class="d-flex flex-column text-center col-3 gap-1">
 				<form action="" method="POST">
 					<input type="hidden" name="valor" value="{{pendencia.valor}}" />
 					<input type="hidden" name="id_conta" value="{{pendencia.id_conta}}" />
 					<input type="hidden" name="status" value="Efetivado" />
-					<input type="hidden" name="id_transacao" value="{{pendencia.id_transacao}}" />
-					<button class="btn btn-secondary w-100 text-center mx-0 px-0" type="submit">
+					<input
+						type="hidden"
+						name="id_transacao"
+						value="{{pendencia.id_transacao}}"
+					/>
+					<button
+						class="btn btn-secondary w-100 text-center mx-0 px-0"
+						type="submit"
+					>
 						Aprovar
 					</button>
 				</form>
@@ -36,8 +47,15 @@
 					<input type="hidden" name="valor" value="{{pendencia.valor }}" />
 					<input type="hidden" name="id_conta" value="{{pendencia.id_conta}}" />
 					<input type="hidden" name="status" value="Rejeitado" />
-					<input type="hidden" name="id_transacao" value="{{pendencia.id_transacao}}" />
-					<button class="btn btn-outline-dark w-100 text-center mx-0 px-0" type="submit">
+					<input
+						type="hidden"
+						name="id_transacao"
+						value="{{pendencia.id_transacao}}"
+					/>
+					<button
+						class="btn btn-outline-dark w-100 text-center mx-0 px-0"
+						type="submit"
+					>
 						Rejeitar
 					</button>
 				</form>
@@ -46,7 +64,7 @@
 	</div>
 	{%endfor%} {%else%}
 	<div class="mensagem h-75 d-flex align-items-center justify-content-center">
-		<h2 class="text-center">Não há transações pendentes!</h2>
+		<h2 class="text-center">Não há depósitos pendentes!</h2>
 	</div>
 </div>
 {%endif%} {%endblock%}

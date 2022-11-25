@@ -36,7 +36,8 @@
 					<p class="p2 h6 p-0 m-0">R$ {{g.conta.saldo | dinheiro}}</p>
 				</div>
 			</div>
-			{%endif%} {%if g.conta.tipo != 'gerente'%}
+			{%endif%}
+			{%if g.conta.tipo != 'gerente'%}
 			<div class="d-flex flex-column h-100 justify-content-center">
 				<div>
 					<p class="p1 h5 p-0 m-0">{{g.conta.tipo|capitalize}}</p>
@@ -110,7 +111,6 @@
 					power_settings_new
 				</span>
 			</div>
-
 			{%else%}
 			<div class="sair col-2 d-flex justify-content-center align-items-center h-100 btn btn-outline-secondary p-0"
 				onclick="document.location='/admin/logoutadmin'">
@@ -124,7 +124,8 @@
 
 	<div class="base-interna container-fluid d-flex justify-content-center align-items-center">
 		<div class="caixa-principal d-flex row">
-			<div class="botoes d-flex justify-content-center text-center my-auto col-xxl-3 col-xl-4 col-md-4 col-sm-3 col-12 gap-3 p-3">
+			<div
+				class="botoes d-flex justify-content-center text-center my-auto col-xxl-3 col-xl-4 col-md-4 col-sm-3 col-12 gap-3 p-3">
 				{%if 'corrente' in g.conta.tipo or 'poupança' in g.conta.tipo%}
 				<div class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
 					onclick="document.location='/conta'">
@@ -175,16 +176,18 @@
 						<img src="../static/icons/extrato.png" alt="extrato" class="w-50 p-1" />
 					</div>
 				</div>
-				{%endif%} {%if 'gerente' in g.conta.tipo%}
+				{%endif%}
+				{%if 'gerente' in g.conta.tipo%}
 				<div class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
 					onclick="document.location='/admin/pendencias'">
 					<div class="head w-100">
-						<p>Transações</p>
+						<p>Depósitos</p>
 					</div>
 					<div class="w-100 my-auto">
-						<img src="../static/icons/pendencia.png" alt="transacoes" class="w-50 p-1" />
+						<img src="../static/icons/pendencia.png" alt="depositos" class="w-50 p-1" />
 					</div>
 				</div>
+
 				<div class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
 					onclick="document.location='/admin/aprovacaoCadastros'">
 					<div class="head w-100">
@@ -194,6 +197,7 @@
 						<img src="../static/icons/cadastro.png" alt="solicitacoes" class="w-50 p-1" />
 					</div>
 				</div>
+
 				<div class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
 					onclick="document.location='/admin/usuarios'">
 					<div class="head w-100">
@@ -203,6 +207,17 @@
 						<img src="../static/icons/dados.png" alt="contas" class="w-50 p-1" />
 					</div>
 				</div>
+
+				<div class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
+					onclick="document.location='/admin/transacoes'">
+					<div class="head w-100">
+						<p>Transações</p>
+					</div>
+					<div class="w-100 my-auto">
+						<img src="../static/icons/dados.png" alt="contas" class="w-50 p-1" />
+					</div>
+				</div>
+
 				{%if not g.conta.agencia%}
 				<div class="funcao col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-10 col-3"
 					onclick="document.location='/admin/agencias'">

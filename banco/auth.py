@@ -10,7 +10,7 @@ from flask import (
     url_for,
 )
 from werkzeug.security import check_password_hash, generate_password_hash
-from .db import db_create, db_get, selecionar_agencia
+from .db import db_create, db_get, selecionar_agencia, db_execute
 from random import randint
 from datetime import datetime as dt
 
@@ -142,11 +142,19 @@ def logout():
 
 @bp.route("/teste")
 def teste():
-    contas = db_get(table="conta", usuario=400)
-    msg = "sapo"
-    if not contas:
-        msg = "sopa"
-    return msg
+    agencia = 2
+    command = "SELECT * FROM transacoes"
+    if agencia:
+        contas = list(
+            map(lambda c: c.get("id_conta"), db_get(table="conta", agencia=agencia))
+        )
+        contas = str(contas)
+        contas = contas.removeprefix("[")
+        contas = contas.removesuffix("]")
+        command += f" WHERE id_conta IN ({contas}) OR destino IN ({contas})"
+    transacoes = db_execute(command)
+
+    return transacoes
 
 
 @bp.before_app_request

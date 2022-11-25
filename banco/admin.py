@@ -141,21 +141,30 @@ def dados():
     usuario = db_get(many=False, table="usuario", id_usuario=id_usuario)
     data = request.form
     if request.method == "POST":
-        for f in data:
-            if data[f] != usuario[f]:
-                try:
-                    db_update(
-                        table="usuario",
-                        setter={"campo": f, "valor": data[f]},
-                        value={"campo": "id_usuario", "valor": id_usuario},
-                    )
-                except Exception as e:
-                    print(e.args[1])
-                    flash("Erro ao atualizar cadastro.")
-                else:
-                    flash("Cadastro atualizado com sucesso!")
-                finally:
-                    return redirect(url_for("admin.usuarios"))
+        if data.get("recuperar"):
+            db_update(
+                table="usuario",
+                setter={"campo": "senha", "valor": generate_password_hash("1234")},
+                value={"campo": "id_usuario", "valor": id_usuario},
+            )
+            flash("Senha recuperada para o padrão (1234).")
+            return redirect(url_for("admin.usuarios"))
+        else:
+            for f in data:
+                if data[f] != usuario[f]:
+                    try:
+                        db_update(
+                            table="usuario",
+                            setter={"campo": f, "valor": data[f]},
+                            value={"campo": "id_usuario", "valor": id_usuario},
+                        )
+                    except Exception as e:
+                        print(e.args[1])
+                        flash("Erro ao atualizar cadastro.")
+                    else:
+                        flash("Cadastro atualizado com sucesso!")
+                    finally:
+                        return redirect(url_for("admin.usuarios"))
 
     for f in ["id_usuario", "senha"]:
         usuario.pop(f)
@@ -453,3 +462,22 @@ def taxas():
         return redirect(url_for("admin.taxas"))
 
     return render_template("adm/taxas.html", config=config)
+
+
+@bp.route("/transacoes", methods=["GET", "POST"])
+@requer_login
+@rota_gerente
+def transacoes():
+    agencia = g.conta.get("agencia")
+    command = "SELECT * FROM transacoes"
+    if agencia:
+        contas = list(
+            map(lambda c: c.get("id_conta"), db_get(table="conta", agencia=agencia))
+        )
+        contas = str(contas)
+        contas = contas.removeprefix("[")
+        contas = contas.removesuffix("]")
+        command += f" WHERE id_conta IN ({contas}) OR destino IN ({contas})"
+    transacoes = db_execute(command)
+
+    return render_template("adm/transacoes.html", comprovantes=transacoes)
