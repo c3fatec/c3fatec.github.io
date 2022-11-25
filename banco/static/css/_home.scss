@@ -1,28 +1,13 @@
 .pg-home {
+  height: 100%;
   .titulo {
     @media (max-width: 575px) {
       font-size: 20px !important;
     }
   }
-
+  
   .transacoes {
-    @media (max-width: 1050px) {
-      padding-top: 10px !important;
-      padding-bottom: 10px !important;
-    }
-    @media (max-width: 830px) {
-      padding-top: 18px !important;
-      padding-bottom: 18px !important;
-    }
-    @media (max-width: 584px) {
-      padding-top: 10px !important;
-      padding-bottom: 10px !important;
-    }
-
-
-    @media (max-width: 409px) {
-      flex-direction: column !important;
-    }
+    height: 16%;
 
     .t1 {
       @media (max-width: 409px) {
