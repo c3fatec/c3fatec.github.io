@@ -146,7 +146,7 @@ flask --app banco run
 localhost:5000/admin
 
 Login
-Matricula: 1
+Matricula: 1 <br>
 Senha: gerente 
 
 
