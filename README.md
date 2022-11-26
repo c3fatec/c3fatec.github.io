@@ -115,7 +115,6 @@ Para aplicar variáveis para sua máquina, crie um arquivo chamando ".env" e def
 Para criar configurações pessoais, crie uma pasta chamada "instance", e dentro um arquivo "config.py" para armazenar configurações pessoais. As configurações especificadas nesses arquivos não serão compartilhadas.
 
 ---
-
 <h3>Rodando o Projeto</h3>
 
 **Configurando seu usuário da base de dados**<br>
@@ -130,24 +129,31 @@ DB_SENHA = "sua_senha"
 
 O app oferece como suporte a criação de um banco de dados exemplo e também sua deleção. O banco de dados está configurado para se conectar ao usuário _root_, sem senha em seu servidor MySQL.<br><br>
 Para criar e deletar a base de dados na máquina local, execute os comandos:<br>
-`flask --app banco init-db`<br>
-`flask --app banco drop-db`
-<br>
+```
+$ flask --app banco init-db
+
+$ flask --app banco drop-db
+```
 Após instalar as dependências, o projeto está pronto pra ser rodado na sua máquina. Basta executar o comando:
 
 ```
-flask --app banco run
+$ flask --app banco run
 ```
 
 <small>_Para evitar especificar "--app banco" ao executar os comandos, determine a variável **FLASK_APP="banco"** no seu arquivo .env_</small><br><br>
 
-**Acesso de Gerente Geral**<br>
+---
+
+<h3>Acessando o Sistema</h3>
+
+**Acesso de Gerente**<br>
 
 localhost:5000/admin
 
-Login
-Matricula: 1 <br>
-Senha: gerente 
+**Login**<br>
+**Matricula:** 1  
+**Senha:** gerente   
+
 
 **Ativando o modo de volta para o futuro**<br>
 
@@ -155,17 +161,13 @@ Para avançar ou voltar a data do sistema utilize os comandos abaixo.
  
 
 ```
+$ flask change-time  (data = atual)
 
-flask change-time  (data = atual)
-
-flask change-time --time=2043-11-25 (data desejada)
-
+$ flask change-time --time=2043-11-25 (data desejada)
 ```
 
 Para ativar as taxas de juros após ter alterado a data do sistema utilize o comando.  
 
 ```
-
-flask tax
-
+$ flask tax
 ```
