@@ -30,7 +30,7 @@ Esse repositório contém o primeiro projeto API dos estudantes do primeiro seme
 |   01   | 18/09/2022 | ✔️ Concluída |
 |   02   | 19/10/2022 | ✔️ Concluída |
 |   03   | 06/11/2022 | ✔️ Concluída |
-|   04   | 27/11/2022 |              |
+|   04   | 27/11/2022 | ✔️ Concluída  |
 
 ---
 
@@ -140,3 +140,14 @@ flask --app banco run
 ```
 
 <small>_Para evitar especificar "--app banco" ao executar os comandos, determine a variável **FLASK_APP="banco"** no seu arquivo .env_</small><br><br>
+
+**Acesso de Gerente Geral**<br>
+
+localhost:5000/admin
+
+Login
+Matricula: 1
+Senha: gerente 
+
+
+
