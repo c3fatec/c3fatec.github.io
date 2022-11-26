@@ -149,5 +149,23 @@ Login
 Matricula: 1 <br>
 Senha: gerente 
 
+**Ativando o modo de volta para o futuro**<br>
 
+Para avançar ou voltar a data do sistema utilize os comandos abaixo.  
+ 
 
+```
+
+flask change-time  (data = atual)
+
+flask change-time --time=2043-11-25 (data desejada)
+
+```
+
+Para ativar as taxas de juros após ter alterado a data do sistema utilize o comando.  
+
+```
+
+flask tax
+
+```
