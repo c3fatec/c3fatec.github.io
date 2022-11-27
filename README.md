@@ -30,7 +30,7 @@ Esse repositório contém o primeiro projeto API dos estudantes do primeiro seme
 |   01   | 18/09/2022 | ✔️ Concluída |
 |   02   | 19/10/2022 | ✔️ Concluída |
 |   03   | 06/11/2022 | ✔️ Concluída |
-|   04   | 27/11/2022 | ✔️ Concluída  |
+|   04   | 27/11/2022 | ✔️ Concluída |
 
 ---
 
@@ -115,6 +115,7 @@ Para aplicar variáveis para sua máquina, crie um arquivo chamando ".env" e def
 Para criar configurações pessoais, crie uma pasta chamada "instance", e dentro um arquivo "config.py" para armazenar configurações pessoais. As configurações especificadas nesses arquivos não serão compartilhadas.
 
 ---
+
 <h3>Rodando o Projeto</h3>
 
 **Configurando seu usuário da base de dados**<br>
@@ -129,11 +130,13 @@ DB_SENHA = "sua_senha"
 
 O app oferece como suporte a criação de um banco de dados exemplo e também sua deleção. O banco de dados está configurado para se conectar ao usuário _root_, sem senha em seu servidor MySQL.<br><br>
 Para criar e deletar a base de dados na máquina local, execute os comandos:<br>
+
 ```
 $ flask --app banco init-db
 
 $ flask --app banco drop-db
 ```
+
 Após instalar as dependências, o projeto está pronto pra ser rodado na sua máquina. Basta executar o comando:
 
 ```
@@ -152,21 +155,19 @@ localhost:5000/admin
 
 **Login**<br>
 **Matricula:** 1  
-**Senha:** gerente   
-
+**Senha:** gerente
 
 **Ativando o modo de volta para o futuro**<br>
 
-Para avançar ou voltar a data do sistema utilize os comandos abaixo.  
- 
+Para avançar ou voltar a data do sistema utilize os comandos abaixo.
 
 ```
 $ flask change-time  (data = atual)
 
-$ flask change-time --time=2043-11-25 (data desejada)
+$ flask change-time --time=2023-11-25 (data desejada no formato YYYY-mm-dd)
 ```
 
-Para ativar as taxas de juros após ter alterado a data do sistema utilize o comando.  
+Para ativar as taxas de juros após ter alterado a data do sistema utilize o comando.
 
 ```
 $ flask tax
