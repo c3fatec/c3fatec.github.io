@@ -146,7 +146,7 @@ $ flask --app banco run
 
 <h3>Acessando o Sistema</h3>
 
-**Acesso de Gerente**<br>
+**Acesso de Gerente Geral**<br>
 
 localhost:5000/admin
 
