@@ -2,24 +2,29 @@
 
 <title>Xbank - Home</title>
 
-{%endblock%} {%block body%} {%if g.conta.saldo > 0%}
-<div>
-	Saldo atual R${{g.conta.saldo | dinheiro}}<br>
+{%endblock%} {%block body%}
+<div
+	class="h-100 w-100 d-flex flex-column align-items-center justify-content-center mx-2"
+>
+	{%if g.conta.saldo > 0%}
+	<div class="h4">Saldo atual R${{g.conta.saldo | dinheiro}}<br /></div>
+	<div>Por Favor efetue o saque antes de solicitar encerramento.</div>
+	{%elif g.conta.saldo < 0%}
+	<div class="h4">Saldo devedor R${{(g.conta.saldo)*-1}}</div>
+	<div>
+		Por favor regularize a situação da sua conta antes de solicitar
+		encerramento.
+	</div>
+	{%else%}
+	<div class="h4">Você tem certeza de que deseja fechar sua conta?</div>
+	<div class="d-flex gap-5 mt-3 mx-1">
+		<a href="{{url_for('conta.index')}}">
+			<button class="btn btn-outline-dark">Cancelar</button>
+		</a>
+		<form method="POST">
+			<button type="submit" class="btn btn-outline-dark">Fechar conta</button>
+		</form>
+	</div>
+	{%endif%}
 </div>
-<div>Por Favor efetue o saque antes de solicitar encerramento. </div>
-{%elif g.conta.saldo < 0%}
-<div>
-	Saldo devedor R${{g.conta.saldo}}
-</div>
-<div>Por favor regularize a situação da sua conta antes de solicitar encerramento. </div>
-{%else%}
-<div>Você tem certeza de que deseja fechar sua conta?</div>
-<div class="d-flex">
-	<a href="{{url_for('conta.index')}}">
-		<button>Cancelar</button>
-	</a>
-	<form method="POST">
-		<button type="submit">Fechar conta</button>
-	</form>
-</div>
-{%endif%} {%endblock%}
+{%endblock%}
