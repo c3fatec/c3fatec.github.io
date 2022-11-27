@@ -30,8 +30,9 @@ Esse repositório contém o primeiro projeto API dos estudantes do primeiro seme
 |   01   | 18/09/2022 | ✔️ Concluída |
 |   02   | 19/10/2022 | ✔️ Concluída |
 |   03   | 06/11/2022 | ✔️ Concluída |
-|   04   | 27/11/2022 | ✔️ Concluída  |
+|   04   | 27/11/2022 | ✔️ Concluída |
 
+[![Generic badge](https://img.shields.io/badge/STATUS%20DO%20PROJETO-CONCLU%C3%8DDO-green)](https://shields.io/)
 ---
 
 <!-- ## :open_file_folder:Product Backlog -->
@@ -56,28 +57,17 @@ Esse repositório contém o primeiro projeto API dos estudantes do primeiro seme
 
 <h2 id='demo'>Demonstração</h2>
 
-<!-- <video width="320" height="240" autoplay>
-  <source src="banco/static/video/xbank.mp4" type="video/mp4" alt='video demo'>
-</video> -->
-<!-- <div style="position: relative; padding-bottom: 42.34375%; height: 0;"><iframe src="https://www.loom.com/embed/40d65d6ff2574e0586003a2e2f3d7e57" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0;
-left: 0; width: 100%; height: 100%;"></iframe></div> -->
 
-<div style="position: relative; padding-bottom: 42.34375%; height: 0;"><iframe src="https://www.loom.com/embed/a5c05efc58e44b94b086379f886e833c" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
-<h5>1º Sprint -  <a href="https://www.loom.com/share/40d65d6ff2574e0586003a2e2f3d7e57">Clique aqui</a>
+![](./banco/static/video/Xbank1.gif)
+<!-- <h5>1º Sprint -  <a href="https://www.loom.com/share/40d65d6ff2574e0586003a2e2f3d7e57">Clique aqui</a>
 <h5>2º Sprint -  <a href="https://www.loom.com/share/40d65d6ff2574e0586003a2e2f3d7e57">Clique aqui</a>
-
+<h5>3º Sprint -  <a href="https://www.loom.com/share/40d65d6ff2574e0586003a2e2f3d7e57">Clique aqui</a>
+ -->
 ---
 
 <h2 id='equipe'>Equipe</h2>
 
-<!-- |    Função     | Nome                      |
-| :-----------: | :------------------------ |
-| Product Owner | Daniel Machado dos Santos [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/dmssjk/) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/)|
-| Scrum Master  | Gabriel Oliveira Santos   [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/dosantos-ogabriel) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/)||
-|   Dev Team    | Ivan Suiyma               [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/IvanSuiyama) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/)|
-|   Dev Team    | Jackles Kerley            [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/JacklesKerley) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/)|
-|   Dev Team    | Claudinei Paulista        [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/)|
- -->
+
 
 | Função        | Nome                                                                                                                                                                                         |
 | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -115,6 +105,7 @@ Para aplicar variáveis para sua máquina, crie um arquivo chamando ".env" e def
 Para criar configurações pessoais, crie uma pasta chamada "instance", e dentro um arquivo "config.py" para armazenar configurações pessoais. As configurações especificadas nesses arquivos não serão compartilhadas.
 
 ---
+
 <h3>Rodando o Projeto</h3>
 
 **Configurando seu usuário da base de dados**<br>
@@ -129,11 +120,13 @@ DB_SENHA = "sua_senha"
 
 O app oferece como suporte a criação de um banco de dados exemplo e também sua deleção. O banco de dados está configurado para se conectar ao usuário _root_, sem senha em seu servidor MySQL.<br><br>
 Para criar e deletar a base de dados na máquina local, execute os comandos:<br>
+
 ```
 $ flask --app banco init-db
 
 $ flask --app banco drop-db
 ```
+
 Após instalar as dependências, o projeto está pronto pra ser rodado na sua máquina. Basta executar o comando:
 
 ```
@@ -152,22 +145,21 @@ localhost:5000/admin
 
 **Login**<br>
 **Matricula:** 1  
-**Senha:** gerente   
-
+**Senha:** gerente
 
 **Ativando o modo de volta para o futuro**<br>
 
-Para avançar ou voltar a data do sistema utilize os comandos abaixo.  
- 
+Para avançar ou voltar a data do sistema utilize os comandos abaixo.
 
 ```
 $ flask change-time  (data = atual)
 
-$ flask change-time --time=2043-11-25 (data desejada)
+$ flask change-time --time=2023-11-25 (data desejada no formato YYYY-mm-dd)
 ```
 
-Para ativar as taxas de juros após ter alterado a data do sistema utilize o comando.  
+Para ativar as taxas de juros após ter alterado a data do sistema utilize o comando.
 
 ```
 $ flask tax
 ```
+---
