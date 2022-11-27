@@ -51,7 +51,9 @@ Esse repositório contém o primeiro projeto API dos estudantes do primeiro seme
 
 <h2 name='tecnologias'>Tecnologias Utilizadas</h2>
 
-<img src="https://i.ibb.co/pfvD7fv/Tecnologiasc3.jpg" alt="Tecnologiasc3" border="0">
+<img src="https://i.ibb.co/WPH798M/tec3.jpg" alt="Tecnologiasc3" border="0">
+
+
 
 ---
 
@@ -97,6 +99,14 @@ Então instale as dependências do projeto através do gerenciador de pacotes po
 pip install poetry
 poetry install
 ```
+
+ou com o comando:
+
+```
+$ pip install -r requirements.txt
+
+```
+
 
 **Variáveis de ambiente** <br>
 Para aplicar variáveis para sua máquina, crie um arquivo chamando ".env" e defina as configurações locais. <br>
