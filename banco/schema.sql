@@ -49,8 +49,7 @@ CREATE TABLE IF NOT EXISTS `banco_api`.`transacoes`(
   `tipo` VARCHAR(145),
   `destino` INT(5),
   PRIMARY KEY (`id_transacao`),
-  INDEX `fk_transacoes_conta1_idx` (`id_conta`),
-  CONSTRAINT `fk_transacoes_conta1_idx` FOREIGN KEY (`id_conta`) REFERENCES `banco_api`.`conta` (`id_conta`)
+  INDEX `fk_transacoes_conta1_idx` (`id_conta`) -- CONSTRAINT `fk_transacoes_conta1_idx` FOREIGN KEY (`id_conta`) REFERENCES `banco_api`.`conta` (`id_conta`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `banco_api`.`agencia`(
   `id_agencia` INT(4) NOT NULL AUTO_INCREMENT,
