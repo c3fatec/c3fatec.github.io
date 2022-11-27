@@ -18,44 +18,43 @@
 
 {%endblock%} {%block body%}
 
-<div class="d-flex justify-content-between align-items-center border-bottom border-dark px-2">
-	<div class="col-xxl-3 col-xl-3 col-md-2 col-sm-2 col-2"></div>
-	<p class="h3 py-3 mb-0 text-center col-xxl-6 col-xl-6 col-md-8 col-sm-8 col-8">
+<div class="pg-gerente w-100 h-100">
+	<p class="titulo h3 py-3 text-center border-bottom border-dark">
 		Cadastro de Gerentes
 	</p>
-	<div class="col-xxl-3 col-xl-3 col-md-2 col-sm-2 col-2" onclick="document.location='/admin/cadastrar-gerente'">
-		<button class="btn-att w-100">Novo Gerente</button>
+
+	<div class="conteudo d-flex justify-content-center align-items-center border-bottom border-dark w-100 pb-2" onclick="document.location='/admin/cadastrar-gerente'">
+		<button class="btn-att col-xxl-5 col-xl-5 col-md-5 col-sm-6 col-6"><p class="p-0 m-0">Novo Gerente</p></button>
 	</div>
-</div>
-{% with messages = get_flashed_messages() %} {%if messages %} {%for message in
-messages%}
-<div class="pnd d-flex justify-content-center align-items-center text-center w-100 p-2">
-	<div class="msg d-flex align-items-center">{{message}}</div>
-</div>
-{%endfor%} {%endif%} {%endwith%} {%if gerentes%} {%for gerente in gerentes%}
-<div class="d-flex justify-content-between p-2 border-bottom border-dark">
-	<div class="col-xxl-8 col-xl-8 col-md-8 col-sm-8 col-8">
-		<div style="text-transform: capitalize">
-			Nome: {{gerente.nome|capitalize}}
+
+	{% with messages = get_flashed_messages() %} {%if messages %} {%for message in
+	messages%}
+	<div class="pnd d-flex justify-content-center align-items-center text-center w-100 p-2">
+		<div class="msg d-flex align-items-center">{{message}}</div>
+	</div>
+	{%endfor%} {%endif%} {%endwith%} {%if gerentes%} {%for gerente in gerentes%}
+	<div class=" conteudo d-flex w-100 p-2 border-bottom border-dark">
+		<div class="col-9">
+			<p class="p-0 m-0 text-capitalize">Nome: {{gerente.nome|capitalize}}
+			</p>
+			<p class="p-0 m-0">Número de matrícula: {{gerente.id_conta}}</p>
+			{%if gerente.agencia%}
+			<p class="p-0 m-0">Agência: {{gerente.agencia}} - {{gerente.agencia_nome}}</p>
+			{%endif%}
 		</div>
-		<div>Número de matrícula: {{gerente.id_conta}}</div>
-		{%if gerente.agencia%}
-		<div>Agência: {{gerente.agencia}} - {{gerente.agencia_nome}}</div>
-		{%endif%}
-	</div>
 
-	<div class="d-flex justify-content-center col-xxl-3 col-xl-3 col-md-4 col-sm-4 col-4 my-auto">
-		<a href="{{url_for('admin.atualizar_gerente', gerente=gerente.id_conta)}}" class="w-100">
-			<div class="btn btn-secondary w-100 text-center mx-0 px-0">
-				Atualizar Cadastro
-			</div>
-		</a>
+		<div class="d-flex justify-content-center col-3 my-auto">
+			<a href="{{url_for('admin.atualizar_gerente', gerente=gerente.id_conta)}}" class="col-12">
+				<div class="btn btn-secondary w-100 text-center mx-0 px-0">
+					Atualizar Cadastro
+				</div>
+			</a>
+		</div>
+	</div>
+	{%endfor%} {%else%}
+
+	<div class="mensagem h-75 d-flex align-items-center justify-content-center">
+		<h2 class="text-center">Sem Gerentes Cadastrados!</h2>
 	</div>
 </div>
-{%endfor%} {%else%}
-
-<div class="mensagem h-75 d-flex align-items-center justify-content-center">
-	<h2 class="text-center">Sem Gerentes Cadastrados!</h2>
-</div>
-
 {%endif%} {%endblock%}

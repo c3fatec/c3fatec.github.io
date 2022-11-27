@@ -1,0 +1,35 @@
+.pg-gerente {
+    .titulo {
+        @media (max-width: 575px) {
+            font-size: 20px !important;
+        }
+    }
+
+    .conteudo{
+        p, label {
+            @media (max-width: 984px) {
+                font-size: 14px !important;
+            }
+    
+            @media (max-width: 830px) {
+                font-size: 12px !important;
+            }
+        }
+    }
+
+    .btn {
+        @media (max-width: 400px) {
+            padding-left: 0px !important;
+            padding-right: 0px !important;
+        }
+        @media (max-width: 984px) {
+            padding-top: 1px !important;
+            padding-bottom: 1px !important;
+            font-size: 14px !important;
+        }
+
+        @media (max-width: 830px) {
+            font-size: 12px !important;
+        }
+    }
+}
