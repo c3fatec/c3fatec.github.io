@@ -32,6 +32,7 @@ Esse repositório contém o primeiro projeto API dos estudantes do primeiro seme
 |   03   | 06/11/2022 | ✔️ Concluída |
 |   04   | 27/11/2022 | ✔️ Concluída |
 
+[![Generic badge](https://img.shields.io/badge/STATUS%20DO%20PROJETO-CONCLU%C3%8DDO-green)](https://shields.io/)
 ---
 
 <!-- ## :open_file_folder:Product Backlog -->
@@ -50,34 +51,25 @@ Esse repositório contém o primeiro projeto API dos estudantes do primeiro seme
 
 <h2 name='tecnologias'>Tecnologias Utilizadas</h2>
 
-<img src="https://i.ibb.co/pfvD7fv/Tecnologiasc3.jpg" alt="Tecnologiasc3" border="0">
+<img src="https://i.ibb.co/WPH798M/tec3.jpg" alt="Tecnologiasc3" border="0">
+
+
 
 ---
 
 <h2 id='demo'>Demonstração</h2>
 
-<!-- <video width="320" height="240" autoplay>
-  <source src="banco/static/video/xbank.mp4" type="video/mp4" alt='video demo'>
-</video> -->
-<!-- <div style="position: relative; padding-bottom: 42.34375%; height: 0;"><iframe src="https://www.loom.com/embed/40d65d6ff2574e0586003a2e2f3d7e57" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0;
-left: 0; width: 100%; height: 100%;"></iframe></div> -->
 
-<div style="position: relative; padding-bottom: 42.34375%; height: 0;"><iframe src="https://www.loom.com/embed/a5c05efc58e44b94b086379f886e833c" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
-<h5>1º Sprint -  <a href="https://www.loom.com/share/40d65d6ff2574e0586003a2e2f3d7e57">Clique aqui</a>
+![](./banco/static/video/Xbank1.gif)
+<!-- <h5>1º Sprint -  <a href="https://www.loom.com/share/40d65d6ff2574e0586003a2e2f3d7e57">Clique aqui</a>
 <h5>2º Sprint -  <a href="https://www.loom.com/share/40d65d6ff2574e0586003a2e2f3d7e57">Clique aqui</a>
-
+<h5>3º Sprint -  <a href="https://www.loom.com/share/40d65d6ff2574e0586003a2e2f3d7e57">Clique aqui</a>
+ -->
 ---
 
 <h2 id='equipe'>Equipe</h2>
 
-<!-- |    Função     | Nome                      |
-| :-----------: | :------------------------ |
-| Product Owner | Daniel Machado dos Santos [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/dmssjk/) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/)|
-| Scrum Master  | Gabriel Oliveira Santos   [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/dosantos-ogabriel) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/)||
-|   Dev Team    | Ivan Suiyma               [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/IvanSuiyama) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/)|
-|   Dev Team    | Jackles Kerley            [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/JacklesKerley) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/)|
-|   Dev Team    | Claudinei Paulista        [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/)|
- -->
+
 
 | Função        | Nome                                                                                                                                                                                         |
 | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -107,6 +99,14 @@ Então instale as dependências do projeto através do gerenciador de pacotes po
 pip install poetry
 poetry install
 ```
+
+ou com o comando:
+
+```
+$ pip install -r requirements.txt
+
+```
+
 
 **Variáveis de ambiente** <br>
 Para aplicar variáveis para sua máquina, crie um arquivo chamando ".env" e defina as configurações locais. <br>
@@ -149,7 +149,7 @@ $ flask --app banco run
 
 <h3>Acessando o Sistema</h3>
 
-**Acesso de Gerente**<br>
+**Acesso de Gerente Geral**<br>
 
 localhost:5000/admin
 
@@ -172,3 +172,4 @@ Para ativar as taxas de juros após ter alterado a data do sistema utilize o com
 ```
 $ flask tax
 ```
+---

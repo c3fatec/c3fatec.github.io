@@ -1,6 +1,5 @@
 attrs==22.1.0
 black==22.8.0
--e git+ssh://git@github.com/c3fatec/c3fatec.github.io.git@1079e770b066067d982e52164eb5567107503089#egg=c3fatec_github_io
 CacheControl==0.12.11
 cachy==0.3.0
 certifi==2022.6.15.1
@@ -34,8 +33,6 @@ pexpect==4.8.0
 pkginfo==1.8.3
 platformdirs==2.5.2
 poetry==1.2.0
-poetry-core==1.1.0
-poetry-plugin-export==1.0.6
 protobuf==3.20.1
 ptyprocess==0.7.0
 pycparser==2.21
@@ -55,4 +52,3 @@ urllib3==1.26.12
 virtualenv==20.16.5
 webencodings==0.5.1
 Werkzeug==2.2.2
-xattr==0.9.9
