@@ -4,7 +4,7 @@
 
 {%endblock%} {%block body%}
 <div class="pg-transacoes">
-	<p class="titulo h3 py-3 text-center border-bottom border-dark">Extrato</p>
+	<p class="titulo h3 py-3 text-center border-bottom border-dark">Transação</p>
 
 	<div class="d-flex flex-column">
 		<div class="d-flex justify-content-center p-2 border-bottom border-dark">
@@ -28,7 +28,7 @@
 			</div>
 			{%if 'Transferência' in comprovante.tipo%}
 			<div class="d1 d-flex">
-				<p class="p-0 m-0 p-0 m-0 col-xxl-4 col-xl-4 col-md-4 col-sm-4">Conta: {{comprovante.id_conta}}</p>
+				<p class="p-0 m-0 p-0 m-0 col-xxl-5 col-xl-5 col-md-5 col-sm-5">Conta: {{comprovante.id_conta}}</p>
 				<p class="p-0 m-0 p-0 m-0 col-xxl-4 col-xl-4 col-md-4 col-sm-4">Destino: {{comprovante.destino}}</p>
 			</div>
 			{%endif%}
