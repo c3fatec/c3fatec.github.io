@@ -174,6 +174,8 @@ _conta corrente_ <br>
 **Agência:** 2  
 **Senha:** cliente  
 
+_senha padrão após recuperar senha ( 1234 )_
+
 **Ativando o modo de volta para o futuro**<br>
 
 Para avançar ou voltar a data do sistema utilize os comandos abaixo.
