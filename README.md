@@ -32,6 +32,7 @@ Esse repositório contém o primeiro projeto API dos estudantes do primeiro seme
 |   03   | 06/11/2022 | ✔️ Concluída |
 |   04   | 27/11/2022 | ✔️ Concluída |
 
+[![Generic badge](https://img.shields.io/badge/STATUS%20DO%20PROJETO-CONCLU%C3%8DDO-green)](https://shields.io/)
 ---
 
 <!-- ## :open_file_folder:Product Backlog -->
@@ -50,34 +51,25 @@ Esse repositório contém o primeiro projeto API dos estudantes do primeiro seme
 
 <h2 name='tecnologias'>Tecnologias Utilizadas</h2>
 
-<img src="https://i.ibb.co/pfvD7fv/Tecnologiasc3.jpg" alt="Tecnologiasc3" border="0">
+<img src="https://i.ibb.co/WPH798M/tec3.jpg" alt="Tecnologiasc3" border="0">
+
+
 
 ---
 
 <h2 id='demo'>Demonstração</h2>
 
-<!-- <video width="320" height="240" autoplay>
-  <source src="banco/static/video/xbank.mp4" type="video/mp4" alt='video demo'>
-</video> -->
-<!-- <div style="position: relative; padding-bottom: 42.34375%; height: 0;"><iframe src="https://www.loom.com/embed/40d65d6ff2574e0586003a2e2f3d7e57" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0;
-left: 0; width: 100%; height: 100%;"></iframe></div> -->
 
-<div style="position: relative; padding-bottom: 42.34375%; height: 0;"><iframe src="https://www.loom.com/embed/a5c05efc58e44b94b086379f886e833c" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
-<h5>1º Sprint -  <a href="https://www.loom.com/share/40d65d6ff2574e0586003a2e2f3d7e57">Clique aqui</a>
+![](./banco/static/video/Xbank1.gif)
+<!-- <h5>1º Sprint -  <a href="https://www.loom.com/share/40d65d6ff2574e0586003a2e2f3d7e57">Clique aqui</a>
 <h5>2º Sprint -  <a href="https://www.loom.com/share/40d65d6ff2574e0586003a2e2f3d7e57">Clique aqui</a>
-
+<h5>3º Sprint -  <a href="https://www.loom.com/share/40d65d6ff2574e0586003a2e2f3d7e57">Clique aqui</a>
+ -->
 ---
 
 <h2 id='equipe'>Equipe</h2>
 
-<!-- |    Função     | Nome                      |
-| :-----------: | :------------------------ |
-| Product Owner | Daniel Machado dos Santos [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/dmssjk/) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/)|
-| Scrum Master  | Gabriel Oliveira Santos   [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/dosantos-ogabriel) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/)||
-|   Dev Team    | Ivan Suiyma               [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/IvanSuiyama) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/)|
-|   Dev Team    | Jackles Kerley            [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/JacklesKerley) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/)|
-|   Dev Team    | Claudinei Paulista        [![GitHub](https://i.stack.imgur.com/tskMh.png)](https://github.com/) [![Linkedin](https://i.stack.imgur.com/gVE0j.png)](https://www.linkedin.com/)|
- -->
+
 
 | Função        | Nome                                                                                                                                                                                         |
 | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -93,20 +85,21 @@ left: 0; width: 100%; height: 100%;"></iframe></div> -->
 
 **Instalando o projeto**
 
+**As instruções assumem um computador windows com python 3.10 já instalado**
+
 Para rodar o projeto em sua máquina, inicie um ambiente virtual:
 
 ```
-pip install virtualenv
-python -m virtualenv env
+py -m venv env
 env/Scripts/activate
 ```
 
-Então instale as dependências do projeto através do gerenciador de pacotes poetry:
+Então instale as dependências do projeto:
 
 ```
-pip install poetry
-poetry install
+pip install -r requirements.txt
 ```
+
 
 **Variáveis de ambiente** <br>
 Para aplicar variáveis para sua máquina, crie um arquivo chamando ".env" e defina as configurações locais. <br>
@@ -120,7 +113,8 @@ Para criar configurações pessoais, crie uma pasta chamada "instance", e dentro
 
 **Configurando seu usuário da base de dados**<br>
 
-A base de dados está configurada para se conectar ao usuário "root", sem senha em seu MySQL.
+
+O app oferece como suporte a criação de um banco de dados exemplo e também sua deleção. O banco de dados está configurado para se conectar ao usuário _root_, sem senha em seu servidor MySQL.<br><br>
 Para alterar essa configuração, no arquivo de configurações locais "instance/config.py" determine as variáveis:
 
 ```
@@ -128,7 +122,6 @@ DB_USUARIO = "seu_usuario"
 DB_SENHA = "sua_senha"
 ```
 
-O app oferece como suporte a criação de um banco de dados exemplo e também sua deleção. O banco de dados está configurado para se conectar ao usuário _root_, sem senha em seu servidor MySQL.<br><br>
 Para criar e deletar a base de dados na máquina local, execute os comandos:<br>
 
 ```
@@ -149,13 +142,37 @@ $ flask --app banco run
 
 <h3>Acessando o Sistema</h3>
 
-**Acesso de Gerente**<br>
+**Acesso de Gerente Geral**<br>
 
 localhost:5000/admin
 
 **Login**<br>
 **Matricula:** 1  
 **Senha:** gerente
+
+**Acesso de gerentes de agência**
+
+**Login**<br>
+**Matricula:** 9
+**Senha:** daniel
+
+**Login**<br>
+**Matricula:** 88888
+**Senha:** jackles
+
+**Acesso de clientes exemplo**
+
+**Login**<br>
+_conta poupança_ <br>
+**Número da conta:** 10000  
+**Agência:** 1
+**Senha:** cliente
+
+**Login**<br>
+_conta corrente_ <br>
+**Número da conta:** 20000  
+**Agência:** 2
+**Senha:** cliente
 
 **Ativando o modo de volta para o futuro**<br>
 
@@ -172,3 +189,4 @@ Para ativar as taxas de juros após ter alterado a data do sistema utilize o com
 ```
 $ flask tax
 ```
+---
