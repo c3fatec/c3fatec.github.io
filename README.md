@@ -85,26 +85,19 @@ Esse repositório contém o primeiro projeto API dos estudantes do primeiro seme
 
 **Instalando o projeto**
 
+(As instruções assumem um computador windows com python 3.10 já instalado)
+
 Para rodar o projeto em sua máquina, inicie um ambiente virtual:
 
 ```
-pip install virtualenv
-python -m virtualenv env
+py -m venv env
 env/Scripts/activate
 ```
 
-Então instale as dependências do projeto através do gerenciador de pacotes poetry:
+Então instale as dependências do projeto:
 
 ```
-pip install poetry
-poetry install
-```
-
-ou com o comando:
-
-```
-$ pip install -r requirements.txt
-
+pip install -r requirements.txt
 ```
 
 
@@ -120,7 +113,8 @@ Para criar configurações pessoais, crie uma pasta chamada "instance", e dentro
 
 **Configurando seu usuário da base de dados**<br>
 
-A base de dados está configurada para se conectar ao usuário "root", sem senha em seu MySQL.
+
+O app oferece como suporte a criação de um banco de dados exemplo e também sua deleção. O banco de dados está configurado para se conectar ao usuário _root_, sem senha em seu servidor MySQL.<br><br>
 Para alterar essa configuração, no arquivo de configurações locais "instance/config.py" determine as variáveis:
 
 ```
@@ -128,7 +122,6 @@ DB_USUARIO = "seu_usuario"
 DB_SENHA = "sua_senha"
 ```
 
-O app oferece como suporte a criação de um banco de dados exemplo e também sua deleção. O banco de dados está configurado para se conectar ao usuário _root_, sem senha em seu servidor MySQL.<br><br>
 Para criar e deletar a base de dados na máquina local, execute os comandos:<br>
 
 ```
@@ -156,6 +149,30 @@ localhost:5000/admin
 **Login**<br>
 **Matricula:** 1  
 **Senha:** gerente
+
+*** Acesso de gerentes de agência ***
+
+**Login**<br>
+**Matricula:** 9
+**Senha:** daniel
+
+**Login**<br>
+**Matricula:** 88888
+**Senha:** jackles
+
+**Acesso de clientes exemplo**
+
+**Login**<br>
+_conta poupança_
+**Número da conta:** 10000  
+**Agência:** 1
+**Senha:** cliente
+
+**Login**<br>
+_conta corrente_
+**Número da conta:** 20000  
+**Agência:** 2
+**Senha:** cliente
 
 **Ativando o modo de volta para o futuro**<br>
 
