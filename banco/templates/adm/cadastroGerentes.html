@@ -34,7 +34,8 @@
 			</div>
 		</div>
 
-		<div class="sair col-2 d-flex justify-content-center align-items-center h-100 btn btn-outline-secondary p-0" onclick="document.location='/admin/logoutadmin'">
+		<div class="sair col-2 d-flex justify-content-center align-items-center h-100 btn btn-outline-secondary p-0"
+			onclick="document.location='/admin/logoutadmin'">
 			<span class="material-symbols-outlined m-0 p-0">
 				power_settings_new
 			</span>
@@ -51,87 +52,95 @@
 				<p class="h3">Dados Pessoais</p>
 			</div>
 			<hr />
-			<div class="d-flex">
-				<div class="col-8 px-2">
+
+			<div class="d-flex flex-wrap">
+				<div class="col-xxl-8 col-xl-8 col-md-8 col-sm-8 col-12 px-2">
 					<label for="nome">Nome*</label><br />
 					<input type="text" name="nome" id="nome" class="w-100" required />
 				</div>
-				<div class="col-4 px-2">
+				<div class="col-xxl-4 col-xl-4 col-md-4 col-sm-4 col-12 px-2">
 					<label for="genero">Gênero*</label><br />
-					<input type="text" name="genero" id="genero" class="w-100" disabled />
+					<div class="d-flex align-items-center">
+
+						<select name="genero" class="w-100">
+							<option value="">--Selecionar--</option>
+							<option value="masculino" name="genero" id="masculino">Masculino</option>
+							<option value="feminino" name="genero" id="feminino">Feminino</option>
+							<option value="outros" name="genero" id="outros">Outros</option>
+						</select>
+
+					</div>
 				</div>
 			</div>
-			<div class="d-flex">
-				<div class="col-4 px-2">
+
+			<div class="d-flex flex-wrap">
+				<div class="col-xxl-4 col-xl-4 col-md-4 col-sm-4 col-6 px-2">
 					<label for="cpf">CPF*</label><br />
 					<input type="text" name="cpf" id="cpf" class="w-100" required />
 				</div>
-				<div class="col-4 px-2">
+				<div class="col-xxl-4 col-xl-4 col-md-4 col-sm-4 col-6 px-2">
 					<label for="rg">RG</label><br />
-					<input type="text" name="rg" id="rg" class="w-100" disabled />
+					<input type="text" name="rg" id="rg" class="w-100" />
 				</div>
-				<div class="col-4 px-2">
+				<div class="col-xxl-4 col-xl-4 col-md-4 col-sm-4 col-12 px-2">
 					<label for="data_nasc">Data de Nasc.*</label><br />
-					<input type="text" name="data-nasc" id="data-nasc" class="w-100" disabled />
-				</div>
-			</div>
-			<div class="d-flex">
-				<div class="col-3 px-2">
-					<label for="senha">Senha*</label>
-					<input type="password" name="senha" id="senha" class="w-100" />
-				</div>
-				<div class="col-3 px-2">
-					<label for="senha">Repita sua Senha*</label>
-					<input type="password" name="senha-repetida" id="senha-repetida" class="w-100" />
+					<input type="text" name="data-nasc" id="data-nasc" class="w-100" required />
 				</div>
 			</div>
 
-			<!--Endereço-->
-			<!-- <div class="titulo">
+			<div class="d-flex flex-wrap">
+				<div class="col-xxl-4 col-xl-4 col-md-4 col-sm-6 col-6 px-2">
+					<label for="senha">Senha*</label>
+					<input type="password" name="senha" id="senha" class="w-100" required />
+				</div>
+				<div class="col-xxl-4 col-xl-4 col-md-4 col-sm-6 col-6 px-2">
+					<label for="senha">Repita sua Senha*</label>
+					<input type="password" name="senha-repetida" id="senha-repetida" class="w-100" required/>
+				</div>
+			</div>
+
+			<!-- Endereço-->
+			<div class="titulo">
 				<p class="h3 mt-4">Endereço</p>
 			</div>
 			<hr />
-			<div class="d-flex mt-2">
-				<div class="col-4 pe-2">
-					<label for="cep">CEP*</label><br />
-					<input type="number" name="cep" id="cep" class="w-100" disabled />
+			<div class="d-flex flex-wrap">
+				<div class="col-xxl-8 col-xl-8 col-md-7 col-sm-7 col-12 px-2">
+					<label for="rua">Rua</label><br />
+					<input type="text" name="rua" id="rua" class="w-100" />
 				</div>
-				<div class="col-4 pe-2">
-					<label for="bairro">Bairro</label><br />
-					<input type="text" name="bairro" id="bairro" class="w-100" disabled />
+				<div class="col-xxl-2 col-xl-2 col-md-2 col-sm-2 col-6 px-2">
+					<label for="numero">N°</label><br />
+					<input type="text" name="numero" id="numero" class="w-100" />
 				</div>
-				<div class="col-3 pe-2">
-					<label for="cidade">Cidade</label><br />
-					<input type="text" name="cidade" id="cidade" class="w-100" disabled />
-				</div>
-				<div class="col-1">
-					<label for="uf">UF</label><br />
-					<input type="text" name="uf" id="uf" class="w-100" disabled />
+				<div class="col-xxl-2 col-xl-2 col-md-3 col-sm-3 col-6 px-2">
+					<label for="Complemento">Complemento</label><br />
+					<input disabled type="text" name="complemento" id="complemento" class="w-100" />
 				</div>
 			</div>
-			<div class="d-flex">
-				<div class="col-8 pe-2">
-					<label for="rua">Rua</label><br />
-					<input type="text" name="rua" id="rua" class="w-100" disabled />
+
+			<div class="d-flex flex-wrap">
+				<div class="col-xxl-4 col-xl-4 col-md-4 col-sm-6 col-6 px-2">
+					<label for="cep">CEP*</label><br />
+					<input type="number" name="cep" id="cep" class="w-100" required />
 				</div>
-				<div class="col-2 pe-2">
-					<label for="numero">N°</label><br />
-					<input type="text" name="numero" id="numero" class="w-100" disabled />
+				<div class="col-xxl-4 col-xl-4 col-md-3 col-sm-6 col-6 px-2">
+					<label for="bairro">Bairro</label><br />
+					<input type="text" name="bairro" id="bairro" class="w-100"/>
 				</div>
-				<div class="col-2">
-					<label for="Complemento">Complemento</label><br />
-					<input
-						disabled
-						type="text"
-						name="complemento"
-						id="complemento"
-						class="w-100"
-					/>
+				<div class="col-xxl-3 col-xl-3 col-md-3 col-sm-7 col-7 px-2">
+					<label for="cidade">Cidade</label><br />
+					<input type="text" name="cidade" id="cidade" class="w-100" />
 				</div>
-			</div> -->
+				<div class="col-xxl-1 col-xl-1 col-md-2 col-sm-5 col-5 px-2">
+					<label for="uf">UF</label><br />
+					<input type="text" name="uf" id="uf" class="w-100"/>
+				</div>
+			</div>
+			
 
 			<div class="d-flex justify-content-center gap-2 mx-auto w-75 mt-4 mb-3">
-				<div class="col-2">
+				<div class="col-xxl-2 col-xl-2 col-md-3 col-sm-4 col-5">
 					<button class="btn-att w-100" type="submit">Cadastrar</button>
 				</div>
 			</div>
