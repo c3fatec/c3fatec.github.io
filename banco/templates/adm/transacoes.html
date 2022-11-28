@@ -21,11 +21,12 @@
 		{%if comprovantes%} {%for comprovante in comprovantes%}
 		<div class="d-flex flex-column p-2 border-bottom border-dark">
 			<div class="d1 d-flex">
-				<p class="p-0 m-0 col-xxl-4 col-xl-4 col-md-4 col-sm-4">Id: {{comprovante.id_transacao | capitalize}}</p>
-				<p class="p-0 m-0 col-xxl-4 col-xl-4 col-md-4 col-sm-4">Tipo: {{comprovante.tipo | capitalize}}</p>
+				<p class="p-0 m-0 col-xxl-2 col-xl-2 col-md-2 col-sm-2">Id: {{comprovante.id_transacao | capitalize}}</p>
+				<p class="p-0 m-0 col-xxl-3 col-xl-3 col-md-3 col-sm-3">Conta: {{comprovante.id_conta | capitalize}}</p>
+				<p class="p-0 m-0 col-xxl-3 col-xl-3 col-md-3 col-sm-3">Tipo: {{comprovante.tipo | capitalize}}</p>
 				<p class="p-0 m-0 col-xxl-4 col-xl-4 col-md-4 col-sm-4">Valor: R$ {{comprovante.valor | dinheiro}}</p>
 			</div>
-			{%if 'Transferência' in comprovante.tipo%} 
+			{%if 'Transferência' in comprovante.tipo%}
 			<div class="d1 d-flex">
 				<p class="p-0 m-0 p-0 m-0 col-xxl-4 col-xl-4 col-md-4 col-sm-4">Conta: {{comprovante.id_conta}}</p>
 				<p class="p-0 m-0 p-0 m-0 col-xxl-4 col-xl-4 col-md-4 col-sm-4">Destino: {{comprovante.destino}}</p>
