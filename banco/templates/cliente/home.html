@@ -18,10 +18,11 @@
 				<div class="col-12"><p class="h5 p-0 m-0">Criado em: {{comprovante.data_inicio | datetime}}</p></div>
 			</div>
 		</div>
-		{%endfor%} {%else%}
+		{%endfor%} 
+		{%else%}
+		<div class="mensagem h-75 d-flex align-items-center justify-content-center">
+			<h2 class="text-center">Não foram feitas transações nessa conta</h2>
+		</div>
 	</div>
-</div>
-<div class="mensagem h-75 d-flex align-items-center justify-content-center">
-	<h2 class="text-center">Não foram feitas transações nessa conta</h2>
 </div>
 {%endif%} {%endblock%}
