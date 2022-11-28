@@ -554,7 +554,7 @@
 .pg-cadastro .caixa-dados select {
   border: 1px solid #b6b9bd;
   border-radius: 5px !important;
-  padding: 2px 0px;
+  padding: 1.4px 0px;
   margin: 0;
 }
 .pg-cadastro .caixa-dados .btn-att {
@@ -566,6 +566,12 @@
 }
 .pg-cadastro .caixa-dados .btn-att:hover {
   background-color: rgb(141, 141, 141);
+}
+@media (max-width: 767px) {
+  .pg-cadastro .caixa-dados .c1 {
+    min-height: 8vh !important;
+    justify-content: center !important;
+  }
 }
 
 @media (max-width: 575px) {
