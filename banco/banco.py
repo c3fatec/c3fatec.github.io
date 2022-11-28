@@ -11,7 +11,7 @@ from flask import (
 
 from banco.auth import requer_login, rota_cliente
 
-from .db import db_create, get_db, db_get, db_update, db_delete
+from .db import db_create, get_db, db_get, db_update, db_delete, db_execute
 
 from datetime import datetime
 
@@ -268,14 +268,21 @@ def fechar():
     if request.method == "POST":
         try:
             session.clear()
-            db_delete(table="conta", id_conta=g.conta.get("id_conta"))
+            db_execute(
+                f"UPDATE conta SET status = 'fechada' WHERE id_conta = {g.conta.get('id_conta')}"
+            )
         except:
             flash("Erro ao deletar a conta")
             return redirect(url_for("conta.index"))
         else:
-            contas = db_get(table="conta", usuario=g.usuario.get("id_usuario"))
-            if not contas:
-                db_delete(table="usuario", id_usuario=g.usuario.get("id_usuario"))
+            # contas = list(
+            #     filter(
+            #         lambda c: c.get("status") != "fechada",
+            #         db_get(table="conta", usuario=g.usuario.get("id_usuario")),
+            #     )
+            # )
+            # if not contas:
+            # db_delete(table="usuario", id_usuario=g.usuario.get("id_usuario"))
             return redirect(url_for("auth.login"))
 
     return render_template("cliente/fechamento.html")
