@@ -540,12 +540,22 @@
 .pg-cadastro .caixa-dados .titulo p {
   margin-bottom: 0 !important;
 }
+@media (max-width: 396px) {
+  .pg-cadastro .caixa-dados .titulo p {
+    font-size: 19px;
+  }
+}
 .pg-cadastro .caixa-dados hr {
   margin-top: 0 !important;
   padding-bottom: 0 !important;
 }
 .pg-cadastro .caixa-dados label {
   font-weight: bold;
+}
+@media (max-width: 396px) {
+  .pg-cadastro .caixa-dados label {
+    font-size: 14px;
+  }
 }
 .pg-cadastro .caixa-dados input {
   border: 1px solid #b6b9bd;
