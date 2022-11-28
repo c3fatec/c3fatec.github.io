@@ -30,15 +30,6 @@
 				<div class="col-xxl-4 col-xl-4 col-md-4 col-sm-4 col-12 px-2">
 					<label for="genero">Gênero*</label><br />
 					<div class="d-flex align-items-center">
-						<!-- <div class="col-4 d-flex align-items-center">
-							<input type="radio" name="genero" id="masculino" value="masculino" required />Masculino
-						</div>
-						<div class="col-4 d-flex align-items-center">
-							<input type="radio" name="genero" id="feminino" value="feminino" />Feminino
-						</div>
-						<div class="col-4 d-flex align-items-center">
-							<input type="radio" name="genero" id="outros" value="outro" />Outros
-						</div> -->
 
 						<select name="genero" class="w-100">
 							<option value="">--Selecionar--</option>
@@ -89,7 +80,7 @@
 			<div class="d-flex flex-wrap">
 				<div class="col-xxl-4 col-xl-4 col-md-4 col-sm-6 col-6 px-2">
 					<label for="cep">CEP*</label><br />
-					<input type="number" name="cep" id="cep" class="w-100" />
+					<input type="number" name="cep" id="cep" class="w-100" required/>
 				</div>
 				<div class="col-xxl-4 col-xl-4 col-md-3 col-sm-6 col-6 px-2">
 					<label for="bairro">Bairro</label><br />
@@ -122,11 +113,9 @@
 				</div>
 				<div class="c1 d-flex justify-content-around gap-3 align-items-end col-xxl-4 col-xl-4 col-md-4 col-sm-12 col-12 px-2">
 					<div class="pb-1">
-						<!-- <label for="corrente" class="col-6">Corrente</label> -->
 						<input type="radio" name="tipo" id="corrente" value="corrente" required /> Corrente
 					</div>
 					<div class="pb-1">
-						<!-- <label for="poupanca" class="col-6">Poupança</label> -->
 						<input type="radio" name="tipo" id="poupanca" value="poupanca" /> Poupança
 					</div>
 				</div>
