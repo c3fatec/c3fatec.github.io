@@ -21,6 +21,10 @@
 
       p {
         margin-bottom: 0 !important;
+
+        @media (max-width: 396px) {
+          font-size: 19px;
+        }
       }
     }
 
@@ -31,6 +35,10 @@
 
     label {
       font-weight: bold;
+
+      @media (max-width: 396px) {
+        font-size: 14px;
+      }
     }
 
     input {
