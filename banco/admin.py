@@ -233,16 +233,40 @@ def gerente():
 def cadastrar_gerente():
     if request.method == "POST":
         form = request.form
+
         nome = form["nome"]
+        genero = form.get("genero")
         cpf = form["cpf"]
+        rg = form.get("rg")
+        data_nasc = form.get("data-nasc")
+
         senha = form["senha"]
         senha_repetida = form["senha-repetida"]
+
+        rua = form.get("rua")
+        numero = form.get("numero")
+        complemento = form.get("complemento")
+        cep = form.get("cep")
+        bairro = form.get("bairro")
+        cidade = form.get("cidade")
+        uf = form.get("uf")
+
         if senha == senha_repetida:
             try:
                 usuario = db_create(
                     table="usuario",
                     nome=nome,
                     cpf=cpf,
+                    genero=genero,
+                    rg=rg,
+                    rua=rua,
+                    numero=numero,
+                    complemento=complemento,
+                    cep=cep,
+                    bairro=bairro,
+                    cidade=cidade,
+                    uf=uf,
+                    data_nasc=data_nasc,
                     senha=generate_password_hash(senha),
                 )
             except:
