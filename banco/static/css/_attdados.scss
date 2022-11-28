@@ -1,61 +1,68 @@
 .pg-cadastro {
-    background-image: url("../../static/img/quadrados.png");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    min-height: 90vh;
+  background-image: url("../../static/img/quadrados.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  min-height: 90vh;
 
-    .caixa-dados {
-        max-height: 87vh;
-        background-color: rgb(209, 209, 209, .700);
-        border: 2px solid black;
-        border-radius: 15px;
-        box-shadow: 0px 7px 20px rgba(black, .450);
-        color: rgb(58, 58, 58);
-        overflow: auto;
-    
-        // Juntando o titulo com a linha (hr)
-        .titulo {
-            margin-bottom: 0 !important;
-            padding-bottom: 0 !important;
-    
-            p {
-                margin-bottom: 0 !important;
-            }
-        }
-    
-        hr {
-            margin-top: 0 !important;
-            padding-bottom: 0 !important;
-        }
-    
-        label {
-            font-weight: bold;
-        }
-    
-        input {
-            border: 1px solid #b6b9bd;
-            border-radius: 5px !important;
-        }
+  .caixa-dados {
+    max-height: 87vh;
+    background-color: rgb(209, 209, 209, .700);
+    border: 2px solid black;
+    border-radius: 15px;
+    box-shadow: 0px 7px 20px rgba(black, .450);
+    color: rgb(58, 58, 58);
+    overflow: auto;
 
-        select {
-            border: 1px solid #b6b9bd;
-            border-radius: 5px !important;
-            padding: 2px 0px;
-            margin: 0;
-        }
-    
-        .btn-att {
-            background-color: rgb(209, 209, 209, .700);
-            border: 1px solid rgba(0, 0, 0, 0.568);
-            border-radius: 15px;
-            box-shadow: 0px 3px 10px rgba(black, .450);
-            cursor: pointer;
-        
-            &:hover {
-                background-color: rgb(141, 141, 141);
-              }
-        }
+    // Juntando o titulo com a linha (hr)
+    .titulo {
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+
+      p {
+        margin-bottom: 0 !important;
+      }
     }
+
+    hr {
+      margin-top: 0 !important;
+      padding-bottom: 0 !important;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input {
+      border: 1px solid #b6b9bd;
+      border-radius: 5px !important;
+    }
+
+    select {
+      border: 1px solid #b6b9bd;
+      border-radius: 5px !important;
+      padding: 1.4px 0px;
+      margin: 0;
+    }
+
+    .btn-att {
+      background-color: rgb(209, 209, 209, .700);
+      border: 1px solid rgba(0, 0, 0, 0.568);
+      border-radius: 15px;
+      box-shadow: 0px 3px 10px rgba(black, .450);
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgb(141, 141, 141);
+      }
+    }
+
+    .c1 {
+      @media (max-width: 767px) {
+        min-height: 8vh !important;
+        justify-content: center !important;
+      }
+    }
+  }
 
 }
