@@ -148,31 +148,31 @@ localhost:5000/admin
 
 **Login**<br>
 **Matricula:** 1  
-**Senha:** gerente
+**Senha:** gerente  
 
 **Acesso de gerentes de agência**
 
 **Login**<br>
-**Matricula:** 9
-**Senha:** daniel
+**Matricula:** 9  
+**Senha:** daniel  
 
 **Login**<br>
-**Matricula:** 88888
-**Senha:** jackles
+**Matricula:** 88888  
+**Senha:** jackles  
 
 **Acesso de clientes exemplo**
 
 **Login**<br>
 _conta poupança_ <br>
 **Número da conta:** 10000  
-**Agência:** 1
-**Senha:** cliente
+**Agência:** 1  
+**Senha:** cliente  
 
 **Login**<br>
 _conta corrente_ <br>
 **Número da conta:** 20000  
-**Agência:** 2
-**Senha:** cliente
+**Agência:** 2  
+**Senha:** cliente  
 
 **Ativando o modo de volta para o futuro**<br>
 
